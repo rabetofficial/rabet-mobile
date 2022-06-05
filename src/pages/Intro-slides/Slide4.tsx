@@ -9,7 +9,7 @@ import RouteName from 'staticRes/routes';
 import * as S from './styles';
 
 const ForthSlide = () => {
-    const router = useRouter();
+  const router = useRouter();
 
   const handleGetStarted = () => {
     router.push(RouteName.Register);

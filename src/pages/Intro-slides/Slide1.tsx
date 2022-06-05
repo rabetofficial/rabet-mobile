@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
 import SlidesLayout from 'components/common/Layouts/SlidesLayout';
