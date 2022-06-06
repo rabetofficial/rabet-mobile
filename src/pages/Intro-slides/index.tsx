@@ -1,14 +1,16 @@
 import { Slide } from 'react-slideshow-image';
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 import { SlideLeft, SlideRight } from 'svgs/longArrowCircle';
 import SlidesLayout from 'components/common/Layouts/SlidesLayout';
 
+import config from 'config';
 import Slide1 from './Slide1';
 import Slide2 from './Slide2';
 import Slide3 from './Slide3';
 import Slide4 from './Slide4';
-import config from 'config';
+import mypic from '../../../public/images/stellar-black.png';
 
 import * as S from './styles';
 
@@ -69,6 +71,7 @@ const Slides = () => {
 
   return (
     <div onKeyDown={handleKey}>
+      <Image src={mypic} width={42} height={36} />
       <SlidesLayout>
         <S.SlidesContainer>
           <Slide {...properties} ref={slideRef}>
