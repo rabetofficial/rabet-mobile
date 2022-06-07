@@ -8,7 +8,7 @@ const Container = styled.div`
   width: 110px;
   height: 157px;
   display: block;
-  margin: 72px auto 0 auto;
+  margin: 56px auto 0 auto;
 `;
 
 const Logo = () => (
