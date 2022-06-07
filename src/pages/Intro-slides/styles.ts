@@ -96,9 +96,10 @@ export const Circle = styled.div<CircleProps>`
 
   &:hover {
     background-color: ${({ theme, disabled }) =>
-      disabled
-        ? theme.colors.primary.lightest
-        : theme.colors.primary.lighter};
+    disabled
+      ? theme.colors.primary.lightest
+      : theme.colors.primary.lighter};
+
     transition: 0.6s background-color;
   }
 `;

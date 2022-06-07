@@ -15,18 +15,22 @@ import Slide4 from './Slide4';
 
 import * as S from './styles';
 
+import NextSlide from './NextSlide';
+import PrevSlide from './PrevSlide';
+
 export default function App() {
-  const [currentSwipe, setCurrentSwipe] = useState({
-    activeIndex: 0,
-    isBeginning: true,
-    isEnd: false,
-  });
-  const swiperRef = React.useRef(null);
-  console.log(currentSwipe);
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  console.log(slideIndex);
+
   return (
     <>
       <S.Container>
-        <Swiper ref={swiperRef} onSlideChange={setCurrentSwipe}>
+        <Swiper
+          onSlideChange={(e) => {
+            setSlideIndex(e.activeIndex);
+          }}
+        >
           <SwiperSlide>
             <Slide1 />
           </SwiperSlide>
@@ -39,23 +43,25 @@ export default function App() {
           <SwiperSlide>
             <Slide4 />
           </SwiperSlide>
+
+          <NextSlide>
+            <S.RightCircle
+              thirdSlide={slideIndex === 3}
+              disabled={slideIndex === 3}
+            >
+              <SlideRight disabled={slideIndex === 3} />
+            </S.RightCircle>
+          </NextSlide>
+
+          <PrevSlide>
+            <S.LeftCircle
+              thirdSlide={slideIndex === 3}
+              disabled={slideIndex === 0}
+            >
+              <SlideLeft disabled={slideIndex === 0} />
+            </S.LeftCircle>
+          </PrevSlide>
         </Swiper>
-
-        <S.LeftCircle
-          thirdSlide={currentSwipe.activeIndex === 3}
-          disabled={currentSwipe.isBeginning}
-          onClick={() => swiperRef.current.swiper.slidePrev()}
-        >
-          <SlideLeft disabled={currentSwipe.activeIndex === 0} />
-        </S.LeftCircle>
-
-        <S.RightCircle
-          thirdSlide={currentSwipe.activeIndex === 3}
-          disabled={currentSwipe.isEnd}
-          onClick={() => swiperRef.current.swiper.slideNext()}
-        >
-          <SlideRight disabled={currentSwipe.activeIndex === 3} />
-        </S.RightCircle>
       </S.Container>
     </>
   );
