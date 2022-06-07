@@ -14,7 +14,7 @@ export const ImgSlideOne = styled.div`
 `;
 
 export const ImgSlideTwo = styled.div`
-  margin: 80px 54px 0 auto;
+  margin-right: 30px;
   width: 305px;
   height: 318px;
 `;
