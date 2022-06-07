@@ -1,92 +1,57 @@
 import styled from 'styled-components';
 
 export const ImgSlideOne = styled.div`
-  margin: 90px auto 0 auto;
-  width: 291px;
-  height: 364px;
-  display: block;
-
-  @media (max-width: 630px) and (min-width: 340px) {
-    margin-top: 48px;
-    width: 224px;
-    height: 280px;
-  }
+  margin: 62px auto 0;
+  margin-top: px;
+  width: 269px;
+  height: 336px;
 `;
 
 export const ImgSlideTwo = styled.div`
-  margin: 105px auto 0 151px;
-  width: 334px;
-  height: 348px;
-  display: block;
-
-  @media (max-width: 830px) and (min-width: 630px) {
-    margin: 105px auto 0 auto;
-  }
-  @media (max-width: 630px) and (min-width: 340px) {
-    margin: 64px auto 0;
-    width: 254px;
-    height: 265px;
-  }
+  margin: 80px 54px 0 auto;
+  width: 305px;
+  height: 318px;
 `;
 
 export const ImgSlideThird = styled.div`
-  margin: 55px auto 0 auto;
-  width: 352px;
-  height: 385px;
-  display: block;
-
-  @media (max-width: 630px) and (min-width: 340px) {
-    margin-top: 25px;
-    width: 263px;
-    height: 288px;
-  }
+  width: 314px;
+  height: 359px;
+  margin: 39px auto 0px 55px;
 `;
 
 export const ImgSlideForth = styled.div`
-  margin: 72px auto 0 auto;
-  width: 288px;
-  height: 376px;
-  display: block;
-
-  @media (max-width: 630px) and (min-width: 340px) {
-    margin-top: 23px;
-    width: 233px;
-    height: 305px;
-  }
+  width: 274px;
+  height: 358px;
+  margin: 40px auto 0px 56px;
 `;
 
 export const TextContainer = styled.div`
   text-align: center;
-  @media (max-width: 630px) and (min-width: 340px) {
-    margin-top: -18px !important;
-  }
+  margin-top: -18px !important;
 `;
 
 export const HeadText = styled.p`
-  font-size: 32px;
-  margin-bottom: 19px;
-  font-weight: bold;
-  @media (max-width: 410px) and (min-width: 340px) {
-    font-size: 20px;
-    margin-bottom: 14px;
-  }
-`;
-
-export const MainText = styled.p`
   font-size: 20px;
-  color: ${({ theme }) => theme.colors.primary.dark};
-  font-weight: normal;
+  margin: 60px 0 24px;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.5;
   letter-spacing: normal;
   text-align: center;
+`;
 
-  @media (max-width: 410px) and (min-width: 340px) {
-    font-size: 14px;
-    width: 328px;
-    margin: 0 auto;
-  }
+export const MainText = styled.p`
+  color: ${({ theme }) => theme.colors.primary.dark};
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.63;
+  letter-spacing: normal;
+  text-align: center;
+  font-size: 16px;
+  width: 358px;
+  margin: 0 auto;
 `;
 
 interface IndicatorsProps {
@@ -103,13 +68,6 @@ export const Indicators = styled.div<IndicatorsProps>`
     disabled
       ? theme.colors.primary.light
       : theme.colors.primary.darkest};
-  @media (max-width: 630px) and (min-width: 340px) {
-    margin: 0;
-    width: 25%;
-    position: absolute;
-    top: 0px;
-    left: ${({ index }) => index * 25}%;
-  }
 `;
 
 interface CircleProps {
@@ -165,24 +123,6 @@ export const RightCircle = styled(Circle)<CircleProps>`
 `;
 
 export const SlidesContainer = styled.div`
-  @media (min-width: 1280px) {
-    width: 790px;
-  }
-  @media (max-width: 1280px) and (min-width: 1024px) {
-    width: 770px;
-  }
-  @media (max-width: 1024px) and (min-width: 768px) {
-    width: 770px;
-  }
-  @media (max-width: 768px) and (min-width: 620px) {
-    width: 720px;
-  }
-  @media (max-width: 620px) and (min-width: 475px) {
-    width: 600px;
-  }
-  @media (max-width: 475px) and (min-width: 400px) {
-    width: 400px;
-  }
   @media (max-width: 400px) and (min-width: 360px) {
     width: 360px;
     height: 600px;
@@ -192,4 +132,8 @@ export const SlidesContainer = styled.div`
     width: 340px;
     height: 600px;
   }
+`;
+
+export const ButtonContainer = styled.div`
+  margin: 162px 8px 0;
 `;

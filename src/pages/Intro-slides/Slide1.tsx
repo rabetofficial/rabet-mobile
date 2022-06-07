@@ -12,9 +12,7 @@ const FirstSlide = () => (
         <SlideOne />
       </S.ImgSlideOne>
       <S.TextContainer>
-        <S.HeadText className="mt-[47px]">
-          Useful by design
-        </S.HeadText>
+        <S.HeadText>Useful by design</S.HeadText>
         <S.MainText>
           Rabet is designed with accessibility in mind, allowing users
           to execute Stellar's major operations in a user-friendly
