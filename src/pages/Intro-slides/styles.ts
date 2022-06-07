@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const ImgSlideOne = styled.div`
   margin: 62px auto 0;
   margin-top: px;
@@ -54,27 +60,28 @@ export const MainText = styled.p`
   margin: 0 auto;
 `;
 
-interface IndicatorsProps {
-  disabled: boolean;
-  theme: any;
-  index: number;
-}
+// interface IndicatorsProps {
+//   disabled: boolean;
+//   theme: any;
+//   index: number;
+// }
 
-export const Indicators = styled.div<IndicatorsProps>`
-  width: 40px;
-  height: 2px;
-  margin: -40px 4px 0px 4px;
-  background-color: ${({ theme, disabled }) =>
-    disabled
-      ? theme.colors.primary.light
-      : theme.colors.primary.darkest};
-`;
+// export const Indicators = styled.div<IndicatorsProps>`
+//   width: 40px;
+//   height: 2px;
+//   margin: -40px 4px 0px 4px;
+//   background-color: ${({ theme, disabled }) =>
+//     disabled
+//       ? theme.colors.primary.light
+//       : theme.colors.primary.darkest};
+// `;
 
 interface CircleProps {
   disabled: boolean;
   thirdSlide: boolean;
   theme: any;
 }
+
 export const Circle = styled.div<CircleProps>`
   margin-top: -215px;
   padding: 21.5px 18px;
@@ -85,9 +92,7 @@ export const Circle = styled.div<CircleProps>`
   border-radius: 50%;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 
-  @media (max-width: 630px) and (min-width: 340px) {
-    display: ${({ thirdSlide }) => (thirdSlide ? 'none' : 'block')};
-  }
+  display: ${({ thirdSlide }) => (thirdSlide ? 'none' : 'block')};
 
   &:hover {
     background-color: ${({ theme, disabled }) =>
@@ -99,39 +104,15 @@ export const Circle = styled.div<CircleProps>`
 `;
 
 export const LeftCircle = styled(Circle)<CircleProps>`
-  @media (max-width: 800px) and (min-width: 630px) {
-    position: absolute;
-    left: 3px;
-  }
-  @media (max-width: 630px) and (min-width: 340px) {
-    position: absolute;
-    bottom: 48px;
-    left: 108px;
-  }
+  position: absolute;
+  bottom: 48px;
+  left: 108px;
 `;
 
 export const RightCircle = styled(Circle)<CircleProps>`
-  @media (max-width: 800px) and (min-width: 630px) {
-    position: absolute;
-    right: 3px;
-  }
-  @media (max-width: 630px) and (min-width: 340px) {
-    position: absolute;
-    bottom: 48px;
-    right: 108px;
-  }
-`;
-
-export const SlidesContainer = styled.div`
-  @media (max-width: 400px) and (min-width: 360px) {
-    width: 360px;
-    height: 600px;
-  }
-  @media (max-width: 360px) and (min-width: 340px) {
-    /* margin-top: -80px; */
-    width: 340px;
-    height: 600px;
-  }
+  position: absolute;
+  bottom: 48px;
+  right: 108px;
 `;
 
 export const ButtonContainer = styled.div`
