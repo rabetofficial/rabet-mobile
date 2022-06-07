@@ -17,6 +17,7 @@ type ButtonTypes = {
   className?: string | any;
   iconBtn?: boolean;
   title?: string;
+  reference?: React.MutableRefObject<HTMLButtonElement>;
 };
 
 const Button = ({
@@ -70,6 +71,7 @@ Button.defaultProps = {
   endIcon: '',
   title: '',
   iconBtn: false,
+  reference: null,
 };
 
 export default Button;

@@ -5,6 +5,7 @@ import Logo from 'components/Logo';
 import Layout from 'components/common/Layouts/BaseLayout';
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
+import ButtonContainer from 'components/common/ButtonContainer';
 
 type FormValues = {
   password: string;
@@ -14,10 +15,10 @@ const Login = () => {
   const onSubmit = async (values: FormValues) => {};
 
   return (
-    <Layout isDashboard={false}>
+    <Layout>
       <Logo />
 
-      <h1 className="text-2xl text-center mt-4 font-bold">
+      <h1 className="text-2xl text-center mt-[20px] font-bold">
         Welcome back!
       </h1>
       <p className="text-sm text-primary-dark text-center mt-[6px]">
@@ -33,7 +34,7 @@ const Login = () => {
           pristine,
         }) => (
           <form
-            className="mt-[40px]"
+            className="mt-[26px]"
             onSubmit={handleSubmit}
             autoComplete="off"
           >
@@ -55,14 +56,16 @@ const Login = () => {
               <div className="error">{submitError}</div>
             )}
 
-            <Button
-              type="submit"
-              variant="primary"
-              size="medium"
-              content="Unlock"
-              className="mt-8"
-              disabled={pristine || submitting}
-            />
+            <ButtonContainer fixedBottom>
+              <Button
+                type="submit"
+                variant="primary"
+                size="medium"
+                content="Unlock"
+                className="mb-8"
+                disabled={pristine || submitting}
+              />
+            </ButtonContainer>
           </form>
         )}
       />

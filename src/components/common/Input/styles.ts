@@ -9,7 +9,7 @@ export const Group = styled.div.attrs(
     ${({ styleType, theme }) =>
       styleType === 'dark'
         ? theme.colors.primary.light
-        : theme.colors.primary.lighter};
+      : theme.colors.primary.lighter};
   display: flex;
   overflow: hidden;
   margin-top: ${({ noMT }) => (noMT ? '0px' : '8px')};
@@ -23,6 +23,7 @@ export const Group = styled.div.attrs(
   &.large {
     height: 56px;
     border-radius: ${({ theme }) => theme.rounded.md};
+
     input {
       font-size: 16px;
     }
@@ -31,6 +32,7 @@ export const Group = styled.div.attrs(
   &.medium {
     height: 48px;
     border-radius: ${({ theme }) => theme.rounded.main};
+
     input {
       font-size: 16px;
     }
@@ -39,6 +41,7 @@ export const Group = styled.div.attrs(
   &.small {
     height: 40px;
     border-radius: ${({ theme }) => theme.rounded.main};
+
     input {
       font-size: 16px;
       padding-left: 12px;
