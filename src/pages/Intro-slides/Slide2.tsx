@@ -5,15 +5,7 @@ import { SlideTwo } from 'svgs/SlidesLogo';
 import * as S from './styles';
 
 const SecondSlide = () => (
-  <div
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-      flexDirection: 'column',
-      alignItems: 'center',
-      marginTop: '80px',
-    }}
-  >
+  <S.Container>
     <S.ImgSlideTwo>
       <SlideTwo />
     </S.ImgSlideTwo>
@@ -26,7 +18,7 @@ const SecondSlide = () => (
         data.
       </S.MainText>
     </S.TextContainer>
-  </div>
+  </S.Container>
 );
 
 export default SecondSlide;

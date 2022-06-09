@@ -3,32 +3,41 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
 `;
 
 export const ImgSlideOne = styled.div`
-  margin: 62px auto 0;
-  margin-top: px;
+  margin-top: 62px;
   width: 269px;
   height: 336px;
 `;
 
 export const ImgSlideTwo = styled.div`
-  margin-right: 30px;
+  margin: 80px 30px 0 0;
   width: 305px;
   height: 318px;
+  @media (max-width: 345px) {
+    width: 290px;
+  }
 `;
 
 export const ImgSlideThird = styled.div`
   width: 314px;
   height: 359px;
-  margin: 39px auto 0px 55px;
+  margin: 39px 0 0 45px;
+  @media (max-width: 345px) {
+    width: 290px;
+  }
 `;
 
 export const ImgSlideForth = styled.div`
   width: 274px;
   height: 358px;
-  margin: 40px auto 0px 56px;
+  margin: 40px 0 0px 4px;
+  @media (max-width: 345px) {
+    width: 290px;
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -48,33 +57,19 @@ export const HeadText = styled.p`
 `;
 
 export const MainText = styled.p`
-  color: ${({ theme }) => theme.colors.primary.dark};
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.63;
   letter-spacing: normal;
-  text-align: center;
   font-size: 16px;
   width: 358px;
-  margin: 0 auto;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.primary.dark};
+  @media (max-width: 345px) {
+    width: 290px;
+  }
 `;
-
-// interface IndicatorsProps {
-//   disabled: boolean;
-//   theme: any;
-//   index: number;
-// }
-
-// export const Indicators = styled.div<IndicatorsProps>`
-//   width: 40px;
-//   height: 2px;
-//   margin: -40px 4px 0px 4px;
-//   background-color: ${({ theme, disabled }) =>
-//     disabled
-//       ? theme.colors.primary.light
-//       : theme.colors.primary.darkest};
-// `;
 
 interface CircleProps {
   disabled: boolean;
@@ -83,39 +78,53 @@ interface CircleProps {
 }
 
 export const Circle = styled.div<CircleProps>`
-  margin-top: -215px;
-  padding: 21.5px 18px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 19px 17px;
+
   border: solid 1px ${({ theme }) => theme.colors.primary.lighter};
   border-radius: 50%;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 
   display: ${({ thirdSlide }) => (thirdSlide ? 'none' : 'block')};
-
-  &:hover {
-    background-color: ${({ theme, disabled }) =>
-    disabled
-      ? theme.colors.primary.lightest
-      : theme.colors.primary.lighter};
-
-    transition: 0.6s background-color;
-  }
 `;
 
 export const LeftCircle = styled(Circle)<CircleProps>`
   position: absolute;
-  bottom: 48px;
-  left: 108px;
+  bottom: 0px;
+  left: 120px;
+  @media (max-width: 390px) and (min-width: 350px) {
+    left: 110px;
+  }
+  @media (max-width: 350px) {
+    left: 100px;
+  }
 `;
 
 export const RightCircle = styled(Circle)<CircleProps>`
   position: absolute;
-  bottom: 48px;
-  right: 108px;
+  bottom: 0px;
+  right: 120px;
+  @media (max-width: 390px) and (min-width: 350px) {
+    right: 110px;
+  }
+  @media (max-width: 350px) {
+    right: 100px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
   margin: 162px 8px 0;
+  width: 358px;
+  @media (max-width: 358px) {
+    width: 290px;
+  }
+  @media (max-height: 780px) {
+    margin-top: 40px;
+  }
+`;
+
+export const Navigators = styled.div`
+  position: relative;
+  background-color: red;
 `;

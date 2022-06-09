@@ -1,6 +1,8 @@
 import { useSwiper } from 'swiper/react';
 
-const PrevSlide = ({ children }) => {
+type Props = { children: React.ReactNode };
+
+const PrevSlide = ({ children }: Props) => {
   const swiper = useSwiper();
 
   return (

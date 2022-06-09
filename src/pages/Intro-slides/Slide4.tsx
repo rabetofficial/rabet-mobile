@@ -16,10 +16,11 @@ const ForthSlide = () => {
   };
 
   return (
-    <>
+    <S.Container>
       <S.ImgSlideForth>
         <SlideFour />
       </S.ImgSlideForth>
+
       <S.TextContainer>
         <S.HeadText>Rabet is Your Identity</S.HeadText>
         <S.MainText>
@@ -37,7 +38,7 @@ const ForthSlide = () => {
           style={{ borderRadius: '4px' }}
         />
       </S.ButtonContainer>
-    </>
+    </S.Container>
   );
 };
 

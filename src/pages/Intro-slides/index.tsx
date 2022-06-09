@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import 'swiper/css/navigation';
 
 import { SlideLeft, SlideRight } from 'svgs/longArrowCircle';
 
@@ -25,44 +23,44 @@ export default function App() {
 
   return (
     <>
-      <S.Container>
-        <Swiper
-          onSlideChange={(e) => {
-            setSlideIndex(e.activeIndex);
-          }}
-        >
-          <SwiperSlide>
-            <Slide1 />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Slide2 />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Slide3 />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Slide4 />
-          </SwiperSlide>
-
+      <Swiper
+        spaceBetween={50}
+        onSlideChange={(e) => {
+          setSlideIndex(e.activeIndex);
+        }}
+      >
+        <SwiperSlide>
+          <Slide1 />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Slide2 />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Slide3 />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Slide4 />
+        </SwiperSlide>
+        <S.Navigators>
           <NextSlide>
             <S.RightCircle
               thirdSlide={slideIndex === 3}
               disabled={slideIndex === 3}
             >
-              <SlideRight disabled={slideIndex === 3} />
+              <SlideRight />
             </S.RightCircle>
           </NextSlide>
 
           <PrevSlide>
             <S.LeftCircle
               thirdSlide={slideIndex === 3}
-              disabled={slideIndex === 0}
+              disabled={slideIndex === 1}
             >
               <SlideLeft disabled={slideIndex === 0} />
             </S.LeftCircle>
           </PrevSlide>
-        </Swiper>
-      </S.Container>
+        </S.Navigators>
+      </Swiper>
     </>
   );
 }

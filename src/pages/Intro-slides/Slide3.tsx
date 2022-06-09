@@ -5,10 +5,11 @@ import { SlideThree } from 'svgs/SlidesLogo';
 import * as S from './styles';
 
 const ThirdSlide = () => (
-  <>
+  <S.Container>
     <S.ImgSlideThird>
       <SlideThree />
     </S.ImgSlideThird>
+
     <S.TextContainer>
       <S.HeadText>Made for interaction</S.HeadText>
       <S.MainText>
@@ -17,7 +18,7 @@ const ThirdSlide = () => (
         with the next generation financial network, i.e., Stellar.
       </S.MainText>
     </S.TextContainer>
-  </>
+  </S.Container>
 );
 
 export default ThirdSlide;
