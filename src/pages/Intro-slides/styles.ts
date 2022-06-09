@@ -42,18 +42,16 @@ export const ImgSlideForth = styled.div`
 
 export const TextContainer = styled.div`
   text-align: center;
-  margin-top: -18px !important;
 `;
 
 export const HeadText = styled.p`
   font-size: 20px;
-  margin: 60px 0 24px;
+  margin: 40px 0 24px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.5;
   letter-spacing: normal;
-  text-align: center;
 `;
 
 export const MainText = styled.p`
@@ -125,6 +123,5 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Navigators = styled.div`
-  position: relative;
-  background-color: red;
+  height: 20px;
 `;
