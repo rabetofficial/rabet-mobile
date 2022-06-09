@@ -23,8 +23,8 @@
     "react-slideshow-image": "^3.7.5",
     "stellar-sdk": "^9.0.1",
     "styled-components": "^5.3.5",
-    "tippy.js": "^6.3.7",
-    "swiper": "^8.2.2"
+    "swiper": "^8.2.2",
+    "tippy.js": "^6.3.7"
   },
   "devDependencies": {
     "@types/node": "17.0.38",
