@@ -3,7 +3,8 @@ import Link from 'next/link';
 
 const Home: NextPage = () => (
   <>
-    <div>Home</div>
+    <Link href="Home">Home</Link>
+    <br />
     <Link href="Intro-slides">Navigate to Intro</Link>
   </>
 );
