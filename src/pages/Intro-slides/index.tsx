@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import 'swiper/css/pagination';
-import { Pagination } from 'swiper';
+// import 'swiper/css/pagination';
+// import { Pagination } from 'swiper';
 
 import { SlideLeft, SlideRight } from 'svgs/longArrowCircle';
 

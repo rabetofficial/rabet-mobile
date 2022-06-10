@@ -18,7 +18,8 @@ export const ImgSlideTwo = styled.div`
   width: 305px;
   height: 318px;
   @media (max-width: 345px) {
-    width: 290px;
+    width: 300px;
+    margin: 80px auto 0;
   }
 `;
 
@@ -27,7 +28,8 @@ export const ImgSlideThird = styled.div`
   height: 359px;
   margin: 39px 0 0 45px;
   @media (max-width: 345px) {
-    width: 290px;
+    width: 300px;
+    margin: 39px auto 0;
   }
 `;
 
@@ -36,7 +38,7 @@ export const ImgSlideForth = styled.div`
   height: 358px;
   margin: 40px 0 0px 4px;
   @media (max-width: 345px) {
-    width: 290px;
+    width: 270px;
   }
 `;
 
@@ -52,6 +54,9 @@ export const HeadText = styled.p`
   font-style: normal;
   line-height: 1.5;
   letter-spacing: normal;
+  @media (max-width: 339px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const MainText = styled.p`
@@ -64,8 +69,11 @@ export const MainText = styled.p`
   width: 358px;
   text-align: center;
   color: ${({ theme }) => theme.colors.primary.dark};
-  @media (max-width: 345px) {
-    width: 290px;
+  @media (max-width: 361px) {
+    width: 330px;
+  }
+  @media (max-width: 339px) {
+    width: 300px;
   }
 `;
 
@@ -114,8 +122,11 @@ export const RightCircle = styled(Circle)<CircleProps>`
 export const ButtonContainer = styled.div`
   margin: 162px 8px 0;
   width: 358px;
-  @media (max-width: 358px) {
-    width: 290px;
+  @media (max-width: 361px) {
+    width: 320px;
+  }
+  @media (max-width: 339px) {
+    width: 300px;
   }
   @media (max-height: 780px) {
     margin-top: 40px;
