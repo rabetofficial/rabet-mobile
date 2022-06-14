@@ -5,8 +5,8 @@ export const Layout = styled.div`
 `;
 
 export const Box = styled.div`
-  padding-right: 16px;
   padding-left: 16px;
+  padding-right: 16px;
   background-color: ${({ theme }) => theme.colors.primary.lightest};
 `;
 

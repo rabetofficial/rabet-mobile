@@ -1,7 +1,7 @@
 module.exports = {
   content: [
-  "./src/pages/**/*.{js,ts,jsx,tsx}",
-  "./src/components/**/*.{js,ts,jsx,tsx}",
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -23,12 +23,11 @@ module.exports = {
       },
     },
     screens: {
-      '1x': '475px',
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
-      '2xl': '1536px',
+      '1x': '315px',
+      sm: '350px',
+      md: '370px',
+      lg: '390px',
+      xl: '420px',
     },
     fontSize: {
       xs: '12px',

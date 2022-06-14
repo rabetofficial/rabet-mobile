@@ -4,6 +4,7 @@ import DropDownList from './DropDownList';
 
 import Links from './links';
 // import SearchAccounts from './SearchAccounts';
+
 import * as S from './styles';
 
 const Home = () => (
@@ -11,12 +12,14 @@ const Home = () => (
     <S.Box className="pb-6">
       <S.Head>
         <DropDownList />
+
         {/* <SearchAccounts /> */}
       </S.Head>
       <S.Asset>$991.62</S.Asset>
       <Links />
     </S.Box>
-    <S.Box className="mt-4">
+    <S.Box className="bg-red-300 mt-4">
+      <div> .</div>
       <Asset />
     </S.Box>
   </S.Layout>

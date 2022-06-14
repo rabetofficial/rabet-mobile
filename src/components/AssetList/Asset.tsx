@@ -9,7 +9,7 @@ import handleAssetAlt from 'utils/handleAssetAlt';
 import useTypedSelector from 'hooks/useTypedSelector';
 import handleAssetImage from 'utils/handleAssetImage';
 import handleAssetSymbol from 'utils/handleAssetSymbol';
-import questionIcon from '../../../../../../assets/images/question-circle.png';
+// import questionIcon from '../../../../../../assets/images/question-circle.png';
 // import ImageOnErrorHandler from '../../../../../../helpers/ImageOnErrorHandler';
 
 import * as S from './styles';
@@ -18,7 +18,7 @@ type AssetType = {
   asset: Horizon.BalanceLine;
 };
 
-const Asset = () => {
+const Asset = ({ asset }: AssetType) => {
   const [isHover, setHover] = useState(false);
   const toggleHover = () => setHover(!isHover);
   const [assetImages, currencies, options] = useTypedSelector(

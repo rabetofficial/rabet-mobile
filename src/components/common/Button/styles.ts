@@ -134,6 +134,11 @@ export const Button = styled.button`
       border: 2px solid ${({ theme }) => theme.colors.primary.main};
       color: ${({ theme }) => theme.colors.primary.lightest};
     }
+    @media (max-width: 360px) {
+      width: 44px;
+      height: 44px;
+      margin: 0 26px;
+    }
   }
 
   &.primary {
