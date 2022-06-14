@@ -44,7 +44,18 @@ type ChangeIsConnectedAction = {
   isConnected: boolean;
 };
 
-const initialState: IAccount[] = [];
+const initialState: IAccount[] = [
+  {
+    active: true,
+    publicKey:
+      'GAUZUPTHOMSZEV65VNSRMUDAAE4VBMSRYYAX3UOWYU3BQUZ6OK65NOWM',
+    assets: [],
+    name: 'My account',
+    privateKey: 'SSSS',
+    isConnected: false,
+    subentry_count: 0,
+  },
+];
 
 const accountsSlice = createSlice({
   name: 'accounts',
