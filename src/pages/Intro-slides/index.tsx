@@ -40,9 +40,8 @@ const IntroSlides = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     swipeToSlide: true,
-    beforeChange: (index: number) => {
-      setSlideIndex(index);
-      console.warn(index);
+    beforeChange: (oldIndex: number, newIndex: number) => {
+      setSlideIndex(newIndex);
     },
   };
 
@@ -85,7 +84,10 @@ const IntroSlides = () => {
     <>
       <Slider {...settings} ref={customSlider}>
         {slides.map((slide) => (
-          <div key={slide.id} className="pt-[30px]">
+          <div
+            key={slide.id}
+            className="relative h-[100vh] pt-[30px]"
+          >
             <div className="flex justify-center">
               <Image
                 src={slide.imgSrc}
@@ -102,26 +104,22 @@ const IntroSlides = () => {
         ))}
       </Slider>
 
-      <S.SliderArrows className="space-x-8">
-        <button type="button" onClick={previous}>
-          <S.Circle
-            thirdSlide={slideIndex === 2}
-            disabled={slideIndex === 0}
-          >
-            <SlideLeft disabled={slideIndex === 0} />
-          </S.Circle>
-        </button>
-        <button type="button" onClick={next}>
-          <S.Circle
-            thirdSlide={slideIndex === 2}
-            disabled={slideIndex === 2}
-          >
-            <SlideRight />
-          </S.Circle>
-        </button>
-      </S.SliderArrows>
-
-      {slideIndex === 2 && (
+      {slideIndex !== 3 ? (
+        <div className="flex justify-center">
+          <div className="absolute bottom-[50px] space-x-8">
+            <button type="button" onClick={previous}>
+              <S.Circle disabled={slideIndex === 0}>
+                <SlideLeft disabled={slideIndex === 0} />
+              </S.Circle>
+            </button>
+            <button type="button" onClick={next}>
+              <S.Circle disabled={slideIndex === 2}>
+                <SlideRight />
+              </S.Circle>
+            </button>
+          </div>
+        </div>
+      ) : (
         <div className="absolute bottom-[50px] right-0 left-0 px-4">
           <Button
             type="button"
