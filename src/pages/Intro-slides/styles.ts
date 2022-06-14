@@ -1,80 +1,18 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const ImgSlideOne = styled.div`
-  margin-top: 62px;
-  width: 269px;
-  height: 336px;
-`;
-
-export const ImgSlideTwo = styled.div`
-  margin: 80px 30px 0 0;
-  width: 305px;
-  height: 318px;
-  @media (max-width: 345px) {
-    width: 300px;
-    margin: 80px auto 0;
-  }
-`;
-
-export const ImgSlideThird = styled.div`
-  width: 314px;
-  height: 359px;
-  margin: 39px 0 0 45px;
-  @media (max-width: 345px) {
-    width: 300px;
-    margin: 39px auto 0;
-  }
-`;
-
-export const ImgSlideForth = styled.div`
-  width: 274px;
-  height: 358px;
-  margin: 40px 0 0px 4px;
-  @media (max-width: 345px) {
-    width: 270px;
-  }
-`;
-
-export const TextContainer = styled.div`
-  text-align: center;
-`;
-
 export const HeadText = styled.p`
   font-size: 20px;
-  margin: 40px 0 24px;
+  margin: 32px 0 14px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
   line-height: 1.5;
-  letter-spacing: normal;
-  @media (max-width: 339px) {
-    margin-bottom: 10px;
-  }
 `;
 
 export const MainText = styled.p`
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
   line-height: 1.63;
   letter-spacing: normal;
   font-size: 16px;
-  width: 358px;
-  text-align: center;
+  padding: 0 16px;
   color: ${({ theme }) => theme.colors.primary.dark};
-  @media (max-width: 361px) {
-    width: 330px;
-  }
-  @media (max-width: 339px) {
-    width: 300px;
-  }
 `;
 
 interface CircleProps {
@@ -84,55 +22,21 @@ interface CircleProps {
 }
 
 export const Circle = styled.div<CircleProps>`
-  display: flex;
+  display: ${({ thirdSlide }) => (thirdSlide ? 'none' : 'flex')};
   justify-content: center;
   align-items: center;
-  padding: 19px 17px;
 
   border: solid 1px ${({ theme }) => theme.colors.primary.lighter};
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-
-  display: ${({ thirdSlide }) => (thirdSlide ? 'none' : 'block')};
 `;
 
-export const LeftCircle = styled(Circle)<CircleProps>`
+export const SliderArrows = styled.div`
+  display: flex;
+  justify-content: center;
   position: absolute;
-  bottom: 0px;
-  left: 120px;
-  @media (max-width: 390px) and (min-width: 350px) {
-    left: 110px;
-  }
-  @media (max-width: 350px) {
-    left: 100px;
-  }
-`;
-
-export const RightCircle = styled(Circle)<CircleProps>`
-  position: absolute;
-  bottom: 0px;
-  right: 120px;
-  @media (max-width: 390px) and (min-width: 350px) {
-    right: 110px;
-  }
-  @media (max-width: 350px) {
-    right: 100px;
-  }
-`;
-
-export const ButtonContainer = styled.div`
-  margin: 162px 8px 0;
-  width: 358px;
-  @media (max-width: 361px) {
-    width: 320px;
-  }
-  @media (max-width: 339px) {
-    width: 300px;
-  }
-  @media (max-height: 780px) {
-    margin-top: 40px;
-  }
-`;
-
-export const Navigators = styled.div`
-  height: 20px;
+  right: 0;
+  left: 0;
+  bottom: 50px;
 `;
