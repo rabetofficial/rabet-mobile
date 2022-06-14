@@ -245,6 +245,12 @@ const GlobalStyle = createGlobalStyle`
   .tippy-svg-arrow{
     fill: white;
   }
+
+  .slick-track {
+    //background-color: lightblue;
+    min-height: 100vh;
+    position: relative;
+  }
 `;
 
 export default GlobalStyle;
