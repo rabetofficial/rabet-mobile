@@ -7,12 +7,12 @@ export const BurgerImageStyle = styled.div`
 
 export const Title = styled.div`
   text-align: center;
-  margin-top: 5px;
-  font-size: 12px;
+  margin-top: 8px;
+  font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.33;
+  line-height: 1.43;
   letter-spacing: normal;
 `;
 
@@ -67,10 +67,11 @@ export const Button = styled.button`
     }
 
     &:disabled {
+      color: ${({ theme }) => theme.colors.primary.main};
+      border: 2px solid ${({ theme }) => theme.colors.primary.lighter};
       background-color: ${({ theme }) =>
         theme.colors.primary.lighter};
-      border: 2px solid ${({ theme }) => theme.colors.primary.lighter};
-      color: ${({ theme }) => theme.colors.primary.main};
+
       path {
         fill: ${({ theme }) => theme.colors.primary.main};
       }
@@ -112,14 +113,14 @@ export const Button = styled.button`
   }
 
   &.icon-circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    background-color: ${({ theme }) => theme.colors.primary.darkest};
+    width: 48px;
+    height: 48px;
     color: white;
-    margin: 0 22.5px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: ${({ theme }) => theme.colors.primary.darkest};
+    margin: 0 36px;
     path {
       fill: ${({ theme }) =>
         theme.colors.primary.lightest} !important;
