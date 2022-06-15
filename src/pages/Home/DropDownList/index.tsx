@@ -9,22 +9,20 @@ import World from 'svgs/World';
 
 import DropMenu from './DropMenu';
 
-// type DropDawnProps = {
-//   setEditableName: React.Dispatch<React.SetStateAction<boolean>>;
-//   { setEditableName }: DropDawnProps
-// };
+type DropDawnProps = {
+  setEditableName: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const Expand = styled.a`
   width: 2.5px;
   display: flex;
   color: black;
   font-size: 17px;
-  margin-top: 14px;
-  margin-right: 9px;
+  margin-right: 6px;
   transform: rotate(90deg);
 `;
 
-const DropDownList = () => {
+const DropDownList = ({ setEditableName }: DropDawnProps) => {
   // const { mode } = useTypedSelector((store) => store.options);
 
   const dropMenuItems = [
@@ -32,9 +30,9 @@ const DropDownList = () => {
       id: 1,
       label: 'Edit Name',
       icon: <PenEdit size="16" />,
-      // onClick: () => {
-      //   setEditableName(true);
-      // },
+      onClick: () => {
+        setEditableName(true);
+      },
     },
     {
       id: 3,

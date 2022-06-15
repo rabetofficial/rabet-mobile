@@ -11,9 +11,11 @@ export const Box = styled.div`
 `;
 
 export const Head = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 40px;
-  margin-top: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 38px;
 `;
 
 export const Asset = styled.div`
@@ -25,4 +27,34 @@ export const Asset = styled.div`
   letter-spacing: normal;
   text-align: center;
   font-family: Roboto;
+`;
+
+export const NameValue = styled.div`
+  margin: 10px 0 -4.5px 0;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: center;
+`;
+
+export const EditName = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+export const DropDown = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: start;
+`;
+
+export const Account = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: end;
 `;

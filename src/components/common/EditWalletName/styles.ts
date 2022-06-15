@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Button from 'popup/components/common/Button';
+import Button from 'components/common/Button';
 
 export const Form = styled.form.attrs(
   (props: { fontSize: number }) => props,

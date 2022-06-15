@@ -1,9 +1,8 @@
 import React, { CSSProperties } from 'react';
 import Link from 'next/link';
 
-import ButtonContainer from 'components/common/ButtonContainer';
-import Button from 'components/common/Button';
 import Plus from 'svgs/Plus';
+import Button from 'components/common/Button';
 
 import { Text } from './styles';
 
@@ -11,7 +10,6 @@ type AssetsButtonType = { style: CSSProperties };
 
 const AddAssetButton = ({ style }: AssetsButtonType) => (
   <div>
-    {/* <ButtonContainer btnSize={358} justify="center"> */}
     <Link href="./" passHref>
       <Button
         type="submit"
@@ -31,7 +29,6 @@ const AddAssetButton = ({ style }: AssetsButtonType) => (
         }
       />
     </Link>
-    {/* </ButtonContainer> */}
   </div>
 );
 
