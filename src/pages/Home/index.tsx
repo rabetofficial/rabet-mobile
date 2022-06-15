@@ -6,10 +6,9 @@ import CopyText from 'components/common/CopyText';
 import EditWalletName from 'components/common/EditWalletName';
 import FilledCopy from 'svgs/FilledCopy';
 
+import SearchAccounts from './SearchAccounts';
 import DropDownList from './DropDownList';
-
 import Links from './links';
-// import SearchAccounts from './SearchAccounts';=
 import * as S from './styles';
 
 const Home = () => {
@@ -24,8 +23,10 @@ const Home = () => {
     <S.Layout>
       <S.Box className="pb-6">
         <S.Head>
-          <S.Account>. {/* <SearchAccounts /> */}</S.Account>
-          <S.EditName>
+          <S.Account>
+            <SearchAccounts />
+          </S.Account>
+          <S.EditName className="mr-[29px]">
             {editableName ? (
               <div className="mt-3 w-[196px]">
                 <EditWalletName
@@ -37,7 +38,7 @@ const Home = () => {
                 />
               </div>
             ) : (
-              <div className="ml-1.5">
+              <div>
                 <S.NameValue>{mockData.name}</S.NameValue>
                 <CopyText
                   text={mockData.publicKey}

@@ -17,8 +17,9 @@ const Expand = styled.a`
   width: 2.5px;
   display: flex;
   color: black;
-  font-size: 17px;
+  font-size: 19px;
   margin-right: 6px;
+  margin-top: 2px;
   transform: rotate(90deg);
 `;
 

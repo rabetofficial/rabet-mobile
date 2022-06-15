@@ -3,7 +3,7 @@ import Tippy from '@tippyjs/react';
 import { roundArrow } from 'tippy.js';
 import styled from 'styled-components';
 
-import { FullPlacement } from 'popup/models';
+import { FullPlacement } from 'models';
 
 type AppProps = {
   children: React.ReactNode;
@@ -61,7 +61,7 @@ Popover.defaultProps = {
   onHide: () => {},
   triggerElement: null,
   maxWidth: 'none',
-  parent: document.body,
+  // parent: document.body,
   arrow: true,
 };
 

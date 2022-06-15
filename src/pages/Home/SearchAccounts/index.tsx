@@ -84,7 +84,7 @@ const SearchAccounts = ({ usage, isOpen, ...props }: AppProps) => {
 
           <AccountList accounts={activeAccounts} />
 
-          <Menus usage={usage} onHidePopover={onHidePopover} />
+          {/* <Menus usage={usage} onHidePopover={onHidePopover} /> */}
         </S.Card>
       </Popover>
     </>

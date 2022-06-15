@@ -54,6 +54,7 @@ export const DropDown = styled.div`
 `;
 
 export const Account = styled.div`
+  margin-top: 8px;
   display: flex;
   align-items: center;
   justify-content: end;

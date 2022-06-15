@@ -1,7 +1,8 @@
+// import Link from 'next/link';
 import styled from 'styled-components';
 
 import Search from 'svgs/Search';
-// import svgToMarkupString from '../../../../../helpers/svgToMarkupString';
+import svgToMarkupString from 'helpers/svgToMarkupString';
 
 export const ToggleButton = styled.button`
   width: 40px;
@@ -31,11 +32,11 @@ export const Label = styled.label`
     bottom: 0;
     width: 15px;
     height: 15px;
-    /* background: ${({ color }) =>
+    background: ${({ color }) =>
       `url(${svgToMarkupString(Search, {
         color,
       })}) no-repeat center`};
-  } */
+  }
 `;
 
 export const InputSearch = styled.input`
@@ -66,7 +67,7 @@ export const Group = styled.div`
   background-color: ${({ theme }) => theme.colors.other.lightGray};
 `;
 
-export const GroupLink = styled(Link)`
+export const GroupLink = styled.link`
   font-size: 16px;
   font-weight: 500;
   color: black;

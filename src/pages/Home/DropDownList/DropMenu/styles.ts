@@ -32,7 +32,6 @@ export const Menu = styled.div`
     padding: 10px 0;
 
     li {
-      cursor: pointer;
       width: 100%;
       padding: 8px 16px;
       transition: background 0.25s, color 0.25s;

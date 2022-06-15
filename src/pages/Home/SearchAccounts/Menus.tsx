@@ -199,7 +199,7 @@ const Menus = ({ usage, onHidePopover }: AppProps) => {
         {menuItems.map((item: Menu) => (
           <S.GroupLink
             key={item.id}
-            to={item.link}
+            href={item.link}
             onClick={() => handleMenuOnClick(item.onClick)}
           >
             {item.icon}
