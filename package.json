@@ -24,6 +24,7 @@
     "react-redux": "^7.2.6",
     "react-slick": "^0.29.0",
     "react-slideshow-image": "^3.7.5",
+    "react-spring": "^9.4.5",
     "react-spring-bottom-sheet": "^3.4.1",
     "slick-carousel": "^1.8.1",
     "stellar-sdk": "^9.0.1",
