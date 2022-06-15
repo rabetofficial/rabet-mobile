@@ -2,15 +2,15 @@ import React from 'react';
 import { Horizon } from 'stellar-sdk';
 import Link from 'next/link';
 
-import Plus from 'svgs/Plus';
-
 import openModalAction from 'actions/modal/open';
 // import closeModalAction from 'actions/modal/close';
 import handleAssetsKeys from 'utils/handleAssetKeys';
 import useActiveAccount from 'hooks/useActiveAccount';
 
 import Asset from './Asset';
-import { Hr, AddAssetBox } from './styles';
+
+import { Hr, MbButton } from './styles';
+import AddAssetButton from './AddAssetButton';
 
 const AssetList = () => {
   const { assets: asts } = useActiveAccount();
@@ -86,7 +86,7 @@ const AssetList = () => {
   // };
 
   return (
-    <div>
+    <>
       <div>
         {assets.map((asset, index) => (
           <div
@@ -99,24 +99,15 @@ const AssetList = () => {
             {assets.length !== index + 1 && <Hr />}
           </div>
         ))}
-        <div>
-          <Link href="./">
-            <AddAssetBox
-              className="inline-flex items-center"
-              style={{
-                position: assets.length < 4 ? 'absolute' : 'static',
-                bottom: assets.length < 4 ? '4px' : '0',
-              }}
-            >
-              <span className="mr-1">
-                <Plus width="12" height="12" />
-              </span>
-              <p className="font-medium">Add assets</p>
-            </AddAssetBox>
-          </Link>
-        </div>
+        <AddAssetButton
+          style={{
+            border: '1.2px solid #f3f3f3',
+            position: assets.length < 4 ? 'absolute' : 'static',
+            bottom: assets.length < 4 ? '88px' : '0',
+          }}
+        />
       </div>
-    </div>
+    </>
   );
 };
 

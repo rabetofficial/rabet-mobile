@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 
-import PenEdit from 'popup/svgs/PenEdit';
-import CheckMark from 'popup/svgs/CheckMark';
-import Input from 'popup/components/common/Input';
-import useActiveAccount from 'popup/hooks/useActiveAccount';
-import changeNameAction from 'popup/actions/accounts/changeName';
+import PenEdit from 'svgs/PenEdit';
+import CheckMark from 'svgs/CheckMark';
+import Input from 'components/common/Input';
+import useActiveAccount from 'hooks/useActiveAccount';
+import changeNameAction from 'actions/accounts/changeName';
 
 import * as S from './styles';
 

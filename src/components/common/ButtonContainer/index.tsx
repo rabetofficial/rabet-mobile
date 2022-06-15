@@ -18,7 +18,7 @@ const Container = styled.div.attrs((props: AppProps) => props)`
 
   button {
     ${({ btnSize }) =>
-    btnSize !== 0 && `width: ${btnSize}px!important;`}
+      btnSize !== 0 && `width: ${btnSize}px!important;`}
 
     &:first-child {
       margin-right: ${(props) => props.gap}px;

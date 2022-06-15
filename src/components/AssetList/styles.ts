@@ -36,18 +36,18 @@ export const Hr = styled.div`
   background-color: ${({ theme }) => theme.colors.primary.lighter};
 `;
 
-export const AddAssetBox = styled.div`
-  width: 91%;
-  height: 40px;
-  display: flex;
-  margin: 0 16px 2px;
-  font-size: 14px;
-  border-radius: 2px;
-  justify-content: center;
-  background-color: white;
-  border: 1.2px solid ${({ theme }) => theme.colors.primary.lighter};
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.primary.lighter};
-    transition: 1s background-color;
-  }
+export const Text = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+`;
+
+export const MbButton = styled.div`
+  padding: 20px 50px;
 `;
