@@ -48,12 +48,12 @@ const ExtTitle = ({
       return onClose();
     }
 
-    if (accounts.length) {
-      return router.push({
-        pathname: '/Home',
-        query: { alreadyLoaded: true },
-      });
-    }
+    // if (accounts.length) {
+    //   return router.push({
+    //     pathname: '/Home',
+    //     query: { alreadyLoaded: true },
+    //   });
+    // }
 
     return router.back();
   };

@@ -109,7 +109,7 @@ const ImportBackupFile = ({ onSubmit }: ImportBackupFileType) => {
             onSubmit={handleSubmit}
             autoComplete="off"
           >
-            {isUploaded && (
+            {isUploaded ? (
               <Field name="key">
                 {({ input, meta }) => (
                   <div className="mt-6">
@@ -125,6 +125,8 @@ const ImportBackupFile = ({ onSubmit }: ImportBackupFileType) => {
                   </div>
                 )}
               </Field>
+            ) : (
+              ''
             )}
 
             {submitError && <Error>{submitError}</Error>}

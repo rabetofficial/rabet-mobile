@@ -1,20 +1,18 @@
 import React from 'react';
-import Image from 'next/image';
-import styled from 'styled-components';
+import TextLogo from 'svgs/TextLogo';
 
-import logo from 'public/images/text-logo.svg';
+type LogoProps = {
+  className?: string;
+};
 
-const Container = styled.div`
-  width: 110px;
-  height: 157px;
-  display: block;
-  margin: 56px auto 0 auto;
-`;
-
-const Logo = () => (
-  <Container>
-    <Image src={logo} alt="logo" />
-  </Container>
+const Logo = ({ className }: LogoProps) => (
+  <div className={className}>
+    <TextLogo />
+  </div>
 );
+
+Logo.defaultProps = {
+  className: '',
+};
 
 export default Logo;
