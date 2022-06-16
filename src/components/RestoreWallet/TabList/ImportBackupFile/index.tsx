@@ -2,35 +2,23 @@ import { useDropzone } from 'react-dropzone';
 import { Form, Field } from 'react-final-form';
 import React, { useState, useCallback } from 'react';
 
-import { Usage } from 'models';
 import { decrypt } from 'helpers/crypto';
 import Download from 'svgs/Download';
-import ArrowBack from 'svgs/ArrowBack';
 import Error from 'components/common/Error';
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
 import ButtonContainer from 'components/common/ButtonContainer';
 import addBackupAccountsAction from 'actions/accounts/addBackup';
 
-import * as S from './styles';
-
 type FormValues = {
   key: string;
 };
 
 type ImportBackupFileType = {
-  isModal?: boolean;
   onSubmit: () => void;
-  onCancel: () => void;
-  usage: Usage;
 };
 
-const ImportBackupFile = ({
-  isModal,
-  onCancel,
-  onSubmit,
-  usage,
-}: ImportBackupFileType) => {
+const ImportBackupFile = ({ onSubmit }: ImportBackupFileType) => {
   const [fileContent, setFileContent] = useState('');
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -55,12 +43,6 @@ const ImportBackupFile = ({
     accept: 'text/plain',
     maxFiles: 1,
   });
-
-  const handleCancel = (form: any) => {
-    form.reset();
-
-    onCancel();
-  };
 
   const handleSubmitFunc = async (values: FormValues) => {
     if (!fileContent) {
@@ -101,8 +83,8 @@ const ImportBackupFile = ({
   const isUploaded = acceptedFiles && acceptedFiles.length;
 
   return (
-    <div>
-      <S.MediaBtn {...getRootProps()}>
+    <div className="content">
+      <div {...getRootProps()} className="mt-3">
         <input {...getInputProps()} />
         <Button
           type="file"
@@ -117,21 +99,20 @@ const ImportBackupFile = ({
             marginTop: '5px',
           }}
         />
-      </S.MediaBtn>
-
-      {isUploaded ? (
-        <Form
-          onSubmit={handleSubmitFunc}
-          validate={validateForm}
-          render={({ submitError, handleSubmit, form, pristine }) => (
-            <form
-              className="form"
-              onSubmit={handleSubmit}
-              autoComplete="off"
-            >
+      </div>
+      <Form
+        onSubmit={handleSubmitFunc}
+        validate={validateForm}
+        render={({ submitError, handleSubmit, pristine }) => (
+          <form
+            className="form"
+            onSubmit={handleSubmit}
+            autoComplete="off"
+          >
+            {isUploaded && (
               <Field name="key">
                 {({ input, meta }) => (
-                  <S.InputContainer>
+                  <div className="mt-6">
                     <label className="label-primary">Key</label>
                     <Input
                       type="text"
@@ -141,66 +122,27 @@ const ImportBackupFile = ({
                       meta={meta}
                       autoFocus
                     />
-                  </S.InputContainer>
+                  </div>
                 )}
               </Field>
-              {submitError && <Error>{submitError}</Error>}
-              {isModal || usage === 'extension' ? (
-                <ButtonContainer
-                  btnSize={100}
-                  justify="end"
-                  mt={usage === 'extension' ? 170 : 60}
-                  gap={7}
-                >
-                  <Button
-                    variant="default"
-                    size="medium"
-                    content="Cancel"
-                    onClick={() => {
-                      handleCancel(form);
-                    }}
-                  />
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="medium"
-                    content="Import"
-                    disabled={pristine}
-                  />
-                </ButtonContainer>
-              ) : (
-                <S.ButtonContainer>
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="medium"
-                    content="Import"
-                    disabled={pristine}
-                  />
-                  <S.SecondButton>
-                    <Button
-                      variant="default"
-                      size="medium"
-                      content="Back"
-                      onClick={() => {
-                        handleCancel(form);
-                      }}
-                      startIcon={<ArrowBack />}
-                    />
-                  </S.SecondButton>
-                </S.ButtonContainer>
-              )}
-            </form>
-          )}
-        />
-      ) : (
-        ''
-      )}
+            )}
+
+            {submitError && <Error>{submitError}</Error>}
+
+            <ButtonContainer fixedBottom mb={32}>
+              <Button
+                type="submit"
+                variant="primary"
+                size="medium"
+                content="Import"
+                disabled={pristine}
+              />
+            </ButtonContainer>
+          </form>
+        )}
+      />
     </div>
   );
 };
 
-ImportBackupFile.defaultProps = {
-  isModal: false,
-};
 export default ImportBackupFile;

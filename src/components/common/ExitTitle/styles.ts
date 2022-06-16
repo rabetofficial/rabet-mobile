@@ -6,6 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   padding: 13px 16px;
   box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.07);
+  background-color: ${({ theme }) => theme.colors.primary.lightest};
 `;
 
 export const Title = styled.div`

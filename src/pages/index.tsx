@@ -10,6 +10,8 @@ const Home: NextPage = () => (
     <Link href="test">test</Link>
     <br />
     <Link href="Create-wallet">Create wallet</Link>
+    <br />
+    <Link href="Restore-wallet">Restore wallet</Link>
   </div>
 );
 
