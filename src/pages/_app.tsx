@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           ) => (
             <animated.div
               style={{
-                ...props,
+                // ...props,
                 width: '100%',
                 height: '100%',
                 overflow: 'hidden',

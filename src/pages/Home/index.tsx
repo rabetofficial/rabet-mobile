@@ -5,6 +5,7 @@ import Asset from 'components/AssetList';
 import CopyText from 'components/common/CopyText';
 import EditWalletName from 'components/common/EditWalletName';
 import FilledCopy from 'svgs/FilledCopy';
+import BottomBar from 'components/common/BottomBar';
 
 import SearchAccounts from './SearchAccounts';
 import DropDownList from './DropDownList';
@@ -59,9 +60,11 @@ const Home = () => {
         <S.Asset>$991.62</S.Asset>
         <Links />
       </S.Box>
-      <S.Box className="bg-red-300 mt-4">
-        <div> .</div>
+      <S.Box className="mt-4">
         <Asset />
+        <div className="mx-[22px]">
+          <BottomBar />
+        </div>
       </S.Box>
     </S.Layout>
   );

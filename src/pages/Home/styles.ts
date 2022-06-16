@@ -8,6 +8,7 @@ export const Box = styled.div`
   padding-left: 16px;
   padding-right: 16px;
   background-color: ${({ theme }) => theme.colors.primary.lightest};
+  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.07);
 `;
 
 export const Head = styled.div`
