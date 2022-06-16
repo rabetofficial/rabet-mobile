@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import React from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
@@ -9,6 +10,7 @@ type AppProps = {
   justify?: JustifyContent;
   gap?: number;
   mt?: number;
+  mb?: number;
   className?: string;
   fixedBottom?: boolean;
 };
@@ -30,6 +32,7 @@ const Container = styled.div.attrs((props: AppProps) => props)`
     right: 16px;
     left: 16px;
     bottom: 0;
+    margin-bottom: ${(props) => props.mb}px;
   }
 `;
 
@@ -54,6 +57,7 @@ ButtonContainer.defaultProps = {
   btnSize: 0,
   gap: 0,
   mt: 0,
+  mb: 0,
   justify: '',
   className: '',
   fixedBottom: false,

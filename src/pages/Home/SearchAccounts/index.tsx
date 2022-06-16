@@ -11,7 +11,6 @@ import AccountList from './AccountsList';
 
 type AppProps = {
   isOpen: boolean;
-  usage: 'extension' | 'expand';
   [x: string]: any;
 };
 
