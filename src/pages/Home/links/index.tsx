@@ -40,7 +40,7 @@ const Links = () => (
     </div>
 
     <div>
-      <Link href="./" passHref>
+      <Link href="Receive" passHref>
         <Button
           size="small"
           variant="icon-circle"
