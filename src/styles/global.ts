@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  html, body, #__next {
+    height: 100%;
+  }
 
   body.dashboard {
     background: ${({ theme }) => theme.colors.primary.lighter};
