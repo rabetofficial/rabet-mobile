@@ -1,6 +1,6 @@
 import React from 'react';
 
-import loading from 'src/assets/images/loading.svg';
+import loading from 'public/images/loading.svg';
 
 import * as S from './styles';
 
@@ -19,23 +19,21 @@ const Loading = ({
   className,
   titleNonMargin,
 }: AppProps) => (
-  <>
-    <S.Container className={className}>
-      <S.Loading
-        src={loading}
-        alt="loading"
-        style={{ width: `${size}px`, height: `${size}px` }}
-      />
-      {title && (
-        <S.Title
-          className={titleStyle}
-          style={{ marginTop: titleNonMargin ? '-7px' : '13px' }}
-        >
-          <p>{title}</p>
-        </S.Title>
-      )}
-    </S.Container>
-  </>
+  <S.Container className={className}>
+    <S.Loading
+      src={loading}
+      alt="loading"
+      style={{ width: `${size}px`, height: `${size}px` }}
+    />
+    {title && (
+      <S.Title
+        className={titleStyle}
+        style={{ marginTop: titleNonMargin ? '-7px' : '13px' }}
+      >
+        <p>{title}</p>
+      </S.Title>
+    )}
+  </S.Container>
 );
 
 Loading.defaultProps = {

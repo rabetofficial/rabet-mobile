@@ -20,7 +20,7 @@ const ConfirmLogin = () => {
 
   return (
     <Layout>
-      <Logo />
+      <Logo className="flex justify-center mt-[56px]" />
 
       <Form
         onSubmit={onSubmit}

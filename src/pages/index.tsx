@@ -3,13 +3,13 @@ import Link from 'next/link';
 
 const Home: NextPage = () => (
   <div className="text-center">
-    <Link href="Home">Home</Link>
+    <Link href="home">Home</Link>
     <br />
     <Link href="Intro-slides">Intro</Link>
     <br />
     <Link href="test">test</Link>
     <br />
-    <Link href="First-page">First page</Link>
+    <Link href="first-page">First page</Link>
   </div>
 );
 

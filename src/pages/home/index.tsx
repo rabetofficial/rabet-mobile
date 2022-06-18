@@ -5,7 +5,7 @@ import Asset from 'components/AssetList';
 import CopyText from 'components/common/CopyText';
 import EditWalletName from 'components/common/EditWalletName';
 import FilledCopy from 'svgs/FilledCopy';
-import BottomBar from 'components/common/BottomBar';
+import Layout from 'components/common/Layouts/BaseLayout';
 
 import SearchAccounts from './SearchAccounts';
 import DropDownList from './DropDownList';
@@ -21,8 +21,8 @@ const Home = () => {
   };
 
   return (
-    <S.Layout>
-      <S.Box className="pb-6">
+    <>
+      <Layout>
         <S.Head>
           <S.Account>
             <SearchAccounts />
@@ -59,14 +59,12 @@ const Home = () => {
         </S.Head>
         <S.Asset>$991.62</S.Asset>
         <Links />
-      </S.Box>
-      <S.Box className="mt-4">
+      </Layout>
+
+      <Layout bottomBar>
         <Asset />
-        <div className="mx-[22px]">
-          <BottomBar />
-        </div>
-      </S.Box>
-    </S.Layout>
+      </Layout>
+    </>
   );
 };
 

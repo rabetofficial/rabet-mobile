@@ -1,31 +1,35 @@
 import React from 'react';
 import classNames from 'classnames';
+import BottomBar from 'components/common/BottomBar';
 
 type LayoutProps = {
   children: JSX.Element | JSX.Element[];
   alignCenter?: boolean;
+  bottomBar?: boolean;
   className?: string;
 };
 
 const Layout = ({
   children,
   alignCenter,
+  bottomBar,
   className,
 }: LayoutProps) => (
   <div
     className={classNames(
-      `flex h-full justify-center px-4 pb-8 ${
-        alignCenter ? 'place-items-center' : ''
-      }`,
+      'px-4',
+      alignCenter ? 'flex justify-center' : '',
       className,
     )}
   >
-    <div className="w-full">{children}</div>
+    {children}
+    {bottomBar && <BottomBar />}
   </div>
 );
 
 Layout.defaultProps = {
   alignCenter: false,
+  bottomBar: false,
   className: '',
 };
 

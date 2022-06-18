@@ -16,7 +16,7 @@ const Login = () => {
 
   return (
     <Layout>
-      <Logo />
+      <Logo className="flex justify-center mt-[56px]" />
 
       <h1 className="text-2xl text-center mt-[20px] font-bold">
         Welcome back!

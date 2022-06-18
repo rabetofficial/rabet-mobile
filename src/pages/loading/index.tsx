@@ -10,15 +10,13 @@ const MediaLoading = styled.div`
   }
 `;
 
-const LoadingOne = () => (
-  <div className="flex justify-center items-center h-screen w-screen">
-    <div>
-      <Logo />
-      <MediaLoading>
-        <Loading size={64} />
-      </MediaLoading>
-    </div>
+const LoadingPage = () => (
+  <div className="flex flex-col justify-center items-center h-screen w-screen">
+    <Logo />
+    <MediaLoading>
+      <Loading size={64} />
+    </MediaLoading>
   </div>
 );
 
-export default LoadingOne;
+export default LoadingPage;
