@@ -99,10 +99,12 @@ const BottomSheet = ({
         {...bind()}
         style={{
           display,
+          left: '0',
           bottom: `calc(-100vh + ${height - 100}px)`,
           y,
         }}
       >
+        <S.Line />
         {children}
       </S.Sheet>
     </div>

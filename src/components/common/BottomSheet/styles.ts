@@ -17,14 +17,13 @@ export const Sheet = styled(a.div)`
   width: 100%;
   background: white;
   touch-action: none;
+`;
 
-  > div {
-    height: 60px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20px;
-    text-transform: capitalize;
-  }
+export const Line = styled.div`
+  display: block;
+  margin: 14px auto;
+  width: 80px;
+  height: 6px;
+  border-radius: 4.5px;
+  background-color: ${({ theme }) => theme.colors.primary.lighter};
 `;

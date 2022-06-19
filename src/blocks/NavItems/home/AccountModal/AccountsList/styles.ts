@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const AccountContainer = styled.div`
+  min-height: 234px;
+  padding-top: 60px;
+`;
+
 export const List = styled.ul`
   list-style: none;
   padding-left: 0;
@@ -28,11 +33,12 @@ export const Border = styled.div`
 `;
 
 export const NotFound = styled.span`
-  padding-left: 16px;
-  margin-top: 16px;
-  margin-bottom: 12px;
-  font-size: 13px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
+  color: ${({ theme }) => theme.colors.primary.dark};
   display: block;
+  margin: 0 auto;
 `;
 
 export const Item = styled.div`

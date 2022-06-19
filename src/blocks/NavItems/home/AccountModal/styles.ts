@@ -1,6 +1,4 @@
-// import Link from 'next/link';
 import styled from 'styled-components';
-
 import Search from 'svgs/Search';
 import svgToMarkupString from 'helpers/svgToMarkupString';
 
@@ -15,11 +13,6 @@ export const ToggleButton = styled.button`
   padding: 0;
 `;
 
-export const Card = styled.div`
-  width: 328px;
-  background: white;
-`;
-
 export const Label = styled.label`
   position: relative;
   display: flex;
@@ -27,7 +20,7 @@ export const Label = styled.label`
   &:before {
     content: '';
     position: absolute;
-    left: 14px;
+    left: 0;
     top: 10px;
     bottom: 0;
     width: 15px;
@@ -42,7 +35,7 @@ export const Label = styled.label`
 export const InputSearch = styled.input`
   width: 100%;
   border: none;
-  padding: 0 14px 0 34px;
+  padding: 0 14px 0 20px;
   border-bottom: 1px solid
     ${({ theme }) => theme.colors.primary.lighter};
   box-sizing: border-box;
@@ -63,17 +56,16 @@ export const InputSearch = styled.input`
 `;
 
 export const Group = styled.div`
-  padding: 7px 0;
-  background-color: ${({ theme }) => theme.colors.other.lightGray};
+  padding: 11px 0 100px 0;
+  background-color: ${({ theme }) => theme.colors.primary.lighter};
 `;
 
-export const GroupLink = styled.link`
+export const GroupLink = styled.a`
   font-size: 16px;
-  font-weight: 500;
   color: black;
-  background-color: ${({ theme }) => theme.colors.other.lightGray};
+  background-color: ${({ theme }) => theme.colors.primary.lighter};
   text-decoration: none !important;
-  padding: 15px 17px;
+  padding: 11px 17px;
   display: flex;
   align-items: center;
 

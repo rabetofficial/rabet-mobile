@@ -21,7 +21,7 @@ const AccountList = ({ accounts }: AppProps) => {
   };
 
   return (
-    <>
+    <S.AccountContainer>
       {accounts.length ? (
         <S.List className="hidden-scroll">
           {accounts.map((account, index) => (
@@ -44,7 +44,7 @@ const AccountList = ({ accounts }: AppProps) => {
       ) : (
         <S.NotFound>No accounts found</S.NotFound>
       )}
-    </>
+    </S.AccountContainer>
   );
 };
 
