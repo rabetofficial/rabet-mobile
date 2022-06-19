@@ -4,12 +4,13 @@ import { useRouter } from 'next/router';
 import Logo from 'components/Logo';
 import Button from 'components/common/Button';
 import ButtonContainer from 'components/common/ButtonContainer';
+import Layout from 'components/common/Layouts/BaseLayout';
 
 const FirstPage = () => {
   const router = useRouter();
 
   return (
-    <div className="content flex justify-center items-center">
+    <Layout className="flex justify-center items-center">
       <Logo className="mt-[50px]" />
 
       <ButtonContainer fixedBottom mb={104}>
@@ -35,7 +36,7 @@ const FirstPage = () => {
           }}
         />
       </ButtonContainer>
-    </div>
+    </Layout>
   );
 };
 

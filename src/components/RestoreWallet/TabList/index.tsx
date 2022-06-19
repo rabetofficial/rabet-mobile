@@ -1,7 +1,7 @@
 import React from 'react';
+import { Tab } from 'models';
 
 import Tabs from 'components/common/Tabs';
-import { Tab } from 'models';
 import PrivateKey, { FormValues } from 'components/PrivateKey';
 import ImportBackupFile from './ImportBackupFile';
 

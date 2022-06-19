@@ -3,34 +3,38 @@ import Link from 'next/link';
 
 import Logo from 'svgs/IntroLogo';
 import Button from 'components/common/Button';
+import Layout from 'components/common/Layouts/BaseLayout';
+import ButtonContainer from 'components/common/ButtonContainer';
 
 import * as S from './styles';
 
 const Intro = () => (
-  <S.Layout>
+  <Layout className="flex flex-col items-center justify-center">
     <S.Img>
       <Logo />
     </S.Img>
 
-    <S.Container>
+    <div className="text-center mt-[25px] whitespace-nowrap">
       <div className="text-center">
         <S.WelcomeText>
           Welcome to the new financial world
         </S.WelcomeText>
         <S.MainText>Start interacting with Stellar</S.MainText>
       </div>
-    </S.Container>
-    <Link href="/Intro-slides" passHref>
-      <S.MbButton>
+    </div>
+
+    <ButtonContainer fixedBottom mb={32}>
+      <Link href="intro-slides" passHref>
         <Button
           type="button"
           variant="primary"
           size="medium"
           content="Get Started"
+          className="w-full"
         />
-      </S.MbButton>
-    </Link>
-  </S.Layout>
+      </Link>
+    </ButtonContainer>
+  </Layout>
 );
 
 export default Intro;

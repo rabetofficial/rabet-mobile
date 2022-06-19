@@ -5,6 +5,7 @@ import Input from 'components/common/Input';
 import Error from 'components/common/Error';
 import Button from 'components/common/Button';
 import ButtonContainer from 'components/common/ButtonContainer';
+import Layout from 'components/common/Layouts/BaseLayout';
 
 export type FormValues = {
   name: string;
@@ -37,7 +38,7 @@ const CreateWallet = ({ children, onSubmit }: CreateWalletType) => {
           {children}
         </div>
       )}
-      <div className="content">
+      <Layout>
         <Form
           onSubmit={onSubmit}
           validate={(values: FormValues) => validateForm(values)}
@@ -78,7 +79,7 @@ const CreateWallet = ({ children, onSubmit }: CreateWalletType) => {
             </form>
           )}
         />
-      </div>
+      </Layout>
     </>
   );
 };
