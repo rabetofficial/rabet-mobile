@@ -6,10 +6,10 @@ import CopyText from 'components/common/CopyText';
 import EditWalletName from 'components/common/EditWalletName';
 import FilledCopy from 'svgs/FilledCopy';
 import Layout from 'components/common/Layouts/BaseLayout';
-
 import SearchAccounts from './SearchAccounts';
 import DropDownList from './DropDownList';
 import Links from './links';
+
 import * as S from './styles';
 
 const Home = () => {
@@ -61,7 +61,9 @@ const Home = () => {
         <Links />
       </Layout>
 
-      <Layout bottomBar>
+      <div className="bg-primary-lighter mt-[24px] h-4" />
+
+      <Layout>
         <Asset />
       </Layout>
     </>

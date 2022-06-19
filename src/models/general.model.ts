@@ -46,3 +46,14 @@ export type Tab = {
 };
 
 export type Usage = 'desktop' | 'extension';
+
+export type NavItemMenu = {
+  id: number;
+  name: string;
+  icon: ReactNode;
+};
+
+export type NavItemContent = {
+  id: number;
+  component: ReactNode;
+};

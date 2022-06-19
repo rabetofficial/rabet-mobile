@@ -47,6 +47,9 @@ enum RouteName {
   LoadingNetwork = '/loading-network',
 
   AccountManager = '/account-manager',
+
+  Browser = '/browser',
+  Activities = '/activities',
 }
 
 export default RouteName;

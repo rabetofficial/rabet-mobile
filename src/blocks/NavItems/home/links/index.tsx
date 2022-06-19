@@ -8,7 +8,7 @@ import Link from 'next/link';
 const Links = () => (
   <div className="flex justify-center items-center mt-[22px]">
     <div>
-      <Link href="./" passHref>
+      <Link href="" passHref>
         <Button
           iconBtn
           size="small"
@@ -24,7 +24,7 @@ const Links = () => (
     </div>
 
     <div>
-      <Link href="./" passHref>
+      <Link href="" passHref>
         <Button
           size="small"
           variant="icon-circle"
