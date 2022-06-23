@@ -44,10 +44,12 @@ const Home = () => {
           </button>
         </S.Head>
         <S.Asset>$991.62</S.Asset>
-        <Links />
+        <S.LinkContainer>
+          <Links />
+        </S.LinkContainer>
       </Layout>
 
-      <div className="bg-primary-lighter mt-[24px] h-4" />
+      <S.Devider />
 
       <Layout>
         <Asset />
@@ -55,5 +57,4 @@ const Home = () => {
     </>
   );
 };
-
 export default Home;

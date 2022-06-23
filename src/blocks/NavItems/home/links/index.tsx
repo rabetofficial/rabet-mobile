@@ -1,9 +1,9 @@
 import React from 'react';
+import Link from 'next/link';
 
 import Button from 'components/common/Button';
 // import useTypedSelector from 'hooks/useTypedSelector';
 import { Swap, Send, Receive } from 'svgs/TransactionActions';
-import Link from 'next/link';
 
 const Links = () => (
   <div className="flex justify-center items-center mt-[22px]">
@@ -40,7 +40,7 @@ const Links = () => (
     </div>
 
     <div>
-      <Link href="Receive" passHref>
+      <Link href="receive" passHref>
         <Button
           size="small"
           variant="icon-circle"

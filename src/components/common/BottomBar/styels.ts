@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  padding: 0 34px;
+  padding: 0 16px;
   display: flex;
   justify-content: space-between;
   border-top: 1px solid ${({ theme }) => theme.colors.primary.lighter};

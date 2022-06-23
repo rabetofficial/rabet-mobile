@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
-export const Layout = styled.div`
+export const Devider = styled.div`
   background-color: ${({ theme }) => theme.colors.primary.lighter};
+  height: 16px;
+`;
+
+export const LinkContainer = styled.div`
+  margin: 24px 0;
 `;
 
 export const Box = styled.div`
