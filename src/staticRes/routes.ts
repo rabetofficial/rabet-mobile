@@ -48,44 +48,7 @@ enum RouteName {
 
   AccountManager = '/account-manager',
 
-  Browser = '/browser',
-  Activities = '/activities',
+  WalletOption = '/wallet-option',
 }
 
 export default RouteName;
-
-export const homePage = '/';
-export const loginPage = '/login';
-export const confirmLoginPage = '/confirm-login';
-export const firstPage = '/first';
-export const introduction = '/intro';
-export const successSubmitPage = '/success';
-export const errorPage = '/error';
-export const privateKeyPage = '/private-key';
-export const QRCodePage = '/qr-code';
-export const createWalletPage = '/create-wallet';
-export const restoreWalletPage = '/restore-wallet';
-export const SendPage = '/send';
-export const ConfirmPage = '/confirm';
-export const ShowPrivateKeyPage = '/show-private-key';
-export const flagPage = '/flag';
-export const confirmFlagPage = '/confirm-flag';
-export const addAssetPage = '/add-asset';
-export const settingPage = '/setting';
-export const contactPage = '/contact-request';
-export const fetchDataPage = '/fetch-data';
-export const assetsPage = '/asset';
-export const xlmAssetPage = '/xlm-asset';
-export const loadingOnePage = '/loading-one';
-export const loadingOverlayPage = '/loading-overlay';
-export const accountManagerPage = '/account-manager';
-export const loadingNetworkPage = '/loading-network';
-export const deleteAccountPage = '/delete-account';
-export const connectedWebsitePage = '/connected-website';
-export const offlineModePage = '/offline-mode';
-export const backupFile = '/backup-file';
-export const basicOperationPage = '/basic-operation';
-export const basicSwapConfirmPage = '/basic-operation/swap/confirm';
-export const basicSendConfirmPage = '/basic-operation/send/confirm';
-export const advanceOperationPage = '/advance-operation';
-export const claimableBalances = '/claimableBalances';

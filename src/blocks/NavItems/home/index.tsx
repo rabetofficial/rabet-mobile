@@ -1,5 +1,7 @@
 import React from 'react';
+import Link from 'next/link';
 
+import RouteName from 'staticRes/routes';
 import shorter from 'helpers/shorter';
 import Asset from 'components/AssetList';
 import CopyText from 'components/common/CopyText';
@@ -39,9 +41,11 @@ const Home = () => {
             />
           </div>
 
-          <button type="button">
-            <ExpandHorizontal />
-          </button>
+          <Link href={RouteName.WalletOption}>
+            <a>
+              <ExpandHorizontal />
+            </a>
+          </Link>
         </S.Head>
         <S.Asset>$991.62</S.Asset>
         <S.LinkContainer>
