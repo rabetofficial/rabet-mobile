@@ -42,7 +42,7 @@ const Menus = ({ onClose }: AppProps) => {
 
   const lockMenu: Menu = {
     id: 3,
-    link: '#',
+    link: '/',
     icon: <Lock />,
     label: 'Lock',
     onClick: () => {},
@@ -63,12 +63,10 @@ const Menus = ({ onClose }: AppProps) => {
   return (
     <S.Group>
       {menuItems.map((item: Menu) => (
-        <Link
-          key={item.id}
-          href={item.link}
-          onClick={() => handleMenuOnClick(item.onClick)}
-        >
-          <S.GroupLink>
+        <Link href={item.link} key={item.id}>
+          <S.GroupLink
+            onClick={() => handleMenuOnClick(item.onClick)}
+          >
             {item.icon}
             {item.label}
           </S.GroupLink>

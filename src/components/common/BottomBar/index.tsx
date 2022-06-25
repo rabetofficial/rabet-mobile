@@ -19,7 +19,7 @@ const BottomBar = ({ menus, contents }: AppProps) => {
     <>
       {contents.map((content) => {
         if (content.id === activeMenu) {
-          return content.component;
+          return <div key={content.id}>{content.component}</div>;
         }
         return null;
       })}

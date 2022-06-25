@@ -23,7 +23,7 @@ const menus = [
     link: '/',
   },
   {
-    id: 2,
+    id: 3,
     label: 'Connected sites',
     icon: <World />,
     link: '/',
