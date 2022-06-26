@@ -29,7 +29,7 @@ enum RouteName {
   Flags = '/flag',
   AssetInfo = '/asset',
   DeleteAccount = '/delete-account',
-  ConnectedWebsites = '/connected-website',
+  // ConnectedWebsites = '/connected-website',
   XLMAsset = '/xlm-asset',
   Setting = '/setting',
   AddAsset = '/add-asset',
@@ -49,6 +49,9 @@ enum RouteName {
   AccountManager = '/account-manager',
 
   WalletOption = '/wallet-option',
+  EditName = '/wallet-option/edit-name',
+  ConnectedWebsites = '/wallet-option/connected-websites',
+  PrivateKey = '/wallet-option/private-key',
 }
 
 export default RouteName;

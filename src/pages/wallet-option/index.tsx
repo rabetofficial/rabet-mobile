@@ -8,25 +8,26 @@ import Trash from 'svgs/Trash';
 import World from 'svgs/World';
 import NavLink from 'components/common/NavLink';
 import Layout from 'components/common/Layouts/BaseLayout';
+import RouteName from 'staticRes/routes';
 
 const menus = [
   {
     id: 1,
     label: 'Edit Name',
     icon: <PenEdit size="16" />,
-    link: '/',
+    link: RouteName.EditName,
   },
   {
     id: 2,
     label: 'Show private key',
     icon: <Key />,
-    link: '/',
+    link: RouteName.PrivateKey,
   },
   {
     id: 3,
     label: 'Connected sites',
     icon: <World />,
-    link: '/',
+    link: RouteName.ConnectedWebsites,
   },
   {
     id: 4,
