@@ -34,7 +34,7 @@ const PrivateKey = () => {
             >
               <Field name="key">
                 {({ input, meta }) => (
-                  <div>
+                  <>
                     <label className="label-primary">Password</label>
                     <Input
                       type="password"
@@ -45,7 +45,7 @@ const PrivateKey = () => {
                       meta={meta}
                       autoFocus
                     />
-                  </div>
+                  </>
                 )}
               </Field>
 
