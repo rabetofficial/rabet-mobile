@@ -1,12 +1,12 @@
 import store from 'store';
 import { load } from 'reducers/assetImages';
-import { addAssetImages } from 'reducers/accounts';
+import { addAssets } from 'reducers/accounts2';
 
 const loadAssetImagesAction = (newAssetImages, publicKey) => {
   store.dispatch(
-    addAssetImages({
+    addAssets({
       publicKey,
-      assetImages: newAssetImages,
+      assets: newAssetImages,
     }),
   );
   store.dispatch(load(newAssetImages));

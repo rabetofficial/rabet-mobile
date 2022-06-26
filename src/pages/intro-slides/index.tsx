@@ -11,7 +11,7 @@ import secureSrc from 'public/images/slides/secure.png';
 import interactionSrc from 'public/images/slides/intraction.png';
 import identitySrc from 'public/images/slides/identity.png';
 
-import * as S from './styles';
+import * as S from 'styles/intro-slides.module';
 
 const IntroSlides = () => {
   const [slideIndex, setSlideIndex] = useState(0);
