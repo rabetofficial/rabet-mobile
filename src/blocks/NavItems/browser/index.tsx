@@ -19,6 +19,7 @@ const Browser = () => {
             type="text"
             value={searchString}
             onChange={handleChange}
+            enterKeyHint="go"
             placeholder="Search or enter website url"
           />
         </S.Label>
