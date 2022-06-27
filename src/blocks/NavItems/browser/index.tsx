@@ -12,7 +12,7 @@ const Browser = () => {
     setSearchString(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     e.target.search.blur();
   };
@@ -47,6 +47,3 @@ const Browser = () => {
 };
 
 export default Browser;
-function preventDefault(e: any) {
-  throw new Error('Function not implemented.');
-}
