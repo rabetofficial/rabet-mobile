@@ -5,6 +5,7 @@ export type ButtonVariant =
   | 'secondary'
   | 'icon-circle'
   | 'danger'
+  | 'danger-fill'
   | 'default'
   | 'outlined';
 

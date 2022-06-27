@@ -13,7 +13,6 @@ enum RouteName {
 
   Error = '/error',
   Sucess = '/sucess',
-  PrivateKey = '/private-key',
   ShowPrivateKey = '/show-private-key',
 
   Send = '/send',

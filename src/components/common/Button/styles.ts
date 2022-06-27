@@ -78,6 +78,22 @@ export const Button = styled.button`
     }
   }
 
+  &.danger-fill {
+    color: white;
+    background-color: ${({ theme }) => theme.colors.error.main};
+    border: 2px solid ${({ theme }) => theme.colors.error.main};
+    path {
+      fill: white;
+    }
+    &:hover {
+      box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+    }
+  }
+
   &.basic-default {
     background: ${({ theme }) => theme.colors.primary.lighter};
     border: 2px solid ${({ theme }) => theme.colors.primary.lighter};
