@@ -28,3 +28,13 @@ jobs:
           cd $CONFIG_PATH/rabet-mobile-demo
           docker-compose down
           docker-compose up -d
+
+
+  Cleanup:
+    runs-on: "self-hosted"
+    needs: ["Build","Deploy"]
+    steps:
+      - name: Images
+        run: |
+          docker container prune -f
+          docker image prune -f --filter "dangling=true"
