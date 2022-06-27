@@ -3,7 +3,7 @@ import Multiply from 'svgs/Multiply';
 import ExtTitle from 'components/common/ExitTitle';
 import Layout from 'components/common/Layouts/BaseLayout';
 
-import * as S from './styles';
+import * as S from 'styles/connected-websites.module';
 import Button from '../../../components/common/Button';
 
 const ConnectedWebsites = () => {
