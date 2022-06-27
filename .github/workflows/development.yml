@@ -1,0 +1,30 @@
+name: Development
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  Build:
+    runs-on: "self-hosted"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          set-safe-directory: false
+
+      - name: Build
+        run: |
+          docker build -t rabet-mobile:latest .
+
+  Deploy:
+    runs-on: "self-hosted"
+    needs: ["Build"]
+    
+    steps:
+      - name: Deploy
+        env:
+          CONFIG_PATH: ${{ secrets.CONFIG_PATH }}
+        run: |
+          cd $CONFIG_PATH/rabet-mobile-demo
+          docker-compose down
+          docker-compose up -d
