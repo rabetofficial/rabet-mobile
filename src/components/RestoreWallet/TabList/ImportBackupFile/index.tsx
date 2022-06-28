@@ -131,7 +131,7 @@ const ImportBackupFile = ({ onSubmit }: ImportBackupFileType) => {
 
             {submitError && <Error>{submitError}</Error>}
 
-            <ButtonContainer fixedBottom mb={32}>
+            <ButtonContainer fixedBottom mb={39}>
               <Button
                 type="submit"
                 variant="primary"

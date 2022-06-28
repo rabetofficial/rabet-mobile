@@ -25,7 +25,7 @@ const FirstPage = () => {
         />
       </ButtonContainer>
 
-      <ButtonContainer fixedBottom mb={32}>
+      <ButtonContainer fixedBottom mb={39}>
         <Button
           type="button"
           variant="outlined"
