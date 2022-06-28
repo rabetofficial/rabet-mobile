@@ -6,7 +6,7 @@ import Button from 'components/common/Button';
 import Layout from 'components/common/Layouts/BaseLayout';
 import ButtonContainer from 'components/common/ButtonContainer';
 
-import * as S from 'styles/intro.styles';
+import * as S from './styles';
 
 const Intro = () => (
   <Layout className="flex flex-col items-center justify-center">
