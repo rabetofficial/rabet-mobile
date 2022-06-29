@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import CreateWalletComponrnt, {
   FormValues,
 } from 'components/CreateWallet';
-import ExtTitle from 'components/common/ExitTitle';
 import useTypedSelector from 'hooks/useTypedSelector';
 import createAccountAction from 'actions/accounts/create';
 
@@ -26,11 +25,7 @@ const CreateWallet = () => {
     return {};
   };
 
-  return (
-    <CreateWalletComponrnt onSubmit={onSubmit}>
-      <ExtTitle title="Create Wallet" />
-    </CreateWalletComponrnt>
-  );
+  return <CreateWalletComponrnt onSubmit={onSubmit} />;
 };
 
 export default CreateWallet;

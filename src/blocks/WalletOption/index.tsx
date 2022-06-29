@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import BottomSheet from 'components/common/BottomSheet';
-import ExtTitle from 'components/common/ExitTitle';
 import PenEdit from 'svgs/PenEdit';
 import HandCoins from 'svgs/HandCoins';
 import Key from 'svgs/Key';
@@ -51,8 +50,6 @@ const WalletOption = () => {
 
   return (
     <>
-      <ExtTitle title="Wallet options" />
-
       <Layout className="mt-2">
         {menus.map((menu) => (
           <div
