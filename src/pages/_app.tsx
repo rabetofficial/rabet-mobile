@@ -33,6 +33,7 @@ const pages: Page[] = [
   { route: RouteName.RestoreWallet, title: 'Import wallet' },
   { route: RouteName.PrivateKey, title: 'Show private key' },
   { route: RouteName.Receive, title: 'Receive' },
+  { route: RouteName.AddAsset, title: 'AddAsset' },
 ];
 
 function MyApp({ Component, pageProps }: AppProps) {
