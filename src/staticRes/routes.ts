@@ -32,7 +32,7 @@ enum RouteName {
   XLMAsset = '/xlm-asset',
   Setting = '/setting',
   AddAsset = '/add-asset',
-  QRCode = '/qr-code',
+  Receive = '/receive',
   ConfirmFlag = '/confirm-flag',
   AddContact = '/add-contact',
   EditContact = '/edit-contact',

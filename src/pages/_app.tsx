@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
-import { useRouter } from 'next/router';
+import { useRouter, NextRouter } from 'next/router';
 import { animated, Transition } from 'react-spring';
 
 import RouteName from 'staticRes/routes';
@@ -32,7 +32,7 @@ const pages: Page[] = [
   { route: RouteName.ConnectedWebsites, title: 'Connected websites' },
   { route: RouteName.RestoreWallet, title: 'Import wallet' },
   { route: RouteName.PrivateKey, title: 'Show private key' },
-  { route: RouteName.QRCode, title: 'Receive' },
+  { route: RouteName.Receive, title: 'Receive' },
 ];
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -44,7 +44,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       pageProps,
     },
   ];
-  const getPathDepth = (location) => {
+
+  const getPathDepth = (location: NextRouter) => {
     let pathArr = location.pathname.split('/');
     pathArr = pathArr.filter((n) => n !== '');
     return pathArr.length;
