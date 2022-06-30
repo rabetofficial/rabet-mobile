@@ -3,17 +3,22 @@ import Link from 'next/link';
 
 import RouteName from 'staticRes/routes';
 import shorter from 'helpers/shorter';
-import Asset from 'components/AssetList';
+import AssetList from 'components/AssetList';
 import CopyText from 'components/common/CopyText';
 import ExpandHorizontal from 'svgs/ExpandHorizontal';
 import FilledCopy from 'svgs/FilledCopy';
 import Layout from 'components/common/Layouts/BaseLayout';
+import useActiveAccount from 'hooks/useActiveAccount';
+import ScrollBar from 'components/common/ScrollBar';
 import Links from './links';
 import AccountModal from './AccountModal';
+import AssetButton from './AssetButton';
 
 import * as S from './styles';
 
 const Home = () => {
+  const { assets: asts } = useActiveAccount();
+  const assets = asts || [];
   const mockData = {
     name: 'John Due',
     publicKey:
@@ -56,7 +61,16 @@ const Home = () => {
       <S.Devider />
 
       <Layout>
-        <Asset />
+        <ScrollBar isVertical maxHeight={290}>
+          <AssetList assets={assets}>
+            <AssetButton
+              style={{
+                position: assets.length < 4 ? 'absolute' : 'static',
+                bottom: assets.length < 4 ? '88px' : '0',
+              }}
+            />
+          </AssetList>
+        </ScrollBar>
       </Layout>
     </>
   );

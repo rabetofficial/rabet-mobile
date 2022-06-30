@@ -35,19 +35,3 @@ export const Hr = styled.div`
   margin: 0 16px;
   background-color: ${({ theme }) => theme.colors.primary.lighter};
 `;
-
-export const Text = styled.div`
-  font-size: 16px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-`;
-
-export const MbButton = styled.div`
-  padding: 20px 50px;
-`;
