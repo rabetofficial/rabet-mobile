@@ -122,10 +122,6 @@ export const Button = styled.button`
     background: transparent;
     border: 1px solid ${({ theme }) => theme.colors.primary.darkest};
     color: ${({ theme }) => theme.colors.primary.darkest};
-
-    &:hover {
-      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.17);
-    }
   }
 
   &.icon-circle {

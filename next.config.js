@@ -10,7 +10,10 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true,
-  }
+  },
+  images: {
+    domains: ['stellarforge.org'],
+  },
 };
 
 module.exports = nextConfig;

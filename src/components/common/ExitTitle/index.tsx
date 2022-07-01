@@ -2,13 +2,11 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import ArrowBack from 'svgs/LeftArrowBack';
-import useTypedSelector from 'hooks/useTypedSelector';
 
 import * as S from './styles';
 
 type AppProps = {
   title?: string;
-  alreadyLoaded?: boolean;
   className?: string;
   onClose?: () => void | undefined;
   backIcon?: boolean;
@@ -19,22 +17,13 @@ const ExtTitle = ({
   onClose,
   backIcon,
   className,
-  alreadyLoaded,
 }: AppProps) => {
   const router = useRouter();
-  const accounts = useTypedSelector((state) => state.accounts);
 
   const handleClose = () => {
     if (onClose) {
       return onClose();
     }
-
-    // if (accounts.length) {
-    //   return router.push({
-    //     pathname: '/Home',
-    //     query: { alreadyLoaded: true },
-    //   });
-    // }
 
     return router.back();
   };
@@ -47,14 +36,15 @@ const ExtTitle = ({
         </div>
       ) : null}
 
-      <S.Title className="mr-auto ml-[-10px]">{title}</S.Title>
+      <S.Title className={`ml-[-10px] ${backIcon ? 'mr-auto' : ''}`}>
+        {title}
+      </S.Title>
     </S.Container>
   );
 };
 
 ExtTitle.defaultProps = {
   title: '',
-  alreadyLoaded: true,
   className: '',
   onClose: undefined,
   backIcon: true,

@@ -6,7 +6,6 @@ import useTypedSelector from 'hooks/useTypedSelector';
 import { FormValues } from 'components/PrivateKey';
 import restoreAccountAction from 'actions/accounts/restore';
 import RestoreWalletComponent from 'components/RestoreWallet';
-import ExtTitle from 'components/common/ExitTitle';
 
 const RestoreWallet = () => {
   const router = useRouter();
@@ -50,9 +49,7 @@ const RestoreWallet = () => {
     <RestoreWalletComponent
       onSubmit={onSubmit}
       onSubmitBackup={onSubmitBackup}
-    >
-      <ExtTitle title="Import wallet" />
-    </RestoreWalletComponent>
+    />
   );
 };
 

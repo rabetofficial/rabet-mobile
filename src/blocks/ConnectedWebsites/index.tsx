@@ -1,5 +1,4 @@
 import React from 'react';
-import ExtTitle from 'components/common/ExitTitle';
 import Layout from 'components/common/Layouts/BaseLayout';
 import Button from 'components/common/Button';
 
@@ -15,35 +14,31 @@ const ConnectedWebsites = () => {
 
   const removeConnectedWebsites = (web: string) => {};
   return (
-    <>
-      <ExtTitle title="Connected websites" />
+    <Layout className="mt-6">
+      <S.Desc>
+        List of websites that are allowed to interact with this
+        account and get its public-key
+      </S.Desc>
 
-      <Layout className="mt-6">
-        <S.Desc>
-          List of websites that are allowed to interact with this
-          account and get its public-key
-        </S.Desc>
+      <div>
+        {websitesMapped.map((web) => (
+          <S.Website key={web}>
+            <S.Link href="#" rel="noreferrer">
+              {web}
+            </S.Link>
 
-        <div>
-          {websitesMapped.map((web) => (
-            <S.Website key={web}>
-              <S.Link href="#" rel="noreferrer">
-                {web}
-              </S.Link>
-
-              <Button
-                variant="danger"
-                onClick={() => {
-                  removeConnectedWebsites(web);
-                }}
-                content="Disconnect"
-                className="w-[89px] h-[32px] text-sm font-medium"
-              />
-            </S.Website>
-          ))}
-        </div>
-      </Layout>
-    </>
+            <Button
+              variant="danger"
+              onClick={() => {
+                removeConnectedWebsites(web);
+              }}
+              content="Disconnect"
+              className="w-[89px] h-[32px] text-sm font-medium"
+            />
+          </S.Website>
+        ))}
+      </div>
+    </Layout>
   );
 };
 
