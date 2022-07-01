@@ -3,11 +3,6 @@ import { useRouter } from 'next/router';
 import AngleRight from 'svgs/AngleRight';
 import ExtTitle from 'components/common/ExitTitle';
 
-// import About from './About';
-// import Backup from './Backup';
-// import General from './General';
-// import Contacts from './Contacts';
-// import ChangePassword from './ChangePassword';
 import * as S from './styles';
 
 type SettingPage = {
