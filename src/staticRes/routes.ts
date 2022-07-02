@@ -16,6 +16,7 @@ enum RouteName {
   ShowPrivateKey = '/show-private-key',
 
   Send = '/send',
+  Swap = '/swap',
   Confirm = '/confirm',
   BasicOperation = '/basic-operation',
   AdvancedOperation = '/advance-operation',

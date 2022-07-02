@@ -34,6 +34,8 @@ const pages: Page[] = [
   { route: RouteName.PrivateKey, title: 'Show private key' },
   { route: RouteName.Receive, title: 'Receive' },
   { route: RouteName.AddAsset, title: 'AddAsset' },
+  { route: RouteName.Send, title: 'Send' },
+  { route: RouteName.Swap, title: 'Swap' },
 ];
 
 function MyApp({ Component, pageProps }: AppProps) {

@@ -1,0 +1,128 @@
+import React from 'react';
+// import { useNavigate } from 'react-router-dom';
+
+import { Usage } from 'models';
+import ArrowDown from 'svgs/ArrowDown';
+import RouteName from 'staticRes/routes';
+import Card from 'components/common/Card';
+import formatBalance from 'utils/formatBalance';
+import closeModalAction from 'actions/modal/close';
+import ScrollBar from 'components/common/ScrollBar';
+import SwapDetails from 'blocks/Op/Basic/Swap/Detail';
+import handleAssetImage from 'utils/handleAssetImage';
+import useTypedSelector from 'hooks/useTypedSelector';
+import basicSwapAction from 'actions/operations/basicSwap';
+import {
+  openLoadingModal,
+  openSucessModal,
+  openErrorModal,
+} from 'components/Modals';
+
+import * as S from './styles';
+import { FormValues } from '../Swap';
+import ConfirmLayout from './Layout';
+
+type AppProps = {
+  usage: Usage;
+  values: FormValues;
+};
+
+const BasicConfirmSwap = ({ usage, values }: AppProps) => {
+  // const navigate = useNavigate();
+  const assetImages = useTypedSelector((store) => store.assetImages);
+
+  const handleClick = async () => {
+    // if (usage === 'desktop') {
+    //   openLoadingModal({});
+    // } else {
+    //   navigate(RouteName.LoadingNetwork);
+    // }
+    //
+    // const [isDone, message] = await basicSwapAction(values);
+    //
+    // if (usage === 'extension') {
+    //   navigate(isDone ? RouteName.Sucess : RouteName.Error, {
+    //     state: {
+    //       message,
+    //     },
+    //   });
+    // } else {
+    //   if (isDone) {
+    //     openSucessModal({
+    //       message,
+    //       onClick: closeModalAction,
+    //     });
+    //   } else {
+    //     openErrorModal({
+    //       message,
+    //       onClick: closeModalAction,
+    //     });
+    //   }
+    // }
+  };
+
+  let asset1Code = 'XLM';
+  let asset2Code = 'XLM';
+
+  if (
+    values.asset1.asset_type === 'credit_alphanum4' ||
+    values.asset1.asset_type === 'credit_alphanum12'
+  ) {
+    asset1Code = values.asset1.asset_code;
+  }
+
+  if (
+    values.asset2.asset_type === 'credit_alphanum4' ||
+    values.asset2.asset_type === 'credit_alphanum12'
+  ) {
+    asset2Code = values.asset2.asset_code;
+  }
+
+  return (
+    <ConfirmLayout usage={usage} handleClick={handleClick}>
+      <ScrollBar
+        isHidden
+        maxHeight={335}
+        disableOverflow={usage === 'desktop'}
+      >
+        <Card type="secondary" className="px-[11px] py-[16px]">
+          <h2 className="text-lg font-medium mb-4">Confirm Swap</h2>
+          <S.Label>From</S.Label>
+          <S.Value>
+            {formatBalance(values.from)}
+            <S.Image
+              src={handleAssetImage(values.asset1, assetImages)}
+              alt={asset1Code}
+            />
+
+            <span className="text-lg">{asset1Code}</span>
+          </S.Value>
+
+          <div className="my-1">
+            <ArrowDown />
+          </div>
+
+          <S.Label>To</S.Label>
+          <S.Value>
+            {formatBalance(values.to)}
+            <S.Image
+              src={handleAssetImage(values.asset2, assetImages)}
+              alt={asset2Code}
+            />
+            <span className="text-lg">{asset2Code}</span>
+          </S.Value>
+
+          <S.Hr />
+
+          <SwapDetails
+            values={values}
+            path={values.path}
+            minimumReceived={values.minimumReceived}
+          />
+        </Card>
+      </ScrollBar>
+    </ConfirmLayout>
+  );
+};
+
+export default BasicConfirmSwap;

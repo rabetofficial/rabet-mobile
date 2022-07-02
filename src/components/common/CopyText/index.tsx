@@ -1,10 +1,29 @@
 import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import styled from 'styled-components';
 
 import Tooltips from 'components/common/Tooltips';
 import Copy from 'svgs/Copy';
 
-import StyledButton from './styles';
+const StyledButton = styled.button`
+  text-align: center;
+  border-radius: ${({ theme }) => theme.rounded.main};
+  background: ${({ theme }) => theme.colors.primary.lighter};
+  color: ${({ theme }) => theme.colors.primary.dark};
+  font-size: 12px;
+  width: 60px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin-right: 4px;
+    path {
+      fill: ${({ theme }) => theme.colors.primary.dark};
+    }
+  }
+`;
 
 type AppProps = {
   text: string;
@@ -58,7 +77,7 @@ const CopyText = ({ text, custom, fullIcon }: AppProps) => {
         controlled
       >
         <CopyToClipboard text={text}>
-          {renderCopyTrigger()}
+          <>{renderCopyTrigger()}</>
         </CopyToClipboard>
       </Tooltips>
     </span>
