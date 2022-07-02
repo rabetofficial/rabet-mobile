@@ -8,7 +8,7 @@ export const List = styled.ul`
   position: fixed;
   right: 0;
   left: 0;
-  bottom: 0;
+  bottom: 10px;
 
   li {
     cursor: pointer;

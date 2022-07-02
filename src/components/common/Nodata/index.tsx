@@ -5,7 +5,7 @@ type AppProps = {
   className?: string;
 };
 
-const NoDate = ({ msg, className }: AppProps) => (
+const NoData = ({ msg, className }: AppProps) => (
   <div
     className={`text-base text-primary py-6 text-center font-medium	${className}`}
   >
@@ -13,8 +13,8 @@ const NoDate = ({ msg, className }: AppProps) => (
   </div>
 );
 
-NoDate.defaultProps = {
+NoData.defaultProps = {
   className: '',
 };
 
-export default NoDate;
+export default NoData;

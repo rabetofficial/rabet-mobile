@@ -17,7 +17,7 @@ type TransactionsType = {
 const Activities = ({ scrollMaxHeight }: TransactionsType) => {
   const { publicKey } = useActiveAccount();
   const [transactions, setTransactions] = useState<
-  ServerApi.CollectionPage<ServerApi.OperationRecord>[]
+    ServerApi.CollectionPage<ServerApi.OperationRecord>[]
   >([]);
   const [isLoading, setIsLoading] = useState(true);
 
