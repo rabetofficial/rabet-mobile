@@ -31,14 +31,15 @@ const ExtTitle = ({
   return (
     <S.Container className={className}>
       {backIcon ? (
-        <div className="mr-auto" onClick={handleClose}>
-          <ArrowBack />
-        </div>
-      ) : null}
-
-      <S.Title className={`ml-[-10px] ${backIcon ? 'mr-auto' : ''}`}>
-        {title}
-      </S.Title>
+        <>
+          <div className="mr-auto" onClick={handleClose}>
+            <ArrowBack />
+          </div>
+          <S.Title className="mr-auto ml-[-10px]">{title}</S.Title>
+        </>
+      ) : (
+        <S.Title>{title}</S.Title>
+      )}
     </S.Container>
   );
 };

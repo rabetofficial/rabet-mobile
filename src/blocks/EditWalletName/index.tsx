@@ -46,6 +46,7 @@ const EditName = () => {
 
             {submitError && <Error>{submitError}</Error>}
 
+<<<<<<< HEAD
             <ButtonContainer fixedBottom mb={32}>
               <Button
                 type="submit"
@@ -59,6 +60,24 @@ const EditName = () => {
         )}
       />
     </Layout>
+=======
+              {submitError && <Error>{submitError}</Error>}
+
+              <ButtonContainer fixedBottom mb={39}>
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="medium"
+                  content="Done"
+                  disabled={pristine || submitting}
+                />
+              </ButtonContainer>
+            </form>
+          )}
+        />
+      </Layout>
+    </>
+>>>>>>> settings
   );
 };
 

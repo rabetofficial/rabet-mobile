@@ -23,7 +23,7 @@ const Intro = () => (
       </div>
     </div>
 
-    <ButtonContainer fixedBottom mb={32}>
+    <ButtonContainer fixedBottom mb={39}>
       <Link href="intro-slides" passHref>
         <Button
           type="button"
