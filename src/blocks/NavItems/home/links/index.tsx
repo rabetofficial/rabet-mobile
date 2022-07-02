@@ -2,13 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 
 import Button from 'components/common/Button';
-// import useTypedSelector from 'hooks/useTypedSelector';
+import RouteName from 'staticRes/routes';
 import { Swap, Send, Receive } from 'svgs/TransactionActions';
 
 const Links = () => (
   <div className="flex justify-center items-center mt-[22px]">
     <div>
-      <Link href="" passHref>
+      <Link href={RouteName.Send} passHref>
         <Button
           iconBtn
           size="small"
@@ -24,7 +24,7 @@ const Links = () => (
     </div>
 
     <div>
-      <Link href="" passHref>
+      <Link href={RouteName.Swap} passHref>
         <Button
           size="small"
           variant="icon-circle"
@@ -40,7 +40,7 @@ const Links = () => (
     </div>
 
     <div>
-      <Link href="receive" passHref>
+      <Link href={RouteName.Receive} passHref>
         <Button
           size="small"
           variant="icon-circle"
