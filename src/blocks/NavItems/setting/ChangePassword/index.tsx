@@ -68,8 +68,6 @@ const ChangePassword = () => {
       };
     }
 
-    onClose();
-
     return {};
   };
 

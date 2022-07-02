@@ -49,8 +49,6 @@ const Backup = () => {
 
     setTimeout(() => {
       dlRef?.current?.click();
-
-      onClose();
     }, 100);
 
     return {};
@@ -64,7 +62,7 @@ const Backup = () => {
           Save the key and download the backup file. With this file
           and key, you will import all wallets when you want.
         </S.info>
-        <div style={{ marginTop: '24px' }}>
+        <div style={{ marginTop: '32px' }}>
           <TooltipLabel
             text="Key"
             tooltipText="Please make sure you save this key because the backup file will be encrypted with it, and if you lose it, you will not be able to import your wallets."

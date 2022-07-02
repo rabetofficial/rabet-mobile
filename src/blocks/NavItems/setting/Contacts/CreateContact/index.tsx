@@ -74,8 +74,6 @@ const CreateContact = ({ onClose }: CreateContactType) => {
   const onSubmit = (values: FormValues) => {
     addContactAction(values);
 
-    onClose();
-
     return {};
   };
 

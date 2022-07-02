@@ -19,7 +19,7 @@ export const Box = styled.div`
 `;
 export const info = styled.div`
   font-size: 14px;
-  margin-top: 9px;
+  margin-top: 24px;
   color: ${({ theme }) => theme.colors.primary.dark};
   font-weight: normal;
   font-stretch: normal;
@@ -30,7 +30,7 @@ export const info = styled.div`
 
 export const Label = styled.p`
   font-size: 16px;
-  margin: 20px 0 6px 0;
+  margin: 32px 0 6px 0;
   font-weight: 500;
   @media (max-width: 360px) {
     margin-top: 22px;
