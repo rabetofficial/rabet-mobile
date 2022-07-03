@@ -7,7 +7,6 @@ import EditPen from 'svgs/EditPen';
 import maxText from 'utils/maxText';
 import shorter from 'utils/shorter';
 import Multiply from 'svgs/Multiply';
-import ExitTitle from 'components/common/ExitTitle';
 import Button from 'components/common/Button';
 import CopyText from 'components/common/CopyText';
 import useTypedSelector from 'hooks/useTypedSelector';
@@ -30,7 +29,6 @@ const Contact = () => {
 
   return (
     <div>
-      <ExitTitle title="Contacts" />
       <div className="content">
         <Button
           type="file"

@@ -4,7 +4,6 @@ import { Form, Field } from 'react-final-form';
 import Input from 'components/common/Input';
 import Error from 'components/common/Error';
 import Button from 'components/common/Button';
-import ExitTitle from 'components/common/ExitTitle';
 import ButtonContainer from 'components/common/ButtonContainer';
 import changeMasterPassword from 'actions/options/changeMasterPassword';
 
@@ -73,7 +72,6 @@ const ChangePassword = () => {
 
   return (
     <div>
-      <ExitTitle title="Change Password" />
       <div className="content">
         <Form
           onSubmit={onSubmit}

@@ -152,7 +152,7 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
     }
   }
-  
+
   //general
 
   .form {

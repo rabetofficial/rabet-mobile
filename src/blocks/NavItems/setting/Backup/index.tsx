@@ -5,7 +5,6 @@ import { customAlphabet, urlAlphabet } from 'nanoid';
 
 import { encrypt } from 'helpers/crypto';
 import Input from 'components/common/Input';
-import ExitTitle from 'components/common/ExitTitle';
 import Button from 'components/common/Button';
 import CopyText from 'components/common/CopyText';
 import useTypedSelector from 'hooks/useTypedSelector';
@@ -56,7 +55,6 @@ const Backup = () => {
 
   return (
     <S.Container>
-      <ExitTitle title="Backup" />
       <div className="content">
         <S.info>
           Save the key and download the backup file. With this file

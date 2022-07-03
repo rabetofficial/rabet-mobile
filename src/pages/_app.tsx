@@ -26,16 +26,21 @@ type Page = {
 };
 
 const pages: Page[] = [
-  { route: RouteName.WalletOption, title: 'Show Private key' },
-  { route: RouteName.CreateWallet, title: 'Create Wallet' },
-  { route: RouteName.EditName, title: 'Edit name' },
-  { route: RouteName.ConnectedWebsites, title: 'Connected websites' },
-  { route: RouteName.RestoreWallet, title: 'Import wallet' },
-  { route: RouteName.PrivateKey, title: 'Show private key' },
-  { route: RouteName.Receive, title: 'Receive' },
-  { route: RouteName.AddAsset, title: 'AddAsset' },
   { route: RouteName.Send, title: 'Send' },
   { route: RouteName.Swap, title: 'Swap' },
+  { route: RouteName.About, title: 'About' },
+  { route: RouteName.Backup, title: 'Backup' },
+  { route: RouteName.Receive, title: 'Receive' },
+  { route: RouteName.Contacts, title: 'Contacts' },
+  { route: RouteName.AddAsset, title: 'AddAsset' },
+  { route: RouteName.EditName, title: 'Edit name' },
+  { route: RouteName.General, title: 'General settings' },
+  { route: RouteName.CreateWallet, title: 'Create Wallet' },
+  { route: RouteName.RestoreWallet, title: 'Import wallet' },
+  { route: RouteName.PrivateKey, title: 'Show private key' },
+  { route: RouteName.WalletOption, title: 'Show Private key' },
+  { route: RouteName.ChangePassword, title: 'Change Password' },
+  { route: RouteName.ConnectedWebsites, title: 'Connected websites' },
 ];
 
 function MyApp({ Component, pageProps }: AppProps) {

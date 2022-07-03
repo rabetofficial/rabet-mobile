@@ -1,14 +1,12 @@
 import React from 'react';
 
 import * as Icons from 'svgs/ContactusLinks';
-import ExitTitle from 'components/common/ExitTitle';
 import config from '../../../../config';
 
 import * as S from './styles';
 
 const About = () => (
   <>
-    <ExitTitle title="About" />
     <div className="content">
       <div style={{ marginTop: '24px' }}>
         <S.ItemHead>Version</S.ItemHead>

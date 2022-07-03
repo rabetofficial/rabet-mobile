@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import capital from 'utils/capital';
 import { ElementOption } from 'models';
 import Button from 'components/common/Button';
-import ExtTitle from 'components/common/ExitTitle';
 import useTypedSelector from 'hooks/useTypedSelector';
 import changeOptionsAction from 'actions/options/change';
 import * as currenciesModule from 'staticRes/currencies';
@@ -143,7 +142,6 @@ const SettingGeneral = () => {
 
   return (
     <div>
-      <ExtTitle title="General settings" />
       <S.Item className="mt-4">
         <TooltipLabel
           text="Explorer"

@@ -31,7 +31,14 @@ enum RouteName {
   DeleteAccount = '/delete-account',
   // ConnectedWebsites = '/connected-website',
   XLMAsset = '/xlm-asset',
-  Setting = '/setting',
+
+  About = '/settings/about',
+  Backup = '/settings/backup',
+  General = '/settings/general',
+  Contacts = '/settings/contacts',
+
+  ChangePassword = '/settings/change-password',
+
   AddAsset = '/add-asset',
   Receive = '/receive',
   ConfirmFlag = '/confirm-flag',
