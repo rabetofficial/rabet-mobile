@@ -9,7 +9,6 @@ export const Container = styled.div`
   border-bottom: 1px solid
     ${({ theme }) => theme.colors.primary.lighter};
   background-color: ${({ theme }) => theme.colors.primary.lightest};
-  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.07);
 `;
 
 export const Title = styled.div`
