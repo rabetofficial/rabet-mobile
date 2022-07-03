@@ -23,6 +23,7 @@ import store from '../store';
 type Page = {
   route: string;
   title: string;
+  borderless?: boolean;
 };
 
 const pages: Page[] = [
@@ -35,7 +36,7 @@ const pages: Page[] = [
   { route: RouteName.Receive, title: 'Receive' },
   { route: RouteName.AddAsset, title: 'AddAsset' },
   { route: RouteName.Send, title: 'Send' },
-  { route: RouteName.Swap, title: 'Swap' },
+  { route: RouteName.Swap, title: 'Swap', borderless: true },
 ];
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -101,7 +102,12 @@ function MyApp({ Component, pageProps }: AppProps) {
                 style={{ ...styles }}
               >
                 <>
-                  {page && <ExtTitle title={page.title} />}
+                  {page && (
+                    <ExtTitle
+                      title={page.title}
+                      borderless={page.borderless}
+                    />
+                  )}
                   <AnimatedComponent {...animatedPageProps} />
                 </>
               </animated.div>

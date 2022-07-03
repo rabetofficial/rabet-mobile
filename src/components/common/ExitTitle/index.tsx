@@ -10,6 +10,7 @@ type AppProps = {
   className?: string;
   onClose?: () => void | undefined;
   backIcon?: boolean;
+  borderless?: boolean;
 };
 
 const ExtTitle = ({
@@ -17,6 +18,7 @@ const ExtTitle = ({
   onClose,
   backIcon,
   className,
+  borderless,
 }: AppProps) => {
   const router = useRouter();
 
@@ -29,7 +31,9 @@ const ExtTitle = ({
   };
 
   return (
-    <S.Container className={className}>
+    <S.Container
+      className={`${className} ${borderless ? '!border-b-0' : ''}`}
+    >
       {backIcon ? (
         <>
           <div className="mr-auto" onClick={handleClose}>
@@ -49,6 +53,7 @@ ExtTitle.defaultProps = {
   className: '',
   onClose: undefined,
   backIcon: true,
+  borderless: false,
 };
 
 export default ExtTitle;

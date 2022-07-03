@@ -20,6 +20,15 @@ export const Group = styled.div.attrs(
     border: 1px solid black;
   }
 
+  &.x-large {
+    height: 44px;
+
+    input {
+      font-size: 32px;
+      padding: 0;
+    }
+  }
+
   &.large {
     height: 56px;
     border-radius: ${({ theme }) => theme.rounded.md};
@@ -46,6 +55,10 @@ export const Group = styled.div.attrs(
       font-size: 16px;
       padding-left: 12px;
     }
+  }
+
+  &.borderless {
+    border: 1px solid transparent !important;
   }
 
   .input {
