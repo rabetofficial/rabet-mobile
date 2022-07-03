@@ -11,9 +11,9 @@ export type ButtonVariant =
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
-export type InputVariant = 'password' | 'max';
+export type InputVariant = 'password' | 'max' | 'borderless';
 
-export type InputSize = 'small' | 'medium' | 'large';
+export type InputSize = 'small' | 'medium' | 'large' | 'x-large';
 
 export type ModalSize = 'small' | 'medium' | 'large';
 

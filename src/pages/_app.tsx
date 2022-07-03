@@ -23,11 +23,11 @@ import store from '../store';
 type Page = {
   route: string;
   title: string;
+  borderless?: boolean;
 };
 
 const pages: Page[] = [
   { route: RouteName.Send, title: 'Send' },
-  { route: RouteName.Swap, title: 'Swap' },
   { route: RouteName.About, title: 'About' },
   { route: RouteName.Backup, title: 'Backup' },
   { route: RouteName.Receive, title: 'Receive' },
@@ -36,6 +36,7 @@ const pages: Page[] = [
   { route: RouteName.EditName, title: 'Edit name' },
   { route: RouteName.General, title: 'General settings' },
   { route: RouteName.CreateWallet, title: 'Create Wallet' },
+  { route: RouteName.Swap, title: 'Swap', borderless: true },
   { route: RouteName.RestoreWallet, title: 'Import wallet' },
   { route: RouteName.PrivateKey, title: 'Show private key' },
   { route: RouteName.WalletOption, title: 'Show Private key' },
@@ -106,7 +107,12 @@ function MyApp({ Component, pageProps }: AppProps) {
                 style={{ ...styles }}
               >
                 <>
-                  {page && <ExtTitle title={page.title} />}
+                  {page && (
+                    <ExtTitle
+                      title={page.title}
+                      borderless={page.borderless}
+                    />
+                  )}
                   <AnimatedComponent {...animatedPageProps} />
                 </>
               </animated.div>

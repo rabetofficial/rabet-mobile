@@ -1,102 +1,31 @@
-import { Horizon } from 'stellar-sdk';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import Image from 'next/image';
+import styled from 'styled-components';
 
-import { Usage } from 'models';
-import AngleDownBold from 'svgs/AngleDownBold';
-// import Modal from 'components/common/ModalDialog';
-import handleAssetAlt from 'utils/handleAssetAlt';
-import handleAssetImage from 'utils/handleAssetImage';
 import questionLogo from 'public/images/question-circle.png';
-import useTypedSelector from 'hooks/useTypedSelector';
+import AngleDownBold from 'svgs/AngleDownBold';
 
-import * as S from './styles';
-import SearchAsset from './Search';
+const Trigger = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid ${({ theme }) => theme.colors.primary.lighter};
+  border-radius: 22px;
+  width: 110px;
+  height: 44px;
+  padding: 6px 10px 6px 6px;
+`;
 
-type AppProps = {
-  asset: Horizon.BalanceLine;
-  assets: Horizon.BalanceLine[];
-  onChange: (value: any) => void;
-  usage: Usage;
-  valueName?: string;
-  defaultNull?: boolean;
-  setValue?: null;
-};
+const SelectAsset = () => (
+  <div>
+    <Trigger>
+      <div className="flex items-center">
+        <Image src={questionLogo} height={32} width={32} />
+        <div className="font-medium ml-1">XLM</div>
+      </div>
+      <AngleDownBold />
+    </Trigger>
+  </div>
+);
 
-const SelectAssetModal = ({
-  asset,
-  onChange,
-  assets,
-  setValue,
-  valueName,
-  defaultNull,
-  usage,
-}: AppProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentAsset, setCurrentAsset] = useState(
-    defaultNull ? null : assets[0],
-  );
-  const assetImages = useTypedSelector((store) => store.assetImages);
-
-  const onOpenModal = () => setIsModalOpen(true);
-  const onCloseModal = () => setIsModalOpen(false);
-
-  useEffect(() => {
-    if (asset) {
-      setCurrentAsset(asset);
-    }
-  }, [asset]);
-
-  const handleAssetChange = (newAsset: Horizon.BalanceLine) => {
-    setCurrentAsset(newAsset);
-
-    onChange(newAsset);
-
-    if (setValue) {
-      setValue(valueName, newAsset);
-    }
-  };
-
-  return (
-    <S.InputContainer className="select-modal">
-      <S.ModalTrigger onClick={onOpenModal}>
-        <div className="flex items-center">
-          {currentAsset ? (
-            <>
-              <S.Img
-                fallBack={questionLogo}
-                alt={handleAssetAlt(currentAsset)}
-                src={handleAssetImage(currentAsset, assetImages)}
-              />
-              {currentAsset.asset_code || 'XLM'}
-            </>
-          ) : (
-            <p>NONE</p>
-          )}
-        </div>
-        <AngleDownBold />
-      </S.ModalTrigger>
-
-      {/* <Modal */}
-      {/*  isOpen={isModalOpen} */}
-      {/*  onClose={onCloseModal} */}
-      {/*  isStyled={false} */}
-      {/*  size={usage === 'extension' ? 'small' : 'medium'} */}
-      {/* > */}
-      {/*  <SearchAsset */}
-      {/*    assets={assets} */}
-      {/*    valueName={valueName} */}
-      {/*    closeModal={onCloseModal} */}
-      {/*    onChange={handleAssetChange} */}
-      {/*  /> */}
-      {/* </Modal> */}
-    </S.InputContainer>
-  );
-};
-
-SelectAssetModal.defaultProps = {
-  valueName: '',
-  setValue: undefined,
-  defaultNull: false,
-};
-
-export default SelectAssetModal;
+export default SelectAsset;

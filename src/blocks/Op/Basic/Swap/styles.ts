@@ -16,6 +16,19 @@ export const ModalInput = styled.div`
   }
 `;
 
+export const SwapSvg = styled.div`
+  position: absolute;
+  svg {
+    height: 40px;
+    width: 40px;
+  }
+`;
+
+export const Shadow = styled.div`
+  padding: 32px 0 52px 0;
+  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.07);
+`;
+
 export const Hr = styled.hr`
   margin: 14px 0;
   border: none;

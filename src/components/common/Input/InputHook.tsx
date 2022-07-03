@@ -11,6 +11,7 @@ import isEmpty from 'helpers/isEmpty';
 import { InputVariant, InputSize } from 'models';
 import InputBtn from 'components/common/Input/InputBtn';
 
+import classNames from 'classnames';
 import * as S from './styles';
 
 type Error = {
@@ -76,13 +77,19 @@ const Input = (props: AppProps) => {
     inputProps2.defaultValue = defaultValue;
   }
 
+  console.warn(variant);
+
   return (
     <div
       className="flex flex-col grow"
       style={{ display: invisible ? 'none' : 'block' }}
     >
       <S.Group
-        className={`${className} ${size}`}
+        className={classNames(
+          className,
+          size,
+          variant === 'borderless' ? 'borderless' : '',
+        )}
         style={style}
         styleType={styleType}
       >
@@ -108,7 +115,9 @@ const Input = (props: AppProps) => {
         />
       </S.Group>
 
-      {!isEmpty(errorMsg) && <S.ErrorMsg>{errorMsg}</S.ErrorMsg>}
+      {!isEmpty(errorMsg) ? (
+        <S.ErrorMsg>{errorMsg}</S.ErrorMsg>
+      ) : null}
     </div>
   );
 };
