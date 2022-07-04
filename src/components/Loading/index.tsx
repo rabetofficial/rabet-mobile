@@ -23,7 +23,8 @@ const Loading = ({
     <S.Loading
       src={loading}
       alt="loading"
-      style={{ width: `${size}px`, height: `${size}px` }}
+      width={size}
+      height={size}
     />
     {title && (
       <S.Title

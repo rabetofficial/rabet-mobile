@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 
 import BN from 'helpers/BN';
 import Swap from 'svgs/Swap';
-import Rotate from 'svgs/Rotate';
 import Loading from 'components/Loading';
 import getMaxBalance from 'utils/maxBalance';
 import Button from 'components/common/Button';
@@ -20,11 +19,10 @@ import ButtonContainer from 'components/common/ButtonContainer';
 import RouteName from 'staticRes/routes';
 import config from 'config';
 import Layout from 'components/common/Layouts/BaseLayout';
+import SelectAsset from 'blocks/Op/Basic/SelectAsset';
 import validateForm from './validateForm';
-import ShowFractional from './ShowFractional';
 
 import * as S from './styles';
-import SelectAsset from '../SelectAsset';
 
 export type FormValues = {
   path: any[];
@@ -219,7 +217,7 @@ const BasicSwap = () => {
             )}
           />
 
-          <div className="flex items-center mt-[20px]">
+          <div className="flex items-start mt-[20px]">
             <Controller
               name="from"
               control={control}
@@ -255,90 +253,56 @@ const BasicSwap = () => {
       </div>
 
       <Layout>
-        <>
-          <div className="text-primary-dark mt-[30px]">
-            You Receive
-          </div>
-          <div className="flex items-center mt-[19px]">
-            <Controller
-              name="to"
-              control={control}
-              render={({ field }) => (
-                <Input
-                  type="number"
-                  placeholder="0.0"
-                  size="x-large"
-                  variant="borderless"
-                  value={field.value}
-                  onChange={(e) => {
-                    setValue('lastField', 'to');
-                    field.onChange(e);
-                  }}
-                  errorMsg={errors.to && errors.to.message}
-                  onKeyPress={controlNumberInput}
-                  styleType="light"
-                  className="grow !my-0"
-                />
-              )}
-            />
-            <SelectAsset />
-          </div>
+        <div className="text-primary-dark mt-[30px]">You Receive</div>
+
+        <div className="flex items-start mt-[19px]">
+          <Controller
+            name="to"
+            control={control}
+            render={({ field }) => (
+              <Input
+                type="number"
+                placeholder="0.0"
+                size="x-large"
+                variant="borderless"
+                value={field.value}
+                onChange={(e) => {
+                  setValue('lastField', 'to');
+                  field.onChange(e);
+                }}
+                errorMsg={errors.to && errors.to.message}
+                onKeyPress={controlNumberInput}
+                styleType="light"
+                className="grow !my-0"
+              />
+            )}
+          />
+          <SelectAsset />
+        </div>
+
+        <div className="mt-[40px] flex justify-center flex-col">
           {loading ? (
-            <div className="flex justify-center">
-              <Loading size={40} className="!p-0" />
-            </div>
-          ) : (
-            ''
-          )}
+            <Loading size={60} className="!p-0 mt-[25px]" />
+          ) : null}
 
           {showSwapInfo ? (
-            <>
-              <div className="flex items-center justify-end">
-                <div className="mr-1">
-                  <ShowFractional
-                    control={control}
-                    isRotateActive={isRotateActive}
-                  />
-                </div>
-
-                <S.Rotate isRotate={shouldRotate}>
-                  <span
-                    onClick={() => {
-                      setIsRotateActive(!isRotateActive);
-                      setShouldRotate(true);
-
-                      setTimeout(() => {
-                        setShouldRotate(false);
-                      }, 500);
-                    }}
-                  >
-                    <Rotate />
-                  </span>
-                </S.Rotate>
-              </div>
-
-              <S.Hr />
-
-              <SwapDetail
-                path={path}
-                control={control}
-                minimumReceived={minimumReceived}
-              />
-            </>
-          ) : (
-            ''
-          )}
-
-          <ButtonContainer fixedBottom mb={32}>
-            <Button
-              type="submit"
-              variant="primary"
-              size="medium"
-              content="Swap"
-              disabled={!isValid || isValidating || !showSwapInfo}
+            <SwapDetail
+              path={path}
+              control={control}
+              minimumReceived={minimumReceived}
             />
-          </ButtonContainer>
-        </>
+          ) : null}
+        </div>
+
+        <ButtonContainer fixedBottom mb={32}>
+          <Button
+            type="submit"
+            variant="primary"
+            size="medium"
+            content="Swap"
+            disabled={!isValid || isValidating || !showSwapInfo}
+          />
+        </ButtonContainer>
       </Layout>
     </form>
   );

@@ -1,21 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
 
-export const ModalInput = styled.div`
-  display: flex;
-  align-items: flex-start;
-
-  .input-medium {
-    margin: 0;
-    box-sizing: border-box;
-    width: 100%;
-  }
-
-  .input-medium,
-  .select-modal {
-    margin: 8px 0;
-  }
-`;
-
 export const SwapSvg = styled.div`
   position: absolute;
   svg {
@@ -25,7 +9,7 @@ export const SwapSvg = styled.div`
 `;
 
 export const Shadow = styled.div`
-  padding: 32px 0 52px 0;
+  padding: 32px 0 36px 0;
   box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.07);
 `;
 

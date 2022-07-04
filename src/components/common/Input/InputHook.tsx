@@ -77,8 +77,6 @@ const Input = (props: AppProps) => {
     inputProps2.defaultValue = defaultValue;
   }
 
-  console.warn(variant);
-
   return (
     <div
       className="flex flex-col grow"

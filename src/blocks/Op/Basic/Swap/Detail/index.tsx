@@ -85,7 +85,7 @@ const SwapDetails = ({
     asset.asset_type === 'native' ? 'XLM' : asset.asset_code;
 
   return (
-    <>
+    <S.Container>
       <S.Box>
         <S.BoxTitle>Path</S.BoxTitle>
         <S.Path>
@@ -125,7 +125,7 @@ const SwapDetails = ({
           )}
         </div>
       </S.Box>
-    </>
+    </S.Container>
   );
 };
 

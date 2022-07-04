@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  padding: 10px 16px;
+  background-color: ${({ theme }) => theme.colors.primary.lighter};
+  border-radius: 4px;
+`;
+
 export const Box = styled.div`
   display: flex;
   align-items: center;
