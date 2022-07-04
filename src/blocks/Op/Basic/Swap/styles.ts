@@ -1,7 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 
 export const SwapSvg = styled.div`
-  position: absolute;
   svg {
     height: 40px;
     width: 40px;

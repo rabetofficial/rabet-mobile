@@ -8,20 +8,20 @@ import ScrollBar from 'components/common/ScrollBar';
 import handleAssetsKeys from 'utils/handleAssetKeys';
 import handleAssetImage from 'utils/handleAssetImage';
 import useTypedSelector from 'hooks/useTypedSelector';
-import questionLogo from 'assets/images/question-circle.png';
+import questionLogo from 'public/images/question-circle.png';
 
 import * as S from './styles';
 
 type AppProps = {
   assets: Horizon.BalanceLine[];
-  closeModal: () => void;
+  close: () => void;
   onChange: (value: Horizon.BalanceLine) => void;
-  valueName: string;
+  valueName?: string;
 };
 
 const SearchAsset = ({
   assets,
-  closeModal,
+  close,
   onChange,
   valueName,
 }: AppProps) => {
@@ -39,7 +39,7 @@ const SearchAsset = ({
   const handleClick = (asset: Horizon.BalanceLine) => {
     onChange(asset);
 
-    closeModal();
+    close();
   };
 
   const handleShowDomain = (asset: Horizon.BalanceLine) => {
@@ -69,7 +69,7 @@ const SearchAsset = ({
         placeholder="&#xe915;  Search assets"
       />
 
-      <ScrollBar isHidden maxHeight={265}>
+      <ScrollBar isHidden maxHeight={400}>
         {filteredCurrencies.map((asset) => (
           <S.ListItem
             key={`${valueName}-${handleAssetsKeys(asset)}`}
@@ -100,12 +100,14 @@ const SearchAsset = ({
           <div className="flex items-center justify-center h-[115px]">
             Asset not found
           </div>
-        ) : (
-          ''
-        )}
+        ) : null}
       </ScrollBar>
     </>
   );
+};
+
+SearchAsset.defaultProps = {
+  valueName: '',
 };
 
 export default SearchAsset;

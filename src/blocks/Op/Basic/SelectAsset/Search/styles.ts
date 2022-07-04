@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const InputSearch = styled.input`
-  font-family: Roboto, 'icomoon';
   width: 100%;
   border: none;
-  padding: 0 14px;
   border-bottom: 1px solid
     ${({ theme }) => theme.colors.primary.lighter};
   box-sizing: border-box;
@@ -20,7 +18,7 @@ export const InputSearch = styled.input`
 
   &::placeholder {
     font-size: 14px;
-    color: @abbey;
+    color: #afafaf;
   }
 `;
 
@@ -28,14 +26,11 @@ export const ListItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 13px 14px;
-  border-bottom: 1px solid
-    ${({ theme }) => theme.colors.primary.lighter};
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
+  padding: 14px 0;
 
-  &:hover {
-    background: ${({ theme }) => theme.colors.other.lightGray};
+  &:not(:last-child) {
+    border-bottom: 1px solid
+      ${({ theme }) => theme.colors.primary.lighter};
   }
 `;
 

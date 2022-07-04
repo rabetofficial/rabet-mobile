@@ -9,8 +9,8 @@ import handleAssetAlt from 'utils/handleAssetAlt';
 import useTypedSelector from 'hooks/useTypedSelector';
 import handleAssetImage from 'utils/handleAssetImage';
 import handleAssetSymbol from 'utils/handleAssetSymbol';
-// import questionIcon from '../../../../../../assets/images/question-circle.png';
-// import ImageOnErrorHandler from '../../../../../../helpers/ImageOnErrorHandler';
+import questionIcon from 'public/images/question-circle.png';
+import ImageOnErrorHandler from 'helpers/ImageOnErrorHandler';
 
 import * as S from './styles';
 
@@ -54,46 +54,44 @@ const Asset = ({ asset }: AssetType) => {
   }
 
   return (
-    <div>
-      <S.Container
-        className="flex items-center"
-        onMouseEnter={toggleHover}
-        onMouseLeave={toggleHover}
-      >
-        <S.Circle>
-          <S.Image
-            isDark={asset.asset_type === 'native'}
-            src={handleAssetImage(asset, assetImages)}
-            alt={handleAssetAlt(asset)}
-            // onError={(e) => ImageOnErrorHandler(e, questionIcon)}
-          />
-        </S.Circle>
-        <div className="flex justify-between items-center w-full">
-          <div className="flex flex-col">
-            <div className="inline-flex text-base">
-              <span className=" font-medium">
-                {formatBalance(asset.balance)}
-              </span>
-              <span className="text-primary-dark font-normal ml-1">
-                {asset_code}
-              </span>
-              {isVerified && (
-                <div className="ml-1 mt-1">
-                  <BlackCheck width="16" height="16" />
-                </div>
-              )}
-            </div>
-            <div className="text-xs text-primary-dark mt-[2px]">
-              {handleAssetSymbol(currencies, options)}
-              {formatBalance(price)}
-            </div>
+    <S.Container
+      className="flex items-center"
+      onMouseEnter={toggleHover}
+      onMouseLeave={toggleHover}
+    >
+      <S.Circle>
+        <S.Image
+          isDark={asset.asset_type === 'native'}
+          src={handleAssetImage(asset, assetImages)}
+          alt={handleAssetAlt(asset)}
+          onError={(e) => ImageOnErrorHandler(e, questionIcon)}
+        />
+      </S.Circle>
+      <div className="flex justify-between items-center w-full">
+        <div className="flex flex-col">
+          <div className="inline-flex text-base">
+            <span className=" font-medium">
+              {formatBalance(asset.balance)}
+            </span>
+            <span className="text-primary-dark font-normal ml-1">
+              {asset_code}
+            </span>
+            {isVerified && (
+              <div className="ml-1 mt-1">
+                <BlackCheck width="16" height="16" />
+              </div>
+            )}
           </div>
-          <div>
-            <AngleForward />
+          <div className="text-xs text-primary-dark mt-[2px]">
+            {handleAssetSymbol(currencies, options)}
+            {formatBalance(price)}
           </div>
         </div>
-      </S.Container>
-    </div>
+        <div>
+          <AngleForward />
+        </div>
+      </div>
+    </S.Container>
   );
 };
 

@@ -240,8 +240,18 @@ const BasicSwap = () => {
                 />
               )}
             />
-
-            <SelectAsset />
+            <Controller
+              name="asset1"
+              control={control}
+              render={({ field }) => (
+                <SelectAsset
+                  valueName="asset1"
+                  asset={field.value}
+                  onChange={field.onChange}
+                  assets={assets}
+                />
+              )}
+            />
           </div>
         </Layout>
       </S.Shadow>
@@ -253,7 +263,7 @@ const BasicSwap = () => {
       </div>
 
       <Layout>
-        <div className="text-primary-dark mt-[30px]">You Receive</div>
+        <div className="text-primary-dark mt-[12px]">You Receive</div>
 
         <div className="flex items-start mt-[19px]">
           <Controller
@@ -277,7 +287,18 @@ const BasicSwap = () => {
               />
             )}
           />
-          <SelectAsset />
+          <Controller
+            name="asset2"
+            control={control}
+            render={({ field }) => (
+              <SelectAsset
+                asset={field.value}
+                valueName="asset2"
+                assets={assets}
+                onChange={field.onChange}
+              />
+            )}
+          />
         </div>
 
         <div className="mt-[40px] flex justify-center flex-col">
