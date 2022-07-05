@@ -35,6 +35,7 @@ type AppProps = {
   valueName?: string;
   defaultNull?: boolean;
   setValue?: null;
+  customTrigger?: React.ReactNode;
 };
 
 const SelectAsset = ({
@@ -44,6 +45,7 @@ const SelectAsset = ({
   setValue,
   valueName,
   defaultNull,
+  customTrigger,
 }: AppProps) => {
   const [currentAsset, setCurrentAsset] = useState(
     defaultNull ? null : assets[0],
@@ -70,23 +72,27 @@ const SelectAsset = ({
   };
   return (
     <>
-      <Trigger onClick={onOpen}>
-        {currentAsset ? (
-          <div className="flex items-center">
-            <Image
-              fallBack={questionLogo}
-              alt={handleAssetAlt(currentAsset)}
-              src={handleAssetImage(currentAsset, assetImages)}
-            />
-            <span className="ml-1">
-              {currentAsset.asset_code || 'XLM'}
-            </span>
-          </div>
-        ) : (
-          <span>NONE</span>
-        )}
-        <AngleDownBold />
-      </Trigger>
+      {customTrigger ? (
+        <div onClick={onOpen}>{customTrigger}</div>
+      ) : (
+        <Trigger onClick={onOpen}>
+          {currentAsset ? (
+            <div className="flex items-center">
+              <Image
+                fallBack={questionLogo}
+                alt={handleAssetAlt(currentAsset)}
+                src={handleAssetImage(currentAsset, assetImages)}
+              />
+              <span className="ml-1">
+                {currentAsset.asset_code || 'XLM'}
+              </span>
+            </div>
+          ) : (
+            <span>NONE</span>
+          )}
+          <AngleDownBold />
+        </Trigger>
+      )}
 
       <BottomSheet isOpen={open} setOpen={setOpen} height={505}>
         <Layout>

@@ -97,7 +97,7 @@ const SearchAsset = ({
         ))}
 
         {!filteredCurrencies.length ? (
-          <div className="flex items-center justify-center h-[115px]">
+          <div className="flex items-center justify-center h-[44vh] text-primary-darker">
             Asset not found
           </div>
         ) : null}

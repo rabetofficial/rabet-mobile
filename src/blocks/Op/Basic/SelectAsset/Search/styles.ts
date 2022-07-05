@@ -6,7 +6,7 @@ export const InputSearch = styled.input`
   border-bottom: 1px solid
     ${({ theme }) => theme.colors.primary.lighter};
   box-sizing: border-box;
-  height: 41px;
+  height: 50px;
   font-size: 14px;
 
   &:focus {

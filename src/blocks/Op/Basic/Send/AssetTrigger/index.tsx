@@ -14,6 +14,13 @@ const Container = styled.div`
   padding: 8px 16px;
 `;
 
+const SvgContainer = styled.div`
+  svg {
+    width: 16px;
+    height: auto;
+  }
+`;
+
 const AssetTrigger = () => (
   <Container>
     <div className="flex items-center">
@@ -28,9 +35,9 @@ const AssetTrigger = () => (
         <span className="text-primary-darker ml-[6px]">1,280</span>
       </div>
     </div>
-    <div>
+    <SvgContainer>
       <AngleDownBold />
-    </div>
+    </SvgContainer>
   </Container>
 );
 

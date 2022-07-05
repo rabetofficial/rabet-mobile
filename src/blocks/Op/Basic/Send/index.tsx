@@ -20,6 +20,7 @@ import DestinationSuggest from './DestinationSuggestion';
 import AssetTrigger from './AssetTrigger';
 
 import { ModalInput, PopoverContainer } from './styles';
+import SelectAsset from '../SelectAsset';
 
 type FormValues = {
   memo: string;
@@ -139,6 +140,8 @@ const BasicSend = () => {
     return {};
   };
 
+  console.warn('assets:', assets);
+
   return (
     <Layout>
       <Form
@@ -174,7 +177,17 @@ const BasicSend = () => {
             <label className="label-primary block mt-6 mb-2">
               Assets
             </label>
-            <Field name="asset">{() => <AssetTrigger />}</Field>
+
+            <Field name="asset">
+              {() => (
+                <SelectAsset
+                  asset={selectedAsset}
+                  onChange={setSelectedAsset}
+                  assets={assets}
+                  customTrigger={<AssetTrigger />}
+                />
+              )}
+            </Field>
 
             <label className="label-primary block mt-6">Amount</label>
             <ModalInput>
