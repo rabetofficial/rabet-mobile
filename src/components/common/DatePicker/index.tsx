@@ -7,7 +7,7 @@ import Calender from 'svgs/Calender';
 import * as S from './styles';
 
 type CustomInputType = {
-  value?: Date;
+  value?: Date | null;
   onClick?: () => void;
 };
 
@@ -36,7 +36,7 @@ const DatePicker = ({
   disabled,
   className,
 }: AppProps) => {
-  const onChangeDate = (date) => {
+  const onChangeDate = (date: Date) => {
     onChange(date);
   };
 

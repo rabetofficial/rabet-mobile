@@ -140,8 +140,6 @@ const BasicSend = () => {
     return {};
   };
 
-  console.warn('assets:', assets);
-
   return (
     <Layout>
       <Form
