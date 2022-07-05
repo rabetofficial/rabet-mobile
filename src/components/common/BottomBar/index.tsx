@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 import { NavItemContent, NavItemMenu } from 'models';
 
@@ -10,10 +11,28 @@ type AppProps = {
 };
 
 const BottomBar = ({ menus, contents }: AppProps) => {
+  const router = useRouter();
   const [activeMenu, setActiveMenu] = useState(1);
 
   const menuWidth = 100 / menus.length;
   const borderMove = 100 * (activeMenu - 1);
+
+  const onChangeMenu = (id: number) => {
+    setActiveMenu(id);
+    router.push({
+      pathname: '/',
+      query: { menu: id },
+    });
+  };
+
+  useEffect(() => {
+    if (router.query.menu) {
+      const menuId = parseInt(router.query.menu as string, 10);
+      setActiveMenu(menuId);
+    } else {
+      setActiveMenu(1);
+    }
+  }, [router]);
 
   return (
     <>
@@ -29,7 +48,7 @@ const BottomBar = ({ menus, contents }: AppProps) => {
           {menus.map((menu) => (
             <li
               key={menu.id}
-              onClick={() => setActiveMenu(menu.id)}
+              onClick={() => onChangeMenu(menu.id)}
               className={activeMenu === menu.id ? 'active' : ''}
               style={{ width: `${menuWidth}%` }}
             >
