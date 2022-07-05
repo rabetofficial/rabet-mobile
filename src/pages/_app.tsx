@@ -42,6 +42,8 @@ const pages: Page[] = [
   { route: RouteName.WalletOption, title: 'Show Private key' },
   { route: RouteName.ChangePassword, title: 'Change Password' },
   { route: RouteName.ConnectedWebsites, title: 'Connected websites' },
+  { route: RouteName.BasicSendConfirm, title: 'Confirm send' },
+  { route: RouteName.BasicSwapConfirm, title: 'Confirm swap' },
 ];
 
 function MyApp({ Component, pageProps }: AppProps) {

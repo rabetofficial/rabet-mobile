@@ -20,16 +20,11 @@ enum RouteName {
   Confirm = '/confirm',
   BasicOperation = '/basic-operation',
   AdvancedOperation = '/advance-operation',
-  BasicSendConfirm = '/basic-operation/send/confirm',
-  BasicSwapConfirm = '/basic-operation/swap/confirm',
-  SendExtension = '/send-extension',
-  SwapExtension = '/swap-extension',
+  BasicSendConfirm = '/send/confirm',
+  BasicSwapConfirm = '/swap/confirm',
   ClaimableBalances = '/claimable-balances',
 
-  Flags = '/flag',
   AssetInfo = '/asset',
-  DeleteAccount = '/delete-account',
-  // ConnectedWebsites = '/connected-website',
   XLMAsset = '/xlm-asset',
 
   About = '/settings/about',

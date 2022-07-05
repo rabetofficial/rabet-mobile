@@ -51,21 +51,7 @@ const BasicConfirmLayout = ({
 
       {children}
 
-      <ButtonContainer
-        btnSize={100}
-        justify="end"
-        positionStyles={{
-          bottom: '40px',
-        }}
-      >
-        <Button
-          type="button"
-          variant="default"
-          size="medium"
-          content="Cancel"
-          onClick={handleCancel}
-        />
-
+      <ButtonContainer fixedBottom mb={32}>
         <Button
           type="button"
           variant="primary"

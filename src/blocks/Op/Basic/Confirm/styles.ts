@@ -22,7 +22,7 @@ export const Label = styled.div`
 `;
 
 export const Value = styled.div`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   color: black;
   display: flex;
@@ -36,15 +36,17 @@ export const Image = styled.img`
   border-radius: 50%;
   margin: 0 2px 0 6px;
 `;
-export const img = styled.div`
+
+export const img = styled.img`
   width: 18px !important;
   height: 18px !important;
   border-radius: 50%;
-  margin: 0 2px 0 6px;
+  margin: 0 2px 0 4px;
 `;
+
 export const Hr = styled.div`
   border: none;
   height: 1px;
   background: ${({ theme }) => theme.colors.primary.lighter};
-  margin: 12px 0;
+  margin: 14px 0;
 `;
