@@ -135,7 +135,7 @@ const SearchAsset = ({ onSubmit, onCancel }: AppProps) => {
                 selectedList={selectedList}
               />
 
-              <ButtonContainer fixedBottom mb={32}>
+              <ButtonContainer fixedBottom mb={39}>
                 <Button
                   type="submit"
                   variant="primary"

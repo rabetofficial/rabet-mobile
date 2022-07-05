@@ -51,7 +51,7 @@ const BasicConfirmLayout = ({
 
       {children}
 
-      <ButtonContainer fixedBottom mb={32}>
+      <ButtonContainer fixedBottom mb={39}>
         <Button
           type="button"
           variant="primary"
