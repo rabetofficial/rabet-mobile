@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
-import Link from 'next/link';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 import Plus from 'svgs/Plus';
 import Button from 'components/common/Button';
@@ -20,8 +20,9 @@ const Text = styled.div`
 
 type AssetsButtonType = { style: CSSProperties };
 
-const AssetButton = ({ style }: AssetsButtonType) => (
-  <Link href={RouteName.AddAsset} passHref>
+const AssetButton = ({ style }: AssetsButtonType) => {
+  const router = useRouter();
+  return (
     <Button
       type="submit"
       variant="outlined"
@@ -41,8 +42,9 @@ const AssetButton = ({ style }: AssetsButtonType) => (
           Add assets
         </Text>
       }
+      onClick={() => router.push(RouteName.AddAsset)}
     />
-  </Link>
-);
+  );
+};
 
 export default AssetButton;
