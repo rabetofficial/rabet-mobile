@@ -21,7 +21,7 @@ type AssetType = {
   isNative?: boolean;
   onDelete: (result: [boolean, string]) => void;
   children?: React.ReactNode;
-  asset: Horizon.BalanceLine;
+  asset?: Horizon.BalanceLine;
   onBeforeDelete: () => void;
 };
 
@@ -230,6 +230,12 @@ const AssetInfo = ({
 AssetInfo.defaultProps = {
   children: '',
   isNative: false,
+  asset: {
+    asset_code: 'ABCD',
+    asset_issuer: 'ABCDEFG',
+    asset_type: 'credit_alphanum4',
+    balance: '0.11234',
+  },
 };
 
 export default AssetInfo;
