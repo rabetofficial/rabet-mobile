@@ -58,3 +58,9 @@ export type NavItemContent = {
   id: number;
   component: ReactNode;
 };
+
+export type Page = {
+  route: string;
+  title: string;
+  borderless?: boolean;
+};
