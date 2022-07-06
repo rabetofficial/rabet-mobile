@@ -1,32 +1,20 @@
 import React from 'react';
 import type { NextPage } from 'next';
 
-import BottomBar from 'components/common/BottomBar';
-import Home from 'blocks/NavItems/home';
-import Activities from 'blocks/NavItems/activities';
-import Browser from 'blocks/NavItems/browser';
-import Setting from 'blocks/NavItems/setting';
-import HomeIcon from 'svgs/BottomBar/Home';
-import LastTransactionIcon from 'svgs/BottomBar/ThunderLightning';
-import BrowserIcon from 'svgs/BottomBar/TravelCompass';
-import SettingIcon from 'svgs/BottomBar/SettingGear';
-import { NavItemContent, NavItemMenu } from 'models';
+import useTypedSelector from 'hooks/useTypedSelector';
+import Link from 'next/link';
 
-const HomePage: NextPage = () => {
-  const menus: NavItemMenu[] = [
-    { id: 1, name: 'home', icon: <HomeIcon /> },
-    { id: 2, name: 'transaction', icon: <LastTransactionIcon /> },
-    { id: 3, name: 'browser', icon: <BrowserIcon /> },
-    { id: 4, name: 'setting', icon: <SettingIcon /> },
-  ];
+const MainComponent: NextPage = () => {
+  const user = useTypedSelector((store) => store.user);
 
-  const contents: NavItemContent[] = [
-    { id: 1, component: <Home /> },
-    { id: 2, component: <Activities /> },
-    { id: 3, component: <Browser /> },
-    { id: 4, component: <Setting /> },
-  ];
-  return <BottomBar menus={menus} contents={contents} />;
+  console.log(user);
+
+  return (
+    <div>
+      <p>Main Page, doing some changes here. do not change.</p>
+      <Link href="/home">Home Page</Link>
+    </div>
+  );
 };
 
-export default HomePage;
+export default MainComponent;
