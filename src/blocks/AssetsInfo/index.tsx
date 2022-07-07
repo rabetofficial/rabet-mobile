@@ -62,18 +62,16 @@ const AssetInfo = () => {
   };
 
   return (
-    <div>
-      <ScrollBar isHidden maxHeight={780}>
-        <AssetInfoContent
-          asset={asset}
-          isNative={isNative}
-          onDelete={onDelete}
-          onBeforeDelete={handleBeforeDelete}
-        >
-          <ExitTitle title={`Assets | ${assetCode || 'XLM'}`} />
-        </AssetInfoContent>
-      </ScrollBar>
-    </div>
+    <ScrollBar isHidden maxHeight={780}>
+      <AssetInfoContent
+        asset={asset}
+        isNative={isNative}
+        onDelete={onDelete}
+        onBeforeDelete={handleBeforeDelete}
+      >
+        <ExitTitle title={`Assets | ${assetCode || 'XLM'}`} />
+      </AssetInfoContent>
+    </ScrollBar>
   );
 };
 

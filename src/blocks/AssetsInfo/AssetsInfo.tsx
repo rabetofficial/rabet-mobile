@@ -2,7 +2,6 @@ import React from 'react';
 import { Horizon } from 'stellar-sdk';
 
 import BN from 'helpers/BN';
-import Trash from 'svgs/Trash';
 import shorter from 'utils/shorter';
 import ShareArrow from 'svgs/ShareArrow';
 import xlmLogo from 'public/images/xlm-logo.svg';
@@ -175,55 +174,52 @@ const AssetInfo = ({
     );
   }
   return (
-    <S.Page>
+    <>
       {children}
+      <S.Page>
+        <div>
+          <S.Label>Your balance</S.Label>
+          <Card type="secondary" className="px-[10px]">
+            {assetBalance.map((item) => (
+              <S.InfoContainer key={item.title}>
+                <S.Title>{item.title}</S.Title>
+                <S.Value>{item.value}</S.Value>
+              </S.InfoContainer>
+            ))}
+          </Card>
+        </div>
 
-      <S.BoxContainer>
-        <S.Label>Your balance</S.Label>
-        <Card type="secondary" className="px-[11px] py-[6px]">
-          {assetBalance.map((item) => (
-            <S.InfoContainer key={item.title}>
-              <S.Title>{item.title}</S.Title>
-              <S.Value>{item.value}</S.Value>
-            </S.InfoContainer>
-          ))}
-        </Card>
-      </S.BoxContainer>
+        <div>
+          <S.Label>Asset info</S.Label>
+          <Card type="secondary" className="px-[10px]">
+            {assetInfo.map((item) => (
+              <S.InfoContainer key={item.title}>
+                <S.Title>{item.title}</S.Title>
+                <S.Value>{item.value}</S.Value>
+              </S.InfoContainer>
+            ))}
+          </Card>
+        </div>
 
-      <S.BoxContainer>
-        <S.Label>Asset info</S.Label>
-        <Card type="secondary" className="px-[11px] py-[6px]">
-          {assetInfo.map((item) => (
-            <S.InfoContainer key={item.title}>
-              <S.Title>{item.title}</S.Title>
-              <S.Value>{item.value}</S.Value>
-            </S.InfoContainer>
-          ))}
-        </Card>
-      </S.BoxContainer>
-
-      {isDeletable ? (
-        <S.ErrorBox className="text-error">
-          {notDeletableReason}
-        </S.ErrorBox>
-      ) : (
-        ''
-      )}
-
-      <S.Media>
-        <ButtonContainer fixedBottom mb={39}>
-          <Button
-            type="button"
-            variant="danger"
-            size="medium"
-            content="Delete"
-            disabled={isDeletable}
-            onClick={handleDelete}
-            startIcon={<Trash />}
-          />
-        </ButtonContainer>
-      </S.Media>
-    </S.Page>
+        {isDeletable ? (
+          <S.ErrorBox className="text-error">
+            {notDeletableReason}
+          </S.ErrorBox>
+        ) : (
+          ''
+        )}
+      </S.Page>
+      <ButtonContainer fixedBottom mb={39}>
+        <Button
+          type="button"
+          variant="danger"
+          size="medium"
+          content="Delete"
+          disabled={isDeletable}
+          onClick={handleDelete}
+        />
+      </ButtonContainer>
+    </>
   );
 };
 
