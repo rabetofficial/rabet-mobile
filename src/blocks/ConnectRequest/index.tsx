@@ -24,6 +24,7 @@ const ConnectRequest = ({ onCancel }: ConnectRequestType) => {
 
   const handleConnect = () => {
     setOpen(true);
+
     return (
       <BottomSheet isOpen={open} setOpen={setOpen} height={504}>
         <ApproveTransaction onCancel={onClose} />

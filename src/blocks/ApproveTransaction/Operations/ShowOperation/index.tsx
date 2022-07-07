@@ -27,7 +27,7 @@ const ShowOperation = ({ operation: op, index }) => {
     <S.Box key={shortid.generate()}>
       <S.Card>
         <S.CardTitle>
-          #{index + 1}-{camelToTitleCase(type)}
+          #{index + 1}-{camelToTitleCase(type || 'ABCDEFG')}
         </S.CardTitle>
 
         {arr.map((keyValue) => (

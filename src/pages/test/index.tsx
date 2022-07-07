@@ -1,6 +1,7 @@
 import ConnectRequest from 'blocks/ConnectRequest';
 import BottomSheet from 'components/common/BottomSheet';
 import React, { useState } from 'react';
+import ApproveTransaction from 'blocks/ApproveTransaction';
 
 const Test = () => {
   const [open, setOpen] = useState(false);
@@ -9,11 +10,14 @@ const Test = () => {
   return (
     <div>
       <div onClick={onOpen}>click me</div>
+
       <BottomSheet isOpen={open} setOpen={setOpen} height={504}>
-        <ConnectRequest onCancel={onClose} />
+        <ApproveTransaction onCancel={onClose} />
       </BottomSheet>
     </div>
   );
 };
 
 export default Test;
+
+// <ConnectRequest onCancel={onClose} />

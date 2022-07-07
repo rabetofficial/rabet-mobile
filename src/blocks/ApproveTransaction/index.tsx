@@ -36,34 +36,59 @@ const ApproveTransaction = ({ onCancel }: ApproveType) => {
 
   // let transaction;
 
-  try {
-    // const obj = StellarSdk.xdr.TransactionEnvelope.fromXDR(
-    //   MockData.xdr,
-    //   'base64',
-    // );
-    // transaction = new Transaction(obj, StellarSdk.Networks.PUBLIC);
-  } catch (e) {
-    return (
-      <>
-        <S.Confirm>
-          <ExtTitle title={MockData.network} />
+  // try {
+  //   // const obj = StellarSdk.xdr.TransactionEnvelope.fromXDR(
+  //   //   MockData.xdr,
+  //   //   'base64',
+  //   // );
+  //   // transaction = new Transaction(obj, StellarSdk.Networks.PUBLIC);
+  // } catch (e) {
+  //   return (
+  //     <>
+  //       <S.Confirm>
+  //         <ExtTitle title={MockData.network} />
+  //
+  //         <div className="content">
+  //           <p>Invalid XDR</p>
+  //         </div>
+  //
+  //         <ButtonContainer>
+  //           <Button
+  //             variant="primary"
+  //             size="medium"
+  //             content="Close"
+  //             onClick={handleClose}
+  //           />
+  //         </ButtonContainer>
+  //       </S.Confirm>
+  //     </>
+  //   );
+  // }
 
-          <div className="content">
-            <p>Invalid XDR</p>
-          </div>
-
-          <ButtonContainer>
-            <Button
-              variant="primary"
-              size="medium"
-              content="Close"
-              onClick={handleClose}
-            />
-          </ButtonContainer>
-        </S.Confirm>
-      </>
-    );
-  }
+  const operations = [
+    {
+      title: 'Create Account',
+      info: [
+        {
+          title: 'Destination',
+          value: 'ABCDEFG',
+        },
+        {
+          title: 'Amount',
+          value: '1234,567',
+        },
+      ],
+    },
+    {
+      title: 'Create claimable balance',
+      info: [
+        {
+          title: 'Destination',
+          value: 'ABCD',
+        },
+      ],
+    },
+  ];
 
   // const { _operations: operations } = transaction;
 
