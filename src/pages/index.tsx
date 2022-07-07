@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { NextPage } from 'next';
 
+import { useRouter } from 'next/router';
 import useTypedSelector from 'hooks/useTypedSelector';
-import Link from 'next/link';
 
 const MainComponent: NextPage = () => {
   const user = useTypedSelector((store) => store.user);
+  const router = useRouter();
 
-  console.log(user);
+  useEffect(() => {
+    if (!user.logged) {
+      if (user.registered) {
+        router.push('/login');
+        return;
+      }
 
-  return (
-    <div>
-      <p>Main Page, doing some changes here. do not change.</p>
-      <Link href="/home">Home Page</Link>
-    </div>
-  );
+      router.push('/intro');
+    } else {
+      router.push('/home');
+    }
+  }, []);
+
+  return <div>Main page</div>;
 };
 
 export default MainComponent;
