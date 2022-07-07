@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import React, { useState, useEffect } from 'react';
 
 import capital from 'utils/capital';
@@ -7,11 +6,12 @@ import Button from 'components/common/Button';
 import useTypedSelector from 'hooks/useTypedSelector';
 import changeOptionsAction from 'actions/options/change';
 import * as currenciesModule from 'staticRes/currencies';
-import SelectOption from 'components/common/SelectOption';
 import TooltipLabel from 'components/common/TooltipLabel';
 import ToggleSwitch from 'components/common/ToggleSwitch';
 import ButtonContainer from 'components/common/ButtonContainer';
-import config from '../../../../config';
+import config from 'config';
+import { OptionMode } from 'reducers/options';
+import Options from './Options';
 
 import * as S from './styles';
 
@@ -46,15 +46,13 @@ const SettingGeneral = () => {
   const options = useTypedSelector((store) => store.options);
   const [checked, setChecked] = useState(true);
 
-  const [selectedExplorer, setSelectedExplorer] = useState<
-    ElementOption | {}
-  >({});
-  const [selectedTimer, setSelectedTimer] = useState<
-    ElementOption | {}
-  >({});
-  const [selectedCurrency, setSelectedCurrency] = useState<
-    ElementOption | {}
-  >(currenciesList[0]);
+  const [selectedExplorer, setSelectedExplorer] =
+    useState<ElementOption>({} as ElementOption);
+  const [selectedTimer, setSelectedTimer] = useState<ElementOption>(
+    {} as ElementOption,
+  );
+  const [selectedCurrency, setSelectedCurrency] =
+    useState<ElementOption>(currenciesList[0]);
   const [mode, setMode] = useState<ElementOption>(modeOptions[0]);
 
   useEffect(() => {
@@ -136,79 +134,55 @@ const SettingGeneral = () => {
       explorer: selectedExplorer.value,
       autoTimeLocker: selectedTimer.value,
       currency: selectedCurrency.value,
-      mode: mode.value,
+      mode: mode.value as OptionMode,
     });
   };
 
   return (
-    <div>
+    <>
       <S.Item className="mt-4">
         <TooltipLabel
           text="Explorer"
           tooltipText="You will be referred to this Explorer to see the details of your transactions."
         />
-
-        <S.Select>
-          <SelectOption
-            items={explorerOptions}
-            onChange={onChangeNetwork}
-            variant="outlined"
-            isSearchable={false}
-            defaultValue={selectedExplorer}
-            width={134}
-          />
-        </S.Select>
+        <Options
+          items={explorerOptions}
+          defaultValue={selectedExplorer}
+          onChange={onChangeNetwork}
+        />
       </S.Item>
       <S.Item>
         <TooltipLabel
           text="Currency"
           tooltipText="Rabet supports popular global currencies, and you can change your wallet currency here."
         />
-
-        <S.Select>
-          <SelectOption
-            items={currenciesList}
-            onChange={onChangeCurrency}
-            variant="outlined"
-            isSearchable
-            defaultValue={selectedCurrency}
-            width={134}
-          />
-        </S.Select>
+        <Options
+          items={currenciesList}
+          defaultValue={selectedCurrency}
+          onChange={onChangeCurrency}
+        />
       </S.Item>
       <S.Item>
         <TooltipLabel
           text="Auto-lock timer"
           tooltipText="Rabet will lock automatically after a set amount of time."
         />
-
-        <S.Select>
-          <SelectOption
-            items={timerOptions}
-            onChange={onChangeTimer}
-            variant="outlined"
-            isSearchable={false}
-            defaultValue={selectedTimer}
-            width={134}
-          />
-        </S.Select>
+        <Options
+          items={timerOptions}
+          defaultValue={selectedTimer}
+          onChange={onChangeTimer}
+        />
       </S.Item>
       <S.Item>
         <TooltipLabel
           text="Mode"
           tooltipText="Rabet advanced mode supports other Stellar operations and is suitable for people who have a high level of knowledge in Stellar."
         />
-
-        <S.Select>
-          <SelectOption
-            items={modeOptions}
-            onChange={onChangeMode}
-            variant="outlined"
-            isSearchable
-            defaultValue={mode}
-            width={134}
-          />
-        </S.Select>
+        <Options
+          items={modeOptions}
+          defaultValue={mode}
+          onChange={onChangeMode}
+        />
       </S.Item>
       <S.Item>
         <TooltipLabel
@@ -232,7 +206,7 @@ const SettingGeneral = () => {
       <ButtonContainer mb={39} mt={16} fixedBottom justify="center">
         <S.Version>Version {config.VERSION}</S.Version>
       </ButtonContainer>
-    </div>
+    </>
   );
 };
 
