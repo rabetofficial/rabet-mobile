@@ -24,14 +24,14 @@ const ShowOperation = ({ operation: op, index }) => {
   }
 
   return (
-    <S.Box key={shortid.generate()}>
+    <S.Box>
       <S.Card>
         <S.CardTitle>
           #{index + 1}-{camelToTitleCase(type || 'ABCDEFG')}
         </S.CardTitle>
 
         {arr.map((keyValue) => (
-          <ShowField keyValue={keyValue} />
+          <ShowField keyValue={keyValue} key={shortid.generate()} />
         ))}
       </S.Card>
     </S.Box>

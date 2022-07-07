@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import StellarSdk, { Transaction } from 'stellar-sdk';
 
 import Button from 'components/common/Button';
-import ExtTitle from 'components/common/ExitTitle';
 import CopyText from 'components/common/CopyText';
 import ButtonContainer from 'components/common/ButtonContainer';
+import Card from 'components/common/Card';
+import maxText from 'utils/maxText';
 
 import Operations from './Operations';
 
@@ -27,10 +28,6 @@ const ApproveTransaction = ({ onCancel }: ApproveType) => {
   };
 
   const handleConfirm = () => {
-    console.log(' ');
-  };
-
-  const handleClose = () => {
     console.log(' ');
   };
 
@@ -92,63 +89,68 @@ const ApproveTransaction = ({ onCancel }: ApproveType) => {
 
   // const { _operations: operations } = transaction;
 
-  const shownName =
-    MockData.name.length < 12
-      ? MockData.name
-      : `${MockData.name.slice(0, 13)}...`;
-
   return (
-    <div>
-      <S.NetworkStatus>Main network</S.NetworkStatus>
-      <div className="content">
-        <S.ImgContainer>
-          <img
-            src={`https://logo.clearbit.com/${MockData.host}`}
-            alt={MockData.host}
-            className={!isImageLoaded ? 'image-error' : ''}
-            onError={() => {
-              setIsImageLoaded(false);
-            }}
-          />
+    <>
+      <S.TopContainer>
+        <S.NetworkStatus>Main network</S.NetworkStatus>
+        <S.Centered>
+          <S.ImgContainer>
+            <img
+              src={`https://logo.clearbit.com/${MockData.host}`}
+              alt={MockData.host}
+              className={!isImageLoaded ? 'image-error' : ''}
+              onError={() => {
+                setIsImageLoaded(false);
+              }}
+            />
 
-          {!isImageLoaded ? (
-            <S.HostStyle>
-              {MockData.host[0].toUpperCase()}
-            </S.HostStyle>
-          ) : (
-            ''
-          )}
-        </S.ImgContainer>
-        <S.Title>Approve Transaction</S.Title>
-        <S.Link href="#">{MockData.host}</S.Link>
+            {!isImageLoaded ? (
+              <S.HostStyle>
+                {MockData.host[0].toUpperCase()}
+              </S.HostStyle>
+            ) : (
+              ''
+            )}
+          </S.ImgContainer>
+          <S.Title>Approve Transaction</S.Title>
+          <div>
+            <S.Link href="#">{MockData.host}</S.Link>
+          </div>
+        </S.Centered>
         <S.Account>
-          <div>Source account</div>
-          <S.AccountName>
-            <CopyText text={MockData.publicKey} custom={shownName} />
-          </S.AccountName>
+          <S.AccountTitle>Source account:</S.AccountTitle>
+          <div className="font-medium">
+            <CopyText
+              text={MockData.publicKey}
+              custom={maxText(MockData.name, 12)}
+            />
+          </div>
         </S.Account>
+      </S.TopContainer>
+      <div className="content">
+        <Card type="secondary" className="mt-4">
+          <Operations operations={operations} />
+        </Card>
+
+        <ButtonContainer mt={32}>
+          <Button
+            type="submit"
+            variant="primary"
+            size="medium"
+            content="Confirm"
+            onClick={handleConfirm}
+          />
+        </ButtonContainer>
+        <ButtonContainer mt={23}>
+          <Button
+            variant="default"
+            size="medium"
+            content="Cancel"
+            onClick={onCancel}
+          />
+        </ButtonContainer>
       </div>
-
-      <Operations operations={operations} />
-
-      <ButtonContainer mt={47}>
-        <Button
-          type="submit"
-          variant="primary"
-          size="medium"
-          content="Connect"
-          onClick={handleConfirm}
-        />
-      </ButtonContainer>
-      <ButtonContainer mt={23}>
-        <Button
-          variant="default"
-          size="medium"
-          content="Cancel"
-          onClick={onCancel}
-        />
-      </ButtonContainer>
-    </div>
+    </>
   );
 };
 

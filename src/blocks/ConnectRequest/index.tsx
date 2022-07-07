@@ -1,35 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Button from 'components/common/Button';
 import CheckMarkCircle from 'svgs/CheckMarkCircle';
 import ButtonContainer from 'components/common/ButtonContainer';
-import BottomSheet from 'components/common/BottomSheet';
-import ApproveTransaction from 'blocks/ApproveTransaction';
 
 import * as S from './styles';
 
-type ConnectRequestType = { onCancel: () => void };
+type ConnectRequestType = {
+  onCancel: () => void;
+  onConfirm: () => void;
+};
 
-const ConnectRequest = ({ onCancel }: ConnectRequestType) => {
-  const [open, setOpen] = useState(false);
-  const onClose = () => setOpen(false);
-
+const ConnectRequest = ({
+  onCancel,
+  onConfirm,
+}: ConnectRequestType) => {
   const MockData = {
     name: 'John Due',
     host: 'host',
     title: 'title',
     publicKey:
       'GDHKYJMUNZ4STELQ7K5EH6TDGKJ2QJ5UPX5HWLOFWRC4H7NFG4JJHNFE',
-  };
-
-  const handleConnect = () => {
-    setOpen(true);
-
-    return (
-      <BottomSheet isOpen={open} setOpen={setOpen} height={504}>
-        <ApproveTransaction onCancel={onClose} />
-      </BottomSheet>
-    );
   };
 
   return (
@@ -74,7 +65,7 @@ const ConnectRequest = ({ onCancel }: ConnectRequestType) => {
             variant="primary"
             size="medium"
             content="Connect"
-            onClick={handleConnect}
+            onClick={onConfirm}
           />
         </ButtonContainer>
         <ButtonContainer mt={23}>
