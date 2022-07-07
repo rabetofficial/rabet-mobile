@@ -20,6 +20,15 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 12px;
+
+  svg {
+    width: 10px;
+    height: auto;
+
+    path {
+      fill: ${({ theme }) => theme.colors.primary.dark};
+    }
+  }
 `;
 
 const Options = ({ items, onChange, defaultValue }: AppProps) => {
