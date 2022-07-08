@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { useEffect } from 'react';
 import { useDrag } from '@use-gesture/react';
 import { useSpring, config } from '@react-spring/web';
@@ -9,6 +10,7 @@ type AppProps = {
   isOpen: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   height: number;
+  isDark?: boolean;
 };
 
 type OpenArg = {
@@ -20,6 +22,7 @@ const BottomSheet = ({
   isOpen,
   height,
   setOpen,
+  isDark,
 }: AppProps) => {
   const [{ y }, api] = useSpring(() => ({ y: height }));
 
@@ -61,6 +64,7 @@ const BottomSheet = ({
           ? close(vy)
           : open({ canceled });
       }
+
       // when the user keeps dragging, we just move the sheet according to
       // the cursor position
       else api.start({ y: my, immediate: true });
@@ -104,11 +108,17 @@ const BottomSheet = ({
           y,
         }}
       >
-        <S.Line />
+        <S.LineConatiner isDark={isDark}>
+          <S.Line isDark={isDark} />
+        </S.LineConatiner>
         {children}
       </S.Sheet>
     </div>
   );
+};
+
+BottomSheet.defaultProps = {
+  isDark: false,
 };
 
 export default BottomSheet;

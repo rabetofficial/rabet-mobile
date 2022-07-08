@@ -26,6 +26,7 @@ const Test = () => {
         isOpen={openConfirm}
         setOpen={setOpen}
         height={727}
+        isDark
       >
         <ApproveTransaction onCancel={onConfirmClose} />
       </BottomSheet>

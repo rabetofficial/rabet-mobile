@@ -3,6 +3,7 @@ import React from 'react';
 import Button from 'components/common/Button';
 import CheckMarkCircle from 'svgs/CheckMarkCircle';
 import ButtonContainer from 'components/common/ButtonContainer';
+import maxText from 'utils/maxText';
 
 import * as S from './styles';
 
@@ -16,11 +17,10 @@ const ConnectRequest = ({
   onConfirm,
 }: ConnectRequestType) => {
   const MockData = {
-    name: 'John Due',
-    host: 'host',
+    name: 'Sam Smith',
+    host: 'lumenswap.com',
     title: 'title',
-    publicKey:
-      'GDHKYJMUNZ4STELQ7K5EH6TDGKJ2QJ5UPX5HWLOFWRC4H7NFG4JJHNFE',
+    publicKey: 'GDHKYJMUNZ4STELQ7K5EH6TDGKJFE',
   };
 
   return (
@@ -32,10 +32,10 @@ const ConnectRequest = ({
             <S.StepValue>
               <img
                 src={`https://logo.clearbit.com/${MockData?.host}?size=55`}
-                alt={MockData?.host}
+                alt={MockData?.host[0]}
               />
             </S.StepValue>
-            <S.StepLabel>{MockData?.host}</S.StepLabel>
+            <S.StepLabel>{maxText(MockData?.host, 13)}</S.StepLabel>
           </S.List>
 
           <S.IconContainer>
@@ -45,7 +45,7 @@ const ConnectRequest = ({
           <S.List>
             <S.StepValue>{MockData.name[0]}</S.StepValue>
 
-            <S.StepLabel>{MockData?.name}</S.StepLabel>
+            <S.StepLabel>{maxText(MockData.name, 12)}</S.StepLabel>
           </S.List>
         </S.Steps>
         <S.Title>
@@ -59,7 +59,7 @@ const ConnectRequest = ({
           would like to connect to your account
         </S.Title>
 
-        <ButtonContainer mt={47}>
+        <ButtonContainer mt={60}>
           <Button
             type="submit"
             variant="primary"
@@ -68,7 +68,7 @@ const ConnectRequest = ({
             onClick={onConfirm}
           />
         </ButtonContainer>
-        <ButtonContainer mt={23}>
+        <ButtonContainer mt={18}>
           <Button
             variant="default"
             size="medium"

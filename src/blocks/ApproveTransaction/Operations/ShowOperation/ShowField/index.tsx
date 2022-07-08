@@ -4,7 +4,7 @@ import StellarSdk from 'stellar-sdk';
 import showObject from 'utils/showObject';
 import * as S from './styles';
 
-const ShowfieldJSX = ({ tKey, value }) => (
+const ShowfieldJSX = ({ tKey, value }: any) => (
   <>
     <S.cardSubject>{tKey}</S.cardSubject>
 
@@ -12,7 +12,7 @@ const ShowfieldJSX = ({ tKey, value }) => (
   </>
 );
 
-const ShowField = ({ keyValue }) => {
+const ShowField = ({ keyValue }: any) => {
   const { isValidEd25519PublicKey: isPubValid } = StellarSdk.StrKey;
   const [key, value] = keyValue;
 

@@ -34,7 +34,7 @@ export const List = styled.li`
       ${({ theme }) => theme.colors.primary.light};
     position: absolute;
     left: -50%;
-    top: calc(55px / 2);
+    top: calc(57px / 2);
     z-index: 0;
   }
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import shortid from 'shortid';
 
+import Card from 'components/common/Card';
 import camelToTitleCase from 'helpers/camelToTitle';
 import ShowField from './ShowField';
 
 import * as S from './styles';
 
-const ShowOperation = ({ operation: op, index }) => {
+const ShowOperation = ({ operation: op, index }: any) => {
   const { type, ...other } = op;
 
   let arr = Object.entries(other);
@@ -24,8 +25,8 @@ const ShowOperation = ({ operation: op, index }) => {
   }
 
   return (
-    <S.Box>
-      <S.Card>
+    <Card type="secondary" className="mt-4">
+      <S.Box>
         <S.CardTitle>
           #{index + 1}-{camelToTitleCase(type || 'ABCDEFG')}
         </S.CardTitle>
@@ -33,8 +34,8 @@ const ShowOperation = ({ operation: op, index }) => {
         {arr.map((keyValue) => (
           <ShowField keyValue={keyValue} key={shortid.generate()} />
         ))}
-      </S.Card>
-    </S.Box>
+      </S.Box>
+    </Card>
   );
 };
 

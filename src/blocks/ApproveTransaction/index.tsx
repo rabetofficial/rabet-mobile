@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import StellarSdk, { Transaction } from 'stellar-sdk';
+// import StellarSdk, { Transaction } from 'stellar-sdk';
 
 import Button from 'components/common/Button';
 import CopyText from 'components/common/CopyText';
 import ButtonContainer from 'components/common/ButtonContainer';
-import Card from 'components/common/Card';
-import maxText from 'utils/maxText';
+import ScrollBar from 'components/common/ScrollBar';
 
+import maxText from 'utils/maxText';
 import Operations from './Operations';
 
 import * as S from './styles';
@@ -18,12 +18,12 @@ const ApproveTransaction = ({ onCancel }: ApproveType) => {
   const [isImageLoaded, setIsImageLoaded] = useState(true);
 
   const MockData = {
-    name: 'John Due',
-    host: 'host',
+    name: 'Sam Smith',
+    host: 'litemint.com',
     title: 'title',
     publicKey:
       'GDHKYJMUNZ4STELQ7K5EH6TDGKJ2QJ5UPX5HWLOFWRC4H7NFG4JJHNFE',
-    network: 'main network',
+    network: 'Main network',
     xdr: 'sth xdr',
   };
 
@@ -97,40 +97,40 @@ const ApproveTransaction = ({ onCancel }: ApproveType) => {
           <S.ImgContainer>
             <img
               src={`https://logo.clearbit.com/${MockData.host}`}
-              alt={MockData.host}
-              className={!isImageLoaded ? 'image-error' : ''}
+              alt={isImageLoaded ? MockData.host : ' '}
               onError={() => {
                 setIsImageLoaded(false);
               }}
             />
 
             {!isImageLoaded ? (
-              <S.HostStyle>
-                {MockData.host[0].toUpperCase()}
-              </S.HostStyle>
+              <p>{MockData.host[0].toUpperCase()}</p>
             ) : (
               ''
             )}
           </S.ImgContainer>
           <S.Title>Approve Transaction</S.Title>
+
           <div>
             <S.Link href="#">{MockData.host}</S.Link>
           </div>
         </S.Centered>
+
         <S.Account>
-          <S.AccountTitle>Source account:</S.AccountTitle>
-          <div className="font-medium">
+          <div>Source account</div>
+          <div>
             <CopyText
               text={MockData.publicKey}
-              custom={maxText(MockData.name, 12)}
+              custom={<div>{maxText(MockData.name, 12)}</div>}
             />
           </div>
         </S.Account>
       </S.TopContainer>
+
       <div className="content">
-        <Card type="secondary" className="mt-4">
+        <ScrollBar isHidden maxHeight={225}>
           <Operations operations={operations} />
-        </Card>
+        </ScrollBar>
 
         <ButtonContainer mt={32}>
           <Button
@@ -141,7 +141,7 @@ const ApproveTransaction = ({ onCancel }: ApproveType) => {
             onClick={handleConfirm}
           />
         </ButtonContainer>
-        <ButtonContainer mt={23}>
+        <ButtonContainer mt={15}>
           <Button
             variant="default"
             size="medium"
