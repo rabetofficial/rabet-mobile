@@ -2,6 +2,7 @@ import React, { CSSProperties, useState } from 'react';
 import classNames from 'classnames';
 
 import { Tab } from 'models';
+import SpringLoad from 'components/common/SpringLoad';
 
 import * as S from './styles';
 
@@ -36,9 +37,21 @@ const Tabs = ({
     setVisibleTab(item.id);
   };
 
+  const getSelectedTabIndex = () =>
+    data.findIndex((item) => item.id === visibleTab);
+
   return (
     <>
       <S.Tabs style={style}>
+        <S.AnimatedLine
+          style={{
+            left: `calc((100% / ${
+              data.length
+            }) * ${getSelectedTabIndex()})`,
+            width: `calc(100% / ${data.length})`,
+          }}
+        />
+
         {data.map((item: Tab) => (
           <S.TabTitle
             key={`${item.title}${item.id}`}
@@ -53,8 +66,9 @@ const Tabs = ({
           </S.TabTitle>
         ))}
       </S.Tabs>
+
       <S.TabContent className={contentClass} style={contentStyle}>
-        {listContent}
+        <SpringLoad>{listContent}</SpringLoad>
       </S.TabContent>
     </>
   );
