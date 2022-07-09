@@ -38,7 +38,7 @@ const Home = () => {
             <CopyText
               text={mockData.publicKey}
               custom={
-                <span className="text-xs text-primary-dark inline-flex items-center gap-[3px] ml-[2px]">
+                <span className="text-xs text-primary-dark inline-flex items-center gap-[4px] ml-[2px]">
                   {shorter(mockData.publicKey, 6)}
                   <FilledCopy />
                 </span>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import styled from 'styled-components';
 
 import { a } from '@react-spring/web';
@@ -19,11 +20,30 @@ export const Sheet = styled(a.div)`
   touch-action: none;
 `;
 
-export const Line = styled.div`
+interface LineProps {
+  isDark: boolean | undefined;
+  theme: any;
+}
+
+export const Line = styled.div<LineProps>`
   display: block;
-  margin: 14px auto;
   width: 80px;
   height: 6px;
   border-radius: 4.5px;
-  background-color: ${({ theme }) => theme.colors.primary.lighter};
+  background-color: ${({ theme, isDark }) =>
+    isDark
+      ? theme.colors.primary.dark
+      : theme.colors.primary.lighter};
+`;
+
+export const LineConatiner = styled.div<LineProps>`
+  border: ${({ theme, isDark }) =>
+    isDark ? `1px solid ${theme.colors.primary.darkest}` : 'none'};
+  width: 100%;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme, isDark }) =>
+    isDark ? theme.colors.primary.darkest : ''};
 `;

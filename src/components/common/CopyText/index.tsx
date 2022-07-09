@@ -68,7 +68,6 @@ const CopyText = ({ text, custom, fullIcon }: AppProps) => {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={toggle}
-      className="cursor-pointer"
     >
       <Tooltips
         text={tooltipText}

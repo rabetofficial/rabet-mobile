@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import React, {
   ReactElement,
   JSXElementConstructor,
@@ -22,6 +23,7 @@ type AppProps = {
 const Container = styled.div`
   background-color: white;
   border: none;
+  color: black;
   border-radius: ${({ theme }) => theme.rounded.main};
   filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.12));
   font-size: 14px;
