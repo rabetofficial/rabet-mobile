@@ -8,18 +8,18 @@ const MainComponent: NextPage = () => {
   const user = useTypedSelector((store) => store.user);
   const router = useRouter();
 
-  useEffect(() => {
-    if (!user.logged) {
-      if (user.registered) {
-        router.push('/login');
-        return;
-      }
-
-      router.push('/intro');
-    } else {
-      router.push('/home');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!user.logged) {
+  //     if (user.registered) {
+  //       router.push('/login');
+  //       return;
+  //     }
+  //
+  //     router.push('/intro');
+  //   } else {
+  //     router.push('/home');
+  //   }
+  // }, []);
 
   return <div>Main page</div>;
 };

@@ -38,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   const [page, setPage] = useState<Page | undefined>(undefined);
+
   useEffect(() => {
     const findPage = pages.find((p) => p.route === router.pathname);
     setPage(findPage);

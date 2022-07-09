@@ -36,7 +36,7 @@ type AppProps = {
   setMax?: () => void;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   styleType?: 'light' | 'dark';
-  errorMsg: Error;
+  errorMsg?: string;
   [x: string]: any;
 };
 
@@ -134,6 +134,7 @@ Input.defaultProps = {
   onChange: () => {},
   invisible: false,
   styleType: 'dark',
+  errorMsg: '',
 };
 
 export default Input;
