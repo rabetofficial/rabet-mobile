@@ -13,8 +13,9 @@ import * as S from './styles';
 
 type ApproveType = {
   onCancel: () => void;
+  onConfirm: () => void;
 };
-const ApproveTransaction = ({ onCancel }: ApproveType) => {
+const ApproveTransaction = ({ onCancel, onConfirm }: ApproveType) => {
   const [isImageLoaded, setIsImageLoaded] = useState(true);
 
   const MockData = {
@@ -25,10 +26,6 @@ const ApproveTransaction = ({ onCancel }: ApproveType) => {
       'GDHKYJMUNZ4STELQ7K5EH6TDGKJ2QJ5UPX5HWLOFWRC4H7NFG4JJHNFE',
     network: 'Main network',
     xdr: 'sth xdr',
-  };
-
-  const handleConfirm = () => {
-    console.log(' ');
   };
 
   // let transaction;
@@ -128,7 +125,7 @@ const ApproveTransaction = ({ onCancel }: ApproveType) => {
       </S.TopContainer>
 
       <div className="content">
-        <ScrollBar isHidden maxHeight={225}>
+        <ScrollBar isHidden maxHeight={235}>
           <Operations operations={operations} />
         </ScrollBar>
 
@@ -138,7 +135,7 @@ const ApproveTransaction = ({ onCancel }: ApproveType) => {
             variant="primary"
             size="medium"
             content="Confirm"
-            onClick={handleConfirm}
+            onClick={onConfirm}
           />
         </ButtonContainer>
         <ButtonContainer mt={15}>

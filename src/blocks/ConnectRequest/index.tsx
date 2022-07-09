@@ -17,8 +17,8 @@ const ConnectRequest = ({
   onConfirm,
 }: ConnectRequestType) => {
   const MockData = {
-    name: 'Sam Smith',
-    host: 'lumenswap.com',
+    name: 'Sam Smith2132312312312312',
+    host: 'litemint.com',
     title: 'title',
     publicKey: 'GDHKYJMUNZ4STELQ7K5EH6TDGKJFE',
   };

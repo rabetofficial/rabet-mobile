@@ -13,8 +13,13 @@ const Test = () => {
     setOpen(false);
     setTimeout(() => setOpenConfirm(true), 500);
   };
-  const onConfirmClose = () => setOpenConfirm(false);
-
+  const onConfirmClose = () => {
+    setOpenConfirm(false);
+  };
+  const onSubmit = () => {
+    console.log('approved');
+    setOpenConfirm(false);
+  };
   return (
     <div>
       <div onClick={onOpen}>click me</div>
@@ -28,7 +33,10 @@ const Test = () => {
         height={727}
         isDark
       >
-        <ApproveTransaction onCancel={onConfirmClose} />
+        <ApproveTransaction
+          onCancel={onConfirmClose}
+          onConfirm={onSubmit}
+        />
       </BottomSheet>
     </div>
   );
