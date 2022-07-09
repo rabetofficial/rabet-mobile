@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import BottomSheet from 'components/common/BottomSheet';
 import PenEdit from 'svgs/PenEdit';
-import HandCoins from 'svgs/HandCoins';
 import Key from 'svgs/Key';
 import Trash from 'svgs/Trash';
 import World from 'svgs/World';
@@ -32,12 +31,6 @@ const menus = [
   },
   {
     id: 4,
-    label: 'Claimable balance',
-    icon: <HandCoins />,
-    link: '/',
-  },
-  {
-    id: 5,
     label: 'Delete Wallet',
     icon: <Trash />,
   },
@@ -64,8 +57,8 @@ const WalletOption = () => {
               link={menu.link}
               name={menu.label}
               icon={menu.icon}
-              className={menu.id === 5 ? '!text-error' : ''}
-              onClick={() => menu.id === 5 && onOpen()}
+              className={menu.id === 4 ? '!text-error' : ''}
+              onClick={() => menu.id === 4 && onOpen()}
             />
           </div>
         ))}

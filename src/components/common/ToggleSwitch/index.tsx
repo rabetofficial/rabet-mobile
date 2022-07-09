@@ -4,15 +4,11 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   .react-switch-handle {
-    height: 32px !important;
-    width: 32px !important;
-    right: 4px !important;
-    top: 4px !important;
-    left: 4px !important;
-  }
-
-  .react-switch-bg {
-    border: 1px solid #ededed;
+    height: 27px !important;
+    width: 27px !important;
+    right: 1px !important;
+    top: 2px !important;
+    left: 1px !important;
   }
 `;
 
@@ -36,12 +32,12 @@ const ToggleSwitch = ({
       uncheckedIcon={false}
       boxShadow="0 0 0 0"
       activeBoxShadow="0 0 0 0"
-      height={40}
-      width={76}
-      offColor="#f8f8f8"
-      onColor="#f8f8f8"
-      offHandleColor="#d5d5d5"
-      onHandleColor="#000000"
+      height={31}
+      width={51}
+      offColor="#d9d9d9"
+      onColor="#000000"
+      offHandleColor="#ffffff"
+      onHandleColor="#ffffff"
     />
   </Container>
 );

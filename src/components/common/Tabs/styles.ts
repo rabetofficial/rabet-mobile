@@ -7,7 +7,8 @@ export const Tabs = styled.ul`
   display: flex;
   border-bottom: 1px solid
     ${({ theme }) => theme.colors.primary.lighter};
-  box-shadow: 0px 2px 22px 0 rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.07);
+  position: relative;
 `;
 
 export const TabTitle = styled.li`
@@ -30,26 +31,16 @@ export const TabTitle = styled.li`
     position: relative;
     font-weight: 500;
   }
+`;
 
-  &::before,
-  &.active::before {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    border-radius: 3px;
-  }
-
-  &::before {
-    transition: all ease-in 0.15s;
-    background: transparent;
-  }
-
-  &.active::before {
-    background: black;
-  }
+export const AnimatedLine = styled.div`
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  height: 2px;
+  background: black;
+  border-radius: 10px;
+  transition: all ease 0.3s;
 `;
 
 export const TabContent = styled.div`

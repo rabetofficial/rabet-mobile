@@ -1,0 +1,12 @@
+{
+    "name": "Rabet",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/images/rabet-logo-144x144.png",
+            "size": "144x144",
+            "type": "image/png"
+        }
+    ],
+    "background": "#ffffff"
+}

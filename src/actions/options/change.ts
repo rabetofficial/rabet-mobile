@@ -4,11 +4,11 @@ import { change, OptionMode } from 'reducers/options';
 import storeOptions from './store';
 
 type ChangeOptionsType = {
-  explorer: string;
-  currency: string;
+  explorer: string | number;
+  currency: string | number;
   mode: OptionMode;
   privacyMode: boolean;
-  autoTimeLocker: number;
+  autoTimeLocker: number | string;
 };
 
 const changeOptions = async (options: ChangeOptionsType) => {

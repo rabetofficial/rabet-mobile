@@ -35,8 +35,8 @@ export type FullPlacement =
   | 'bottom-start'
   | 'bottom-end';
 
-export interface ElementOption<T = string | number> {
-  value: T;
+export interface ElementOption {
+  value: string | number;
   label: string | React.ReactNode;
 }
 
@@ -57,4 +57,10 @@ export type NavItemMenu = {
 export type NavItemContent = {
   id: number;
   component: ReactNode;
+};
+
+export type Page = {
+  route: string;
+  title: string;
+  borderless?: boolean;
 };

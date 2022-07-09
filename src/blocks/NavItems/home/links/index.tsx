@@ -1,14 +1,17 @@
 import React from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import Button from 'components/common/Button';
 import RouteName from 'staticRes/routes';
 import { Swap, Send, Receive } from 'svgs/TransactionActions';
 
-const Links = () => (
-  <div className="flex justify-center items-center mt-[22px]">
-    <div>
-      <Link href={RouteName.Send} passHref>
+const Links = () => {
+  const router = useRouter();
+  const navigate = (path: string) => router.push(path);
+
+  return (
+    <div className="flex justify-center items-center mt-[22px]">
+      <div>
         <Button
           iconBtn
           size="small"
@@ -19,12 +22,11 @@ const Links = () => (
             </span>
           }
           title="Send"
+          onClick={() => navigate(RouteName.Send)}
         />
-      </Link>
-    </div>
+      </div>
 
-    <div>
-      <Link href={RouteName.Swap} passHref>
+      <div>
         <Button
           size="small"
           variant="icon-circle"
@@ -35,12 +37,11 @@ const Links = () => (
           }
           iconBtn
           title="Swap"
+          onClick={() => navigate(RouteName.Swap)}
         />
-      </Link>
-    </div>
+      </div>
 
-    <div>
-      <Link href={RouteName.Receive} passHref>
+      <div>
         <Button
           size="small"
           variant="icon-circle"
@@ -51,10 +52,11 @@ const Links = () => (
           }
           iconBtn
           title="Receive"
+          onClick={() => navigate(RouteName.Receive)}
         />
-      </Link>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Links;

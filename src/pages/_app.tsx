@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import { useRouter, NextRouter } from 'next/router';
 import { animated, Transition } from 'react-spring';
 
-import RouteName from 'staticRes/routes';
+import pages from 'staticRes/esxitPages';
+import { Page } from 'models';
 import ExtTitle from 'components/common/ExitTitle';
 import 'react-slideshow-image/dist/styles.css';
 import 'tippy.js/dist/svg-arrow.css';
@@ -19,32 +20,6 @@ import theme from 'styles/theme';
 import Global from 'styles/global';
 
 import store from '../store';
-
-type Page = {
-  route: string;
-  title: string;
-  borderless?: boolean;
-};
-
-const pages: Page[] = [
-  { route: RouteName.Send, title: 'Send' },
-  { route: RouteName.About, title: 'About' },
-  { route: RouteName.Backup, title: 'Backup' },
-  { route: RouteName.Receive, title: 'Receive' },
-  { route: RouteName.Contacts, title: 'Contacts' },
-  { route: RouteName.AddAsset, title: 'AddAsset' },
-  { route: RouteName.EditName, title: 'Edit name' },
-  { route: RouteName.General, title: 'General settings' },
-  { route: RouteName.CreateWallet, title: 'Create Wallet' },
-  { route: RouteName.Swap, title: 'Swap', borderless: true },
-  { route: RouteName.RestoreWallet, title: 'Import wallet' },
-  { route: RouteName.PrivateKey, title: 'Show private key' },
-  { route: RouteName.WalletOption, title: 'Show Private key' },
-  { route: RouteName.ChangePassword, title: 'Change Password' },
-  { route: RouteName.ConnectedWebsites, title: 'Connected websites' },
-  { route: RouteName.BasicSendConfirm, title: 'Confirm send' },
-  { route: RouteName.BasicSwapConfirm, title: 'Confirm swap' },
-];
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -63,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   const [page, setPage] = useState<Page | undefined>(undefined);
+
   useEffect(() => {
     const findPage = pages.find((p) => p.route === router.pathname);
     setPage(findPage);
