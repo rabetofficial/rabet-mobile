@@ -212,7 +212,7 @@ const AssetInfo = ({
       <ButtonContainer fixedBottom mb={39}>
         <Button
           type="button"
-          variant="danger"
+          variant="danger-fill"
           size="medium"
           content="Delete"
           disabled={isDeletable}

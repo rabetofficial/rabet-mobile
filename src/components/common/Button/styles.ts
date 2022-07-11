@@ -62,23 +62,22 @@ export const Button = styled.button`
   }
 
   &.danger {
-    color: ${({ theme }) => theme.colors.primary.lighter};
-    background-color: ${({ theme }) => theme.colors.error.main};
-    border: 2px solid ${({ theme }) => theme.colors.error.main};
+    color: ${({ theme }) => theme.colors.error.main};
+    background-color: ${({ theme }) => theme.colors.primary.lighter};
+    border: 2px solid ${({ theme }) => theme.colors.primary.lighter};
     path {
-      fill: ${({ theme }) => theme.colors.primary.lighter};
+      fill: ${({ theme }) => theme.colors.error.main};
     }
     &:hover {
       box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.12);
     }
-
     &:disabled {
-      color: ${({ theme }) => theme.colors.primary.lighter};
-      border: 2px solid ${({ theme }) => theme.colors.primary.main};
-      background-color: ${({ theme }) => theme.colors.primary.main};
-
+      background-color: ${({ theme }) =>
+        theme.colors.primary.lighter};
+      border: 2px solid ${({ theme }) => theme.colors.primary.lighter};
+      color: ${({ theme }) => theme.colors.primary.main};
       path {
-        fill: ${({ theme }) => theme.colors.primary.lighter};
+        fill: ${({ theme }) => theme.colors.primary.main};
       }
     }
   }
