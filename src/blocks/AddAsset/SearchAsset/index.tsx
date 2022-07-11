@@ -9,11 +9,10 @@ import getAssetsAction from 'api/getSearchedAssets';
 import useTypedSelector from 'hooks/useTypedSelector';
 import useActiveAccount from 'hooks/useActiveAccount';
 import { AssetImageWithActive } from 'reducers/assetImages';
-
 import ButtonContainer from 'components/common/ButtonContainer';
+import AssetList from './AssetList';
 
 import ResultTitle from './styles';
-import AssetList from './AssetList';
 
 type FormValues = {
   asset: string;
@@ -115,11 +114,11 @@ const SearchAsset = ({ onSubmit, onCancel }: AppProps) => {
             {({ input, meta }) => (
               <Input
                 type="text"
-                placeholder="&#xe915;&nbsp;&nbsp;Search assets"
+                placeholder="Search assets"
                 size="medium"
+                variant="icon"
                 input={input}
                 meta={meta}
-                style={{ fontFamily: "Roboto, 'icomoon'" }}
                 disabled={options.network !== 'MAINNET'}
               />
             )}

@@ -77,7 +77,7 @@ const Input = (props: AppProps) => {
     <>
       <S.Group
         noMT={noMT}
-        className={`${className} ${size}`}
+        className={`${className} ${size} ${variant}`}
         style={style}
         styleType={styleType}
       >

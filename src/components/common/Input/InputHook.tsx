@@ -83,11 +83,7 @@ const Input = (props: AppProps) => {
       style={{ display: invisible ? 'none' : 'block' }}
     >
       <S.Group
-        className={classNames(
-          className,
-          size,
-          variant === 'borderless' ? 'borderless' : '',
-        )}
+        className={classNames(className, size, variant)}
         style={style}
         styleType={styleType}
       >

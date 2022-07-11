@@ -61,6 +61,16 @@ export const Group = styled.div.attrs(
     border: 1px solid transparent !important;
   }
 
+  &.icon {
+    .input {
+      padding-left: 38px !important;
+      background-image: url('/images/search.svg');
+      background-repeat: no-repeat;
+      background-position: 14px;
+      background-size: 16px;
+    }
+  }
+
   .input {
     width: 100%;
     border: none;
