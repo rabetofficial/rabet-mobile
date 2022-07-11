@@ -81,7 +81,6 @@ const PrivateKey = () => {
                         placeholder="Enter your password"
                         input={input}
                         meta={meta}
-                        autoFocus
                       />
                     </>
                   )}

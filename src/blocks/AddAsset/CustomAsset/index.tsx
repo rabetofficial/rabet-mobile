@@ -93,7 +93,6 @@ const CustomAsset = ({ onSubmit, onCancel }: CustomAssetTypes) => {
                   size="medium"
                   input={input}
                   meta={meta}
-                  autoFocus
                 />
               </div>
             )}

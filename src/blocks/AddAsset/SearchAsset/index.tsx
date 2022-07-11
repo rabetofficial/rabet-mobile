@@ -120,7 +120,6 @@ const SearchAsset = ({ onSubmit, onCancel }: AppProps) => {
                 input={input}
                 meta={meta}
                 style={{ fontFamily: "Roboto, 'icomoon'" }}
-                autoFocus
                 disabled={options.network !== 'MAINNET'}
               />
             )}

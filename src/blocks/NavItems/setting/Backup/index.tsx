@@ -96,7 +96,6 @@ const Backup = () => {
                       variant="password"
                       input={input}
                       meta={meta}
-                      autoFocus
                     />
                   </div>
                 )}

@@ -90,7 +90,6 @@ const ConfirmLogin = () => {
                   className="!mt-[40px]"
                   input={input}
                   meta={meta}
-                  autoFocus
                 />
               )}
             </Field>

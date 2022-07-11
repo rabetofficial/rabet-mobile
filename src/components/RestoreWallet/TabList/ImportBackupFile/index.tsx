@@ -120,7 +120,6 @@ const ImportBackupFile = ({ onSubmit }: ImportBackupFileType) => {
                       placeholder="Enter your key"
                       input={input}
                       meta={meta}
-                      autoFocus
                     />
                   </div>
                 )}

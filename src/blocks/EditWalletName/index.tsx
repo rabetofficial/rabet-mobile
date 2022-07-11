@@ -38,7 +38,6 @@ const EditName = () => {
                     placeholder="John"
                     input={input}
                     meta={meta}
-                    autoFocus
                   />
                 </>
               )}

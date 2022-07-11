@@ -71,7 +71,6 @@ const EditWalletName = ({
                     className="w-full !m-0"
                     input={input}
                     meta={meta}
-                    autoFocus
                     style={{ height: `${height}px` }}
                   />
                 )}
