@@ -49,53 +49,57 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Global theme={theme} />
       <Provider store={store}>
         <div className="page-transition-wrapper">
-          <Transition
-            items={items}
-            keys={(item: any) => item.id}
-            from={{
-              opacity: 0,
-              transform:
-                page && getPathDepth(router) <= 1
-                  ? 'translateX(-100vw)'
-                  : 'translateX(100vw)',
-            }}
-            enter={{
-              opacity: 1,
-              transform: 'translateX(0)',
-            }}
-            leave={{
-              opacity: 0,
-              transform:
-                page && getPathDepth(router) <= 1
-                  ? 'translateX(20vw)'
-                  : 'translateX(-20vw)',
-              position: 'absolute',
-              inset: '0',
-            }}
-          >
-            {(
-              styles,
-              {
-                pageProps: animatedPageProps,
-                Component: AnimatedComponent,
-              },
-            ) => (
-              <animated.div
-                className="page-transition-container"
-                style={{ ...styles }}
-              >
-                <>
-                  {page && (
-                    <ExtTitle
-                      title={page.title}
-                      borderless={page.borderless}
-                    />
-                  )}
-                  <AnimatedComponent {...animatedPageProps} />
-                </>
-              </animated.div>
-            )}
-          </Transition>
+          {router.pathname === '/home' ? (
+            <Component {...pageProps} />
+          ) : (
+            <Transition
+              items={items}
+              keys={(item: any) => item.id}
+              from={{
+                opacity: 0,
+                transform:
+                  page && getPathDepth(router) <= 1
+                    ? 'translateX(-100vw)'
+                    : 'translateX(100vw)',
+              }}
+              enter={{
+                opacity: 1,
+                transform: 'translateX(0)',
+              }}
+              leave={{
+                opacity: 0,
+                transform:
+                  page && getPathDepth(router) <= 1
+                    ? 'translateX(20vw)'
+                    : 'translateX(-20vw)',
+                position: 'absolute',
+                inset: '0',
+              }}
+            >
+              {(
+                styles,
+                {
+                  pageProps: animatedPageProps,
+                  Component: AnimatedComponent,
+                },
+              ) => (
+                <animated.div
+                  className="page-transition-container"
+                  style={{ ...styles }}
+                >
+                  <>
+                    {page && (
+                      <ExtTitle
+                        title={page.title}
+                        borderless={page.borderless}
+                      />
+                    )}
+                    <AnimatedComponent {...animatedPageProps} />
+                  </>
+                </animated.div>
+              )}
+            </Transition>
+          )}
         </div>
       </Provider>
     </ThemeProvider>
