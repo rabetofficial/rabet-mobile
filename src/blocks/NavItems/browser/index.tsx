@@ -5,34 +5,10 @@ import World from 'svgs/LargeWorld';
 import Layout from 'components/common/Layouts/BaseLayout';
 
 import installRabet from 'actions/interactions/install';
+import BottomSheet from 'components/common/BottomSheet';
+import ConnectRequest from 'blocks/ConnectRequest';
+import ApproveTransaction from 'blocks/ApproveTransaction';
 import * as S from './styles';
-
-const handler = (e) => {
-  if (e.data.type === 'RABET/CONNECT') {
-    e.source.postMessage(
-      {
-        type: 'RABET/CONNECT/RESPONSE',
-        message: {
-          publicKey: 'ABCDEFU',
-        },
-      },
-      e.origin,
-    );
-  }
-
-  if (e.data.type === 'RABET/SIGN') {
-    e.source.postMessage(
-      {
-        type: 'RABET/SIGN/RESPONSE',
-        message: {
-          sign: e.data.message.xdr.toLowerCase(),
-          network: e.data.message.network,
-        },
-      },
-      e.origin,
-    );
-  }
-};
 
 const Browser = () => {
   const [loaded, setLoaded] = useState(false);
@@ -41,6 +17,21 @@ const Browser = () => {
   );
   const [url, setUrl] = useState('');
   const iframe = useRef();
+  const [openConnect, setOpenConnect] = useState(false);
+  const [openApprove, setOpenApprove] = useState(false);
+  const [event, setEvent] = useState(null);
+
+  const handler = (e) => {
+    if (e.data.type === 'RABET/CONNECT') {
+      setEvent(e);
+      setOpenConnect(true);
+    }
+
+    if (e.data.type === 'RABET/SIGN') {
+      setEvent(e);
+      setOpenApprove(true);
+    }
+  };
 
   useEffect(() => {
     // if (!loaded && result === 'valid') {
@@ -88,6 +79,63 @@ const Browser = () => {
     } catch (_) {
       setResult('invalid');
     }
+  };
+
+  const onConnectConfirm = () => {
+    event.source.postMessage(
+      {
+        type: 'RABET/CONNECT/RESPONSE',
+        message: {
+          publicKey: 'ABCDEFU',
+        },
+      },
+      event.origin,
+    );
+
+    setOpenConnect(false);
+  };
+
+  const onConnectClose = () => {
+    event.source.postMessage(
+      {
+        type: 'RABET/CONNECT/RESPONSE',
+        message: {
+          error: 'user-rejected',
+        },
+      },
+      event.origin,
+    );
+
+    setOpenConnect(false);
+  };
+
+  const onApproveConfirm = () => {
+    event.source.postMessage(
+      {
+        type: 'RABET/SIGN/RESPONSE',
+        message: {
+          sign: event.data.message.xdr.toLowerCase(),
+          network: event.data.message.network,
+        },
+      },
+      event.origin,
+    );
+
+    setOpenApprove(false);
+  };
+
+  const onApproveClose = () => {
+    event.source.postMessage(
+      {
+        type: 'RABET/SIGN/RESPONSE',
+        message: {
+          error: 'user-rejected',
+        },
+      },
+      event.origin,
+    );
+
+    setOpenApprove(false);
   };
 
   return (
@@ -145,6 +193,29 @@ const Browser = () => {
           )}
         </div>
       </Layout>
+
+      <BottomSheet
+        isOpen={openConnect}
+        setOpen={setOpenConnect}
+        height={504}
+      >
+        <ConnectRequest
+          onCancel={onConnectClose}
+          onConfirm={onConnectConfirm}
+        />
+      </BottomSheet>
+
+      <BottomSheet
+        isOpen={openApprove}
+        setOpen={setOpenApprove}
+        height={727}
+        isDark
+      >
+        <ApproveTransaction
+          onCancel={onApproveClose}
+          onConfirm={onApproveConfirm}
+        />
+      </BottomSheet>
     </>
   );
 };
