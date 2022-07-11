@@ -10,11 +10,7 @@ import Layout from 'components/common/Layouts/BaseLayout';
 import ExtTitle from 'components/common/ExitTitle';
 import Transaction from './Transaction';
 
-type TransactionsType = {
-  scrollMaxHeight?: number;
-};
-
-const Activities = ({ scrollMaxHeight }: TransactionsType) => {
+const Activities = () => {
   const { publicKey } = useActiveAccount();
   const [transactions, setTransactions] = useState<
     ServerApi.CollectionPage<ServerApi.OperationRecord>[]
@@ -44,25 +40,26 @@ const Activities = ({ scrollMaxHeight }: TransactionsType) => {
     );
   }
 
-  return (
-    <ScrollBar isHidden maxHeight={scrollMaxHeight}>
-      <ExtTitle title="Recent activities" backIcon={false} />
-      <Layout>
-        {transactions.map((tx, index) => (
-          <div key={tx.records[0].transaction_hash}>
-            <Transaction transaction={tx} publicKey={publicKey} />
+  const scrollMaxHeight = document.documentElement.clientHeight - 121;
 
-            {transactions.length !== index + 1 && (
-              <hr className="border-t-primary-lighter" />
-            )}
-          </div>
-        ))}
-      </Layout>
-    </ScrollBar>
+  return (
+    <>
+      <ExtTitle title="Recent activities" backIcon={false} />
+      <ScrollBar isHidden maxHeight={scrollMaxHeight}>
+        <Layout>
+          {transactions.map((tx, index) => (
+            <div key={tx.records[0].transaction_hash}>
+              <Transaction transaction={tx} publicKey={publicKey} />
+
+              {transactions.length !== index + 1 && (
+                <hr className="border-t-primary-lighter" />
+              )}
+            </div>
+          ))}
+        </Layout>
+      </ScrollBar>
+    </>
   );
 };
 
-Activities.defaultProps = {
-  scrollMaxHeight: 600,
-};
 export default Activities;

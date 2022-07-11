@@ -18,6 +18,7 @@ export const List = styled.ul`
     align-items: center;
     justify-content: center;
     position: relative;
+    background-color: white;
 
     svg {
       transition: all 0.3s ease-out;
