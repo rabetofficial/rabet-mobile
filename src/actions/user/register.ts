@@ -1,7 +1,7 @@
-import store from 'popup/store';
+import store from 'store';
 import { set } from 'helpers/storage';
-import { login, isRegistered } from 'popup/reducers/user';
-import { IAccount } from 'popup/reducers/accounts2';
+import { IAccount } from 'reducers/accounts2';
+import { login, isRegistered } from 'reducers/user';
 
 export default async (password: string): Promise<boolean> => {
   const accounts: IAccount[] = [];
@@ -14,6 +14,7 @@ export default async (password: string): Promise<boolean> => {
 
     return true;
   } catch (e) {
+    console.log(e);
     return false;
   }
 };

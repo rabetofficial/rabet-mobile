@@ -2,28 +2,27 @@ import { encrypt, decrypt } from './crypto';
 
 export const get = (key: string, password?: string) =>
   new Promise((resolve, reject) => {
-    chrome.storage.local.get([key], (result: any) => {
-      const data = result[key];
+    const result = localStorage.getItem(key);
+    const data = result[key];
 
-      if (!data) {
-        return resolve(null);
-      }
+    if (!data) {
+      return resolve(null);
+    }
 
-      if (!password) {
-        return resolve(data);
-      }
+    if (!password) {
+      return resolve(data);
+    }
 
-      const decrypredData = decrypt(password, data);
-      let jsonData;
+    const decrypredData = decrypt(password, data);
+    let jsonData;
 
-      try {
-        jsonData = JSON.parse(decrypredData);
-      } catch (e) {
-        return reject();
-      }
+    try {
+      jsonData = JSON.parse(decrypredData);
+    } catch (e) {
+      return reject();
+    }
 
-      return resolve(jsonData);
-    });
+    return resolve(jsonData);
   });
 
 export const set = (key: string, value: any, password?: string) =>
@@ -42,9 +41,7 @@ export const set = (key: string, value: any, password?: string) =>
         dataToBeSet = JSON.stringify(value);
       }
 
-      chrome.storage.local.set({ [`${key}`]: dataToBeSet }, () => {
-        resolve(true);
-      });
+      localStorage.setItem(key, dataToBeSet);
     } catch (e) {
       reject();
     }
