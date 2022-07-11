@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { NavItemContent, NavItemMenu } from 'models';
+import RouteName from 'staticRes/routes';
 
 import * as S from './styels';
 
@@ -20,7 +21,7 @@ const BottomBar = ({ menus, contents }: AppProps) => {
   const onChangeMenu = (id: number) => {
     setActiveMenu(id);
     router.push({
-      pathname: '/',
+      pathname: RouteName.Home,
       query: { menu: id },
     });
   };

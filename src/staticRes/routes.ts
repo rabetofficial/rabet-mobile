@@ -1,5 +1,5 @@
 enum RouteName {
-  Home = '/',
+  Home = '/home',
   Login = '/login',
   Register = '/confirm-login',
   First = '/first',
