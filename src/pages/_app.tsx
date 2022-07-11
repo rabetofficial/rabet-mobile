@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { useRouter, NextRouter } from 'next/router';
 import { animated, Transition } from 'react-spring';
 
-import pages from 'staticRes/esxitPages';
+import pages from 'staticRes/exitPages';
 import { Page } from 'models';
 import ExtTitle from 'components/common/ExitTitle';
 import 'react-slideshow-image/dist/styles.css';

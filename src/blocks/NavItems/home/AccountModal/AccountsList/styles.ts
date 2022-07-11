@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const AccountContainer = styled.div`
-  min-height: 234px;
+  min-height: 239px;
   padding-top: 60px;
 `;
 
