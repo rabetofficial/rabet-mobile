@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import { NavItemContent, NavItemMenu } from 'models';
 import RouteName from 'staticRes/routes';
+import SpringLoad from 'components/common/SpringLoad';
 
 import * as S from './styels';
 
@@ -39,7 +40,11 @@ const BottomBar = ({ menus, contents }: AppProps) => {
     <>
       {contents.map((content) => {
         if (content.id === activeMenu) {
-          return <div key={content.id}>{content.component}</div>;
+          return (
+            <SpringLoad key={content.id}>
+              {content.component}
+            </SpringLoad>
+          );
         }
         return null;
       })}
