@@ -42,7 +42,7 @@ const setInDb = (key: string, value: any) => {
   };
 };
 
-export const get = (key: string, password?: string) =>
+export const get = <T>(key: string, password?: string): Promise<T> =>
   new Promise((resolve, reject) => {
     const request = indexedDB.open('rabet');
 
@@ -68,7 +68,7 @@ export const get = (key: string, password?: string) =>
                 cursor.value.value,
               );
 
-              let jsonData;
+              let jsonData: T;
 
               try {
                 jsonData = JSON.parse(decrypredData);

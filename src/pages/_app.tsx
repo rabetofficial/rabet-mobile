@@ -1,14 +1,17 @@
-import { useEffect, useState } from 'react';
-import type { AppProps } from 'next/app';
-import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
+import type { AppProps } from 'next/app';
+import { useEffect, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { useRouter, NextRouter } from 'next/router';
 import { animated, Transition } from 'react-spring';
+
+import { Page } from 'models';
+import theme from 'styles/theme';
+import Global from 'styles/global';
+import pages from 'staticRes/exitPages';
+import ExtTitle from 'components/common/ExitTitle';
 import RoutesManager from 'components/RoutesManager';
 
-import pages from 'staticRes/exitPages';
-import { Page } from 'models';
-import ExtTitle from 'components/common/ExitTitle';
 import 'react-slideshow-image/dist/styles.css';
 import 'tippy.js/dist/svg-arrow.css';
 import 'tippy.js/animations/scale.css';
@@ -17,8 +20,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'styles/global.css';
 import 'styles/font.css';
-import theme from 'styles/theme';
-import Global from 'styles/global';
 
 import store from '../store';
 

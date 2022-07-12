@@ -1,33 +1,19 @@
-import store from 'popup/store';
+import store from 'store';
 import { get } from 'helpers/storage';
-import { load, IAccount } from 'popup/reducers/accounts2';
-import { login, addConnectedWebsites } from 'popup/reducers/user';
-import readConnectedWebsites from 'helpers/readConnectedWebsites';
+import { load, IAccount } from 'reducers/accounts2';
+import { login } from 'reducers/user';
 
-export default async (password: string): Promise<boolean> => {
+export default async (
+  password: string,
+): Promise<[boolean, number]> => {
   try {
-    const { host } = store.getState();
     const accounts: IAccount[] = await get('data', password);
-    const rawConnectedWebsites = await get('connectedWebsites');
-
-    const connectedWebsites = readConnectedWebsites(
-      rawConnectedWebsites,
-    );
-
-    const newAccounts = accounts.map((account) => ({
-      ...account,
-      isConnected: connectedWebsites.some(
-        (y) => y === `${host}/${account.publicKey}`,
-      ),
-    }));
 
     store.dispatch(login(password));
-    store.dispatch(load(newAccounts));
-    store.dispatch(addConnectedWebsites(connectedWebsites));
+    store.dispatch(load(accounts));
 
-    return true;
+    return [true, accounts.length];
   } catch (e) {
-    console.log(e);
-    return false;
+    return [false, 0];
   }
 };
