@@ -2,7 +2,7 @@ enum RouteName {
   Home = '/home',
   Login = '/login',
   Register = '/confirm-login',
-  First = '/first',
+  First = '/first-page',
   Introduction = '/intro',
   IntroSlides = '/intro/slides',
   OfflineMode = '/offline-mode',

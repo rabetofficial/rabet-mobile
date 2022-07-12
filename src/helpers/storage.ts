@@ -14,33 +14,36 @@ const onUpgradeNeeded = (e) => {
   });
 };
 
-const setInDb = (key: string, value: any) => {
-  const request = indexedDB.open('rabet', 1);
+const setInDb = (key: string, value: any): Promise<void> =>
+  new Promise((resolve, reject) => {
+    const request = indexedDB.open('rabet', 1);
 
-  request.onupgradeneeded = onUpgradeNeeded;
+    request.onupgradeneeded = onUpgradeNeeded;
 
-  request.onerror = (e) => {
-    throw e;
-  };
+    request.onerror = () => {
+      reject();
+    };
 
-  request.onsuccess = (e) => {
-    const db = e.target.result;
+    request.onsuccess = (e) => {
+      const db = e.target.result;
 
-    const tx = db.transaction(key, 'readwrite');
+      const tx = db.transaction(key, 'readwrite');
 
-    if (Array.isArray(value)) {
-      for (let i = 0; i < value.length; i += 1) {
-        tx.objectStore(key).add({
-          id: Math.random(),
-          value: value[i],
-        });
+      if (Array.isArray(value)) {
+        for (let i = 0; i < value.length; i += 1) {
+          tx.objectStore(key).add({
+            id: Math.random(),
+            value: value[i],
+          });
+        }
+      } else {
+        tx.objectStore(key).clear();
+        tx.objectStore(key).add({ id: 'only', value });
       }
-    } else {
-      tx.objectStore(key).clear();
-      tx.objectStore(key).add({ id: 'only', value });
-    }
-  };
-};
+
+      resolve();
+    };
+  });
 
 export const get = <T>(key: string, password?: string): Promise<T> =>
   new Promise((resolve, reject) => {
@@ -89,8 +92,12 @@ export const get = <T>(key: string, password?: string): Promise<T> =>
     };
   });
 
-export const set = (key: string, value: any, password?: string) =>
-  new Promise((resolve, reject) => {
+export const set = (
+  key: string,
+  value: any,
+  password?: string,
+): Promise<void> =>
+  new Promise(async (resolve, reject) => {
     try {
       let dataToBeSet = value;
 
@@ -103,9 +110,10 @@ export const set = (key: string, value: any, password?: string) =>
         dataToBeSet = encryptedData;
       }
 
-      setInDb(key, dataToBeSet);
+      await setInDb(key, dataToBeSet);
+
+      resolve();
     } catch (e) {
-      console.log(e);
       reject(e);
     }
   });

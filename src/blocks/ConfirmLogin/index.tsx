@@ -19,7 +19,7 @@ type FormValues = {
 const ConfirmLogin = () => {
   const router = useRouter();
 
-  const onSubmit = (values: FormValues) => {
+  const onSubmit = async (values: FormValues) => {
     const errors: Partial<FormValues> = {};
 
     if (values.password !== values.confirm) {
@@ -30,9 +30,9 @@ const ConfirmLogin = () => {
       return errors;
     }
 
-    registerUserAction(values.password).then(() => {
-      router.push(RouteName.AccountManager);
-    });
+    await registerUserAction(values.password);
+
+    router.push(RouteName.First);
 
     return {};
   };

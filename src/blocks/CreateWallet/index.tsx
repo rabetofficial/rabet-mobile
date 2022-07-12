@@ -4,23 +4,22 @@ import { useRouter } from 'next/router';
 import CreateWalletComponrnt, {
   FormValues,
 } from 'components/CreateWallet';
-import useTypedSelector from 'hooks/useTypedSelector';
+import RouteName from 'staticRes/routes';
 import createAccountAction from 'actions/accounts/create';
 
 const CreateWallet = () => {
   const router = useRouter();
-  const accounts = useTypedSelector((store) => store.accounts);
 
   const onSubmit = async (values: FormValues) => {
     const isDone = await createAccountAction(values.name);
 
     if (!isDone) {
       return {
-        name: 'Error.',
+        name: 'Error! Please try again later.',
       };
     }
 
-    router.push('/Backup-file');
+    router.push(RouteName.Home);
 
     return {};
   };

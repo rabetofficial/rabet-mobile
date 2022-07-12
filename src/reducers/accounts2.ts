@@ -8,7 +8,6 @@ export interface IAccount {
   publicKey: string;
   privateKey: string;
   inactive?: boolean;
-  isConnected: boolean;
   subentry_count: number;
   assets?: Horizon.BalanceLine[];
   flags?: Horizon.Flags;

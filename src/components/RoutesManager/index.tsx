@@ -3,6 +3,9 @@ import useTypedSelector from 'hooks/useTypedSelector';
 import Loading from 'components/Loading';
 import { useRouter } from 'next/router';
 import store from 'actions/accounts/store';
+import { get } from 'helpers/storage';
+import RouteName from 'staticRes/routes';
+import userRegistered from 'actions/user/userRegistered';
 
 const RoutesManager = ({ pageProps, children }) => {
   const router = useRouter();
@@ -10,6 +13,18 @@ const RoutesManager = ({ pageProps, children }) => {
     store.user,
     store.accounts,
   ]);
+
+  useEffect(() => {
+    get('data').then((d) => {
+      if (d) {
+        userRegistered();
+
+        if (!user.logged) {
+          router.push(RouteName.Login);
+        }
+      }
+    });
+  }, []);
 
   useEffect(() => {
     // console.log(pageProps);

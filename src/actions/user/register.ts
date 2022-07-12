@@ -9,6 +9,8 @@ export default async (password: string): Promise<boolean> => {
   try {
     await set('data', accounts, password);
 
+    console.log('tRYING TO SAVE');
+
     store.dispatch(login(password));
     store.dispatch(isRegistered(true));
 

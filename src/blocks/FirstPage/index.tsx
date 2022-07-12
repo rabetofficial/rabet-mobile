@@ -20,7 +20,7 @@ const FirstPage = () => {
           size="medium"
           content="Create Wallet"
           onClick={() => {
-            router.push('Create-wallet');
+            router.push('/create-wallet');
           }}
         />
       </ButtonContainer>
@@ -32,7 +32,7 @@ const FirstPage = () => {
           size="medium"
           content="Import Wallet"
           onClick={() => {
-            router.push('Restore-wallet');
+            router.push('/restore-wallet');
           }}
         />
       </ButtonContainer>
