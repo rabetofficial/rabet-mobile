@@ -19,7 +19,6 @@ export default async (privateKey: string) => {
   const account: IAccount = {
     privateKey,
     active: false,
-    isConnected: false,
     subentry_count: 0,
     name: 'My account',
     publicKey: source.publicKey(),

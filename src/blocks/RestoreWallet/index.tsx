@@ -2,8 +2,9 @@ import React from 'react';
 import { StrKey } from 'stellar-sdk';
 import { useRouter } from 'next/router';
 
-import useTypedSelector from 'hooks/useTypedSelector';
+import RouteName from 'staticRes/routes';
 import { FormValues } from 'components/PrivateKey';
+import useTypedSelector from 'hooks/useTypedSelector';
 import restoreAccountAction from 'actions/accounts/restore';
 import RestoreWalletComponent from 'components/RestoreWallet';
 
@@ -36,7 +37,7 @@ const RestoreWallet = () => {
       return { key: 'Invalid seed.' };
     }
 
-    router.push('Home');
+    router.push(RouteName.Home);
 
     return {};
   };
