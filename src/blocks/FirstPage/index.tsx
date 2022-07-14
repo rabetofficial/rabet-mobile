@@ -5,6 +5,7 @@ import Logo from 'components/Logo';
 import Button from 'components/common/Button';
 import ButtonContainer from 'components/common/ButtonContainer';
 import Layout from 'components/common/Layouts/BaseLayout';
+import Link from 'next/link';
 
 const FirstPage = () => {
   const router = useRouter();
@@ -12,6 +13,8 @@ const FirstPage = () => {
   return (
     <Layout className="flex justify-center items-center">
       <Logo className="mt-[50px]" />
+
+      <Link href="/login">Login</Link>
 
       <ButtonContainer fixedBottom mb={104}>
         <Button

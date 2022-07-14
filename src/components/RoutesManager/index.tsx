@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import useTypedSelector from 'hooks/useTypedSelector';
 import Loading from 'components/Loading';
 import { useRouter } from 'next/router';
@@ -9,12 +9,14 @@ import userRegistered from 'actions/user/userRegistered';
 
 const RoutesManager = ({ pageProps, children }) => {
   const router = useRouter();
+  const [status, setStatus] = useState('');
   const [user, accounts] = useTypedSelector((store) => [
     store.user,
     store.accounts,
   ]);
 
   useEffect(() => {
+    console.log('i happen');
     get('data').then((d) => {
       if (d) {
         userRegistered();
@@ -27,6 +29,13 @@ const RoutesManager = ({ pageProps, children }) => {
   }, []);
 
   useEffect(() => {
+    console.log('good good');
+    console.log(pageProps, user);
+    if (pageProps.role === 'before-login' && user.logged) {
+      router.push(RouteName.Home);
+    } else {
+      setStatus('self');
+    }
     // console.log(pageProps);
     // if (!user.registered) {
     //   router.push('/intro');
@@ -41,10 +50,13 @@ const RoutesManager = ({ pageProps, children }) => {
     //     router.push(router.pathname);
     //   }
     // }
-  }, []);
+  });
 
-  // return <Loading title="Redirecting" size={32} />;
-  return children;
+  if (status === 'self') {
+    return children;
+  }
+  return <Loading title="Redirecting" size={32} />;
+  // return children;
 };
 
 export default RoutesManager;
