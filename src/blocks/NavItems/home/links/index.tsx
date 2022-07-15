@@ -7,7 +7,6 @@ import { Swap, Send, Receive } from 'svgs/TransactionActions';
 
 const Links = () => {
   const router = useRouter();
-  const navigate = (path: string) => router.push(path);
 
   return (
     <div className="flex justify-center items-center mt-[22px]">
@@ -22,7 +21,7 @@ const Links = () => {
             </span>
           }
           title="Send"
-          onClick={() => navigate(RouteName.Send)}
+          onClick={() => router.push(RouteName.Send)}
         />
       </div>
 
@@ -37,7 +36,7 @@ const Links = () => {
           }
           iconBtn
           title="Swap"
-          onClick={() => navigate(RouteName.Swap)}
+          onClick={() => router.push(RouteName.Swap)}
         />
       </div>
 
@@ -52,7 +51,7 @@ const Links = () => {
           }
           iconBtn
           title="Receive"
-          onClick={() => navigate(RouteName.Receive)}
+          onClick={() => router.push(RouteName.Receive)}
         />
       </div>
     </div>
