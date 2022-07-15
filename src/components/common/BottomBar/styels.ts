@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-  padding: 0 16px;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   border-top: 1px solid ${({ theme }) => theme.colors.primary.lighter};
   position: fixed;
   right: 0;
   left: 0;
-  bottom: 18px;
+  bottom: 29px;
 
   li {
     cursor: pointer;
@@ -38,7 +38,8 @@ export const Border = styled.span`
   z-index: 1;
   top: -2px;
   left: 0;
-  width: 100%;
+  margin-left: 22px;
+  width: calc(100% - 44px);
   height: 2px;
   background: ${({ theme }) => theme.colors.primary.darkest};
   border-radius: 10px;

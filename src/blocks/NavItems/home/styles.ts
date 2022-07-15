@@ -6,7 +6,7 @@ export const Devider = styled.div`
 `;
 
 export const LinkContainer = styled.div`
-  margin: 24px 0;
+  margin: 20px 0 26px;
 `;
 
 export const Box = styled.div`

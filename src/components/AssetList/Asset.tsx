@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Horizon } from 'stellar-sdk';
 
 import BlackCheck from 'svgs/BlackCheck';
-import AngleForward from 'svgs/AngleForward';
 import formatBalance from 'utils/formatBalance';
 import useAssetPrice from 'hooks/useAssetPrice';
 import handleAssetAlt from 'utils/handleAssetAlt';
@@ -19,8 +18,6 @@ type AssetType = {
 };
 
 const Asset = ({ asset }: AssetType) => {
-  const [isHover, setHover] = useState(false);
-  const toggleHover = () => setHover(!isHover);
   const [assetImages, currencies, options] = useTypedSelector(
     (store) => [
       store.assetImages,
@@ -31,6 +28,7 @@ const Asset = ({ asset }: AssetType) => {
   );
   const price = useAssetPrice(asset);
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   let asset_code: string;
   let isVerified = false;
 
@@ -54,19 +52,13 @@ const Asset = ({ asset }: AssetType) => {
   }
 
   return (
-    <S.Container
-      className="flex items-center"
-      // onMouseEnter={toggleHover}
-      // onMouseLeave={toggleHover}
-    >
-      <S.Circle>
-        <S.Image
-          isDark={asset.asset_type === 'native'}
-          src={handleAssetImage(asset, assetImages)}
-          alt={handleAssetAlt(asset)}
-          onError={(e) => ImageOnErrorHandler(e, questionIcon.src)}
-        />
-      </S.Circle>
+    <S.Container className="flex items-center">
+      <S.Image
+        isDark={asset.asset_type === 'native'}
+        src={handleAssetImage(asset, assetImages)}
+        alt={handleAssetAlt(asset)}
+        onError={(e) => ImageOnErrorHandler(e, questionIcon.src)}
+      />
       <div className="flex justify-between items-center w-full">
         <div className="flex flex-col">
           <div className="inline-flex text-base">
@@ -87,9 +79,6 @@ const Asset = ({ asset }: AssetType) => {
             {formatBalance(price)}
           </div>
         </div>
-        {/* <div>
-          <AngleForward /> 
-        </div> */}
       </div>
     </S.Container>
   );

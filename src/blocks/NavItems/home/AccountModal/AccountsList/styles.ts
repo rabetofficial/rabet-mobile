@@ -2,8 +2,8 @@
 import styled from 'styled-components';
 
 export const AccountContainer = styled.div`
-  min-height: 239px;
-  padding-top: 60px;
+  max-height: 239px;
+  padding-top: 10px;
 `;
 
 export const List = styled.ul`
@@ -15,15 +15,7 @@ export const List = styled.ul`
   overflow-y: scroll;
 
   > li {
-    cursor: pointer;
     padding-left: 16px;
-
-    &:hover {
-      background-color: ${({ theme }) =>
-        theme.colors.other.lightGray};
-      cursor: pointer;
-      transition: 0.2s ease-in-out;
-    }
   }
 `;
 
@@ -45,7 +37,7 @@ export const NotFound = styled.span`
 export const Item = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px 16px 10px 0;
+  padding: 15px 0px 16px;
 `;
 
 export const Avatar = styled.div`
@@ -67,15 +59,23 @@ export const Container = styled.div`
 `;
 
 export const Name = styled.div`
-  font-size: 14px;
   color: black;
+  font-size: 16px;
   font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
 `;
 
 export const Amount = styled.div`
-  font-size: 12px;
-  margin-top: 6px;
-  color: #6c6c6c;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  color: ${({ theme }) => theme.colors.primary.dark};
 `;
 export const ImageContainer = styled.div`
   margin-left: auto;

@@ -23,10 +23,7 @@ const AccountModal = () => {
         {name.slice(0, 1).toUpperCase()}
       </S.ToggleButton>
       <BottomSheet isOpen={open} setOpen={setOpen} height={450}>
-        <div className="px-4">
-          <AccountList accounts={accounts} />
-        </div>
-
+        <AccountList accounts={accounts} />
         <Menus onClose={onClose} />
       </BottomSheet>
     </>

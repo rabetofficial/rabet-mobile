@@ -1,32 +1,25 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 18px 0 16px;
+  padding: 15px 0 13px;
 `;
 
-export const Circle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  border-radius: 50%;
-  background-color: #f8f8f8;
-  margin-right: 3px;
-`;
+export const Circle = styled.div``;
 interface ImageProps {
   isDark: boolean;
   theme: any;
 }
 export const Image = styled.img<ImageProps>`
-  width: 32px;
-  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  margin-right: 10px;
 `;
 
 export const Hr = styled.div`
   height: 1px;
-  margin: 0 16px;
   background-color: ${({ theme }) => theme.colors.primary.lighter};
 `;

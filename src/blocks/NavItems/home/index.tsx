@@ -42,7 +42,7 @@ const Home = ({ setLoading }: HomeProps) => {
   if (isLoading) {
     return <LoadingOne />;
   }
-  const scrollMaxHeight = document.documentElement.clientHeight - 360;
+  const scrollMaxHeight = document.documentElement.clientHeight - 375;
 
   return (
     <>

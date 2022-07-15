@@ -9,7 +9,7 @@ const Links = () => {
   const router = useRouter();
 
   return (
-    <div className="flex justify-center items-center mt-[22px]">
+    <div className="flex justify-center items-center mt-[20px]">
       <div>
         <Button
           iconBtn

@@ -47,7 +47,7 @@ const Activities = () => {
     );
   }
 
-  const scrollMaxHeight = document.documentElement.clientHeight - 121;
+  const scrollMaxHeight = document.documentElement.clientHeight - 131;
 
   return (
     <>

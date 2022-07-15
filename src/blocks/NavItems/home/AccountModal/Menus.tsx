@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import lockAction from 'actions/accounts/lock';
@@ -39,7 +38,11 @@ const Menus = ({ onClose }: AppProps) => {
     },
     {
       id: 2,
-      icon: <File />,
+      icon: (
+        <div className="mr-1">
+          <File />
+        </div>
+      ),
       link: RouteName.RestoreWallet,
       label: 'Import Wallet',
       onClick: () => {},
@@ -73,7 +76,7 @@ const Menus = ({ onClose }: AppProps) => {
           <S.GroupLink
             onClick={() => handleMenuOnClick(item.onClick)}
           >
-            {item.icon}
+            <S.ItemIcon> {item.icon}</S.ItemIcon>
             {item.label}
           </S.GroupLink>
         </Link>
