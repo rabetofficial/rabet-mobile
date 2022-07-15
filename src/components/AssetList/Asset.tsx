@@ -64,7 +64,7 @@ const Asset = ({ asset }: AssetType) => {
           isDark={asset.asset_type === 'native'}
           src={handleAssetImage(asset, assetImages)}
           alt={handleAssetAlt(asset)}
-          onError={(e) => ImageOnErrorHandler(e, questionIcon)}
+          onError={(e) => ImageOnErrorHandler(e, questionIcon.src)}
         />
       </S.Circle>
       <div className="flex justify-between items-center w-full">

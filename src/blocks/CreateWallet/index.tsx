@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import CreateWalletComponrnt, {
+import CreateWalletBlock, {
   FormValues,
 } from 'components/CreateWallet';
 import RouteName from 'staticRes/routes';
@@ -24,7 +24,7 @@ const CreateWallet = () => {
     return {};
   };
 
-  return <CreateWalletComponrnt onSubmit={onSubmit} />;
+  return <CreateWalletBlock onSubmit={onSubmit} />;
 };
 
 export default CreateWallet;

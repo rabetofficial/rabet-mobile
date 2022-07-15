@@ -18,6 +18,7 @@ const AssetList = ({ assets, children }: AppProps) => {
   const onClick = () => {
     router.push(RouteName.AssetInfo);
   };
+
   return (
     <>
       {assets.map((asset, index) => (
@@ -26,6 +27,7 @@ const AssetList = ({ assets, children }: AppProps) => {
           onClick={onClick}
         >
           <Asset asset={asset} />
+
           {assets.length !== index + 1 && <Hr />}
         </div>
       ))}

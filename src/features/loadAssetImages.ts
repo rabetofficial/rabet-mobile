@@ -1,7 +1,7 @@
-import store from 'popup/store';
-import { load } from 'popup/reducers/assetImages';
-import getAssetsImages from 'popup/api/getAssetImages';
-import getActiveAccount from 'popup/utils/activeAccount';
+import store from 'store';
+import { load } from 'reducers/assetImages';
+import getAssetsImages from 'api/getAssetImages';
+import getActiveAccount from 'utils/activeAccount';
 
 const loadAssetImages = async () => {
   const { activeAccount: account } = getActiveAccount();

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
+import lockAction from 'actions/accounts/lock';
 import RouteName from 'staticRes/routes';
 import Plus from 'svgs/Plus';
 import File from 'svgs/File';
@@ -23,6 +25,10 @@ type Menu = {
 const Menus = ({ onClose }: AppProps) => {
   const [menuItems, setMenuItems] = useState<Menu[]>([]);
 
+  const handleLock = () => {
+    lockAction();
+  };
+
   const menus: Menu[] = [
     {
       id: 1,
@@ -42,10 +48,10 @@ const Menus = ({ onClose }: AppProps) => {
 
   const lockMenu: Menu = {
     id: 3,
-    link: '/',
+    link: RouteName.Login,
     icon: <Lock />,
     label: 'Lock',
-    onClick: () => {},
+    onClick: handleLock,
   };
 
   useEffect(() => {

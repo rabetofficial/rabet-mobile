@@ -1,7 +1,7 @@
-import store from 'popup/store';
-import getBids from 'popup/api/getBids';
-import getActiveAccount from 'popup/utils/activeAccount';
-import { load } from 'popup/reducers/bids';
+import store from 'store';
+import getBids from 'api/getBids';
+import getActiveAccount from 'utils/activeAccount';
+import { load } from 'reducers/bids';
 
 const loadBids = async () => {
   const { activeAccount: account } = getActiveAccount();
