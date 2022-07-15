@@ -62,7 +62,6 @@ const Home = () => {
 
       <Layout>
         <ScrollBar isVertical maxHeight={290}>
-          <Link href="/assets">asset</Link>
           <AssetList assets={assets}>
             <AssetButton
               style={{

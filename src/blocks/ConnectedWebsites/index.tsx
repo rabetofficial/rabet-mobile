@@ -23,7 +23,7 @@ const ConnectedWebsites = () => {
       <div>
         {websitesMapped.map((web) => (
           <S.Website key={web}>
-            <S.Link href="#" rel="noreferrer">
+            <S.Link href="/#" rel="noreferrer">
               {web}
             </S.Link>
 

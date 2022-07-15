@@ -5,10 +5,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px 144px 75px;
-  @media (max-width: 360px) {
-    padding: 32px;
-  }
+  flex-direction: column;
 `;
 
 export const Loading = styled(Image)`
@@ -18,7 +15,11 @@ export const Loading = styled(Image)`
 `;
 
 export const Title = styled.div`
-  font-size: 16px;
-  text-align: center;
+  font-size: 18px;
   font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  text-align: center;
 `;

@@ -34,7 +34,7 @@ const Menus = ({ onClose }: AppProps) => {
     {
       id: 2,
       icon: <File />,
-      link: RouteName.LoggedImportWallet,
+      link: RouteName.RestoreWallet,
       label: 'Import Wallet',
       onClick: () => {},
     },

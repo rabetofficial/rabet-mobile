@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import styled from 'styled-components';
 
 export const AccountContainer = styled.div`
