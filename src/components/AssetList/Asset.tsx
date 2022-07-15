@@ -88,7 +88,7 @@ const Asset = ({ asset }: AssetType) => {
           </div>
         </div>
         {/* <div>
-          <AngleForward />
+          <AngleForward /> 
         </div> */}
       </div>
     </S.Container>

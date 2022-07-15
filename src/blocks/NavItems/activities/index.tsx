@@ -25,7 +25,7 @@ const Activities = () => {
     });
   }, [publicKey]);
 
-  if (!isLoading) {
+  if (isLoading) {
     return (
       <>
         <ExtTitle title="Recent activities" backIcon={false} />
@@ -36,7 +36,7 @@ const Activities = () => {
     );
   }
 
-  if (isLoading) {
+  if (!transactions.length) {
     return (
       <>
         <ExtTitle title="Recent activities" backIcon={false} />
