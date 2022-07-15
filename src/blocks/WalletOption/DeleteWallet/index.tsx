@@ -17,14 +17,17 @@ const SvgContainer = styled.div`
 
 type AppProps = {
   onClose: () => void;
+  onConfirm: () => void;
 };
 
-const DeleteWallet = ({ onClose }: AppProps) => (
+const DeleteWallet = ({ onClose, onConfirm }: AppProps) => (
   <Layout className="text-center">
     <SvgContainer>
       <ExclamationCircle />
     </SvgContainer>
+
     <h6 className="text-lg text-error font-medium">Delete Wallet</h6>
+
     <p className="text-base text-primary-darker mt-2">
       Please note that by clicking on the Delete button all the
       information for this account will be deleted from the extension.
@@ -36,6 +39,7 @@ const DeleteWallet = ({ onClose }: AppProps) => (
       variant="danger-fill"
       content="Delete"
       className="w-full h-[48px] mt-[35px]"
+      onClick={onConfirm}
     />
 
     <Button

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import useActiveAccount from 'hooks/useActiveAccount';
 import useTypedSelector from 'hooks/useTypedSelector';
@@ -9,35 +9,37 @@ import loadCurrencies from 'features/loadCurrencies';
 import loadAssetImages from 'features/loadAssetImages';
 
 import config from 'config';
+import { AppDispatch } from 'store';
 
-const useLoadHome = () => {
+const useLoadHome = (dispatch: AppDispatch) => {
   const activeAccount = useActiveAccount();
   const [isLoading, setIsLoading] = useState(true);
   const { network } = useTypedSelector((store) => store.options);
+  const interval = useRef();
 
   useEffect(() => {
     setIsLoading(true);
 
     loadCurrencies();
     loadAccount(activeAccount).then(() => {
-      loadBids();
+      loadBids(dispatch);
       loadAssetImages();
 
       setIsLoading(false);
     });
 
-    const intervalId = setInterval(() => {
+    interval.current = setInterval(() => {
       loadCurrencies();
 
       loadAccount(activeAccount).then(() => {
-        loadBids();
+        loadBids(dispatch);
         loadAssetImages();
 
         setIsLoading(false);
       });
     }, config.INTERVAL_TIME_SECONDS * 1000);
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(interval.current);
   }, [activeAccount.publicKey, network]);
 
   return isLoading;
