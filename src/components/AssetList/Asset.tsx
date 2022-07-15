@@ -56,8 +56,8 @@ const Asset = ({ asset }: AssetType) => {
   return (
     <S.Container
       className="flex items-center"
-      onMouseEnter={toggleHover}
-      onMouseLeave={toggleHover}
+      // onMouseEnter={toggleHover}
+      // onMouseLeave={toggleHover}
     >
       <S.Circle>
         <S.Image
@@ -87,9 +87,9 @@ const Asset = ({ asset }: AssetType) => {
             {formatBalance(price)}
           </div>
         </div>
-        <div>
+        {/* <div>
           <AngleForward />
-        </div>
+        </div> */}
       </div>
     </S.Container>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { NextPage } from 'next';
 
 import Home from 'blocks/NavItems/home';
@@ -13,6 +13,8 @@ import BrowserIcon from 'svgs/BottomBar/TravelCompass';
 import LastTransactionIcon from 'svgs/BottomBar/ThunderLightning';
 
 const HomePage: NextPage = () => {
+  const [loading, setLoading] = useState(false);
+
   const menus: NavItemMenu[] = [
     { id: 1, name: 'home', icon: <HomeIcon /> },
     { id: 2, name: 'transaction', icon: <LastTransactionIcon /> },
@@ -21,12 +23,18 @@ const HomePage: NextPage = () => {
   ];
 
   const contents: NavItemContent[] = [
-    { id: 1, component: <Home /> },
+    { id: 1, component: <Home setLoading={setLoading} /> },
     { id: 2, component: <Activities /> },
     { id: 3, component: <Browser /> },
     { id: 4, component: <Setting /> },
   ];
-  return <BottomBar menus={menus} contents={contents} />;
+  return (
+    <BottomBar
+      menus={menus}
+      contents={contents}
+      style={{ display: loading ? 'none' : '' }}
+    />
+  );
 };
 
 export default HomePage;

@@ -30,7 +30,7 @@ const AssetButton = ({ style }: AssetsButtonType) => {
       style={{
         ...style,
         border: '1.2px solid #f3f3f3',
-        width: 'calc(100% - 32px)',
+        // width: 'calc(100% - 32px)',
         right: '16px',
         left: '16px',
       }}

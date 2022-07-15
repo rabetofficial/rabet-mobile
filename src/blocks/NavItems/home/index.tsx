@@ -12,8 +12,8 @@ import ExpandHorizontal from 'svgs/ExpandHorizontal';
 import useActiveAccount from 'hooks/useActiveAccount';
 import Layout from 'components/common/Layouts/BaseLayout';
 import useTypedSelector from 'hooks/useTypedSelector';
-import Loading from 'components/Loading';
 import useTotalBalance from 'hooks/useTotalBalance';
+import LoadingOne from 'pages/loading-one';
 
 import formatBalance from 'utils/formatBalance';
 import handleAssetSymbol from 'utils/handleAssetSymbol';
@@ -23,7 +23,10 @@ import AccountModal from './AccountModal';
 
 import * as S from './styles';
 
-const Home = () => {
+type HomeProps = {
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+const Home = ({ setLoading }: HomeProps) => {
   const account = useActiveAccount();
   const isLoading = useLoadHome();
   const totalBalance = useTotalBalance();
@@ -34,10 +37,12 @@ const Home = () => {
   ]);
 
   const assets = account.assets || [];
+  setLoading(isLoading);
 
   if (isLoading) {
-    return <Loading size={80} />;
+    return <LoadingOne />;
   }
+  const scrollMaxHeight = document.documentElement.clientHeight - 360;
 
   return (
     <>
@@ -79,7 +84,7 @@ const Home = () => {
       <S.Devider />
 
       <Layout>
-        <ScrollBar isVertical maxHeight={290}>
+        <ScrollBar isVertical maxHeight={scrollMaxHeight}>
           <AssetList assets={assets}>
             <AssetButton
               style={{

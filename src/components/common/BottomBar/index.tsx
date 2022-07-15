@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { CSSProperties, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { NavItemContent, NavItemMenu } from 'models';
@@ -10,9 +10,10 @@ import * as S from './styels';
 type AppProps = {
   menus: NavItemMenu[];
   contents: NavItemContent[];
+  style?: CSSProperties;
 };
 
-const BottomBar = ({ menus, contents }: AppProps) => {
+const BottomBar = ({ menus, contents, style }: AppProps) => {
   const router = useRouter();
   const [activeMenu, setActiveMenu] = useState(1);
 
@@ -37,7 +38,7 @@ const BottomBar = ({ menus, contents }: AppProps) => {
   }, [router]);
 
   return (
-    <>
+    <div>
       {contents.map((content) => {
         if (content.id === activeMenu) {
           return (
@@ -50,7 +51,7 @@ const BottomBar = ({ menus, contents }: AppProps) => {
       })}
 
       <div className="h-[60px]">
-        <S.List>
+        <S.List style={style}>
           {menus.map((menu) => (
             <li
               key={menu.id}
@@ -66,8 +67,10 @@ const BottomBar = ({ menus, contents }: AppProps) => {
           ))}
         </S.List>
       </div>
-    </>
+    </div>
   );
 };
-
+BottomBar.defaultProps = {
+  style: {},
+};
 export default BottomBar;

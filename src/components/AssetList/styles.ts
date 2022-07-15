@@ -1,12 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 18px 16px;
-  cursor: pointer;
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.primary.lighter};
-    transition: 1s background-color;
-  }
+  padding: 18px 0 16px;
 `;
 
 export const Circle = styled.div`
