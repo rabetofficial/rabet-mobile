@@ -4,12 +4,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import World from 'svgs/LargeWorld';
 import Layout from 'components/common/Layouts/BaseLayout';
 
-import installRabet from 'actions/interactions/install';
+import NoData from 'components/common/NoData';
 import BottomSheet from 'components/common/BottomSheet';
+import installRabet from 'actions/interactions/install';
 import ConnectRequest from 'blocks/ConnectRequest';
 import ApproveTransaction from 'blocks/ApproveTransaction';
 import useActiveAccount from 'hooks/useActiveAccount';
 import addConnectedWebsite from 'actions/accounts/addConnectedWebsite';
+
 import * as S from './styles';
 
 const Browser = () => {
@@ -154,6 +156,8 @@ const Browser = () => {
         <S.InputBox>
           <S.Label>
             <S.InputSearch
+              autoComplete="off"
+              autoFocus="off"
               name="search"
               type="text"
               enterKeyHint="go"
@@ -164,7 +168,7 @@ const Browser = () => {
       </form>
 
       <Layout>
-        <S.NoData>
+        <S.Text>
           {result === 'empty' ? (
             <>
               <World />
@@ -176,28 +180,33 @@ const Browser = () => {
           ) : (
             ''
           )}
-        </S.NoData>
+        </S.Text>
 
         <div>
-          {result === 'invalid' ? <p>Invalid URL</p> : ''}
+          {result === 'invalid' ? (
+            <S.Text>
+              <NoData msg="Invalid URL" />
+            </S.Text>
+          ) : (
+            ''
+          )}
 
           {result === 'valid' ? (
-            <>
-              <iframe
+            <S.FrameParent>
+              <S.IframeContainer
+                height={document.documentElement.clientHeight - 131}
                 ref={iframe}
                 title={url}
                 src={url}
                 onLoad={handleLoad}
                 style={{
                   display: loaded ? 'block' : 'none',
-                  width: '100%',
-                  height: '80vh',
-                  marginTop: '-100px',
                 }}
-              />
-
-              {!loaded ? <p>Loading</p> : ''}
-            </>
+                frameborder="0"
+              >
+                {!loaded ? <S.Loading>Loading</S.Loading> : ''}
+              </S.IframeContainer>
+            </S.FrameParent>
           ) : (
             ''
           )}

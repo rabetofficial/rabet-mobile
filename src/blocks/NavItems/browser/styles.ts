@@ -43,8 +43,10 @@ export const InputSearch = styled.input`
   color: ${({ theme }) => theme.colors.primary.dark};
   background-color: ${({ theme }) => theme.colors.primary.lighter};
 
-  &:focus {
+  &:focus,
+  &:focus-within {
     outline: none;
+    background-color: ${({ theme }) => theme.colors.primary.lighter};
   }
 
   &::placeholder {
@@ -52,7 +54,7 @@ export const InputSearch = styled.input`
   }
 `;
 
-export const NoData = styled.div`
+export const Text = styled.div`
   margin-top: 115px;
   display: flex;
   align-items: center;
@@ -70,4 +72,24 @@ export const NoData = styled.div`
     text-align: center;
     color: ${({ theme }) => theme.colors.primary.darkest};
   }
+`;
+
+export const IframeContainer = styled.iframe`
+  width: 101%;
+  height: 82vh;
+  margin: 0 16px;
+`;
+
+export const Loading = styled.div`
+  margin-top: 115px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const FrameParent = styled.div`
+  overflow: hidden;
+  height: 82vh;
+  width: 105%;
+  margin: -110px -16px 0;
 `;
