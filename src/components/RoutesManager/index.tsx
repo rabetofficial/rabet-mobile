@@ -23,13 +23,17 @@ const RoutesManager = ({ pageProps, children }) => {
 
         if (!user.logged) {
           router.push(RouteName.Login);
+        } else {
+          router.push(RouteName.Home);
         }
+      } else {
+        router.push(RouteName.Introduction);
       }
     });
   }, []);
 
   useEffect(() => {
-    console.log('good good');
+    // console.log('good good');
     console.log(pageProps, user);
     if (pageProps.role === 'before-login' && user.logged) {
       router.push(RouteName.Home);
@@ -55,7 +59,11 @@ const RoutesManager = ({ pageProps, children }) => {
   if (status === 'self') {
     return children;
   }
-  return <Loading title="Redirecting" size={32} />;
+  return (
+    <div className="flex justify-center">
+      <Loading title="Redirecting" size={72} />
+    </div>
+  );
   // return children;
 };
 
