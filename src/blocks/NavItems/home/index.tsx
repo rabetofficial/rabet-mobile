@@ -92,6 +92,7 @@ const Home = ({ setLoading }: HomeProps) => {
               style={{
                 position: assets.length < 4 ? 'absolute' : 'static',
                 bottom: assets.length < 4 ? '104px' : '0',
+                width: assets.length < 4 ? 'calc(100% - 32px)' : '',
               }}
             />
           </AssetList>

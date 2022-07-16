@@ -2,7 +2,8 @@
 import styled from 'styled-components';
 
 export const AccountContainer = styled.div`
-  max-height: 239px;
+  max-height: 245px;
+  min-height: 230px;
   padding-top: 10px;
 `;
 
