@@ -5,14 +5,26 @@ import Input from 'components/common/Input';
 import Error from 'components/common/Error';
 import Button from 'components/common/Button';
 import Layout from 'components/common/Layouts/BaseLayout';
+import changeNameAction from 'actions/accounts/changeName';
 import ButtonContainer from 'components/common/ButtonContainer';
+import useActiveAccount from 'hooks/useActiveAccount';
+import RouteName from 'staticRes/routes';
+import { useRouter } from 'next/router';
 
 export type FormValues = {
-  key: string;
+  name: string;
 };
 
 const EditName = () => {
-  const onSubmit = () => {};
+  const router = useRouter();
+  const account = useActiveAccount();
+
+  const onSubmit = async (values: FormValues) => {
+    await changeNameAction(values.name, account.publicKey);
+
+    router.push(RouteName.Home);
+  };
+
   return (
     <Layout className="mt-6">
       <Form
@@ -28,7 +40,7 @@ const EditName = () => {
             onSubmit={handleSubmit}
             autoComplete="off"
           >
-            <Field name="key">
+            <Field name="name">
               {({ input, meta }) => (
                 <>
                   <label className="label-primary">Wallet name</label>

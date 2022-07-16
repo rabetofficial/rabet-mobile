@@ -36,7 +36,6 @@ enum RouteName {
   EditName = '/home/wallet-option/edit-name',
   ConnectedWebsites = '/home/wallet-option/connected-websites',
   PrivateKey = '/home/wallet-option/private-key',
-  ShowPrivateKey = '/home/wallet-option/show-private-key',
 }
 
 export default RouteName;

@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { IframeHTMLAttributes } from 'react';
 
 import Button from 'components/common/Button';
 import CheckMarkCircle from 'svgs/CheckMarkCircle';
 import ButtonContainer from 'components/common/ButtonContainer';
 import maxText from 'utils/maxText';
 
+import { IAccount } from 'reducers/accounts2';
+import shortName from 'helpers/shortName';
 import * as S from './styles';
 
 type ConnectRequestType = {
+  origin: string;
+  account: IAccount;
   onCancel: () => void;
   onConfirm: () => void;
 };
@@ -15,13 +19,11 @@ type ConnectRequestType = {
 const ConnectRequest = ({
   onCancel,
   onConfirm,
+  origin,
+  account,
 }: ConnectRequestType) => {
-  const MockData = {
-    name: 'Sam Smith2132312312312312',
-    host: 'litemint.com',
-    title: 'title',
-    publicKey: 'GDHKYJMUNZ4STELQ7K5EH6TDGKJFE',
-  };
+  const host = origin || 'https://unknown.com';
+  const { hostname } = new URL(host);
 
   return (
     <>
@@ -31,11 +33,11 @@ const ConnectRequest = ({
           <S.List>
             <S.StepValue>
               <img
-                src={`https://logo.clearbit.com/${MockData?.host}?size=55`}
-                alt={MockData?.host[0]}
+                src={`https://logo.clearbit.com/${hostname}?size=55`}
+                alt={hostname[0] || 'W'}
               />
             </S.StepValue>
-            <S.StepLabel>{maxText(MockData?.host, 13)}</S.StepLabel>
+            <S.StepLabel>{maxText(hostname, 13)}</S.StepLabel>
           </S.List>
 
           <S.IconContainer>
@@ -43,18 +45,18 @@ const ConnectRequest = ({
           </S.IconContainer>
 
           <S.List>
-            <S.StepValue>{MockData.name[0]}</S.StepValue>
+            <S.StepValue>{shortName(account.name)}</S.StepValue>
 
-            <S.StepLabel>{maxText(MockData.name, 12)}</S.StepLabel>
+            <S.StepLabel>{maxText(account.name, 12)}</S.StepLabel>
           </S.List>
         </S.Steps>
         <S.Title>
           <a
-            href={`https://${MockData?.host}`}
+            href={`https://${hostname}`}
             target="_blank"
             rel="noreferrer"
           >
-            {MockData?.host}
+            {hostname}
           </a>{' '}
           would like to connect to your account
         </S.Title>

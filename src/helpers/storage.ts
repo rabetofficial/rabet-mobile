@@ -4,19 +4,23 @@ import { encrypt, decrypt } from './crypto';
 const onUpgradeNeeded = (e) => {
   const db = e.target.result;
 
-  console.log('i happen');
+  if (!db.objectStoreNames.contains('data')) {
+    db.createObjectStore('data', { keyPath: 'id' });
+  }
 
-  db.createObjectStore('data', { keyPath: 'id' });
+  if (!db.objectStoreNames.contains('connectedWebsites')) {
+    db.createObjectStore('connectedWebsites', {
+      keyPath: 'id',
+    });
+  }
 
-  db.createObjectStore('store', {
-    keyPath: 'id',
-  });
+  if (!db.objectStoreNames.contains('options')) {
+    db.createObjectStore('options', { keyPath: 'id' });
+  }
 
-  db.createObjectStore('connectedWebsites', {
-    keyPath: 'id',
-  });
-
-  db.createObjectStore('options', { keyPath: 'id' });
+  if (!db.objectStoreNames.contains('contacts')) {
+    db.createObjectStore('contacts', { keyPath: 'id' });
+  }
 };
 
 const setInDb = (key: string, value: any): Promise<void> =>
@@ -34,18 +38,9 @@ const setInDb = (key: string, value: any): Promise<void> =>
 
       const tx = db.transaction(key, 'readwrite');
 
-      if (Array.isArray(value)) {
-        for (let i = 0; i < value.length; i += 1) {
-          tx.objectStore(key).add({
-            id: Math.random(),
-            value: value[i],
-          });
-        }
-      } else {
-        tx.objectStore(key).clear();
-        tx.objectStore(key).add({ id: 'only', value });
-      }
+      tx.objectStore(key).clear();
 
+      tx.objectStore(key).add({ id: 'only', value });
       resolve();
     };
   });

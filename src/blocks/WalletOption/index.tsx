@@ -8,6 +8,9 @@ import World from 'svgs/World';
 import NavLink from 'components/common/NavLink';
 import Layout from 'components/common/Layouts/BaseLayout';
 import RouteName from 'staticRes/routes';
+import { useRouter } from 'next/router';
+import removeAccountAction from 'actions/accounts/remove';
+import useActiveAccount from 'hooks/useActiveAccount';
 import DeleteWallet from './DeleteWallet';
 
 const menus = [
@@ -37,9 +40,19 @@ const menus = [
 ];
 
 const WalletOption = () => {
+  const router = useRouter();
+  const account = useActiveAccount();
   const [open, setOpen] = useState(false);
-  const onClose = () => setOpen(false);
-  const onOpen = () => setOpen(true);
+
+  const onDeleteClose = () => {
+    setOpen(false);
+  };
+
+  const onDeleteConfirm = () => {
+    removeAccountAction(account.publicKey, router.push);
+
+    setOpen(false);
+  };
 
   return (
     <>
@@ -58,14 +71,17 @@ const WalletOption = () => {
               name={menu.label}
               icon={menu.icon}
               className={menu.id === 4 ? '!text-error' : ''}
-              onClick={() => menu.id === 4 && onOpen()}
+              onClick={() => menu.id === 4 && setOpen(true)}
             />
           </div>
         ))}
       </Layout>
 
       <BottomSheet isOpen={open} setOpen={setOpen} height={400}>
-        <DeleteWallet onClose={onClose} />
+        <DeleteWallet
+          onClose={onDeleteClose}
+          onConfirm={onDeleteConfirm}
+        />
       </BottomSheet>
     </>
   );

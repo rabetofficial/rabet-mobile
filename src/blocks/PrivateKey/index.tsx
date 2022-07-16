@@ -10,6 +10,8 @@ import ButtonContainer from 'components/common/ButtonContainer';
 import Card from 'components/common/Card';
 import currentActiveAccount from 'utils/activeAccount';
 import CopyKey from 'components/common/CopyKey';
+import useActiveAccount from 'hooks/useActiveAccount';
+import showPrivateKey from 'actions/accounts/showPrivateKey';
 
 const Msg = styled.div`
   font-size: 14px;
@@ -28,13 +30,17 @@ export type FormValues = {
 };
 
 const PrivateKey = () => {
-  const { activeAccount } = currentActiveAccount();
+  const account = useActiveAccount();
   const [show, setShow] = useState(false);
-  const onSubmit = (value: FormValues) => {
-    if (value.key === '123456') {
+
+  const onSubmit = async (values: FormValues) => {
+    const result = await showPrivateKey(values.key);
+
+    if (result) {
       setShow(true);
     }
   };
+
   return (
     <Layout className="mt-6">
       <>
@@ -51,7 +57,7 @@ const PrivateKey = () => {
             </div>
 
             <Card type="primary" className="shadow-transparent">
-              <CopyKey keyValue={activeAccount.privateKey} />
+              <CopyKey keyValue={account.privateKey} />
             </Card>
           </>
         ) : (

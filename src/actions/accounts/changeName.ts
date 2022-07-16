@@ -3,8 +3,13 @@ import { changeName } from 'reducers/accounts2';
 
 import storeAccount from './store';
 
-export default (name: string, publicKey: string): void => {
+export default async (
+  name: string,
+  publicKey: string,
+): Promise<boolean> => {
   store.dispatch(changeName({ name, publicKey }));
 
-  storeAccount();
+  await storeAccount();
+
+  return true;
 };

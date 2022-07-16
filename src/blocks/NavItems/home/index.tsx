@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 
 import shorter from 'helpers/shorter';
@@ -17,6 +17,7 @@ import LoadingOne from 'pages/loading-one';
 
 import formatBalance from 'utils/formatBalance';
 import handleAssetSymbol from 'utils/handleAssetSymbol';
+import useAppDispatch from 'hooks/useAppDispatch';
 import Links from './links';
 import AssetButton from './AssetButton';
 import AccountModal from './AccountModal';
@@ -27,8 +28,9 @@ type HomeProps = {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const Home = ({ setLoading }: HomeProps) => {
+  const dispatch = useAppDispatch();
   const account = useActiveAccount();
-  const isLoading = useLoadHome();
+  const isLoading = useLoadHome(dispatch);
   const totalBalance = useTotalBalance();
 
   const [currencies, options] = useTypedSelector((store) => [
@@ -37,11 +39,11 @@ const Home = ({ setLoading }: HomeProps) => {
   ]);
 
   const assets = account.assets || [];
-  setLoading(isLoading);
 
   if (isLoading) {
     return <LoadingOne />;
   }
+
   const scrollMaxHeight = document.documentElement.clientHeight - 375;
 
   return (

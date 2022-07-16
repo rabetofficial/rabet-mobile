@@ -22,7 +22,6 @@ const useTotalBalance = (acc?: IAccount) => {
   const account = acc || activeAccount;
 
   useEffect(() => {
-    console.log(bids);
     const assets = account.assets || [];
 
     let totalBalanceTemp = new BN(0);
@@ -38,7 +37,13 @@ const useTotalBalance = (acc?: IAccount) => {
     }
 
     setTotalBalance(totalBalanceTemp.toString());
-  }, [account, options, bids, activeCurrency, currencies]);
+  }, [
+    account,
+    options,
+    JSON.stringify(bids),
+    activeCurrency,
+    currencies,
+  ]);
 
   return totalBalance;
 };

@@ -8,9 +8,12 @@ import installRabet from 'actions/interactions/install';
 import BottomSheet from 'components/common/BottomSheet';
 import ConnectRequest from 'blocks/ConnectRequest';
 import ApproveTransaction from 'blocks/ApproveTransaction';
+import useActiveAccount from 'hooks/useActiveAccount';
+import addConnectedWebsite from 'actions/accounts/addConnectedWebsite';
 import * as S from './styles';
 
 const Browser = () => {
+  const account = useActiveAccount();
   const [loaded, setLoaded] = useState(false);
   const [result, setResult] = useState<'valid' | 'invalid' | 'empty'>(
     'empty',
@@ -86,11 +89,18 @@ const Browser = () => {
       {
         type: 'RABET/CONNECT/RESPONSE',
         message: {
-          publicKey: 'ABCDEFU',
+          publicKey: account.publicKey,
         },
       },
       event.origin,
     );
+
+    const { hostname } = new URL(event.origin);
+
+    addConnectedWebsite({
+      host: hostname,
+      publicKey: account.publicKey,
+    });
 
     setOpenConnect(false);
   };
@@ -200,6 +210,8 @@ const Browser = () => {
         height={504}
       >
         <ConnectRequest
+          origin={event?.origin}
+          account={account}
           onCancel={onConnectClose}
           onConfirm={onConnectConfirm}
         />

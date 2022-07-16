@@ -23,7 +23,7 @@ const removeAccount = async (publicKey: string, navigate: any) => {
 
       navigate(RouteName.Home);
     } else {
-      navigate(RouteName.AccountManager);
+      navigate(RouteName.First);
     }
 
     await storeAccount();
