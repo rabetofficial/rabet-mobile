@@ -16,30 +16,30 @@ const RoutesManager = ({ pageProps, children }) => {
   ]);
 
   useEffect(() => {
-    console.log('i happen');
-    get('data').then((d) => {
-      if (d) {
-        userRegistered();
-
-        if (!user.logged) {
-          router.push(RouteName.Login);
-        } else {
-          router.push(RouteName.Home);
-        }
-      } else {
-        router.push(RouteName.Introduction);
-      }
-    });
-  }, []);
+    // console.log('i happen');
+    // console.log(router, user);
+    // if (user.registered) {
+    //   userRegistered();
+    //   if (!user.logged) {
+    //     router.push(RouteName.Login);
+    //     console.log('khar man bakhabare');
+    //   } else {
+    //     router.push(RouteName.Home);
+    //   }
+    // } else {
+    //   router.push(RouteName.Introduction);
+    //   setStatus('self');
+    // }
+  }, [JSON.stringify(router)]);
 
   useEffect(() => {
     // console.log('good good');
-    console.log(pageProps, user);
-    if (pageProps.role === 'before-login' && user.logged) {
-      router.push(RouteName.Home);
-    } else {
-      setStatus('self');
-    }
+    // console.log(pageProps, user);
+    // if (pageProps.role === 'before-login' && user.logged) {
+    //   router.push(RouteName.Home);
+    // } else {
+    //   setStatus('self');
+    // }
     // console.log(pageProps);
     // if (!user.registered) {
     //   router.push('/intro');
@@ -54,17 +54,24 @@ const RoutesManager = ({ pageProps, children }) => {
     //     router.push(router.pathname);
     //   }
     // }
-  });
-
-  if (status === 'self') {
-    return children;
+  }, []);
+  console.log(user, pageProps);
+  if (pageProps.role === 'before-register') {
+    if (!user.registered) {
+      return children;
+    }
+    router.push(RouteName.Login);
   }
+
+  // if (!user.logged && pageProps.role === 'before-login') {
+  //   return children;
+  // }
+
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center h-screen">
       <Loading title="Redirecting" size={72} />
     </div>
   );
-  // return children;
 };
 
 export default RoutesManager;
