@@ -6,6 +6,7 @@ import store from 'actions/accounts/store';
 import { get } from 'helpers/storage';
 import RouteName from 'staticRes/routes';
 import userRegistered from 'actions/user/userRegistered';
+import loadUser from 'actions/user/loadUser';
 
 const RoutesManager = ({ pageProps, children }) => {
   const router = useRouter();
@@ -15,13 +16,9 @@ const RoutesManager = ({ pageProps, children }) => {
   ]);
 
   useEffect(() => {
-    get('data').then((d) => {
-      if (d) {
-        userRegistered();
-
-        if (!user.logged) {
-          router.push(RouteName.Login);
-        }
+    loadUser().then(() => {
+      if (!user.logged) {
+        router.push(RouteName.Login);
       }
     });
   }, []);

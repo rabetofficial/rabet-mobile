@@ -41,11 +41,8 @@ const Home = ({ setLoading }: HomeProps) => {
   const assets = account.assets || [];
 
   if (isLoading) {
-    setLoading(isLoading);
     return <LoadingOne />;
   }
-
-  setLoading(false);
 
   const scrollMaxHeight = document.documentElement.clientHeight - 375;
 

@@ -3,13 +3,12 @@ import QR from 'qrcode.react';
 
 import Card from 'components/common/Card';
 import CopyKey from 'components/common/CopyKey';
-import currentActiveAccount from 'utils/activeAccount';
+import useActiveAccount from 'hooks/useActiveAccount';
 
 import * as S from './styles';
 
 const QRCode = () => {
-  const { activeAccount } = currentActiveAccount();
-  const { publicKey } = activeAccount;
+  const { publicKey } = useActiveAccount();
 
   return (
     <>

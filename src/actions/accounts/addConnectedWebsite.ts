@@ -1,7 +1,6 @@
 import store from 'store';
 import { set } from 'helpers/storage';
 import { addConnectedWebsites } from 'reducers/user';
-import { changeIsConnected } from 'reducers/accounts2';
 
 type AddConnectedWebsitesArgs = {
   host: string;
@@ -15,15 +14,11 @@ export default async ({
   const { connectedWebsites } = store.getState().user;
   const pair = `${host}/${publicKey}`;
 
-  const newWebsites = [...connectedWebsites, pair];
+  if (!connectedWebsites.includes(pair)) {
+    const newWebsites = [...connectedWebsites, pair];
 
-  store.dispatch(addConnectedWebsites(newWebsites));
-  store.dispatch(
-    changeIsConnected({
-      publicKey,
-      isConnected: true,
-    }),
-  );
+    store.dispatch(addConnectedWebsites(newWebsites));
 
-  await set('connectedWebsites', newWebsites);
+    await set('connectedWebsites', newWebsites);
+  }
 };

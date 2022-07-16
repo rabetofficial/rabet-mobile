@@ -1,5 +1,5 @@
 const config = {
-  DB_VERSION: 4,
+  DB_VERSION: 7,
   BASE_FEE: '50000',
   VERSION: '1.6.2',
   MIN_RECEIVED: 99.7,
