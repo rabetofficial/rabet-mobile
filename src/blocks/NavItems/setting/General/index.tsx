@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import capital from 'utils/capital';
 import { ElementOption } from 'models';
 import Button from 'components/common/Button';
 import useTypedSelector from 'hooks/useTypedSelector';
