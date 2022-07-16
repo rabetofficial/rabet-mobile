@@ -10,7 +10,6 @@ import TooltipLabel from 'components/common/TooltipLabel';
 import ToggleSwitch from 'components/common/ToggleSwitch';
 import ButtonContainer from 'components/common/ButtonContainer';
 import config from 'config';
-import { OptionMode } from 'reducers/options';
 import Options from './Options';
 
 import * as S from './styles';
@@ -37,11 +36,6 @@ const currenciesList = currencies.map((x) => ({
   label: x.name,
 }));
 
-const modeOptions = [
-  { value: 'BASIC', label: 'Basic' },
-  { value: 'ADVANCED', label: 'Advanced' },
-];
-
 const SettingGeneral = () => {
   const options = useTypedSelector((store) => store.options);
   const [checked, setChecked] = useState(true);
@@ -53,7 +47,6 @@ const SettingGeneral = () => {
   );
   const [selectedCurrency, setSelectedCurrency] =
     useState<ElementOption>(currenciesList[0]);
-  const [mode, setMode] = useState<ElementOption>(modeOptions[0]);
 
   useEffect(() => {
     let label;
@@ -99,13 +92,6 @@ const SettingGeneral = () => {
         label: options.currency.toUpperCase(),
       });
     }
-
-    if (options.mode) {
-      setMode({
-        value: options.mode,
-        label: capital(options.mode.toLowerCase()),
-      });
-    }
   }, [options]);
 
   const handleChecked = (c: boolean) => {
@@ -124,17 +110,13 @@ const SettingGeneral = () => {
     setSelectedExplorer(e);
   };
 
-  const onChangeMode = (e: ElementOption) => {
-    setMode(e);
-  };
-
   const handleSubmit = () => {
     changeOptionsAction({
       privacyMode: checked,
       explorer: selectedExplorer.value,
       autoTimeLocker: selectedTimer.value,
       currency: selectedCurrency.value,
-      mode: mode.value as OptionMode,
+      mode: 'BASIC',
     });
   };
 
@@ -151,6 +133,7 @@ const SettingGeneral = () => {
           onChange={onChangeNetwork}
         />
       </S.Item>
+
       <S.Item>
         <TooltipLabel
           text="Currency"
@@ -162,6 +145,7 @@ const SettingGeneral = () => {
           onChange={onChangeCurrency}
         />
       </S.Item>
+
       <S.Item>
         <TooltipLabel
           text="Auto-lock timer"
@@ -173,17 +157,7 @@ const SettingGeneral = () => {
           onChange={onChangeTimer}
         />
       </S.Item>
-      <S.Item>
-        <TooltipLabel
-          text="Mode"
-          tooltipText="Rabet advanced mode supports other Stellar operations and is suitable for people who have a high level of knowledge in Stellar."
-        />
-        <Options
-          items={modeOptions}
-          defaultValue={mode}
-          onChange={onChangeMode}
-        />
-      </S.Item>
+
       <S.Item>
         <TooltipLabel
           text="Privacy mode"
@@ -195,6 +169,7 @@ const SettingGeneral = () => {
           handleChange={handleChecked}
         />
       </S.Item>
+
       <ButtonContainer mb={74} fixedBottom>
         <Button
           onClick={handleSubmit}
