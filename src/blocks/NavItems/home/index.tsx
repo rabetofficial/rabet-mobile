@@ -89,7 +89,7 @@ const Home = ({ setLoading }: HomeProps) => {
             <AssetButton
               style={{
                 position: assets.length < 4 ? 'absolute' : 'static',
-                bottom: assets.length < 4 ? '88px' : '0',
+                bottom: assets.length < 4 ? '104px' : '0',
               }}
             />
           </AssetList>
