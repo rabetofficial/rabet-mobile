@@ -48,7 +48,7 @@ const WalletOption = () => {
           <div
             key={menu.id}
             className={
-              menu.id !== 5
+              menu.id !== 4
                 ? 'border-b border-primary-lighter border-solid'
                 : ''
             }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
 import RouteName from 'staticRes/routes';
 import { IAccount } from 'reducers/accounts2';
@@ -12,12 +13,12 @@ type AppProps = {
 };
 
 const AccountList = ({ accounts }: AppProps) => {
-  // const navigate = useNavigate();
+  const router = useRouter();
 
   const changeAccount = (account: IAccount) => {
     changeActiveAction(account.publicKey);
 
-    // navigate(RouteName.AccountManager);
+    router.push(RouteName.Home);
   };
 
   return (

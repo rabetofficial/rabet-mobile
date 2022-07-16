@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import BottomSheet from 'components/common/BottomSheet';
+
 import useActiveAccount from 'hooks/useActiveAccount';
-import { IAccount } from 'reducers/accounts2';
-import AccountList from './AccountsList';
+import useTypedSelector from 'hooks/useTypedSelector';
+import BottomSheet from 'components/common/BottomSheet';
+
 import Menus from './Menus';
+import AccountList from './AccountsList';
 
 import * as S from './styles';
 
 const AccountModal = () => {
   const { name } = useActiveAccount();
-  const [activeAccounts, setActiveAccounts] = useState<IAccount[]>(
-    [],
-  );
+  const accounts = useTypedSelector((store) => store.accounts);
+
   const [open, setOpen] = useState(false);
   const onClose = () => setOpen(false);
   const onOpen = () => setOpen(true);
@@ -22,10 +23,7 @@ const AccountModal = () => {
         {name.slice(0, 1).toUpperCase()}
       </S.ToggleButton>
       <BottomSheet isOpen={open} setOpen={setOpen} height={450}>
-        <div className="px-4">
-          <AccountList accounts={activeAccounts} />
-        </div>
-
+        <AccountList accounts={accounts} />
         <Menus onClose={onClose} />
       </BottomSheet>
     </>

@@ -10,9 +10,10 @@ import useActiveCurrency from './useActiveCurrency';
 
 const useTotalBalance = (acc?: IAccount) => {
   const activeAccount = useActiveAccount();
-  const [options, bids] = useTypedSelector((store) => [
+  const [options, bids, currencies] = useTypedSelector((store) => [
     store.options,
     store.bids,
+    store.currencies,
   ]);
   const [totalBalance, setTotalBalance] = useState('0');
   const activeCurrency = useActiveCurrency();
@@ -21,6 +22,7 @@ const useTotalBalance = (acc?: IAccount) => {
   const account = acc || activeAccount;
 
   useEffect(() => {
+    console.log(bids);
     const assets = account.assets || [];
 
     let totalBalanceTemp = new BN(0);
@@ -36,7 +38,7 @@ const useTotalBalance = (acc?: IAccount) => {
     }
 
     setTotalBalance(totalBalanceTemp.toString());
-  }, [account, options, bids, activeCurrency]);
+  }, [account, options, bids, activeCurrency, currencies]);
 
   return totalBalance;
 };

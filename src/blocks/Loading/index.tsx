@@ -4,10 +4,7 @@ import Logo from 'components/Logo';
 import Loading from 'components/Loading';
 
 const MediaLoading = styled.div`
-  margin-top: -40px;
-  @media (max-width: 360px) {
-    margin-top: -20px;
-  }
+  margin-top: 24px;
 `;
 
 const LoadingPage = () => (

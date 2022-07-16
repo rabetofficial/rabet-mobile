@@ -109,7 +109,7 @@ const ApproveTransaction = ({ onCancel, onConfirm }: ApproveType) => {
           <S.Title>Approve Transaction</S.Title>
 
           <div>
-            <S.Link href="#">{MockData.host}</S.Link>
+            <S.Link href="/#">{MockData.host}</S.Link>
           </div>
         </S.Centered>
 

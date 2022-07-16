@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import styled from 'styled-components';
 import Search from 'svgs/Search';
 import svgToMarkupString from 'helpers/svgToMarkupString';
@@ -56,7 +57,7 @@ export const InputSearch = styled.input`
 `;
 
 export const Group = styled.div`
-  padding: 11px 0 100px 0;
+  padding: 10px 0 100px 0;
   background-color: ${({ theme }) => theme.colors.primary.lighter};
 `;
 
@@ -65,11 +66,15 @@ export const GroupLink = styled.a`
   color: black;
   background-color: ${({ theme }) => theme.colors.primary.lighter};
   text-decoration: none !important;
-  padding: 11px 17px;
+  padding: 13px 16px;
   display: flex;
   align-items: center;
-
-  svg {
-    margin-right: 13px;
-  }
+`;
+export const ItemIcon = styled.span`
+  width: 16px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px; ;
 `;

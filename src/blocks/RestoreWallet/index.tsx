@@ -1,12 +1,49 @@
 import React from 'react';
 import { StrKey } from 'stellar-sdk';
-import { useRouter } from 'next/router';
 
+import { useRouter } from 'next/router';
 import RouteName from 'staticRes/routes';
-import { FormValues } from 'components/PrivateKey';
 import useTypedSelector from 'hooks/useTypedSelector';
 import restoreAccountAction from 'actions/accounts/restore';
-import RestoreWalletComponent from 'components/RestoreWallet';
+import PrivateKey, { FormValues } from 'components/PrivateKey';
+
+// import { FormValues } from 'components/PrivateKey';
+
+// import TabList from './TabList';
+
+// type RestoreWalletProps = {
+//   children?: React.ReactNode;
+//   // onSubmit: (v: FormValues) => Promise<Partial<FormValues>>;
+//   // onSubmitBackup: () => void;
+// };
+// const onSubmitBackup = () => {
+//   console.log('hey');
+// };
+// const onSubmit = () => {
+//   console.log('hey');
+// };
+//
+// const RestoreWallet = ({
+//   children,
+// }: // onSubmit,
+// // onSubmitBackup,
+// RestoreWalletProps) => (
+//   <>
+//     {children}
+//     <TabList
+//       onSubmitBackup={onSubmitBackup}
+//       onSubmitPrivateKey={onSubmit}
+//     />
+//   </>
+// );
+//
+// RestoreWallet.defaultProps = {
+//   children: '',
+// };
+//
+// export default RestoreWallet;
+//
+//
 
 const RestoreWallet = () => {
   const router = useRouter();
@@ -42,15 +79,10 @@ const RestoreWallet = () => {
     return {};
   };
 
-  const onSubmitBackup = () => {
-    router.push('Home');
-  };
-
   return (
-    <RestoreWalletComponent
-      onSubmit={onSubmit}
-      onSubmitBackup={onSubmitBackup}
-    />
+    <>
+      <PrivateKey onSubmit={onSubmit} />
+    </>
   );
 };
 

@@ -9,7 +9,7 @@ type AppProps = {
   size: number;
   titleStyle?: string;
   className?: string;
-  titleNonMargin?: boolean;
+  titleNoMargin?: boolean;
 };
 
 const Loading = ({
@@ -17,7 +17,7 @@ const Loading = ({
   size,
   titleStyle,
   className,
-  titleNonMargin,
+  titleNoMargin,
 }: AppProps) => (
   <S.Container className={className}>
     <S.Loading
@@ -29,7 +29,7 @@ const Loading = ({
     {title && (
       <S.Title
         className={titleStyle}
-        style={{ marginTop: titleNonMargin ? '-7px' : '13px' }}
+        style={{ marginTop: titleNoMargin ? '-7px' : '13px' }}
       >
         <p>{title}</p>
       </S.Title>
@@ -41,7 +41,7 @@ Loading.defaultProps = {
   title: '',
   titleStyle: '',
   className: '',
-  titleNonMargin: false,
+  titleNoMargin: false,
 };
 
 export default Loading;

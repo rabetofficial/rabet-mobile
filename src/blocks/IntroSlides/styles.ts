@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const HeadText = styled.p`
   font-size: 20px;
-  margin: 32px 0 14px;
+  margin: 41px 0 25px;
   font-weight: bold;
   line-height: 1.5;
 `;
@@ -16,20 +16,17 @@ export const MainText = styled.p`
   color: ${({ theme }) => theme.colors.primary.dark};
 `;
 
-interface CircleProps {
-  disabled: boolean;
-  theme: any;
+interface ImgProps {
+  slideId: number;
 }
 
-export const Circle = styled.div<CircleProps>`
+export const ImgContainer = styled.div<ImgProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  border: solid 1px ${({ theme }) => theme.colors.primary.lighter};
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  margin-right: ${({ slideId }) => (slideId === 2 ? '35px' : '0')};
+  margin-right: ${({ slideId }) => (slideId === 4 ? '-4px' : '0')};
+  margin-left: ${({ slideId }) => (slideId === 3 ? '44px' : '0')};
 `;
 
 interface PaginationProps {
@@ -38,12 +35,21 @@ interface PaginationProps {
   activeIndex: number;
 }
 
+export const PageinationParent = styled.div`
+  bottom: 64px;
+  position: absolute;
+  li {
+    width: 9px;
+    height: 9px;
+  }
+`;
+
 export const Pagination = styled.div<PaginationProps>`
   width: 10px;
   height: 10px;
-  bottom: 85px;
+  padding: 0 -20px;
   border-radius: 50%;
-  position: absolute;
+  padding: ${({ index }) => (index !== 4 ? '0 -30px' : '0px')};
   border: 1px solid
     ${({ theme, index, activeIndex }) =>
       activeIndex === index

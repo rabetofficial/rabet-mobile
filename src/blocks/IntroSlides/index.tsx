@@ -31,19 +31,25 @@ const IntroSlides = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     swipeToSlide: true,
-
     afterChange: (i: number) => {
       setCurrentIndex(i);
     },
-    customPaging: (i: number) => (
-      <S.Pagination index={i} activeIndex={CurrentIndex} />
+
+    appendDots: (dots: any[]) => (
+      <S.PageinationParent>
+        {dots.map((_: any, i: number) => (
+          <li>
+            <S.Pagination index={i} activeIndex={CurrentIndex} />
+          </li>
+        ))}
+      </S.PageinationParent>
     ),
   };
 
   const slides = [
     {
       id: 1,
-      padding: 'pt-[62px]',
+      padding: 'pt-[58px]',
       imgSrc: designSrc,
       imgWidth: 269,
       imgHeight: 336,
@@ -52,7 +58,7 @@ const IntroSlides = () => {
     },
     {
       id: 2,
-      padding: 'pt-[80px]',
+      padding: 'pt-[75px]',
       imgSrc: secureSrc,
       imgWidth: 305,
       imgHeight: 318,
@@ -61,7 +67,7 @@ const IntroSlides = () => {
     },
     {
       id: 3,
-      padding: 'pt-[39px]',
+      padding: 'pt-[34px]',
       imgSrc: interactionSrc,
       imgWidth: 314,
       imgHeight: 359,
@@ -70,7 +76,7 @@ const IntroSlides = () => {
     },
     {
       id: 4,
-      padding: 'pt-[40px]',
+      padding: 'pt-[36px]',
       imgSrc: identitySrc,
       imgWidth: 274,
       imgHeight: 358,
@@ -87,13 +93,13 @@ const IntroSlides = () => {
             key={slide.id}
             className={`relative h-[100vh] ${slide.padding}`}
           >
-            <div className="flex justify-center">
+            <S.ImgContainer slideId={slide.id}>
               <Image
                 src={slide.imgSrc}
                 width={slide.imgWidth}
                 height={slide.imgHeight}
               />
-            </div>
+            </S.ImgContainer>
 
             <div className="text-center">
               <S.HeadText>{slide.title}</S.HeadText>

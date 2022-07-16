@@ -1,29 +1,48 @@
 import React from 'react';
 import Link from 'next/link';
 
-import RouteName from 'staticRes/routes';
 import shorter from 'helpers/shorter';
+import FilledCopy from 'svgs/FilledCopy';
+import RouteName from 'staticRes/routes';
+import useLoadHome from 'hooks/useLoadHome';
 import AssetList from 'components/AssetList';
 import CopyText from 'components/common/CopyText';
-import ExpandHorizontal from 'svgs/ExpandHorizontal';
-import FilledCopy from 'svgs/FilledCopy';
-import Layout from 'components/common/Layouts/BaseLayout';
-import useActiveAccount from 'hooks/useActiveAccount';
 import ScrollBar from 'components/common/ScrollBar';
+import ExpandHorizontal from 'svgs/ExpandHorizontal';
+import useActiveAccount from 'hooks/useActiveAccount';
+import Layout from 'components/common/Layouts/BaseLayout';
+import useTypedSelector from 'hooks/useTypedSelector';
+import useTotalBalance from 'hooks/useTotalBalance';
+import LoadingOne from 'pages/loading-one';
+
+import formatBalance from 'utils/formatBalance';
+import handleAssetSymbol from 'utils/handleAssetSymbol';
 import Links from './links';
-import AccountModal from './AccountModal';
 import AssetButton from './AssetButton';
+import AccountModal from './AccountModal';
 
 import * as S from './styles';
 
-const Home = () => {
-  const { assets: asts } = useActiveAccount();
-  const assets = asts || [];
-  const mockData = {
-    name: 'John Due',
-    publicKey:
-      'GDHKYJMUNZ4STELQ7K5EH6TDGKJ2QJ5UPX5HWLOFWRC4H7NFG4JJHNFE',
-  };
+type HomeProps = {
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+const Home = ({ setLoading }: HomeProps) => {
+  const account = useActiveAccount();
+  const isLoading = useLoadHome();
+  const totalBalance = useTotalBalance();
+
+  const [currencies, options] = useTypedSelector((store) => [
+    store.currencies,
+    store.options,
+  ]);
+
+  const assets = account.assets || [];
+  setLoading(isLoading);
+
+  if (isLoading) {
+    return <LoadingOne />;
+  }
+  const scrollMaxHeight = document.documentElement.clientHeight - 375;
 
   return (
     <>
@@ -34,12 +53,12 @@ const Home = () => {
           </S.Account>
 
           <div>
-            <S.NameValue>{mockData.name}</S.NameValue>
+            <S.NameValue>{account.name}</S.NameValue>
             <CopyText
-              text={mockData.publicKey}
+              text={account.publicKey}
               custom={
                 <span className="text-xs text-primary-dark inline-flex items-center gap-[4px] ml-[2px]">
-                  {shorter(mockData.publicKey, 6)}
+                  {shorter(account.publicKey, 6)}
                   <FilledCopy />
                 </span>
               }
@@ -52,7 +71,11 @@ const Home = () => {
             </a>
           </Link>
         </S.Head>
-        <S.Asset>$991.62</S.Asset>
+        <S.Asset>
+          {handleAssetSymbol(currencies, options)}
+          {formatBalance(totalBalance)}
+        </S.Asset>
+
         <S.LinkContainer>
           <Links />
         </S.LinkContainer>
@@ -61,8 +84,7 @@ const Home = () => {
       <S.Devider />
 
       <Layout>
-        <ScrollBar isVertical maxHeight={290}>
-          <Link href="/assets">asset</Link>
+        <ScrollBar isVertical maxHeight={scrollMaxHeight}>
           <AssetList assets={assets}>
             <AssetButton
               style={{

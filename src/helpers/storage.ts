@@ -1,7 +1,10 @@
+import config from 'config';
 import { encrypt, decrypt } from './crypto';
 
 const onUpgradeNeeded = (e) => {
   const db = e.target.result;
+
+  console.log('i happen');
 
   db.createObjectStore('data', { keyPath: 'id' });
 
@@ -12,11 +15,13 @@ const onUpgradeNeeded = (e) => {
   db.createObjectStore('connectedWebsites', {
     keyPath: 'id',
   });
+
+  db.createObjectStore('options', { keyPath: 'id' });
 };
 
 const setInDb = (key: string, value: any): Promise<void> =>
   new Promise((resolve, reject) => {
-    const request = indexedDB.open('rabet', 1);
+    const request = indexedDB.open('rabet', config.DB_VERSION);
 
     request.onupgradeneeded = onUpgradeNeeded;
 
@@ -47,7 +52,7 @@ const setInDb = (key: string, value: any): Promise<void> =>
 
 export const get = <T>(key: string, password?: string): Promise<T> =>
   new Promise((resolve, reject) => {
-    const request = indexedDB.open('rabet');
+    const request = indexedDB.open('rabet', config.DB_VERSION);
 
     request.onupgradeneeded = onUpgradeNeeded;
 

@@ -1,6 +1,6 @@
-import store from 'popup/store';
-import { load } from 'popup/reducers/currencies';
-import getCurrencies from 'popup/api/getCurrencies';
+import store from 'store';
+import { load } from 'reducers/currencies';
+import getCurrencies from 'api/getCurrencies';
 
 const loadCurrencies = async () => {
   const currencies = await getCurrencies();

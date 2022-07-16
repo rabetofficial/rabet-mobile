@@ -9,7 +9,7 @@ const handleAssetImage = (
   assetImages: AssetImage[],
 ) => {
   if (!asset) {
-    return questionLogo;
+    return questionLogo.src;
   }
 
   if (asset.logo) {
@@ -17,11 +17,11 @@ const handleAssetImage = (
   }
 
   if (asset.asset_type === 'native') {
-    return xlmLogo;
+    return xlmLogo.src;
   }
 
   if (asset.asset_type === 'liquidity_pool_shares') {
-    return questionLogo;
+    return questionLogo.src;
   }
 
   const assetImageFound = assetImages.find(
@@ -31,14 +31,14 @@ const handleAssetImage = (
   );
 
   if (!assetImageFound) {
-    return questionLogo;
+    return questionLogo.src;
   }
 
   if (assetImageFound.logo) {
     return assetImageFound.logo;
   }
 
-  return questionLogo;
+  return questionLogo.src;
 };
 
 export default handleAssetImage;

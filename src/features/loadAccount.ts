@@ -1,12 +1,12 @@
-import store from 'popup/store';
-import getAccount from 'popup/api/getAccount';
+import store from 'store';
+import getAccount from 'api/getAccount';
 import {
   IAccount,
   addFlags,
   addAssets,
   setInactive,
   addSubentryCount,
-} from 'popup/reducers/accounts2';
+} from 'reducers/accounts2';
 
 const loadAccount = async (account: IAccount) => {
   const accountResult = await getAccount(account.publicKey);
