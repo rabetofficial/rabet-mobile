@@ -11,6 +11,7 @@ import Global from 'styles/global';
 import pages from 'staticRes/exitPages';
 import ExtTitle from 'components/common/ExitTitle';
 import RoutesManager from 'components/RoutesManager';
+import Opening from 'components/Opening';
 
 import 'react-slideshow-image/dist/styles.css';
 import 'tippy.js/dist/svg-arrow.css';
@@ -24,6 +25,7 @@ import 'styles/font.css';
 import store from '../store';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [opening, setOpening] = useState(true);
   const router = useRouter();
   const items = [
     {
@@ -46,64 +48,74 @@ function MyApp({ Component, pageProps }: AppProps) {
     setPage(findPage);
   }, [router]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setOpening(false);
+    }, 1300);
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <Global theme={theme} />
       <Provider store={store}>
         <RoutesManager pageProps={pageProps}>
-          <div className="page-transition-wrapper">
-            {router.pathname === '/home' ? (
-              <Component {...pageProps} />
-            ) : (
-              <Transition
-                items={items}
-                keys={(item: any) => item.id}
-                from={{
-                  opacity: 0,
-                  transform:
-                    page && getPathDepth(router) <= 1
-                      ? 'translateX(-100vw)'
-                      : 'translateX(100vw)',
-                }}
-                enter={{
-                  opacity: 1,
-                  transform: 'translateX(0)',
-                }}
-                leave={{
-                  opacity: 0,
-                  transform:
-                    page && getPathDepth(router) <= 1
-                      ? 'translateX(20vw)'
-                      : 'translateX(-20vw)',
-                  position: 'absolute',
-                  inset: '0',
-                }}
-              >
-                {(
-                  styles,
-                  {
-                    pageProps: animatedPageProps,
-                    Component: AnimatedComponent,
-                  },
-                ) => (
-                  <animated.div
-                    className="page-transition-container"
-                    style={{ ...styles }}
-                  >
-                    <>
-                      {page && (
-                        <ExtTitle
-                          title={page.title}
-                          borderless={page.borderless}
-                        />
-                      )}
-                      <AnimatedComponent {...animatedPageProps} />
-                    </>
-                  </animated.div>
-                )}
-              </Transition>
-            )}
-          </div>
+          {opening ? (
+            <Opening />
+          ) : (
+            <div className="page-transition-wrapper">
+              {router.pathname === '/home' ? (
+                <Component {...pageProps} />
+              ) : (
+                <Transition
+                  items={items}
+                  keys={(item: any) => item.id}
+                  from={{
+                    opacity: 0,
+                    transform:
+                      page && getPathDepth(router) <= 1
+                        ? 'translateX(-100vw)'
+                        : 'translateX(100vw)',
+                  }}
+                  enter={{
+                    opacity: 1,
+                    transform: 'translateX(0)',
+                  }}
+                  leave={{
+                    opacity: 0,
+                    transform:
+                      page && getPathDepth(router) <= 1
+                        ? 'translateX(20vw)'
+                        : 'translateX(-20vw)',
+                    position: 'absolute',
+                    inset: '0',
+                  }}
+                >
+                  {(
+                    styles,
+                    {
+                      pageProps: animatedPageProps,
+                      Component: AnimatedComponent,
+                    },
+                  ) => (
+                    <animated.div
+                      className="page-transition-container"
+                      style={{ ...styles }}
+                    >
+                      <>
+                        {page && (
+                          <ExtTitle
+                            title={page.title}
+                            borderless={page.borderless}
+                          />
+                        )}
+                        <AnimatedComponent {...animatedPageProps} />
+                      </>
+                    </animated.div>
+                  )}
+                </Transition>
+              )}
+            </div>
+          )}
         </RoutesManager>
       </Provider>
     </ThemeProvider>

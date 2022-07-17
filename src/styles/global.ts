@@ -281,6 +281,28 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     position: relative;
   }
+
+  .opening-animation{
+    /* width: 130px;
+    height: 130px; */
+    animation: logoAnimation 1s;
+    animation-delay: 0.8s;
+    animation-timing-function:ease-in-out;
+  }
+
+  @keyframes logoAnimation {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    35% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(100) translate(0, -30px);
+      opacity: 0;
+    }
+  }
 `;
 
 export default GlobalStyle;
