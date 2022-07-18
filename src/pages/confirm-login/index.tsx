@@ -3,7 +3,9 @@ import ConfirmLogin from 'blocks/ConfirmLogin';
 export async function getStaticProps() {
   return {
     props: {
-      role: 'before-login',
+      logged: 0,
+      registered: 0,
+      account: 0,
     },
   };
 }
