@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-
+import { useRouter } from 'next/router';
 import { Form, Field } from 'react-final-form';
 import { customAlphabet, urlAlphabet } from 'nanoid';
+import React, { useEffect, useRef, useState } from 'react';
 
+import RouteName from 'staticRes/routes';
 import { encrypt } from 'helpers/crypto';
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
@@ -18,6 +19,7 @@ type FormValues = {
 };
 
 const Backup = () => {
+  const router = useRouter();
   const dlRef = useRef(null);
   const [user, accounts] = useTypedSelector((store) => [
     store.user,
@@ -49,6 +51,13 @@ const Backup = () => {
     setTimeout(() => {
       dlRef?.current?.click();
     }, 100);
+
+    router.push({
+      pathname: RouteName.Home,
+      query: {
+        menu: 4,
+      },
+    });
 
     return {};
   };

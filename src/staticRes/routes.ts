@@ -22,12 +22,12 @@ enum RouteName {
   XLMAsset = '/home/xlm-asset',
   AddAsset = '/home/add-asset',
 
-  About = '/settings/about',
-  Backup = '/settings/backup',
-  General = '/settings/general',
-  Contacts = '/settings/contacts',
-  ChangePassword = '/settings/change-password',
-  ContactAction = '/settings/contacts/action',
+  AboutSetting = '/settings/about',
+  BackupSetting = '/settings/backup',
+  GeneralSetting = '/settings/general',
+  ContactsSetting = '/settings/contacts',
+  ChangePasswordSetting = '/settings/change-password',
+  ContactActionSetting = '/settings/contacts/action',
 
   LoadingOne = '/loading-one',
   LoadingNetwork = '/loading-network',

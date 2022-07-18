@@ -12,10 +12,13 @@ import ApproveTransaction from 'blocks/ApproveTransaction';
 import useActiveAccount from 'hooks/useActiveAccount';
 import addConnectedWebsite from 'actions/accounts/addConnectedWebsite';
 
+import useTypedSelector from 'hooks/useTypedSelector';
 import * as S from './styles';
 
 const Browser = () => {
   const account = useActiveAccount();
+  const options = useTypedSelector((store) => store.options);
+
   const [loaded, setLoaded] = useState(false);
   const [result, setResult] = useState<'valid' | 'invalid' | 'empty'>(
     'empty',
@@ -26,33 +29,13 @@ const Browser = () => {
   const [openApprove, setOpenApprove] = useState(false);
   const [event, setEvent] = useState(null);
 
-  const handler = (e) => {
-    if (e.data.type === 'RABET/CONNECT') {
-      setEvent(e);
-      setOpenConnect(true);
-    }
-
-    if (e.data.type === 'RABET/SIGN') {
-      setEvent(e);
-      setOpenApprove(true);
-    }
-  };
-
   useEffect(() => {
-    // if (!loaded && result === 'valid') {
-    //   setTimeout(() => {
-    //     setResult('invalid');
-    //   }, 2000);
-    // }
+    if (!loaded && result === 'valid') {
+      setTimeout(() => {
+        setResult('invalid');
+      }, 2000);
+    }
   }, [loaded]);
-
-  useEffect(() => {
-    window.addEventListener('message', handler);
-
-    return () => {
-      window.removeEventListener('message', handler);
-    };
-  });
 
   const handleLoad = () => {
     setLoaded(true);
@@ -86,15 +69,17 @@ const Browser = () => {
     }
   };
 
-  const onConnectConfirm = () => {
-    event.source.postMessage(
+  const onConnectConfirm = (customEvent: any) => {
+    const e = customEvent || event;
+
+    e.source.postMessage(
       {
         type: 'RABET/CONNECT/RESPONSE',
         message: {
           publicKey: account.publicKey,
         },
       },
-      event.origin,
+      e.origin,
     );
 
     const { hostname } = new URL(event.origin);
@@ -149,6 +134,32 @@ const Browser = () => {
 
     setOpenApprove(false);
   };
+
+  const handler = (e) => {
+    if (e.data.type === 'RABET/CONNECT') {
+      setEvent(e);
+
+      if (options.privacyMode) {
+        setOpenConnect(true);
+      } else {
+        onConnectConfirm(e);
+      }
+    }
+
+    if (e.data.type === 'RABET/SIGN') {
+      setEvent(e);
+
+      setOpenApprove(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('message', handler);
+
+    return () => {
+      window.removeEventListener('message', handler);
+    };
+  });
 
   return (
     <>

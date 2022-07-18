@@ -4,7 +4,7 @@ import { change, OptionMode } from 'reducers/options';
 import storeOptions from './store';
 
 type ChangeOptionsType = {
-  explorer: string | number;
+  explorer: string;
   currency: string | number;
   mode: OptionMode;
   privacyMode: boolean;

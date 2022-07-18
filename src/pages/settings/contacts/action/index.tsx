@@ -1,3 +1,3 @@
-import AddContact from 'blocks/NavItems/setting/Contacts/CreateContact';
+import AddContact from 'blocks/NavItems/setting/Contacts/ContactAction';
 
 export default AddContact;

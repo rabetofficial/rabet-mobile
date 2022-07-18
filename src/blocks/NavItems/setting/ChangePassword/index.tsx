@@ -7,6 +7,8 @@ import Button from 'components/common/Button';
 import ButtonContainer from 'components/common/ButtonContainer';
 import changeMasterPassword from 'actions/options/changeMasterPassword';
 
+import { useRouter } from 'next/router';
+import RouteName from 'staticRes/routes';
 import * as S from './styles';
 
 export type FormValues = {
@@ -16,6 +18,8 @@ export type FormValues = {
 };
 
 const ChangePassword = () => {
+  const router = useRouter();
+
   const validateForm = (values: FormValues) => {
     const errors: Partial<FormValues> = {};
 
@@ -66,6 +70,13 @@ const ChangePassword = () => {
         newPassword: 'Could not change password. Try again.',
       };
     }
+
+    router.push({
+      pathname: RouteName.Home,
+      query: {
+        menu: 4,
+      },
+    });
 
     return {};
   };

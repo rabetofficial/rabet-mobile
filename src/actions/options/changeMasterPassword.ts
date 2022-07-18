@@ -1,13 +1,13 @@
 import store from 'store';
 import { changePassword } from 'reducers/user';
 import storeAccounts from 'actions/accounts/store';
-import { FormValues } from 'blocks/Setting/ChangePassword';
+import { FormValues } from 'blocks/NavItems/setting/ChangePassword';
 
-type changeMasterResult = 'wrong_password' | 'done' | 'failed';
+type ChangeMasterResult = 'wrong_password' | 'done' | 'failed';
 
 const changeMasterPassword = async (
   values: FormValues,
-): Promise<changeMasterResult> => {
+): Promise<ChangeMasterResult> => {
   const { user } = store.getState();
 
   if (user.password !== values.oldPassword) {

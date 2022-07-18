@@ -13,6 +13,7 @@ import useTypedSelector from 'hooks/useTypedSelector';
 import deleteContactAction from 'actions/contacts/delete';
 import { Contact as ContactType } from 'reducers/contacts';
 
+import RouteName from 'staticRes/routes';
 import * as S from './styles';
 
 const Contact = () => {
@@ -20,11 +21,16 @@ const Contact = () => {
   const contacts = useTypedSelector((store) => store.contacts);
 
   const handleOpenAddContact = () => {
-    router.push('contacts/add-contact');
+    router.push(RouteName.ContactActionSetting);
   };
 
-  const handleOpenEditContact = () => {
-    router.push('contacts/edit-contact');
+  const handleOpenEditContact = (contact: ContactType) => {
+    router.push({
+      pathname: RouteName.ContactActionSetting,
+      query: {
+        contactPublicKey: contact.publicKey,
+      },
+    });
   };
 
   return (

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+
 import AngleRight from 'svgs/AngleRight';
+import RouteName from 'staticRes/routes';
 import ExtTitle from 'components/common/ExitTitle';
 
 import * as S from './styles';
@@ -21,7 +23,7 @@ const Settings = () => {
       title: 'General',
       description: 'Currency conversion, Mode, Explorer',
       onClick: () => {
-        router.push('settings/general');
+        router.push(RouteName.GeneralSetting);
       },
     },
     {
@@ -29,7 +31,7 @@ const Settings = () => {
       title: 'Change password',
       description: 'Change your wallet password',
       onClick: () => {
-        router.push('settings/change-password');
+        router.push(RouteName.ChangePasswordSetting);
       },
     },
     {
@@ -37,7 +39,7 @@ const Settings = () => {
       title: 'Backup',
       description: 'Get a backup of all your imported wallets',
       onClick: () => {
-        router.push('settings/backup');
+        router.push(RouteName.BackupSetting);
       },
     },
     {
@@ -45,7 +47,7 @@ const Settings = () => {
       title: 'Contacts',
       description: 'Add, edit, delete and manage your contacts',
       onClick: () => {
-        router.push('settings/contacts');
+        router.push(RouteName.ContactsSetting);
       },
     },
     {
@@ -53,7 +55,7 @@ const Settings = () => {
       title: 'About',
       description: 'Version, Contact info, Community',
       onClick: () => {
-        router.push('settings/about');
+        router.push(RouteName.AboutSetting);
       },
     },
   ];

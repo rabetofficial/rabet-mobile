@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
+import config from 'config';
 import { ElementOption } from 'models';
+import RouteName from 'staticRes/routes';
 import Button from 'components/common/Button';
 import useTypedSelector from 'hooks/useTypedSelector';
 import changeOptionsAction from 'actions/options/change';
@@ -8,10 +11,9 @@ import * as currenciesModule from 'staticRes/currencies';
 import TooltipLabel from 'components/common/TooltipLabel';
 import ToggleSwitch from 'components/common/ToggleSwitch';
 import ButtonContainer from 'components/common/ButtonContainer';
-import config from 'config';
-import Options from './Options';
 
 import * as S from './styles';
+import Options from './Options';
 
 const explorerOptions = [
   { value: 'steexp', label: 'Steexp' },
@@ -36,6 +38,8 @@ const currenciesList = currencies.map((x) => ({
 }));
 
 const SettingGeneral = () => {
+  const router = useRouter();
+
   const options = useTypedSelector((store) => store.options);
   const [checked, setChecked] = useState(true);
 
@@ -116,6 +120,13 @@ const SettingGeneral = () => {
       autoTimeLocker: selectedTimer.value,
       currency: selectedCurrency.value,
       mode: 'BASIC',
+    });
+
+    router.push({
+      pathname: RouteName.Home,
+      query: {
+        menu: 4,
+      },
     });
   };
 

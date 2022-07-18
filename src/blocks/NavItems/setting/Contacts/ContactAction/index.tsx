@@ -1,33 +1,49 @@
 import React from 'react';
 import { StrKey } from 'stellar-sdk';
+import { useRouter } from 'next/router';
 import { Form, Field } from 'react-final-form';
 
+import RouteName from 'staticRes/routes';
+import Error from 'components/common/Error';
 import Input from 'components/common/Input';
-import { Contact } from 'reducers/contacts';
-import ExitTitle from 'components/common/ExitTitle';
 import Button from 'components/common/Button';
+import addContactAction from 'actions/contacts/add';
+import ExitTitle from 'components/common/ExitTitle';
 import useTypedSelector from 'hooks/useTypedSelector';
 import editContactAction from 'actions/contacts/edit';
 import ButtonContainer from 'components/common/ButtonContainer';
-import Error from 'components/common/Error';
 
 import { ChildLabel, FirstItem } from '../styles';
 
-type EditContactType = {
-  contact: Contact;
+type FormValues = {
+  name: string;
+  publicKey: string;
+  memo?: string;
 };
 
-const EditContact = ({ contact }: EditContactType) => {
+const ContactAction = () => {
+  const router = useRouter();
+
+  const isEdit = !!router.query.contactPublicKey;
+
   const [accounts, contacts] = useTypedSelector((store) => [
     store.accounts,
     store.contacts,
   ]);
 
-  const validateForm = (values: Contact) => {
-    const errors: Partial<Contact> = {};
+  const editingContact = contacts.find(
+    (contact) => contact.publicKey === router.query.contactPublicKey,
+  );
+
+  const validateForm = (values: FormValues) => {
+    const errors: Partial<FormValues> = {};
 
     if (!values.name) {
       errors.name = '';
+    } else {
+      if (values.name.length > 50) {
+        errors.name = 'Name cannot be more than 50 characters.';
+      }
     }
 
     if (!values.publicKey) {
@@ -44,15 +60,11 @@ const EditContact = ({ contact }: EditContactType) => {
           errors.publicKey =
             'You cannot add your own account as a contact.';
         } else {
-          const otherContacts = contacts.filter(
-            (aContact) => aContact.publicKey !== contact.publicKey,
+          const foundContact = contacts.find(
+            (contact) => contact.publicKey === values.publicKey,
           );
 
-          const foundContact = otherContacts.find(
-            (aContact) => aContact.publicKey === values.publicKey,
-          );
-
-          if (foundContact) {
+          if (foundContact && !isEdit) {
             errors.publicKey = 'Contact is duplicated.';
           }
         }
@@ -66,24 +78,31 @@ const EditContact = ({ contact }: EditContactType) => {
     return errors;
   };
 
-  const onSubmit = (values: Contact) => {
-    editContactAction(contact, values);
+  const onSubmit = (values: FormValues) => {
+    if (!isEdit) {
+      addContactAction(values);
+    } else if (editingContact) {
+      editContactAction(editingContact, values);
+    }
+
+    router.push(RouteName.ContactsSetting);
 
     return {};
   };
 
   return (
     <>
-      <ExitTitle title="Edit contact" />
+      <ExitTitle title={isEdit ? 'Edit Contact' : 'Create contact'} />
+
       <div className="content">
         <div>
           <Form
-            validate={validateForm}
             onSubmit={onSubmit}
+            validate={validateForm}
             initialValues={{
-              name: contact.name,
-              publicKey: contact.publicKey,
-              memo: contact.memo || '',
+              name: editingContact?.name || '',
+              publicKey: editingContact?.publicKey || '',
+              memo: editingContact?.memo || '',
             }}
             render={({
               invalid,
@@ -137,7 +156,6 @@ const EditContact = ({ contact }: EditContactType) => {
                           (optional)
                         </span>
                       </ChildLabel>
-
                       <Input
                         type="text"
                         placeholder="My friend"
@@ -148,6 +166,7 @@ const EditContact = ({ contact }: EditContactType) => {
                     </div>
                   )}
                 </Field>
+
                 {submitError && <Error>{submitError}</Error>}
 
                 <ButtonContainer mb={39} fixedBottom>
@@ -155,7 +174,7 @@ const EditContact = ({ contact }: EditContactType) => {
                     type="submit"
                     variant="primary"
                     size="medium"
-                    content="Save"
+                    content="Add"
                     disabled={pristine || submitting || invalid}
                   />
                 </ButtonContainer>
@@ -168,4 +187,4 @@ const EditContact = ({ contact }: EditContactType) => {
   );
 };
 
-export default EditContact;
+export default ContactAction;
