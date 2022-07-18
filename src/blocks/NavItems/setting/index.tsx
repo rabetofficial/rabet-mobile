@@ -21,7 +21,7 @@ const Settings = () => {
     {
       id: '1',
       title: 'General',
-      description: 'Currency conversion, Mode, Explorer',
+      description: 'Currency conversion, Privacy mode, Explorer',
       onClick: () => {
         router.push(RouteName.GeneralSetting);
       },

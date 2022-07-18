@@ -21,14 +21,6 @@ const explorerOptions = [
   { value: 'stellarexpert', label: 'StellarExpert' },
 ];
 
-const timerOptions = [
-  { value: 5, label: '5 minutes' },
-  { value: 15, label: '15 minutes' },
-  { value: 30, label: '30 minutes' },
-  { value: 60, label: '1 hour' },
-  { value: 60 * 24 * 30 * 12 * 5, label: 'Never' },
-];
-
 const currencies = Object.values(currenciesModule);
 
 const currenciesList = currencies.map((x) => ({
@@ -45,9 +37,7 @@ const SettingGeneral = () => {
 
   const [selectedExplorer, setSelectedExplorer] =
     useState<ElementOption>({} as ElementOption);
-  const [selectedTimer, setSelectedTimer] = useState<ElementOption>(
-    {} as ElementOption,
-  );
+
   const [selectedCurrency, setSelectedCurrency] =
     useState<ElementOption>(currenciesList[0]);
 
@@ -69,24 +59,6 @@ const SettingGeneral = () => {
 
     setSelectedExplorer(newSelectedExplorer);
 
-    let timerLabel;
-
-    if (options.autoTimeLocker === 5) {
-      timerLabel = '5 minutes';
-    } else if (options.autoTimeLocker === 15) {
-      timerLabel = '15 minutes';
-    } else if (options.autoTimeLocker === 30) {
-      timerLabel = '30 minutes';
-    } else if (options.autoTimeLocker === 60) {
-      timerLabel = '1 hour';
-    } else if (options.autoTimeLocker === 60 * 24 * 30 * 12 * 5) {
-      timerLabel = 'Never';
-    }
-
-    setSelectedTimer({
-      value: options.autoTimeLocker,
-      label: timerLabel,
-    });
     setChecked(options.privacyMode);
 
     if (options.currency) {
@@ -105,10 +77,6 @@ const SettingGeneral = () => {
     setSelectedCurrency(e);
   };
 
-  const onChangeTimer = (e: ElementOption) => {
-    setSelectedTimer(e);
-  };
-
   const onChangeNetwork = (e: ElementOption) => {
     setSelectedExplorer(e);
   };
@@ -117,7 +85,6 @@ const SettingGeneral = () => {
     changeOptionsAction({
       privacyMode: checked,
       explorer: selectedExplorer.value,
-      autoTimeLocker: selectedTimer.value,
       currency: selectedCurrency.value,
       mode: 'BASIC',
     });
@@ -153,18 +120,6 @@ const SettingGeneral = () => {
           items={currenciesList}
           defaultValue={selectedCurrency}
           onChange={onChangeCurrency}
-        />
-      </S.Item>
-
-      <S.Item>
-        <TooltipLabel
-          text="Auto-lock timer"
-          tooltipText="Rabet will lock automatically after a set amount of time."
-        />
-        <Options
-          items={timerOptions}
-          defaultValue={selectedTimer}
-          onChange={onChangeTimer}
         />
       </S.Item>
 

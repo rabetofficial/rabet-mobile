@@ -7,6 +7,7 @@ import Layout from 'components/common/Layouts/BaseLayout';
 import useActiveAccount from 'hooks/useActiveAccount';
 import removeConnectedWebsite from 'actions/accounts/removeConnectedWebsite';
 import * as S from './styles';
+import NoData from 'components/common/NoData';
 
 const ConnectedWebsites = () => {
   const account = useActiveAccount();
@@ -35,25 +36,28 @@ const ConnectedWebsites = () => {
         List of websites that are allowed to interact with this
         account and get its public-key
       </S.Desc>
+      {!connectedWebsites.length ? (
+        <NoData msg="No websites." className="mt-[150px]" />
+      ) : (
+        <div>
+          {connectedWebsites.map((cw) => (
+            <S.Website key={cw.host}>
+              <S.Link href="/#" rel="noreferrer">
+                {cw.host}
+              </S.Link>
 
-      <div>
-        {connectedWebsites.map((cw) => (
-          <S.Website key={cw.host}>
-            <S.Link href="/#" rel="noreferrer">
-              {cw.host}
-            </S.Link>
-
-            <Button
-              variant="danger"
-              onClick={() => {
-                removeConnectedWebsites(cw);
-              }}
-              content="Disconnect"
-              className="w-[89px] h-[32px] text-sm font-medium"
-            />
-          </S.Website>
-        ))}
-      </div>
+              <Button
+                variant="danger"
+                onClick={() => {
+                  removeConnectedWebsites(cw);
+                }}
+                content="Disconnect"
+                className="w-[89px] h-[32px] text-sm font-medium"
+              />
+            </S.Website>
+          ))}
+        </div>
+      )}
     </Layout>
   );
 };
