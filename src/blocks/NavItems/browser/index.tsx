@@ -17,7 +17,10 @@ import * as S from './styles';
 
 const Browser = () => {
   const account = useActiveAccount();
-  const options = useTypedSelector((store) => store.options);
+  const [user, options] = useTypedSelector((store) => [
+    store.user,
+    store.options,
+  ]);
 
   const [loaded, setLoaded] = useState(false);
   const [result, setResult] = useState<'valid' | 'invalid' | 'empty'>(
@@ -69,17 +72,15 @@ const Browser = () => {
     }
   };
 
-  const onConnectConfirm = (customEvent: any) => {
-    const e = customEvent || event;
-
-    e.source.postMessage(
+  const onConnectConfirm = () => {
+    event.source.postMessage(
       {
         type: 'RABET/CONNECT/RESPONSE',
         message: {
           publicKey: account.publicKey,
         },
       },
-      e.origin,
+      event.origin,
     );
 
     const { hostname } = new URL(event.origin);
@@ -136,13 +137,37 @@ const Browser = () => {
   };
 
   const handler = (e) => {
-    if (e.data.type === 'RABET/CONNECT') {
+    if (e?.data?.type === 'RABET/CONNECT') {
       setEvent(e);
 
       if (options.privacyMode) {
-        setOpenConnect(true);
+        if (
+          user.connectedWebsites.includes(
+            `${new URL(e.origin).host}/${account.publicKey}`,
+          )
+        ) {
+          e.source.postMessage(
+            {
+              type: 'RABET/CONNECT/RESPONSE',
+              message: {
+                publicKey: account.publicKey,
+              },
+            },
+            e.origin,
+          );
+        } else {
+          setOpenConnect(true);
+        }
       } else {
-        onConnectConfirm(e);
+        e.source.postMessage(
+          {
+            type: 'RABET/CONNECT/RESPONSE',
+            message: {
+              publicKey: account.publicKey,
+            },
+          },
+          e.origin,
+        );
       }
     }
 

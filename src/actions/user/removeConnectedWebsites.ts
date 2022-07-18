@@ -1,6 +1,6 @@
-import store from 'popup/store';
+import store from 'store';
 import { set } from 'helpers/storage';
-import { removeConnectedWebsite } from 'popup/reducers/user';
+import { removeConnectedWebsite } from 'reducers/user';
 
 export default async (connectedWebsite: string) => {
   store.dispatch(removeConnectedWebsite(connectedWebsite));

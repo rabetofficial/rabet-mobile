@@ -1,7 +1,6 @@
 import store from 'store';
 import { set } from 'helpers/storage';
 import { addConnectedWebsites } from 'reducers/user';
-import { changeIsConnected } from 'reducers/accounts2';
 
 type RemoveConnectedWebsitesArgs = {
   host: string;
@@ -18,12 +17,6 @@ export default async ({
   const filtered = connectedWebsites.filter((x) => x !== pair);
 
   store.dispatch(addConnectedWebsites(filtered));
-  store.dispatch(
-    changeIsConnected({
-      publicKey,
-      isConnected: false,
-    }),
-  );
 
   await set('connectedWebsites', filtered);
 };
