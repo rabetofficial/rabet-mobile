@@ -15,13 +15,13 @@ const RoutesManager = ({ pageProps, children }) => {
     store.accounts,
   ]);
 
-  useEffect(() => {
-    loadUser().then(() => {
-      if (!user.logged) {
-        router.push(RouteName.Login);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   loadUser().then(() => {
+  //     if (!user.logged) {
+  //       router.push(RouteName.Login);
+  //     }
+  //   });
+  // }, []);
 
   useEffect(() => {
     // console.log(pageProps);
