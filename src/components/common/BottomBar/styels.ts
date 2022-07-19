@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
+  height: 90px;
+  background-color: ${({ theme }) => theme.colors.primary.lightest};
   padding: 0;
   display: flex;
   justify-content: space-between;
@@ -8,7 +10,7 @@ export const List = styled.ul`
   position: fixed;
   right: 0;
   left: 0;
-  bottom: 29px;
+  bottom: 0px;
 
   li {
     cursor: pointer;

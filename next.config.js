@@ -18,7 +18,7 @@ const nextConfig = withPWA({
   pwa: {
     dest: 'public',
     swSrc: 'src/service-worker.js',
-  }
+  },
 });
 
 module.exports = nextConfig;

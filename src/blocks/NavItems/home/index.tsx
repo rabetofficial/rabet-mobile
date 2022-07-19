@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 import shorter from 'helpers/shorter';
@@ -44,7 +44,7 @@ const Home = ({ setLoading }: HomeProps) => {
     return <LoadingOne />;
   }
 
-  const scrollMaxHeight = document.documentElement.clientHeight - 375;
+  const scrollMaxHeight = document.documentElement.clientHeight - 360;
 
   return (
     <>
@@ -91,7 +91,7 @@ const Home = ({ setLoading }: HomeProps) => {
             <AssetButton
               style={{
                 position: assets.length < 4 ? 'absolute' : 'static',
-                bottom: assets.length < 4 ? '104px' : '0',
+                bottom: assets.length < 4 ? '120px' : '0',
                 width: assets.length < 4 ? 'calc(100% - 32px)' : '',
               }}
             />
