@@ -1,6 +1,6 @@
 import Swap from 'blocks/Op/Basic/Swap';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

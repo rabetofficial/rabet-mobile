@@ -1,6 +1,6 @@
 import ConnectedWebsites from 'blocks/ConnectedWebsites';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

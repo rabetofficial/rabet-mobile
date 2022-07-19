@@ -1,6 +1,6 @@
 import RestoreWallet from 'blocks/RestoreWallet';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

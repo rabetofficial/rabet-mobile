@@ -50,3 +50,5 @@ yarn-error.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 release/
+
+public/sw.js

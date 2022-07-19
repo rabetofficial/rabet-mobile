@@ -1,6 +1,6 @@
 import ChangePassword from 'blocks/NavItems/setting/ChangePassword';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

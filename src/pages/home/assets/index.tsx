@@ -1,6 +1,6 @@
 import AssetsInfo from 'blocks/AssetsInfo';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

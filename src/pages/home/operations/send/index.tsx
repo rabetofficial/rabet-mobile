@@ -1,6 +1,6 @@
 import Send from 'blocks/Op/Basic/Send';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

@@ -1,6 +1,6 @@
 import About from 'blocks/NavItems/setting/About';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

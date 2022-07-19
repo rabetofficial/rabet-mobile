@@ -1,6 +1,6 @@
 import WalletOption from 'blocks/WalletOption';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

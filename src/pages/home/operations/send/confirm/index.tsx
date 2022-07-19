@@ -1,6 +1,6 @@
 import Confirm from 'blocks/Op/Basic/Confirm/Send';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

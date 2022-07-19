@@ -1,6 +1,6 @@
 import Login from 'blocks/Login';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 0,

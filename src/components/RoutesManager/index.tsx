@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
-import useTypedSelector from 'hooks/useTypedSelector';
-import Loading from 'components/Loading';
 import { useRouter } from 'next/router';
-import store from 'actions/accounts/store';
+import React, { useEffect } from 'react';
+
 import { get } from 'helpers/storage';
 import RouteName from 'staticRes/routes';
-import userRegistered from 'actions/user/userRegistered';
+import Loading from 'components/Loading';
+import store from 'actions/accounts/store';
 import loadUser from 'actions/user/loadUser';
+import useTypedSelector from 'hooks/useTypedSelector';
+import userRegistered from 'actions/user/userRegistered';
 
 const RoutesManager = ({ pageProps, children }) => {
   const router = useRouter();
@@ -16,7 +17,11 @@ const RoutesManager = ({ pageProps, children }) => {
   ]);
 
   useEffect(() => {
-    loadUser().then(() => {});
+    loadUser().then(() => {
+      if (!user.logged) {
+        router.push(RouteName.Login);
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -34,7 +39,8 @@ const RoutesManager = ({ pageProps, children }) => {
     //     router.push(router.pathname);
     //   }
     // }
-  }, []);
+    console.log(pageProps);
+  }, [JSON.stringify(router)]);
 
   // return <Loading title="Redirecting" size={32} />;
   return children;

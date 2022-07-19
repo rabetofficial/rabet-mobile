@@ -1,6 +1,6 @@
 import Receive from 'blocks/Receive';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

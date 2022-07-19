@@ -1,6 +1,6 @@
 import PrivateKey from 'blocks/PrivateKey';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

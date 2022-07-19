@@ -1,6 +1,6 @@
 import Backup from 'blocks/NavItems/setting/Backup';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,

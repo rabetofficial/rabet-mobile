@@ -12,7 +12,7 @@ import { NavItemContent, NavItemMenu } from 'models';
 import BrowserIcon from 'svgs/BottomBar/TravelCompass';
 import LastTransactionIcon from 'svgs/BottomBar/ThunderLightning';
 
-export async function getStaticProps() {
+export function getServerSideProps() {
   return {
     props: {
       logged: 2,

@@ -12,6 +12,7 @@ export default async () => {
     const connectedWebsites = await get('connectedWebsites');
 
     console.log('options:');
+    console.log(data);
     console.log(options);
     console.log(contacts);
     console.log(connectedWebsites);

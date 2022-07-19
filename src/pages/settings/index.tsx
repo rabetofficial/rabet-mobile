@@ -1,6 +1,6 @@
 import Settings from 'blocks/NavItems/setting';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       logged: 2,
