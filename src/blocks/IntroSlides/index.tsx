@@ -98,6 +98,7 @@ const IntroSlides = () => {
                 src={slide.imgSrc}
                 width={slide.imgWidth}
                 height={slide.imgHeight}
+                alt="image"
               />
             </S.ImgContainer>
 
@@ -110,7 +111,7 @@ const IntroSlides = () => {
       </Slider>
 
       {CurrentIndex === 3 && (
-        <ButtonContainer fixedBottom mb={50}>
+        <ButtonContainer fixedBottom mb={39}>
           <Button
             type="button"
             variant="primary"

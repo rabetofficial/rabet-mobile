@@ -6,6 +6,9 @@ export const HeadText = styled.p`
   margin: 41px 0 25px;
   font-weight: bold;
   line-height: 1.5;
+  @media (max-height: 640px) {
+    font-size: 18px;
+  }
 `;
 
 export const MainText = styled.p`
@@ -14,6 +17,10 @@ export const MainText = styled.p`
   font-size: 16px;
   padding: 0 16px;
   color: ${({ theme }) => theme.colors.primary.dark};
+  @media (max-height: 640px) {
+    margin-top: -20px;
+    font-size: 14px;
+  }
 `;
 
 interface ImgProps {
@@ -27,6 +34,9 @@ export const ImgContainer = styled.div<ImgProps>`
   margin-right: ${({ slideId }) => (slideId === 2 ? '35px' : '0')};
   margin-right: ${({ slideId }) => (slideId === 4 ? '-4px' : '0')};
   margin-left: ${({ slideId }) => (slideId === 3 ? '44px' : '0')};
+  @media (max-height: 640px) {
+    margin: -30px 0 -30px;
+  }
 `;
 
 interface PaginationProps {
@@ -41,6 +51,12 @@ export const PageinationParent = styled.div`
   li {
     width: 9px;
     height: 9px;
+  }
+  @media (max-height: 670px) {
+    bottom: 30px;
+  }
+  @media (max-height: 550px) {
+    bottom: 20px;
   }
 `;
 

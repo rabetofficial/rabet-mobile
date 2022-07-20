@@ -19,91 +19,97 @@ const RoutesManager = ({
   pageProps,
   children,
 }: RoutesManagerType) => {
-  const router = useRouter();
-  const [pass, setPass] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [user, accounts] = useTypedSelector((store) => [
-    store.user,
-    store.accounts,
-  ]);
+  // const router = useRouter();
+  // const [pass, setPass] = useState(false);
+  // const [isLoaded, setIsLoaded] = useState(false);
+  // const [user, accounts] = useTypedSelector((store) => [
+  //   store.user,
+  //   store.accounts,
+  // ]);
 
-  useEffect(() => {
-    loadUser().then(() => {
-      setIsLoaded(true);
-      if (!user.logged) {
-        router.push(RouteName.Login);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   loadUser().then(() => {
+  //     setIsLoaded(true);
+  //     if (!user.logged) {
+  //       router.push(RouteName.Login);
+  //     }
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    if (!isLoaded) {
-      return;
-    }
+  // useEffect(() => {
+  //   if (!isLoaded) {
+  //     return;
+  //   }
 
-    let passCount = 0;
+  //   let passCount = 0;
 
-    if (pageProps.registered === 0) {
-      if (user.registered) {
-        router.push(RouteName.Home);
-        return;
-      }
-      passCount += 1;
-    } else if (pageProps.registered === 1) {
-      passCount += 1;
-    } else if (pageProps.registered === 2) {
-      if (user.registered) {
-        passCount += 1;
-      } else {
-        router.push(RouteName.Introduction);
-        return;
-      }
-    }
+  //   if (pageProps.registered === 0) {
+  //     if (user.registered) {
+  //       router.push(RouteName.Home);
+  //       return;
+  //     }
+  //     passCount += 1;
+  //   } else if (pageProps.registered === 1) {
+  //     passCount += 1;
+  //   } else if (pageProps.registered === 2) {
+  //     if (user.registered) {
+  //       passCount += 1;
+  //     } else {
+  //       router.push(RouteName.Introduction);
+  //       return;
+  //     }
+  //   }
 
-    if (pageProps.logged === 0) {
-      if (user.logged) {
-        router.push(RouteName.Home);
-        return;
-      }
-      passCount += 1;
-    } else if (pageProps.logged === 1) {
-      passCount += 1;
-    } else if (pageProps.logged === 2) {
-      if (user.logged) {
-        passCount += 1;
-      } else {
-        router.push(RouteName.Login);
-        return;
-      }
-    }
+  //   if (pageProps.logged === 0) {
+  //     if (user.logged) {
+  //       router.push(RouteName.Home);
+  //       return;
+  //     }
+  //     passCount += 1;
+  //   } else if (pageProps.logged === 1) {
+  //     passCount += 1;
+  //   } else if (pageProps.logged === 2) {
+  //     if (user.logged) {
+  //       passCount += 1;
+  //     } else {
+  //       router.push(RouteName.Login);
+  //       return;
+  //     }
+  //   }
 
-    if (pageProps.account === 0) {
-      if (accounts.length) {
-        router.push(RouteName.Home);
-        return;
-      }
-      passCount += 1;
-    } else if (pageProps.account === 1) {
-      passCount += 1;
-    } else if (pageProps.account === 2) {
-      if (accounts.length) {
-        passCount += 1;
-      } else {
-        router.push(RouteName.First);
-        return;
-      }
-    }
+  //   if (pageProps.account === 0) {
+  //     if (accounts.length) {
+  //       router.push(RouteName.Home);
+  //       return;
+  //     }
+  //     passCount += 1;
+  //   } else if (pageProps.account === 1) {
+  //     passCount += 1;
+  //   } else if (pageProps.account === 2) {
+  //     if (accounts.length) {
+  //       passCount += 1;
+  //     } else {
+  //       router.push(RouteName.First);
+  //       return;
+  //     }
+  //   }
 
-    if (passCount === 3) {
-      setPass(true);
-    }
-  }, [JSON.stringify(router)]);
+  //   if (passCount === 3) {
+  //     setPass(true);
+  //   }
+  // }, [JSON.stringify(router)]);
 
-  if (pass) {
-    return children;
-  }
+  // if (pass) {
+  //   return children;
+  // }
 
-  return <Loading size={80} />;
+  return (
+    // <Loading
+    //   size={80}
+    //   className="flex justify-center align-center h-screen"
+    // />
+    children
+  );
 };
 
 export default RoutesManager;
