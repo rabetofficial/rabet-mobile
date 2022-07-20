@@ -15,8 +15,16 @@ type AppProps = {
 
 const AssetList = ({ assets, children }: AppProps) => {
   const router = useRouter();
-  const onClick = () => {
-    router.push(RouteName.AssetInfo);
+
+  const onClick = (asset: Horizon.BalanceLine) => {
+    router.push({
+      pathname: RouteName.AssetInfo,
+      query: {
+        assetCode: asset.asset_code,
+        assetType: asset.asset_type,
+        assetIssuer: asset.asset_issuer,
+      },
+    });
   };
 
   return (
@@ -24,7 +32,9 @@ const AssetList = ({ assets, children }: AppProps) => {
       {assets.map((asset, index) => (
         <div
           key={`assetList${handleAssetsKeys(asset)}`}
-          onClick={onClick}
+          onClick={() => {
+            onClick(asset);
+          }}
         >
           <Asset asset={asset} />
 

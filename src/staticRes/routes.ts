@@ -18,7 +18,7 @@ enum RouteName {
   BasicSwapConfirm = '/home/operations/swap/confirm',
 
   Receive = '/home/receive',
-  AssetInfo = '/home/asset',
+  AssetInfo = '/home/assets',
   XLMAsset = '/home/xlm-asset',
   AddAsset = '/home/add-asset',
 

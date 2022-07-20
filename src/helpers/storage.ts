@@ -81,9 +81,7 @@ export const get = <T>(key: string, password?: string): Promise<T> =>
 
               return resolve(jsonData);
             }
-            console.log('The only data: ', cursor.value.value);
           } else {
-            console.log(`Not the only value ${cursor.value}`);
           }
         } else {
           resolve(null);
