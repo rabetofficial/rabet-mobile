@@ -154,9 +154,9 @@ const AssetInfo = ({
 
   if (isNative) {
     return (
-      <S.Container>
-        <div className="flex flex-col h-[490px]">
-          {children}
+      <div className="flex flex-col h-screen">
+        {children}{' '}
+        <S.Container>
           <S.Circle>
             <S.ImgContainer>
               <img src={xlmLogo.src} alt="xlm logo" />
@@ -168,9 +168,9 @@ const AssetInfo = ({
             that can be used on the Stellar network that doesn&apos;t
             require an issuer or a trustline. Any account can hold
             XLM. You can trade XLM for other assets in the network
-          </p>
-        </div>
-      </S.Container>
+          </p>{' '}
+        </S.Container>
+      </div>
     );
   }
   return (
