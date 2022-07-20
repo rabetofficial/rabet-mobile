@@ -7,8 +7,8 @@ const Opening = () => (
       src={logo.src}
       alt="logo"
       className="opening-animation"
-      width="75px"
-      height="75px"
+      width="80px"
+      height="80px"
     />
   </div>
 );
