@@ -159,7 +159,7 @@ const AssetInfo = ({
           {children}
           <S.Circle>
             <S.ImgContainer>
-              <img src={xlmLogo} alt="xlm logo" />
+              <img src={xlmLogo.src} alt="xlm logo" />
             </S.ImgContainer>
           </S.Circle>
           <p className="text-base">
