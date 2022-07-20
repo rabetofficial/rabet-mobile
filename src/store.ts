@@ -1,19 +1,20 @@
-import { useDispatch } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 
 import rootReducers from './reducers';
 
-const store = configureStore({
-  reducer: rootReducers,
-  devTools: true,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-});
+const makeStore = () =>
+  configureStore({
+    reducer: rootReducers,
+    devTools: true,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
+  });
 
-export type AppState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch = () => useDispatch<AppDispatch>();
+export type AppStore = ReturnType<typeof makeStore>;
+export type AppState = ReturnType<AppStore['getState']>;
 
-export default store;
+export type AppDispatch = AppStore['dispatch'];
+
+export default makeStore();

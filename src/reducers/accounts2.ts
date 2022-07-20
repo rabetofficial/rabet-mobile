@@ -38,19 +38,13 @@ type SetInactiveAction = {
   inactive: boolean;
 };
 
-type ChangeIsConnectedAction = {
-  publicKey: string;
-  isConnected: boolean;
-};
-
 const initialState: IAccount[] = [];
 
 const accountsSlice = createSlice({
   name: 'accounts',
   initialState,
   reducers: {
-    load: (state, action: PayloadAction<IAccount[]>) =>
-      action.payload,
+    load: (_, action: PayloadAction<IAccount[]>) => action.payload,
     loadBackup: (state, action: PayloadAction<IAccount[]>) => {
       for (let i = 0; i < action.payload.length; i += 1) {
         const newAccount = action.payload[i];

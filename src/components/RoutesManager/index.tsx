@@ -1,16 +1,27 @@
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import { get } from 'helpers/storage';
 import RouteName from 'staticRes/routes';
 import Loading from 'components/Loading';
-import store from 'actions/accounts/store';
 import loadUser from 'actions/user/loadUser';
 import useTypedSelector from 'hooks/useTypedSelector';
-import userRegistered from 'actions/user/userRegistered';
 
-const RoutesManager = ({ pageProps, children }) => {
+type RoutesManagerType = {
+  children: JSX.Element;
+  pageProps: {
+    logged: 0 | 1 | 2;
+    registered: 0 | 1 | 2;
+    account: 0 | 1 | 2;
+  };
+};
+
+const RoutesManager = ({
+  pageProps,
+  children,
+}: RoutesManagerType) => {
   const router = useRouter();
+  const [pass, setPass] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [user, accounts] = useTypedSelector((store) => [
     store.user,
     store.accounts,
@@ -18,6 +29,7 @@ const RoutesManager = ({ pageProps, children }) => {
 
   useEffect(() => {
     loadUser().then(() => {
+      setIsLoaded(true);
       if (!user.logged) {
         router.push(RouteName.Login);
       }
@@ -25,25 +37,73 @@ const RoutesManager = ({ pageProps, children }) => {
   }, []);
 
   useEffect(() => {
-    // console.log(pageProps);
-    // if (!user.registered) {
-    //   router.push('/intro');
-    // } else if (!user.logged) {
-    //   router.push('/login');
-    // } else if (!accounts) {
-    //   router.push('/first');
-    // } else {
-    //   if (pageProps.role === 'before-login') {
-    //     router.push('/home');
-    //   } else {
-    //     router.push(router.pathname);
-    //   }
-    // }
-    console.log(pageProps);
+    if (!isLoaded) {
+      return;
+    }
+
+    let passCount = 0;
+
+    if (pageProps.registered === 0) {
+      if (user.registered) {
+        router.push(RouteName.Home);
+        return;
+      }
+      passCount += 1;
+    } else if (pageProps.registered === 1) {
+      passCount += 1;
+    } else if (pageProps.registered === 2) {
+      if (user.registered) {
+        passCount += 1;
+      } else {
+        router.push(RouteName.Introduction);
+        return;
+      }
+    }
+
+    if (pageProps.logged === 0) {
+      if (user.logged) {
+        router.push(RouteName.Home);
+        return;
+      }
+      passCount += 1;
+    } else if (pageProps.logged === 1) {
+      passCount += 1;
+    } else if (pageProps.logged === 2) {
+      if (user.logged) {
+        passCount += 1;
+      } else {
+        router.push(RouteName.Login);
+        return;
+      }
+    }
+
+    if (pageProps.account === 0) {
+      if (accounts.length) {
+        router.push(RouteName.Home);
+        return;
+      }
+      passCount += 1;
+    } else if (pageProps.account === 1) {
+      passCount += 1;
+    } else if (pageProps.account === 2) {
+      if (accounts.length) {
+        passCount += 1;
+      } else {
+        router.push(RouteName.First);
+        return;
+      }
+    }
+
+    if (passCount === 3) {
+      setPass(true);
+    }
   }, [JSON.stringify(router)]);
 
-  // return <Loading title="Redirecting" size={32} />;
-  return children;
+  if (pass) {
+    return children;
+  }
+
+  return <Loading size={80} />;
 };
 
 export default RoutesManager;

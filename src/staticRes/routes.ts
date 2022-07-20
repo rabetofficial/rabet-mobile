@@ -39,3 +39,11 @@ enum RouteName {
 }
 
 export default RouteName;
+
+export const routesPermissions = {
+  [RouteName.Home]: {
+    logged: 2,
+    registered: 2,
+    account: 2,
+  },
+};

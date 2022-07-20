@@ -12,15 +12,13 @@ import { NavItemContent, NavItemMenu } from 'models';
 import BrowserIcon from 'svgs/BottomBar/TravelCompass';
 import LastTransactionIcon from 'svgs/BottomBar/ThunderLightning';
 
-export function getServerSideProps() {
-  return {
-    props: {
-      logged: 2,
-      registered: 2,
-      account: 2,
-    },
-  };
-}
+export const getServerSideProps = () => ({
+  props: {
+    logged: 2,
+    registered: 2,
+    account: 2,
+  },
+});
 
 const HomePage: NextPage = () => {
   const [loading, setLoading] = useState(false);

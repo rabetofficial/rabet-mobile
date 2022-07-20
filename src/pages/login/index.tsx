@@ -5,7 +5,7 @@ export async function getServerSideProps() {
     props: {
       logged: 0,
       registered: 2,
-      account: 2,
+      account: 1,
     },
   };
 }
