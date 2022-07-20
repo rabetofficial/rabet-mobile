@@ -155,7 +155,7 @@ const AssetInfo = ({
   if (isNative) {
     return (
       <div className="flex flex-col h-screen">
-        {children}{' '}
+        {children}
         <S.Container>
           <S.Circle>
             <S.ImgContainer>
@@ -164,11 +164,11 @@ const AssetInfo = ({
           </S.Circle>
           <p className="text-base">
             <strong className="text-lg">XLM</strong> is the native
-            currency of the network. An XLM is the only asset type
-            that can be used on the Stellar network that doesn&apos;t
+            currency of the network. XLM is the only asset type that
+            can be used on the Stellar network that doesn&apos;t
             require an issuer or a trustline. Any account can hold
-            XLM. You can trade XLM for other assets in the network
-          </p>{' '}
+            XLM. You can trade XLM for other assets in the network.
+          </p>
         </S.Container>
       </div>
     );
