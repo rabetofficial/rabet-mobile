@@ -224,12 +224,11 @@ const Browser = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} maximum-scale={1}>
         <S.InputBox>
           <S.Label>
             <S.InputSearch
               autoComplete="off"
-              autoFocus="off"
               name="search"
               type="text"
               enterKeyHint="go"

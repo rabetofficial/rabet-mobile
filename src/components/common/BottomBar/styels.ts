@@ -33,6 +33,9 @@ export const List = styled.ul`
       }
     }
   }
+  @media (max-height: 675px) {
+    height: 70px;
+  }
 `;
 
 export const Border = styled.span`
