@@ -45,6 +45,8 @@ export const InputSearch = styled.input`
 
   &:focus,
   &:focus-within {
+    height: 42px;
+    font-size: 16px;
     outline: none;
     background-color: ${({ theme }) => theme.colors.primary.lighter};
   }
