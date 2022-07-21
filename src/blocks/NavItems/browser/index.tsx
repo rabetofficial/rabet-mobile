@@ -1,4 +1,11 @@
-import isValidDomain from 'is-valid-domain';
+import {
+  Memo as M,
+  MemoType as MT,
+  Networks,
+  Operation as O,
+  Transaction as Tx,
+  xdr,
+} from 'stellar-sdk';
 import React, { useEffect, useRef, useState } from 'react';
 
 import World from 'svgs/LargeWorld';
@@ -15,6 +22,12 @@ import addConnectedWebsite from 'actions/accounts/addConnectedWebsite';
 import useTypedSelector from 'hooks/useTypedSelector';
 import * as S from './styles';
 
+export type ApproveTransactionState = {
+  network?: string;
+  origin?: string;
+  transaction?: Tx<M<MT>, O[]>;
+};
+
 const Browser = () => {
   const account = useActiveAccount();
   const [user, options] = useTypedSelector((store) => [
@@ -22,6 +35,7 @@ const Browser = () => {
     store.options,
   ]);
 
+  const [at, setAT] = useState<ApproveTransactionState>({});
   const [loaded, setLoaded] = useState(false);
   const [result, setResult] = useState<'valid' | 'invalid' | 'empty'>(
     'empty',
@@ -31,14 +45,6 @@ const Browser = () => {
   const [openConnect, setOpenConnect] = useState(false);
   const [openApprove, setOpenApprove] = useState(false);
   const [event, setEvent] = useState(null);
-
-  useEffect(() => {
-    if (!loaded && result === 'valid') {
-      setTimeout(() => {
-        setResult('invalid');
-      }, 2000);
-    }
-  }, [loaded]);
 
   const handleLoad = () => {
     setLoaded(true);
@@ -59,7 +65,7 @@ const Browser = () => {
       return;
     }
 
-    if (!url.includes('http') && isValidDomain(url)) {
+    if (!url.includes('http')) {
       url = `https://${url}`;
     }
 
@@ -172,6 +178,36 @@ const Browser = () => {
     }
 
     if (e.data.type === 'RABET/SIGN') {
+      if (!e.data.message.xdr || !e.data.message.network) {
+        e.source.postMessage(
+          {
+            type: 'RABET/SIGN/RESPONSE',
+            message: {
+              error: 'invalid-input',
+            },
+          },
+          e.origin,
+        );
+      }
+
+      try {
+        const xte = xdr.TransactionEnvelope.fromXDR(
+          e.data.message.xdr,
+          'base64',
+        );
+        const transaction = new Tx(xte, Networks.PUBLIC);
+
+        setAT({
+          transaction,
+          origin: e.origin,
+          network: e.data.message.network,
+        });
+      } catch (err) {
+        setAT({
+          origin: e.origin,
+        });
+      }
+
       setEvent(e);
 
       setOpenApprove(true);
@@ -269,6 +305,7 @@ const Browser = () => {
         isDark
       >
         <ApproveTransaction
+          data={at}
           onCancel={onApproveClose}
           onConfirm={onApproveConfirm}
         />

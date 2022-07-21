@@ -10,6 +10,14 @@ import * as S from './styles';
 const ShowOperation = ({ operation: op, index }: any) => {
   const { type, ...other } = op;
 
+  const keys = Object.keys(other);
+
+  for (let i = 0; i < keys.length; i += 1) {
+    if (other[keys[i]] === undefined) {
+      delete other[keys[i]];
+    }
+  }
+
   let arr = Object.entries(other);
 
   if (type === 'setOptions' && op.signer) {
@@ -28,7 +36,7 @@ const ShowOperation = ({ operation: op, index }: any) => {
     <Card type="secondary" className="mt-4">
       <S.Box>
         <S.CardTitle>
-          #{index + 1}-{camelToTitleCase(type || 'ABCDEFG')}
+          #{index + 1} {camelToTitleCase(type || 'Operation')}
         </S.CardTitle>
 
         {arr.map((keyValue) => (

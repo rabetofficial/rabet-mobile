@@ -1,5 +1,5 @@
 import React from 'react';
-import StellarSdk from 'stellar-sdk';
+import { StrKey } from 'stellar-sdk';
 
 import showObject from 'utils/showObject';
 import * as S from './styles';
@@ -13,13 +13,15 @@ const ShowfieldJSX = ({ tKey, value }: any) => (
 );
 
 const ShowField = ({ keyValue }: any) => {
-  const { isValidEd25519PublicKey: isPubValid } = StellarSdk.StrKey;
   const [key, value] = keyValue;
 
   const isObject = typeof value === 'object';
 
   if (!isObject) {
-    if (isPubValid(value) && key === 'ed25519PublicKey') {
+    if (
+      StrKey.isValidEd25519PublicKey(value) &&
+      key === 'ed25519PublicKey'
+    ) {
       return <ShowfieldJSX tKey="publicKey" value={value} />;
     }
 
@@ -27,7 +29,7 @@ const ShowField = ({ keyValue }: any) => {
       return (
         <ShowfieldJSX
           tKey={key}
-          value={parseFloat(value, 10).toString()}
+          value={parseFloat(value).toString()}
         />
       );
     }
@@ -38,9 +40,9 @@ const ShowField = ({ keyValue }: any) => {
   if (Array.isArray(value) && key === 'path') {
     let str = '[ ';
 
-    for (const oneValue of value) {
-      if (Object.values(oneValue)[0]) {
-        str = `${str}${Object.values(oneValue)[0]} `;
+    for (let i = 0; i < value.length; i += 1) {
+      if (Object.values(value[i])[0]) {
+        str = `${str}${Object.values(value[i])[0]} `;
       }
     }
 

@@ -1,115 +1,82 @@
 import React, { useState } from 'react';
 // import StellarSdk, { Transaction } from 'stellar-sdk';
 
+import maxText from 'utils/maxText';
 import Button from 'components/common/Button';
 import CopyText from 'components/common/CopyText';
-import ButtonContainer from 'components/common/ButtonContainer';
 import ScrollBar from 'components/common/ScrollBar';
-
-import maxText from 'utils/maxText';
-import Operations from './Operations';
+import useActiveAccount from 'hooks/useActiveAccount';
+import ButtonContainer from 'components/common/ButtonContainer';
+import { ApproveTransactionState } from 'blocks/NavItems/browser';
 
 import * as S from './styles';
+import Operations from './Operations';
 
 type ApproveType = {
   onCancel: () => void;
   onConfirm: () => void;
+  data: ApproveTransactionState;
 };
-const ApproveTransaction = ({ onCancel, onConfirm }: ApproveType) => {
+
+const ApproveTransaction = ({
+  onCancel,
+  onConfirm,
+  data,
+}: ApproveType) => {
+  const account = useActiveAccount();
   const [isImageLoaded, setIsImageLoaded] = useState(true);
 
-  const MockData = {
-    name: 'Sam Smith',
-    host: 'litemint.com',
-    title: 'title',
-    publicKey:
-      'GDHKYJMUNZ4STELQ7K5EH6TDGKJ2QJ5UPX5HWLOFWRC4H7NFG4JJHNFE',
-    network: 'Main network',
-    xdr: 'sth xdr',
-  };
+  const operations = data.transaction?.operations;
 
-  // let transaction;
+  if (!operations) {
+    return (
+      <div className="content">
+        <div className="content">
+          <p>Invalid XDR</p>
+        </div>
 
-  // try {
-  //   // const obj = StellarSdk.xdr.TransactionEnvelope.fromXDR(
-  //   //   MockData.xdr,
-  //   //   'base64',
-  //   // );
-  //   // transaction = new Transaction(obj, StellarSdk.Networks.PUBLIC);
-  // } catch (e) {
-  //   return (
-  //     <>
-  //       <S.Confirm>
-  //         <ExtTitle title={MockData.network} />
-  //
-  //         <div className="content">
-  //           <p>Invalid XDR</p>
-  //         </div>
-  //
-  //         <ButtonContainer>
-  //           <Button
-  //             variant="primary"
-  //             size="medium"
-  //             content="Close"
-  //             onClick={handleClose}
-  //           />
-  //         </ButtonContainer>
-  //       </S.Confirm>
-  //     </>
-  //   );
-  // }
+        <ButtonContainer>
+          <Button
+            variant="primary"
+            size="medium"
+            content="Close"
+            onClick={onCancel}
+          />
+        </ButtonContainer>
+      </div>
+    );
+  }
 
-  const operations = [
-    {
-      title: 'Create Account',
-      info: [
-        {
-          title: 'Destination',
-          value: 'ABCDEFG',
-        },
-        {
-          title: 'Amount',
-          value: '1234,567',
-        },
-      ],
-    },
-    {
-      title: 'Create claimable balance',
-      info: [
-        {
-          title: 'Destination',
-          value: 'ABCD',
-        },
-      ],
-    },
-  ];
-
-  // const { _operations: operations } = transaction;
+  let altName = data.origin ? data.origin[0] : 'W';
+  altName = altName.toUpperCase();
 
   return (
     <>
       <S.TopContainer>
-        <S.NetworkStatus>Main network</S.NetworkStatus>
+        {data.network?.includes('main') ? (
+          <S.NetworkStatus>Main network</S.NetworkStatus>
+        ) : (
+          <S.NetworkStatus>Test network</S.NetworkStatus>
+        )}
+
         <S.Centered>
           <S.ImgContainer>
             <img
-              src={`https://logo.clearbit.com/${MockData.host}`}
-              alt={isImageLoaded ? MockData.host : ' '}
+              src={`https://logo.clearbit.com/${data.origin || ''}`}
+              alt={isImageLoaded ? data.origin : ' '}
               onError={() => {
                 setIsImageLoaded(false);
               }}
             />
 
-            {!isImageLoaded ? (
-              <p>{MockData.host[0].toUpperCase()}</p>
-            ) : (
-              ''
-            )}
+            {!isImageLoaded ? <p>{altName}</p> : ''}
           </S.ImgContainer>
           <S.Title>Approve Transaction</S.Title>
 
           <div>
-            <S.Link href="/#">{MockData.host}</S.Link>
+            <S.Link href={data.origin ? data.origin : '#'}>
+              {data.origin || 'The website'}
+            </S.Link>
           </div>
         </S.Centered>
 
@@ -117,8 +84,8 @@ const ApproveTransaction = ({ onCancel, onConfirm }: ApproveType) => {
           <div>Source account</div>
           <div>
             <CopyText
-              text={MockData.publicKey}
-              custom={<div>{maxText(MockData.name, 12)}</div>}
+              text={account.publicKey}
+              custom={<div>{maxText(account.name, 12)}</div>}
             />
           </div>
         </S.Account>
