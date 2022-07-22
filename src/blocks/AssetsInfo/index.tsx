@@ -47,13 +47,15 @@ const AssetInfo = () => {
 
   const onDelete = (result: [boolean, string]) => {
     if (result[0]) {
-      router.push(RouteName.Sucess, {
+      router.push({
+        pathname: RouteName.Success,
         query: {
           message: result[1],
         },
       });
     } else {
-      router.push(RouteName.Error, {
+      router.push({
+        pathname: RouteName.Error,
         query: {
           message: result[1],
         },

@@ -5,6 +5,8 @@ const Success = () => {
 
   const { message } = router.query;
 
+  console.log(`Received message: ${message}`);
+
   return (
     <div>
       <p>Successful!!!!!</p>

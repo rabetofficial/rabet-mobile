@@ -1,16 +1,10 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import {
-  openErrorModal,
-  openSucessModal,
-  openLoadingModal,
-} from 'components/Modals';
-import { Usage, Tab } from 'models';
+import { Tab } from 'models';
 import timeout from 'utils/timeout';
 import RouteName from 'staticRes/routes';
 import Tabs from 'components/common/Tabs';
-import closeModalAction from 'actions/modal/close';
 import addAssetAction from 'actions/operations/addAsset';
 import { AssetImageWithActive } from 'reducers/assetImages';
 import addMultipleAssets from 'actions/operations/addMultipleAssets';
@@ -20,58 +14,38 @@ import CustomAsset, { FormValues } from './CustomAsset';
 
 type AddAssetType = {
   children?: React.ReactNode;
-  usage: Usage;
 };
 
-const AddAsset = ({ children, usage }: AddAssetType) => {
+const AddAsset = ({ children }: AddAssetType) => {
   const router = useRouter();
 
   const handleCustomAssetSubmitBtn = async (values: FormValues) => {
-    closeModalAction();
-
     await timeout(200);
 
-    if (usage === 'extension') {
-      router.push(RouteName.LoadingNetwork);
-    } else {
-      openLoadingModal({});
-    }
+    router.push(RouteName.LoadingNetwork);
+
     const [isSuccessful, message] = await addAssetAction(
       values.code,
       values.issuer,
       values.limit,
     );
 
-    closeModalAction();
-
     await timeout(100);
 
     if (isSuccessful) {
-      if (usage === 'extension') {
-        // router.push(RouteName.Sucess, {
-        //   state: {
-        //     message,
-        //   },
-        // });
-      } else {
-        openSucessModal({
+      router.push({
+        pathname: RouteName.Success,
+        query: {
           message,
-          onClick: closeModalAction,
-        });
-      }
+        },
+      });
     } else {
-      if (usage === 'extension') {
-        // navigate(RouteName.Error, {
-        //   state: {
-        //     message,
-        //   },
-        // });
-      } else {
-        openErrorModal({
+      router.push({
+        pathname: RouteName.Error,
+        query: {
           message,
-          onClick: closeModalAction,
-        });
-      }
+        },
+      });
     }
 
     return values;
@@ -80,51 +54,31 @@ const AddAsset = ({ children, usage }: AddAssetType) => {
   const handleSearchAssetSubmitBtn = async (
     assets: AssetImageWithActive[],
   ) => {
-    if (usage === 'extension') {
-      router.push(RouteName.LoadingNetwork);
-    } else {
-      openLoadingModal({});
-    }
+    router.push(RouteName.LoadingNetwork);
     const result = await addMultipleAssets(assets);
 
     const isSuccessful = result[0];
     const message = result[1];
 
     if (isSuccessful) {
-      if (usage === 'extension') {
-        // navigate(RouteName.Sucess, {
-        //   state: {
-        //     message,
-        //   },
-        // });
-      } else {
-        openSucessModal({
+      router.push({
+        pathname: RouteName.Success,
+        query: {
           message,
-          onClick: closeModalAction,
-        });
-      }
+        },
+      });
     } else {
-      if (usage === 'extension') {
-        // navigate(RouteName.Error, {
-        //   state: {
-        //     message,
-        //   },
-        // });
-      } else {
-        openErrorModal({
+      router.push({
+        pathname: RouteName.Error,
+        query: {
           message,
-          onClick: closeModalAction,
-        });
-      }
+        },
+      });
     }
   };
 
   const handleCancel = () => {
-    // navigate(RouteName.Home, {
-    //   state: {
-    //     alreadyLoaded: true,
-    //   },
-    // });
+    router.push(RouteName.Home);
   };
 
   const tabs: Tab[] = [
@@ -135,9 +89,7 @@ const AddAsset = ({ children, usage }: AddAssetType) => {
         <SearchAsset
           key="searchAsset"
           onSubmit={handleSearchAssetSubmitBtn}
-          onCancel={
-            usage === 'extension' ? handleCancel : closeModalAction
-          }
+          onCancel={handleCancel}
         />
       ),
     },
@@ -148,9 +100,7 @@ const AddAsset = ({ children, usage }: AddAssetType) => {
         <CustomAsset
           key="customAsset"
           onSubmit={handleCustomAssetSubmitBtn}
-          onCancel={
-            usage === 'extension' ? handleCancel : closeModalAction
-          }
+          onCancel={handleCancel}
         />
       ),
     },

@@ -42,7 +42,7 @@ const Asset = ({
           height="34px"
           src={`${asset.logo}`}
           alt="logo"
-          onError={(e) => ImageOnErrorHandler(e, questionSrc)}
+          onError={(e) => ImageOnErrorHandler(e, questionSrc.src)}
         />
       ) : (
         <Image
