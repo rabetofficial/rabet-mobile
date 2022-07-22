@@ -20,14 +20,13 @@ type FormValues = {
 
 type AppProps = {
   onSubmit: (x: AssetImageWithActive[]) => void;
-  onCancel: () => void;
 };
 
-const SearchAsset = ({ onSubmit, onCancel }: AppProps) => {
+const SearchAsset = ({ onSubmit }: AppProps) => {
   const [list, setList] = useState<AssetImageWithActive[]>([]);
   const [value, setValue] = useState('');
   const [selectedList, setSelectedList] = useState<
-    AssetImageWithActive[]
+  AssetImageWithActive[]
   >([]);
   const options = useTypedSelector((store) => store.options);
   const account = useActiveAccount();
@@ -127,6 +126,7 @@ const SearchAsset = ({ onSubmit, onCancel }: AppProps) => {
           {!isEmpty(list) ? (
             <>
               <ResultTitle>Search result</ResultTitle>
+
               <AssetList
                 list={list}
                 setActive={setActive}

@@ -11,6 +11,9 @@ const Success = () => {
   const handleClick = () => {
     Router.push(RouteName.Home);
   };
+
+  console.log(`Received message: ${message}`);
+
   return (
     <div className="content">
       <SuccessfulSubmission onClick={handleClick} message={message} />
