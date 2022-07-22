@@ -29,6 +29,9 @@ const EditName = () => {
     <Layout className="mt-6">
       <Form
         onSubmit={onSubmit}
+        initialValues={{
+          name: account.name,
+        }}
         render={({
           pristine,
           submitting,
