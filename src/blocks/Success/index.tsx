@@ -1,14 +1,19 @@
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
+import React from 'react';
+
+import RouteName from 'staticRes/routes';
+import SuccessfulSubmission from 'components/SuccessfulSubmission';
 
 const Success = () => {
   const router = useRouter();
 
   const { message } = router.query;
-
+  const handleClick = () => {
+    Router.push(RouteName.Home);
+  };
   return (
-    <div>
-      <p>Successful!!!!!</p>
-      <p>{message || ''}</p>
+    <div className="content">
+      <SuccessfulSubmission onClick={handleClick} message={message} />
     </div>
   );
 };

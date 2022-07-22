@@ -10,7 +10,7 @@ enum RouteName {
   RestoreWallet = '/restore-wallet',
 
   Error = '/error',
-  Sucess = '/sucess',
+  Success = '/success',
 
   Send = '/home/operations/send',
   Swap = '/home/operations/swap',

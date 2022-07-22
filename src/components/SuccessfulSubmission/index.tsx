@@ -35,13 +35,17 @@ const SuccessfulSubmission = ({
   );
 
   return (
-    <NoteCard
-      title="Transaction Sent"
-      message={message ? Text : 'SUCCESS!'}
-      btnText="OK"
-      icon={<BlackCheck />}
-      onClick={onClick}
-    />
+    <div className="flex justify-center items-center h-screen ">
+      <div style={{ width: '100%' }}>
+        <NoteCard
+          title="Transaction Sent"
+          message={message ? Text : 'SUCCESS!'}
+          btnText="OK"
+          icon={<BlackCheck />}
+          onClick={onClick}
+        />
+      </div>
+    </div>
   );
 };
 
