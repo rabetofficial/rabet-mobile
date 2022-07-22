@@ -64,12 +64,19 @@ export const ImgContainer = styled.div`
   }
 `;
 
-export const NetworkStatus = styled.p`
+interface Status {
+  type: string;
+  theme: any;
+}
+export const NetworkStatus = styled.p<Status>`
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.43;
   letter-spacing: normal;
-  color: #26c362 !important;
+  color: ${({ type, theme }) =>
+    type === 'test'
+      ? theme.colors.warn.main
+      : theme.colors.success.main} !important;
 `;

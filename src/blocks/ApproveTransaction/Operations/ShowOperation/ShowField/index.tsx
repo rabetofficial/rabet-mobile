@@ -1,5 +1,6 @@
 import React from 'react';
 import { StrKey } from 'stellar-sdk';
+import shorter from 'utils/shorter';
 
 import showObject from 'utils/showObject';
 import * as S from './styles';
@@ -20,9 +21,11 @@ const ShowField = ({ keyValue }: any) => {
   if (!isObject) {
     if (
       StrKey.isValidEd25519PublicKey(value) &&
-      key === 'ed25519PublicKey'
+      (key === 'ed25519PublicKey' || key === 'issuer')
     ) {
-      return <ShowfieldJSX tKey="publicKey" value={value} />;
+      return (
+        <ShowfieldJSX tKey="publicKey" value={shorter(value, 8)} />
+      );
     }
 
     if (!isNaN(value)) {

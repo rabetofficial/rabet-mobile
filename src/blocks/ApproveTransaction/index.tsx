@@ -54,9 +54,9 @@ const ApproveTransaction = ({
     <>
       <S.TopContainer>
         {data.network?.includes('main') ? (
-          <S.NetworkStatus>Main network</S.NetworkStatus>
+          <S.NetworkStatus type="main">Main network</S.NetworkStatus>
         ) : (
-          <S.NetworkStatus>Test network</S.NetworkStatus>
+          <S.NetworkStatus type="test">Test network</S.NetworkStatus>
         )}
 
         <S.Centered>

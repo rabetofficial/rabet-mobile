@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import shorter from 'helpers/shorter';
+import shorter from 'utils/shorter';
 import FilledCopy from 'svgs/FilledCopy';
 import RouteName from 'staticRes/routes';
 import useLoadHome from 'hooks/useLoadHome';
