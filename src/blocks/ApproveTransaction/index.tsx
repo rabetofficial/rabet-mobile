@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import StellarSdk, { Transaction } from 'stellar-sdk';
 
 import maxText from 'utils/maxText';
+import NoData from 'components/common/NoData';
 import Button from 'components/common/Button';
 import CopyText from 'components/common/CopyText';
 import ScrollBar from 'components/common/ScrollBar';
@@ -27,25 +28,6 @@ const ApproveTransaction = ({
   const [isImageLoaded, setIsImageLoaded] = useState(true);
 
   const operations = data.transaction?.operations;
-
-  if (!operations) {
-    return (
-      <div className="content">
-        <div className="content">
-          <p>Invalid XDR</p>
-        </div>
-
-        <ButtonContainer>
-          <Button
-            variant="primary"
-            size="medium"
-            content="Close"
-            onClick={onCancel}
-          />
-        </ButtonContainer>
-      </div>
-    );
-  }
 
   let altName = data.origin ? data.origin[0] : 'W';
   altName = altName.toUpperCase();
@@ -92,27 +74,45 @@ const ApproveTransaction = ({
       </S.TopContainer>
 
       <div className="content">
-        <ScrollBar isHidden maxHeight={235}>
-          <Operations operations={operations} />
-        </ScrollBar>
-
-        <ButtonContainer mt={32}>
-          <Button
-            type="submit"
-            variant="primary"
-            size="medium"
-            content="Confirm"
-            onClick={onConfirm}
-          />
-        </ButtonContainer>
-        <ButtonContainer mt={15}>
-          <Button
-            variant="default"
-            size="medium"
-            content="Cancel"
-            onClick={onCancel}
-          />
-        </ButtonContainer>
+        {!operations ? (
+          <>
+            <NoData
+              msg="Invalid xdr"
+              className="h-[300px] flex items-center justify-center"
+            />
+            <ButtonContainer>
+              <Button
+                variant="primary"
+                size="medium"
+                content="Close"
+                onClick={onCancel}
+              />
+            </ButtonContainer>
+          </>
+        ) : (
+          <>
+            <ScrollBar isHidden maxHeight={235}>
+              <Operations operations={operations} />{' '}
+            </ScrollBar>
+            <ButtonContainer mt={32}>
+              <Button
+                type="submit"
+                variant="primary"
+                size="medium"
+                content="Confirm"
+                onClick={onConfirm}
+              />
+            </ButtonContainer>
+            <ButtonContainer mt={15}>
+              <Button
+                variant="default"
+                size="medium"
+                content="Cancel"
+                onClick={onCancel}
+              />
+            </ButtonContainer>
+          </>
+        )}
       </div>
     </>
   );
