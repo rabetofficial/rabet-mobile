@@ -5,7 +5,7 @@ const hostSlice = createSlice({
   name: 'host',
   initialState: '',
   reducers: {
-    change: (state, action: PayloadAction<string>) => action.payload,
+    change: (_, action: PayloadAction<string>) => action.payload,
   },
 });
 

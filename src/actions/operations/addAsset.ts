@@ -15,7 +15,7 @@ export default async (
   code: string,
   issuer: string,
   limit?: string,
-) => {
+): Promise<[boolean, string]> => {
   const { activeAccount: account } = getActiveAccount();
   const { url, passphrase } = currentNetwork();
 

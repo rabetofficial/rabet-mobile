@@ -13,13 +13,6 @@ export type OpType = {
   type: Horizon.OperationResponseType;
 };
 
-// interface Operation {
-//   id: string;
-//   type: string;
-//   values?: {};
-//   errors?: {};
-// }
-
 interface ITransaction {
   memo: Memo;
   operations: OpType[];

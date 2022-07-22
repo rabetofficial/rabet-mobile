@@ -1,4 +1,6 @@
-const controlNumberInput = (e) => {
+const controlNumberInput = (
+  e: React.KeyboardEvent<HTMLInputElement>,
+) => {
   const charCode =
     typeof e.which === 'undefined' ? e.keyCode : e.which;
   const charStr = String.fromCharCode(charCode);

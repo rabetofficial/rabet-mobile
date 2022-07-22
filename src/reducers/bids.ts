@@ -15,7 +15,7 @@ const bidsSlice = createSlice({
   name: 'bids',
   initialState,
   reducers: {
-    load: (state, action: PayloadAction<Bid[]>) => action.payload,
+    load: (_, action: PayloadAction<Bid[]>) => action.payload,
   },
 });
 

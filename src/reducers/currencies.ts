@@ -25,8 +25,7 @@ const currenciesSlice = createSlice({
   name: 'currencies',
   initialState,
   reducers: {
-    load: (state, action: PayloadAction<Currencies>) =>
-      action.payload,
+    load: (_, action: PayloadAction<Currencies>) => action.payload,
   },
 });
 

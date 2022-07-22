@@ -35,8 +35,8 @@ const AssetInfo = ({
 
   const handleDelete = () => {
     if (
-      asset.asset_type === 'credit_alphanum4' ||
-      asset.asset_type === 'credit_alphanum12'
+      asset?.asset_type === 'credit_alphanum4' ||
+      asset?.asset_type === 'credit_alphanum12'
     ) {
       onBeforeDelete();
 

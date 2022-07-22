@@ -26,7 +26,7 @@ const SearchAsset = ({ onSubmit }: AppProps) => {
   const [list, setList] = useState<AssetImageWithActive[]>([]);
   const [value, setValue] = useState('');
   const [selectedList, setSelectedList] = useState<
-  AssetImageWithActive[]
+    AssetImageWithActive[]
   >([]);
   const options = useTypedSelector((store) => store.options);
   const account = useActiveAccount();

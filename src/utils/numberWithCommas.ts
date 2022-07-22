@@ -7,7 +7,7 @@ const numberWithCommas = (n: string | number) => {
     num = new BN(n).toString();
   }
 
-  let parts = num.split('.');
+  const parts = num.split('.');
 
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 

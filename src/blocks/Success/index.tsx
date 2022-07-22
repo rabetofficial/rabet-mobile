@@ -12,11 +12,12 @@ const Success = () => {
     Router.push(RouteName.Home);
   };
 
-  console.log(`Received message: ${message}`);
-
   return (
     <div className="content">
-      <SuccessfulSubmission onClick={handleClick} message={message} />
+      <SuccessfulSubmission
+        onClick={handleClick}
+        message={message || ''}
+      />
     </div>
   );
 };

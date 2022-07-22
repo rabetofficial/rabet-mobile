@@ -1,4 +1,4 @@
-const showObject = (obj) => {
+const showObject = (obj: any) => {
   const arr = Object.entries(obj);
 
   const str = arr.reduce((store, field) => {
