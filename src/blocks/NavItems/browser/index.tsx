@@ -20,6 +20,7 @@ import useActiveAccount from 'hooks/useActiveAccount';
 import addConnectedWebsite from 'actions/accounts/addConnectedWebsite';
 
 import useTypedSelector from 'hooks/useTypedSelector';
+import signEnvelope from 'helpers/signEnvelope';
 import * as S from './styles';
 
 export type ApproveTransactionState = {
@@ -49,7 +50,14 @@ const Browser = () => {
   const handleLoad = () => {
     setLoaded(true);
 
+    console.log('loaded');
+    console.log(iframe.current.contentWindow);
+
     iframe.current.contentWindow.postMessage(installRabet, url);
+
+    setTimeout(() => {
+      iframe.current.contentWindow.postMessage(installRabet, url);
+    }, 150);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -114,12 +122,17 @@ const Browser = () => {
   };
 
   const onApproveConfirm = () => {
+    const signed = signEnvelope(
+      event?.data.message.xdr,
+      event?.data.message.network,
+      account.privateKey,
+    );
+
     event.source.postMessage(
       {
         type: 'RABET/SIGN/RESPONSE',
         message: {
-          sign: event.data.message.xdr.toLowerCase(),
-          network: event.data.message.network,
+          sign: signed,
         },
       },
       event.origin,
@@ -143,6 +156,7 @@ const Browser = () => {
   };
 
   const handler = (e) => {
+    console.log('handler happened');
     if (e?.data?.type === 'RABET/CONNECT') {
       setEvent(e);
 
@@ -220,7 +234,7 @@ const Browser = () => {
     return () => {
       window.removeEventListener('message', handler);
     };
-  });
+  }, []);
 
   return (
     <>
