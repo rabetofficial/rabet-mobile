@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/indent */
-import React, { useEffect, useState } from 'react';
 import { ServerApi } from 'stellar-sdk';
+import React, { useEffect, useState } from 'react';
 
+import Loading from 'components/Loading';
+import NoData from 'components/common/NoData';
+import ExtTitle from 'components/common/ExitTitle';
+import ScrollBar from 'components/common/ScrollBar';
 import useActiveAccount from 'hooks/useActiveAccount';
 import loadTransactions from 'features/loadTransactions';
-import Loading from 'components/Loading';
-import ScrollBar from 'components/common/ScrollBar';
-import NoData from 'components/common/NoData';
 import Layout from 'components/common/Layouts/BaseLayout';
-import ExtTitle from 'components/common/ExitTitle';
+
 import Transaction from './Transaction';
 
 const Activities = () => {

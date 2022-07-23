@@ -1,12 +1,12 @@
-import React, { IframeHTMLAttributes } from 'react';
+import React from 'react';
 
+import maxText from 'utils/maxText';
+import shortName from 'helpers/shortName';
 import Button from 'components/common/Button';
+import { IAccount } from 'reducers/accounts2';
 import CheckMarkCircle from 'svgs/CheckMarkCircle';
 import ButtonContainer from 'components/common/ButtonContainer';
-import maxText from 'utils/maxText';
 
-import { IAccount } from 'reducers/accounts2';
-import shortName from 'helpers/shortName';
 import * as S from './styles';
 
 type ConnectRequestType = {

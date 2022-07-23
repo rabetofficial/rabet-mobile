@@ -2,7 +2,10 @@ import store from 'store';
 import { load } from 'reducers/assetImages';
 import { addAssets } from 'reducers/accounts2';
 
-const loadAssetImagesAction = (newAssetImages, publicKey) => {
+const loadAssetImagesAction = (
+  newAssetImages: any[],
+  publicKey: string,
+) => {
   store.dispatch(
     addAssets({
       publicKey,

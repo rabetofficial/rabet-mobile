@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import config from 'config';
-import { ElementOption } from 'models';
+import { GenericElementOption } from 'models';
 import RouteName from 'staticRes/routes';
 import Button from 'components/common/Button';
 import useTypedSelector from 'hooks/useTypedSelector';
@@ -35,11 +35,13 @@ const SettingGeneral = () => {
   const options = useTypedSelector((store) => store.options);
   const [checked, setChecked] = useState(true);
 
-  const [selectedExplorer, setSelectedExplorer] =
-    useState<ElementOption>({} as ElementOption);
+  const [selectedExplorer, setSelectedExplorer] = useState<
+  GenericElementOption<string>
+  >({} as GenericElementOption<string>);
 
-  const [selectedCurrency, setSelectedCurrency] =
-    useState<ElementOption>(currenciesList[0]);
+  const [selectedCurrency, setSelectedCurrency] = useState<
+    GenericElementOption<string>
+  >(currenciesList[0]);
 
   useEffect(() => {
     let label;
@@ -73,11 +75,11 @@ const SettingGeneral = () => {
     setChecked(c);
   };
 
-  const onChangeCurrency = (e: ElementOption) => {
+  const onChangeCurrency = (e: GenericElementOption<string>) => {
     setSelectedCurrency(e);
   };
 
-  const onChangeNetwork = (e: ElementOption) => {
+  const onChangeNetwork = (e: GenericElementOption<string>) => {
     setSelectedExplorer(e);
   };
 

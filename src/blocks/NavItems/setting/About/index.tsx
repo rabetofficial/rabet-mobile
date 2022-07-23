@@ -1,7 +1,7 @@
 import React from 'react';
 
+import config from 'config';
 import * as Icons from 'svgs/ContactusLinks';
-import config from '../../../../config';
 
 import * as S from './styles';
 

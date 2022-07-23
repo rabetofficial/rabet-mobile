@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-import lockAction from 'actions/accounts/lock';
 import RouteName from 'staticRes/routes';
+import lockAction from 'actions/accounts/lock';
+
 import Plus from 'svgs/Plus';
 import File from 'svgs/File';
 import Lock from 'svgs/Lock';

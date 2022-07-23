@@ -6,6 +6,7 @@ import questionSrc from 'public/images/question-circle.png';
 import ImageOnErrorHandler from 'helpers/ImageOnErrorHandler';
 import { AssetImageWithActive } from 'reducers/assetImages';
 
+import shortName from 'helpers/shortName';
 import * as S from './styles';
 
 type AppProps = {
@@ -37,11 +38,11 @@ const Asset = ({
   >
     <S.Logo>
       {asset.logo ? (
-        <Image
+        <img
           width="34px"
           height="34px"
-          src={`${asset.logo}`}
-          alt="logo"
+          src={asset.logo}
+          alt={shortName(asset.asset_code)}
           onError={(e) => ImageOnErrorHandler(e, questionSrc.src)}
         />
       ) : (

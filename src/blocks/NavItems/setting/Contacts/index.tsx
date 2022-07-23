@@ -2,18 +2,18 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import Plus from 'svgs/Plus';
-import showName from 'helpers/showName';
 import EditPen from 'svgs/EditPen';
 import maxText from 'utils/maxText';
 import shorter from 'utils/shorter';
 import Multiply from 'svgs/Multiply';
+import showName from 'helpers/showName';
+import RouteName from 'staticRes/routes';
 import Button from 'components/common/Button';
 import CopyText from 'components/common/CopyText';
 import useTypedSelector from 'hooks/useTypedSelector';
 import deleteContactAction from 'actions/contacts/delete';
 import { Contact as ContactType } from 'reducers/contacts';
 
-import RouteName from 'staticRes/routes';
 import * as S from './styles';
 
 const Contact = () => {
