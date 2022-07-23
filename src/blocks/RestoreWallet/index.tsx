@@ -1,7 +1,7 @@
 import React from 'react';
 import { StrKey } from 'stellar-sdk';
-
 import { useRouter } from 'next/router';
+
 import RouteName from 'staticRes/routes';
 import useTypedSelector from 'hooks/useTypedSelector';
 import restoreAccountAction from 'actions/accounts/restore';

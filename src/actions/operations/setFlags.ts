@@ -16,10 +16,7 @@ import currentActiveAccount from 'utils/activeAccount';
 
 import config from 'config';
 
-export default async (
-  flags: Horizon.Flags,
-  push: any,
-) => {
+export default async (flags: Horizon.Flags, push: any) => {
   push(RouteName.LoadingNetwork);
 
   const { activeAccount } = currentActiveAccount();

@@ -1,17 +1,16 @@
+import styled from 'styled-components';
 import React, { useState } from 'react';
 import { Form, Field } from 'react-final-form';
-import styled from 'styled-components';
 
+import Card from 'components/common/Card';
 import Input from 'components/common/Input';
 import Error from 'components/common/Error';
 import Button from 'components/common/Button';
-import Layout from 'components/common/Layouts/BaseLayout';
-import ButtonContainer from 'components/common/ButtonContainer';
-import Card from 'components/common/Card';
-import currentActiveAccount from 'utils/activeAccount';
 import CopyKey from 'components/common/CopyKey';
 import useActiveAccount from 'hooks/useActiveAccount';
+import Layout from 'components/common/Layouts/BaseLayout';
 import showPrivateKey from 'actions/accounts/showPrivateKey';
+import ButtonContainer from 'components/common/ButtonContainer';
 
 const Msg = styled.div`
   font-size: 14px;

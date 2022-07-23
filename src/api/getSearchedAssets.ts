@@ -1,5 +1,3 @@
-// import fetch from 'node-fetch';
-
 import { AssetImage } from 'reducers/assetImages';
 
 import config from 'config';

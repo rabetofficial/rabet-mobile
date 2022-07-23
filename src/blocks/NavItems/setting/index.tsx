@@ -73,8 +73,10 @@ const Settings = () => {
                 <AngleRight />
               </span>
             </S.TopContainer>
+
             <S.Description>{settingPg.description}</S.Description>
           </S.Container>
+
           {settingList.length !== index + 1 && <S.Hr />}
         </div>
       ))}

@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Button from 'components/common/Button';
-import useTypedSelector from 'hooks/useTypedSelector';
-import Layout from 'components/common/Layouts/BaseLayout';
-
-import useActiveAccount from 'hooks/useActiveAccount';
-import removeConnectedWebsite from 'actions/accounts/removeConnectedWebsite';
-import * as S from './styles';
 import NoData from 'components/common/NoData';
+import useTypedSelector from 'hooks/useTypedSelector';
+import useActiveAccount from 'hooks/useActiveAccount';
+import Layout from 'components/common/Layouts/BaseLayout';
+import removeConnectedWebsite from 'actions/accounts/removeConnectedWebsite';
+
+import * as S from './styles';
 
 const ConnectedWebsites = () => {
   const account = useActiveAccount();

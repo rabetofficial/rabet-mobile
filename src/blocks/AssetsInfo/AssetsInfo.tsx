@@ -4,14 +4,14 @@ import { Horizon } from 'stellar-sdk';
 import BN from 'helpers/BN';
 import shorter from 'utils/shorter';
 import ShareArrow from 'svgs/ShareArrow';
-import xlmLogo from 'public/images/xlm-logo.svg';
+import Card from 'components/common/Card';
 import Button from 'components/common/Button';
 import formatBalance from 'utils/formatBalance';
+import xlmLogo from 'public/images/xlm-logo.svg';
 import CopyText from 'components/common/CopyText';
 import accountLink from 'utils/horizon/accountLink';
 import addAssetAction from 'actions/operations/addAsset';
 import ButtonContainer from 'components/common/ButtonContainer';
-import Card from 'components/common/Card';
 
 import * as S from './styles';
 import useAssetInfo from './useAssetInfo';

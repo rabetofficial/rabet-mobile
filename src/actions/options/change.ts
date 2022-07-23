@@ -5,21 +5,18 @@ import storeOptions from './store';
 
 type ChangeOptionsType = {
   explorer: string;
-  currency: string | number;
+  currency: string;
   mode: OptionMode;
   privacyMode: boolean;
-  autoTimeLocker: number | string;
 };
 
 const changeOptions = async (options: ChangeOptionsType) => {
-  const { mode, currency, explorer, privacyMode, autoTimeLocker } =
-    options;
+  const { mode, currency, explorer, privacyMode } = options;
 
   store.dispatch(
     change({
       explorer,
       privacyMode,
-      autoTimeLocker,
       currency,
       mode,
     }),

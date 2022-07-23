@@ -1,6 +1,6 @@
 import store from 'store';
-import { addMemo } from 'reducers/transaction';
+import { addMemo, Memo } from 'reducers/transaction';
 
-export default (memo) => {
+export default (memo: Memo) => {
   store.dispatch(addMemo(memo));
 };

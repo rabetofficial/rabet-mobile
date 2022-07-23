@@ -1,15 +1,15 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { Form, Field } from 'react-final-form';
 
+import RouteName from 'staticRes/routes';
 import Input from 'components/common/Input';
 import Error from 'components/common/Error';
 import Button from 'components/common/Button';
+import useActiveAccount from 'hooks/useActiveAccount';
 import Layout from 'components/common/Layouts/BaseLayout';
 import changeNameAction from 'actions/accounts/changeName';
 import ButtonContainer from 'components/common/ButtonContainer';
-import useActiveAccount from 'hooks/useActiveAccount';
-import RouteName from 'staticRes/routes';
-import { useRouter } from 'next/router';
 
 export type FormValues = {
   name: string;

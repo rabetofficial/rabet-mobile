@@ -2,9 +2,11 @@ import { AccountResponse, Server } from 'stellar-sdk';
 
 import currentNetwork from 'utils/currentNetwork';
 
-export type getAccountResult = Promise<AccountResponse | null>;
+export type GetAccountResult = AccountResponse | null;
 
-const getAccount = async (publicKey: string): getAccountResult => {
+const getAccount = async (
+  publicKey: string,
+): Promise<GetAccountResult> => {
   const serverURL = currentNetwork().url;
 
   const server = new Server(serverURL);

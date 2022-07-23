@@ -2,7 +2,7 @@ import BigNumber from 'bignumber.js';
 import { Horizon } from 'stellar-sdk';
 
 import BN from 'helpers/BN';
-import { Bid } from 'popup/reducers/bids';
+import { Bid } from 'reducers/bids';
 
 type LoadAssetbalanceType = {
   asset: Horizon.BalanceLine;

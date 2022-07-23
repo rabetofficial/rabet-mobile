@@ -40,6 +40,11 @@ export interface ElementOption {
   label: string | React.ReactNode;
 }
 
+export interface GenericElementOption<T> {
+  value: T;
+  label: string | React.ReactNode;
+}
+
 export type Tab = {
   id: number | string;
   title: string;

@@ -12,11 +12,11 @@ import { AssetImageWithActive } from 'reducers/assetImages';
 
 import config from 'config';
 
-type addMultipleAssetsResult = [boolean, string];
+type AddMultipleAssetsResult = [boolean, string];
 
 const addMultipleAssets = async (
   assets: AssetImageWithActive[],
-): Promise<addMultipleAssetsResult> => {
+): Promise<AddMultipleAssetsResult> => {
   const { activeAccount } = currentActiveAccount();
   const { url, passphrase } = currentNetwork();
 
