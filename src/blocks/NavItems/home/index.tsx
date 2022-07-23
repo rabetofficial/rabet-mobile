@@ -4,7 +4,6 @@ import Link from 'next/link';
 import shorter from 'utils/shorter';
 import FilledCopy from 'svgs/FilledCopy';
 import RouteName from 'staticRes/routes';
-import useLoadHome from 'hooks/useLoadHome';
 import AssetList from 'components/AssetList';
 import CopyText from 'components/common/CopyText';
 import ScrollBar from 'components/common/ScrollBar';
@@ -14,10 +13,8 @@ import Layout from 'components/common/Layouts/BaseLayout';
 import useTypedSelector from 'hooks/useTypedSelector';
 import useTotalBalance from 'hooks/useTotalBalance';
 import LoadingOne from 'pages/loading-one';
-
 import formatBalance from 'utils/formatBalance';
 import handleAssetSymbol from 'utils/handleAssetSymbol';
-import useAppDispatch from 'hooks/useAppDispatch';
 import Links from './links';
 import AssetButton from './AssetButton';
 import AccountModal from './AccountModal';
@@ -25,12 +22,10 @@ import AccountModal from './AccountModal';
 import * as S from './styles';
 
 type HomeProps = {
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  loading: boolean;
 };
-const Home = ({ setLoading }: HomeProps) => {
-  const dispatch = useAppDispatch();
+const Home = ({ loading }: HomeProps) => {
   const account = useActiveAccount();
-  const isLoading = useLoadHome(dispatch);
   const totalBalance = useTotalBalance();
 
   const [currencies, options] = useTypedSelector((store) => [
@@ -40,7 +35,7 @@ const Home = ({ setLoading }: HomeProps) => {
 
   const assets = account.assets || [];
 
-  if (isLoading) {
+  if (loading) {
     return <LoadingOne />;
   }
 
