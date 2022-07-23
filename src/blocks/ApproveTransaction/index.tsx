@@ -1,5 +1,5 @@
+import { Networks } from 'stellar-sdk';
 import React, { useState } from 'react';
-// import StellarSdk, { Transaction } from 'stellar-sdk';
 
 import maxText from 'utils/maxText';
 import NoData from 'components/common/NoData';
@@ -25,17 +25,22 @@ const ApproveTransaction = ({
   data,
 }: ApproveType) => {
   const account = useActiveAccount();
-  const [isImageLoaded, setIsImageLoaded] = useState(true);
 
   const operations = data.transaction?.operations;
 
   let altName = data.origin ? data.origin[0] : 'W';
   altName = altName.toUpperCase();
 
+  const isMainNetwork =
+    data.network?.includes('main') ||
+    data.network === Networks.PUBLIC;
+
+  let isLoaded = true;
+
   return (
     <>
       <S.TopContainer>
-        {data.network?.includes('main') ? (
+        {isMainNetwork ? (
           <S.NetworkStatus type="main">Main network</S.NetworkStatus>
         ) : (
           <S.NetworkStatus type="test">Test network</S.NetworkStatus>
@@ -43,16 +48,19 @@ const ApproveTransaction = ({
 
         <S.Centered>
           <S.ImgContainer>
-            <img
-              src={`https://logo.clearbit.com/${data.origin || ''}`}
-              alt={isImageLoaded ? data.origin : ' '}
-              onError={() => {
-                setIsImageLoaded(false);
-              }}
-            />
-
-            {!isImageLoaded ? <p>{altName}</p> : ''}
+            {!isLoaded ? (
+              <p>{altName}</p>
+            ) : (
+              <img
+                src={`https://logo.clearbit.com/${data.origin || ''}`}
+                alt={data.origin || ' '}
+                onError={() => {
+                  isLoaded = false;
+                }}
+              />
+            )}
           </S.ImgContainer>
+
           <S.Title>Approve Transaction</S.Title>
 
           <div>
