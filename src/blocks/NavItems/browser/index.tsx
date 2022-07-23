@@ -50,9 +50,6 @@ const Browser = () => {
   const handleLoad = () => {
     setLoaded(true);
 
-    console.log('loaded');
-    console.log(iframe.current.contentWindow);
-
     iframe.current.contentWindow.postMessage(installRabet, url);
 
     setTimeout(() => {
@@ -156,7 +153,6 @@ const Browser = () => {
   };
 
   const handler = (e) => {
-    console.log('handler happened');
     if (e?.data?.type === 'RABET/CONNECT') {
       setEvent(e);
 

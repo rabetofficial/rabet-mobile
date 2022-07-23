@@ -55,6 +55,7 @@ const AddAsset = ({ children }: AddAssetType) => {
     assets: AssetImageWithActive[],
   ) => {
     router.push(RouteName.LoadingNetwork);
+
     const result = await addMultipleAssets(assets);
 
     const isSuccessful = result[0];
