@@ -1,7 +1,7 @@
 import { StrKey } from 'stellar-sdk';
 import React, { useState } from 'react';
-import { Field, Form } from 'react-final-form';
 import { useRouter } from 'next/router';
+import { Field, Form } from 'react-final-form';
 
 import BN from 'helpers/BN';
 import getAccount from 'api/getAccount';
@@ -13,14 +13,15 @@ import Button from 'components/common/Button';
 import isTransferable from 'utils/isTransferable';
 import useActiveAccount from 'hooks/useActiveAccount';
 import controlNumberInput from 'utils/controlNumberInput';
+import Layout from 'components/common/Layouts/BaseLayout';
 import isInsufficientAsset from 'utils/isInsufficientAsset';
 import ButtonContainer from 'components/common/ButtonContainer';
-import Layout from 'components/common/Layouts/BaseLayout';
-import DestinationSuggest from './DestinationSuggestion';
-import AssetTrigger from './AssetTrigger';
 
-import { ModalInput, PopoverContainer } from './styles';
+import useTypedSelector from 'hooks/useTypedSelector';
 import SelectAsset from '../SelectAsset';
+import AssetTrigger from './AssetTrigger';
+import { ModalInput, PopoverContainer } from './styles';
+import DestinationSuggest from './DestinationSuggestion';
 
 type FormValues = {
   memo: string;
@@ -32,6 +33,7 @@ const BasicSend = () => {
   const router = useRouter();
   const account = useActiveAccount();
   const [isAccountNew, setIsAccountNew] = useState(false);
+  const assetImages = useTypedSelector((store) => store.assetImages);
 
   const assets = account.assets || [];
 
@@ -39,18 +41,19 @@ const BasicSend = () => {
 
   const onSubmit = async (v: FormValues) => {
     const values = {
-      ...v,
-      asset: selectedAsset,
+      memo: v.memo,
+      amount: v.amount,
+      destination: v.destination,
       isAccountNew,
+      assetCode: selectedAsset.asset_code,
+      assetType: selectedAsset.asset_type,
+      assetIssuer: selectedAsset.asset_issuer,
     };
 
-    //   navigate(RouteName.BasicSendConfirm, {
-    //     state: {
-    //       values,
-    //     },
-    //   });
-
-    router.push(RouteName.BasicSendConfirm);
+    router.push({
+      pathname: RouteName.BasicSendConfirm,
+      query: values,
+    });
 
     return {};
   };
@@ -146,7 +149,7 @@ const BasicSend = () => {
         validate={validateForm}
         onSubmit={onSubmit}
         mutators={{
-          setMax: (args, state, tools) => {
+          setMax: (_, state, tools) => {
             tools.changeValue(state, 'amount', () =>
               getMaxBalance(selectedAsset, account),
             );
@@ -179,10 +182,15 @@ const BasicSend = () => {
             <Field name="asset">
               {() => (
                 <SelectAsset
+                  assets={assets}
                   asset={selectedAsset}
                   onChange={setSelectedAsset}
-                  assets={assets}
-                  customTrigger={<AssetTrigger />}
+                  customTrigger={
+                    <AssetTrigger
+                      asset={selectedAsset}
+                      assetImages={assetImages}
+                    />
+                  }
                 />
               )}
             </Field>

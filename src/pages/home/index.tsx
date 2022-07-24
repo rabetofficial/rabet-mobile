@@ -1,19 +1,19 @@
 import React from 'react';
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import Home from 'blocks/NavItems/home';
 import HomeIcon from 'svgs/BottomBar/Home';
+import useLoadHome from 'hooks/useLoadHome';
 import Browser from 'blocks/NavItems/browser';
 import Setting from 'blocks/NavItems/setting';
+import useAppDispatch from 'hooks/useAppDispatch';
 import BottomBar from 'components/common/BottomBar';
 import Activities from 'blocks/NavItems/activities';
 import SettingIcon from 'svgs/BottomBar/SettingGear';
 import { NavItemContent, NavItemMenu } from 'models';
 import BrowserIcon from 'svgs/BottomBar/TravelCompass';
 import LastTransactionIcon from 'svgs/BottomBar/ThunderLightning';
-import useLoadHome from 'hooks/useLoadHome';
-import useAppDispatch from 'hooks/useAppDispatch';
-import { useRouter } from 'next/router';
 
 export const getServerSideProps = () => ({
   props: {

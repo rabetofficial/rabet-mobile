@@ -4,22 +4,22 @@ import Link from 'next/link';
 import shorter from 'utils/shorter';
 import FilledCopy from 'svgs/FilledCopy';
 import RouteName from 'staticRes/routes';
+import LoadingOne from 'pages/loading-one';
 import AssetList from 'components/AssetList';
+import formatBalance from 'utils/formatBalance';
 import CopyText from 'components/common/CopyText';
+import useTotalBalance from 'hooks/useTotalBalance';
 import ScrollBar from 'components/common/ScrollBar';
 import ExpandHorizontal from 'svgs/ExpandHorizontal';
 import useActiveAccount from 'hooks/useActiveAccount';
-import Layout from 'components/common/Layouts/BaseLayout';
 import useTypedSelector from 'hooks/useTypedSelector';
-import useTotalBalance from 'hooks/useTotalBalance';
-import LoadingOne from 'pages/loading-one';
-import formatBalance from 'utils/formatBalance';
 import handleAssetSymbol from 'utils/handleAssetSymbol';
+import Layout from 'components/common/Layouts/BaseLayout';
+
 import Links from './links';
+import * as S from './styles';
 import AssetButton from './AssetButton';
 import AccountModal from './AccountModal';
-
-import * as S from './styles';
 
 type HomeProps = {
   loading: boolean;
