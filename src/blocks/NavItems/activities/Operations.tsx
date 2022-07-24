@@ -58,7 +58,7 @@ export const TransferTx = ({
           {formatBalance(amount.toString())} {asset_code}
         </S.TextContainer>
         <S.DateContainer>
-          {DateTime.fromISO(date).toFormat('MMM dd')}drrd
+          {DateTime.fromISO(date).toFormat('MMM dd')}
         </S.DateContainer>
       </div>
     </div>

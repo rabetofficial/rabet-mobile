@@ -5,18 +5,27 @@ import RouteName from 'staticRes/routes';
 import { IAccount } from 'reducers/accounts2';
 import changeActiveAction from 'actions/accounts/changeActive';
 
+import useActiveAccount from 'hooks/useActiveAccount';
 import * as S from './styles';
 import Account from './Account';
 
 type AppProps = {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   accounts: IAccount[];
 };
 
-const AccountList = ({ accounts }: AppProps) => {
+const AccountList = ({ accounts, setOpen }: AppProps) => {
   const router = useRouter();
+  const currentAccount = useActiveAccount();
 
-  const changeAccount = (account: IAccount) => {
-    changeActiveAction(account.publicKey);
+  const changeAccount = (newAccount: IAccount) => {
+    if (currentAccount.publicKey === newAccount.publicKey) {
+      setOpen(false);
+
+      return;
+    }
+
+    changeActiveAction(newAccount.publicKey);
 
     router.push(RouteName.Home);
   };
