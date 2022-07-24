@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 
 import Button from 'components/common/Button';
 import NoData from 'components/common/NoData';
@@ -20,6 +20,9 @@ const ConnectedWebsites = () => {
       publicKey: cw.split('/')[1],
     }));
 
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => updateState({} as any), []);
+
   const removeConnectedWebsites = (cw: {
     host: string;
     publicKey: string;
@@ -28,6 +31,8 @@ const ConnectedWebsites = () => {
       host: cw.host,
       publicKey: cw.publicKey,
     });
+
+    forceUpdate();
   };
 
   return (
