@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
@@ -24,8 +24,11 @@ export const getServerSideProps = () => ({
 });
 
 const HomePage: NextPage = () => {
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => updateState({} as any), []);
+
   const dispatch = useAppDispatch();
-  const isLoading = useLoadHome(dispatch);
+  const isLoading = useLoadHome(dispatch, forceUpdate);
   const router = useRouter();
 
   const firstLoading = isLoading && router.asPath === '/home';
