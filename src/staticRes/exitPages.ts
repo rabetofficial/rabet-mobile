@@ -12,7 +12,7 @@ const pages: Page[] = [
   { route: RouteName.BackupSetting, title: 'Backup' },
   { route: RouteName.Receive, title: 'Receive' },
   { route: RouteName.ContactsSetting, title: 'Contacts' },
-  { route: RouteName.AddAsset, title: 'AddAsset' },
+  { route: RouteName.AddAsset, title: 'Add Asset' },
   { route: RouteName.EditName, title: 'Edit name' },
   { route: RouteName.GeneralSetting, title: 'General settings' },
   { route: RouteName.CreateWallet, title: 'Create Wallet' },
