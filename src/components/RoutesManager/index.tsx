@@ -5,6 +5,7 @@ import RouteName from 'staticRes/routes';
 import loadUser from 'actions/user/loadUser';
 import useTypedSelector from 'hooks/useTypedSelector';
 import LoadingOne from 'pages/loading-one';
+import isInPWA from 'helpers/isInPWA';
 
 type RoutesManagerType = {
   children: JSX.Element;
@@ -12,6 +13,7 @@ type RoutesManagerType = {
     logged: 0 | 1 | 2;
     registered: 0 | 1 | 2;
     account: 0 | 1 | 2;
+    before_pwa?: boolean;
   };
 };
 
@@ -40,6 +42,18 @@ const RoutesManager = ({
     if (!isLoaded) {
       return;
     }
+
+    const isUsingPWA = isInPWA();
+
+    // if (!isUsingPWA) {
+    //   if (pageProps.before_pwa) {
+    //     setPass(true);
+    //     return;
+    //   }
+    //
+    //   router.push('/');
+    //   return;
+    // }
 
     let passCount = 0;
 
