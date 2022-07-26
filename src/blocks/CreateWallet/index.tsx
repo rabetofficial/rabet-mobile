@@ -10,8 +10,8 @@ import createAccountAction from 'actions/accounts/create';
 const CreateWallet = () => {
   const router = useRouter();
 
-  const onSubmit = async (values: FormValues) => {
-    const isDone = await createAccountAction(values.name);
+  const onSubmit = async ({ name }: FormValues) => {
+    const isDone = await createAccountAction(name.trim());
 
     if (!isDone) {
       return {

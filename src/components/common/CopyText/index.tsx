@@ -38,6 +38,8 @@ const CopyText = ({ text, custom, fullIcon }: AppProps) => {
   const toggle = () => {
     setTooltipText('Copied!');
     setVisible(true);
+
+    navigator.clipboard.writeText(text);
   };
 
   const renderCopyTrigger = () => {

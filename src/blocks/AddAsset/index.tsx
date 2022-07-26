@@ -121,6 +121,7 @@ const AddAsset = ({ children }: AddAssetType) => {
     </div>
   );
 };
+
 AddAsset.defaultProps = {
   children: '',
 };

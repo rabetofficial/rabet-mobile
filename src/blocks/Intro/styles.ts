@@ -5,8 +5,11 @@ export const Img = styled.div`
   height: 318px;
   display: block;
   margin: 115px 0 0 5px;
-  @media (max-height: 640px) and (min-height: 560px) {
+  @media (max-height: 640px) {
     margin-top: 50px;
+  }
+  @media (max-height: 545px) {
+    margin-top: 20px;
   }
 `;
 

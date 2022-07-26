@@ -14,7 +14,7 @@ import ButtonContainer from 'components/common/ButtonContainer';
 import * as S from './styles';
 
 const IntroSlides = () => {
-  const [CurrentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const customSlider = useRef<Slider | null>(null);
   const router = useRouter();
@@ -31,15 +31,14 @@ const IntroSlides = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     swipeToSlide: true,
-    afterChange: (i: number) => {
-      setCurrentIndex(i);
+    beforeChange: (_: number, next: number) => {
+      setCurrentIndex(next);
     },
-
     appendDots: (dots: any[]) => (
       <S.PageinationParent>
         {dots.map((_: any, i: number) => (
-          <li>
-            <S.Pagination index={i} activeIndex={CurrentIndex} />
+          <li key={i}>
+            <S.Pagination index={i} activeIndex={currentIndex} />
           </li>
         ))}
       </S.PageinationParent>
@@ -110,7 +109,7 @@ const IntroSlides = () => {
         ))}
       </Slider>
 
-      {CurrentIndex === 3 && (
+      {currentIndex === 3 && (
         <ButtonContainer fixedBottom mb={39}>
           <Button
             type="button"

@@ -40,6 +40,8 @@ const ContactAction = () => {
 
     if (!values.name) {
       errors.name = '';
+    } else if (values.name.trim() === '') {
+      errors.name = '';
     } else {
       if (values.name.length > 50) {
         errors.name = 'Name cannot be more than 50 characters.';
@@ -78,7 +80,16 @@ const ContactAction = () => {
     return errors;
   };
 
-  const onSubmit = (values: FormValues) => {
+  const onSubmit = (v: FormValues) => {
+    const values = {
+      ...v,
+      name: v.name.trim(),
+    };
+
+    if (v.memo) {
+      values.memo = v.memo.trim();
+    }
+
     if (!isEdit) {
       addContactAction(values);
     } else if (editingContact) {
