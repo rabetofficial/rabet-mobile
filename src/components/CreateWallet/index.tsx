@@ -17,10 +17,12 @@ type CreateWalletType = {
 };
 
 const CreateWallet = ({ children, onSubmit }: CreateWalletType) => {
-  const validateForm = (values: FormValues) => {
+  const validateForm = ({ name }: FormValues) => {
     const errors: Partial<FormValues> = {};
 
-    if (!values.name) {
+    if (!name) {
+      errors.name = '';
+    } else if (name.trim() === '') {
       errors.name = '';
     }
 
@@ -41,8 +43,13 @@ const CreateWallet = ({ children, onSubmit }: CreateWalletType) => {
       <Layout>
         <Form
           onSubmit={onSubmit}
-          validate={(values: FormValues) => validateForm(values)}
-          render={({ submitError, handleSubmit, pristine }) => (
+          validate={validateForm}
+          render={({
+            submitError,
+            handleSubmit,
+            pristine,
+            invalid,
+          }) => (
             <form
               className="form"
               onSubmit={handleSubmit}
@@ -66,13 +73,14 @@ const CreateWallet = ({ children, onSubmit }: CreateWalletType) => {
               </Field>
 
               {submitError && <Error>{submitError}</Error>}
+
               <ButtonContainer fixedBottom mb={39}>
                 <Button
                   type="submit"
                   variant="primary"
                   size="medium"
                   content="Create"
-                  disabled={pristine}
+                  disabled={pristine || invalid}
                 />
               </ButtonContainer>
             </form>
