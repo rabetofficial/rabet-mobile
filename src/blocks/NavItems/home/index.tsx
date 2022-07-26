@@ -18,7 +18,6 @@ import Layout from 'components/common/Layouts/BaseLayout';
 
 import Links from './links';
 import * as S from './styles';
-import AssetButton from './AssetButton';
 import AccountModal from './AccountModal';
 
 type HomeProps = {
@@ -39,7 +38,7 @@ const Home = ({ loading }: HomeProps) => {
     return <LoadingOne />;
   }
 
-  const scrollMaxHeight = document.documentElement.clientHeight - 360;
+  const scrollMaxHeight = document.documentElement.clientHeight - 351;
 
   return (
     <>
@@ -82,15 +81,7 @@ const Home = ({ loading }: HomeProps) => {
 
       <Layout>
         <ScrollBar isVertical maxHeight={scrollMaxHeight}>
-          <AssetList assets={assets}>
-            <AssetButton
-              style={{
-                position: assets.length < 4 ? 'absolute' : 'static',
-                bottom: assets.length < 4 ? '120px' : '0',
-                width: assets.length < 4 ? 'calc(100% - 32px)' : '',
-              }}
-            />
-          </AssetList>
+          <AssetList assets={assets} />
         </ScrollBar>
       </Layout>
     </>

@@ -7,13 +7,13 @@ import RouteName from 'staticRes/routes';
 import Asset from './Asset';
 
 import { Hr } from './styles';
+import AssetButton from './AssetButton';
 
 type AppProps = {
   assets: Horizon.BalanceLine[];
-  children?: React.ReactNode;
 };
 
-const AssetList = ({ assets, children }: AppProps) => {
+const AssetList = ({ assets }: AppProps) => {
   const router = useRouter();
 
   const onClick = (asset: Horizon.BalanceLine) => {
@@ -42,13 +42,9 @@ const AssetList = ({ assets, children }: AppProps) => {
         </div>
       ))}
 
-      {children}
+      <AssetButton length={assets.length} />
     </>
   );
-};
-
-AssetList.defaultProps = {
-  children: '',
 };
 
 export default AssetList;
