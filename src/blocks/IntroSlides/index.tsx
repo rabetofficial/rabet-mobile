@@ -11,6 +11,7 @@ import identitySrc from 'public/images/slides/identity.png';
 import interactionSrc from 'public/images/slides/interaction.png';
 import ButtonContainer from 'components/common/ButtonContainer';
 
+import shortid from 'shortid';
 import * as S from './styles';
 
 const IntroSlides = () => {
@@ -37,7 +38,7 @@ const IntroSlides = () => {
     appendDots: (dots: any[]) => (
       <S.PageinationParent>
         {dots.map((_: any, i: number) => (
-          <li key={i}>
+          <li key={shortid.generate()}>
             <S.Pagination index={i} activeIndex={currentIndex} />
           </li>
         ))}
