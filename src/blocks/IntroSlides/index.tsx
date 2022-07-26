@@ -15,6 +15,7 @@ import * as S from './styles';
 
 const IntroSlides = () => {
   const [CurrentIndex, setCurrentIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 
   const customSlider = useRef<Slider | null>(null);
   const router = useRouter();
@@ -31,14 +32,13 @@ const IntroSlides = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     swipeToSlide: true,
-    afterChange: (i: number) => {
-      setCurrentIndex(i);
+    beforeChange: (_: number, next: number) => {
+      setCurrentIndex(next);
     },
-
     appendDots: (dots: any[]) => (
       <S.PageinationParent>
         {dots.map((_: any, i: number) => (
-          <li>
+          <li key={_}>
             <S.Pagination index={i} activeIndex={CurrentIndex} />
           </li>
         ))}
