@@ -16,16 +16,20 @@ type AppProps = {
 const BottomBar = ({ menus, contents, style }: AppProps) => {
   const router = useRouter();
   const [activeMenu, setActiveMenu] = useState(1);
+  const [anim, setAnim] = useState(true);
 
   const menuWidth = 100 / menus.length;
   const borderMove = 100 * (activeMenu - 1);
 
   const onChangeMenu = (id: number) => {
     setActiveMenu(id);
+
     router.push({
       pathname: RouteName.Home,
       query: { menu: id },
     });
+
+    setAnim(true);
   };
 
   useEffect(() => {
@@ -35,18 +39,29 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
     } else {
       setActiveMenu(1);
     }
+
+    setTimeout(() => {
+      setAnim(false);
+    }, 1000);
   }, [router]);
 
   return (
-    <div>
+    <>
       {contents.map((content) => {
         if (content.id === activeMenu) {
           return (
-            <SpringLoad key={content.id}>
-              {content.component}
-            </SpringLoad>
+            <div key={content.id}>
+              {anim ? (
+                <SpringLoad key={content.id}>
+                  {content.component}
+                </SpringLoad>
+              ) : (
+                <div key={content.id}>{content.component}</div>
+              )}
+            </div>
           );
         }
+
         return null;
       })}
 
@@ -67,7 +82,7 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
           ))}
         </S.List>
       </div>
-    </div>
+    </>
   );
 };
 BottomBar.defaultProps = {
