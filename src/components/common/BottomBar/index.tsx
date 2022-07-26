@@ -23,6 +23,7 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
 
   const onChangeMenu = (id: number) => {
     setActiveMenu(id);
+
     router.push({
       pathname: RouteName.Home,
       query: { menu: id },
@@ -49,7 +50,7 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
       {contents.map((content) => {
         if (content.id === activeMenu) {
           return (
-            <div>
+            <div key={content.id}>
               {anim ? (
                 <SpringLoad key={content.id}>
                   {content.component}
@@ -60,6 +61,7 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
             </div>
           );
         }
+
         return null;
       })}
 
