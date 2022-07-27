@@ -35,6 +35,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     },
   ];
 
+  const finalDepth = 3;
+
   const getPathDepth = (location: NextRouter) => {
     let pathArr = location.pathname.split('/');
     pathArr = pathArr.filter((n) => n !== '');
@@ -74,7 +76,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 from={{
                   opacity: 0,
                   transform:
-                    page && getPathDepth(router) <= 1
+                    page && getPathDepth(router) < finalDepth
                       ? 'translateX(-100vw)'
                       : 'translateX(100vw)',
                 }}
@@ -85,7 +87,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 leave={{
                   opacity: 0,
                   transform:
-                    page && getPathDepth(router) <= 1
+                    page && getPathDepth(router) < finalDepth
                       ? 'translateX(20vw)'
                       : 'translateX(-20vw)',
                   position: 'absolute',
