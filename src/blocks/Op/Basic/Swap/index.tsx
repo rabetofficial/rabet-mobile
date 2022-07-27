@@ -315,7 +315,7 @@ const BasicSwap = () => {
           ) : null}
         </div>
 
-        <ButtonContainer fixedBottom mb={39}>
+        <ButtonContainer fixedBottom fixedUntil={450} mb={39}>
           <Button
             type="submit"
             variant="primary"

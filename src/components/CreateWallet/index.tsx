@@ -74,7 +74,7 @@ const CreateWallet = ({ children, onSubmit }: CreateWalletType) => {
 
               {submitError && <Error>{submitError}</Error>}
 
-              <ButtonContainer fixedBottom mb={39}>
+              <ButtonContainer fixedBottom mb={39} fixedUntil={250}>
                 <Button
                   type="submit"
                   variant="primary"

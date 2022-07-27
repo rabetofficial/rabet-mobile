@@ -13,6 +13,7 @@ type AppProps = {
   mb?: number;
   className?: string;
   fixedBottom?: boolean;
+  fixedUntil?: number;
 };
 
 const Container = styled.div.attrs((props: AppProps) => props)`
@@ -33,14 +34,20 @@ const Container = styled.div.attrs((props: AppProps) => props)`
     left: 16px;
     bottom: 0;
     margin-bottom: ${(props) => props.mb}px;
+    @media (max-height: ${(props) => props.fixedUntil}px) {
+      position: static;
+      margin-top: 20px;
+    }
   }
 `;
 
 const ButtonContainer = (props: AppProps) => {
-  const { children, justify, className, fixedBottom } = props;
+  const { children, justify, className, fixedBottom, fixedUntil } =
+    props;
   return (
     <Container
       {...props}
+      fixedUntil={fixedUntil}
       className={classNames(
         'flex',
         justify && `justify-${justify}`,
@@ -61,6 +68,7 @@ ButtonContainer.defaultProps = {
   justify: '',
   className: '',
   fixedBottom: false,
+  fixedUntil: 0,
 };
 
 export default ButtonContainer;

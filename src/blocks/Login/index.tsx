@@ -75,7 +75,7 @@ const Login = () => {
               <div className="error">{submitError}</div>
             )}
 
-            <ButtonContainer fixedBottom>
+            <ButtonContainer fixedBottom fixedUntil={500}>
               <Button
                 type="submit"
                 variant="primary"
