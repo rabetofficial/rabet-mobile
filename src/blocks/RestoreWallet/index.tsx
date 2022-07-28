@@ -49,21 +49,20 @@ const RestoreWallet = () => {
   const router = useRouter();
   const accounts = useTypedSelector((store) => store.accounts);
 
-  const onSubmit = async (values: FormValues) => {
+  const onSubmit = async (v: FormValues) => {
+    const values = {
+      key: v.key ? v.key.trim() : '',
+    };
     if (!StrKey.isValidEd25519SecretSeed(values.key)) {
       return { key: 'Invalid private key.' };
     }
-
     const isDuplicated = accounts.some(
       (x) => x.privateKey === values.key,
     );
-
     if (isDuplicated) {
       return { key: 'Account is duplicated.' };
     }
-
     const account = await restoreAccountAction(values.key);
-
     if (account === 'duplicate') {
       return {
         key: "The account you're trying to import is a duplicate.",

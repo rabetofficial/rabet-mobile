@@ -41,9 +41,9 @@ const BasicSend = () => {
 
   const onSubmit = async (v: FormValues) => {
     const values = {
-      memo: v.memo,
+      memo: v.memo ? v.memo.trim() : '',
       amount: v.amount,
-      destination: v.destination,
+      destination: v.destination.trim(),
       isAccountNew,
       assetCode: selectedAsset.asset_code,
       assetType: selectedAsset.asset_type,
@@ -60,8 +60,10 @@ const BasicSend = () => {
 
   const validateForm = async (v: FormValues) => {
     const values = {
-      ...v,
+      memo: v.memo ? v.memo.trim() : '',
+      amount: v.amount,
       asset: selectedAsset,
+      destination: v.destination ? v.destination.trim() : '',
     };
 
     const errors: Partial<FormValues> = {};
@@ -170,11 +172,7 @@ const BasicSend = () => {
           submitError,
           handleSubmit,
         }) => (
-          <form
-            onSubmit={(e) => {
-              handleSubmit(e).then(form.reset);
-            }}
-          >
+          <form onSubmit={handleSubmit}>
             <label className="label-primary block mt-6 mb-2">
               Assets
             </label>
@@ -282,3 +280,7 @@ const BasicSend = () => {
 };
 
 export default BasicSend;
+
+// onSubmit={(e) => {
+//   handleSubmit(e).then(form.reset);
+// }}

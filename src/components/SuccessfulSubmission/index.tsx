@@ -23,7 +23,7 @@ const SuccessfulSubmission = ({
 
   const Text = (
     <>
-      <span>{message}</span>
+      <span className="text-sm">{message}</span>
       <ShareLink
         href={explorer(message)}
         target="_blank"

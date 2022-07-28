@@ -17,16 +17,21 @@ export type FormValues = {
 
 type CustomAssetTypes = {
   onSubmit: (v: FormValues) => Promise<Partial<FormValues>>;
-  onCancel: () => void;
 };
 
-const CustomAsset = ({ onSubmit, onCancel }: CustomAssetTypes) => {
+const CustomAsset = ({ onSubmit }: CustomAssetTypes) => {
   const account = useActiveAccount();
   const assets = account.assets || [];
 
-  const validateForm = async (values: FormValues) => {
+  const validateForm = async (v: FormValues) => {
     const errors: Partial<FormValues> = {};
     let hasError = false;
+
+    const values = {
+      code: v.code ? v.code.trim() : '',
+      issuer: v.issuer ? v.code.trim() : '',
+      limit: v.limit ? v.limit.trim() : '',
+    };
 
     if (!values.code) {
       errors.code = '';

@@ -15,7 +15,10 @@ type PrivateKeyType = {
 };
 
 const PrivateKey = ({ onSubmit }: PrivateKeyType) => {
-  const validateForm = (values: FormValues) => {
+  const validateForm = (v: FormValues) => {
+    const values = {
+      key: v.key ? v.key.trim() : '',
+    };
     const errors = {} as FormValues;
 
     if (!values.key) {

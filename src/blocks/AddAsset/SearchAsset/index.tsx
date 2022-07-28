@@ -26,7 +26,7 @@ const SearchAsset = ({ onSubmit }: AppProps) => {
   const [list, setList] = useState<AssetImageWithActive[]>([]);
   const [value, setValue] = useState('');
   const [selectedList, setSelectedList] = useState<
-  AssetImageWithActive[]
+    AssetImageWithActive[]
   >([]);
   const options = useTypedSelector((store) => store.options);
   const account = useActiveAccount();
@@ -56,16 +56,18 @@ const SearchAsset = ({ onSubmit }: AppProps) => {
   const validateForm = async (values: FormValues) => {
     let isDomain = false;
 
-    if (isValidDomain(values.asset)) {
+    const val = values.asset.trim();
+
+    if (isValidDomain(val)) {
       isDomain = true;
     }
 
-    if (values.asset && value !== values.asset) {
-      setValue(values.asset);
+    if (val && value !== val) {
+      setValue(val);
 
       const assets = account.assets || [];
 
-      getAssetsAction(values.asset, isDomain).then((assetList) => {
+      getAssetsAction(val, isDomain).then((assetList) => {
         const newAssetList = [];
 
         for (let i = 0; i < assetList.length; i += 1) {
@@ -92,7 +94,7 @@ const SearchAsset = ({ onSubmit }: AppProps) => {
 
         setList(newAssetList);
       });
-    } else if (!values.asset && list.length) {
+    } else if (!val && list.length) {
       setList([]);
       setValue('');
       setSelectedList([]);
@@ -102,7 +104,7 @@ const SearchAsset = ({ onSubmit }: AppProps) => {
   return (
     <Form
       onSubmit={localOnSubmit}
-      validate={(values: FormValues) => validateForm(values)}
+      validate={validateForm}
       render={({ handleSubmit }) => (
         <form
           className="form"

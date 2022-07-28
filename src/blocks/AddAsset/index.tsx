@@ -24,10 +24,12 @@ const AddAsset = ({ children }: AddAssetType) => {
 
     router.push(RouteName.LoadingNetwork);
 
+    const limit = values.limit ? values.limit.trim() : '';
+
     const [isSuccessful, message] = await addAssetAction(
-      values.code,
-      values.issuer,
-      values.limit,
+      values.code.trim(),
+      values.issuer.trim(),
+      limit,
     );
 
     await timeout(100);
@@ -90,7 +92,6 @@ const AddAsset = ({ children }: AddAssetType) => {
         <SearchAsset
           key="searchAsset"
           onSubmit={handleSearchAssetSubmitBtn}
-          onCancel={handleCancel}
         />
       ),
     },

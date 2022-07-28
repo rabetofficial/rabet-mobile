@@ -19,7 +19,11 @@ const EditName = () => {
   const router = useRouter();
   const account = useActiveAccount();
 
-  const onSubmit = async (values: FormValues) => {
+  const onSubmit = async (v: FormValues) => {
+    const values = {
+      name: v.name ? v.name.trim() : '',
+    };
+
     await changeNameAction(values.name, account.publicKey);
 
     router.push(RouteName.Home);
