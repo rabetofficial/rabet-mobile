@@ -26,7 +26,7 @@
     "background": "#ffffff",
     "theme_color": "#000000",
     "scope": "/",
-    "start_url": "/",
+    "start_url": "/home",
     "short_name": "Rabet",
     "description": "Rabet, an open source wallet for the Stellar network."
 }

@@ -30,7 +30,7 @@ const basicSendAction = async (values: FormValues) => {
     sendAsset: Asset.native(),
     destAsset: Asset.native(),
     path: calculatePath(values.path),
-    destMin: values.minimumReceived.toFixed(5),
+    destMin: parseFloat(values.minimumReceived).toFixed(5),
     sendAmount: values.from.toString(),
     destination: activeAccount.publicKey,
   };

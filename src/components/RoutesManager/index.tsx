@@ -43,8 +43,8 @@ const RoutesManager = ({
       return;
     }
 
-    const isUsingPWA = isInPWA();
-
+    // const isUsingPWA = isInPWA();
+    //
     // if (!isUsingPWA) {
     //   if (pageProps.before_pwa) {
     //     setPass(true);

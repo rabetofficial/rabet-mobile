@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
 import BigNumber from 'bignumber.js';
 import { useWatch } from 'react-hook-form';
+import React, { useState, useEffect } from 'react';
 
 import BN from 'helpers/BN';
-import formatBalance from 'utils/formatBalance';
-import { FormValues } from 'blocks/Op/Basic/Swap';
-import calculatePriceImpact from 'api/calculatePriceImpact';
 import AngleRight from 'svgs/AngleRight';
+import { FormValues } from 'blocks/Op/Basic/Swap';
+import humanizeAmount from 'helpers/humanizeNumber';
+import calculatePriceImpact from 'api/calculatePriceImpact';
 
 import * as S from './styles';
 
@@ -117,7 +117,7 @@ const SwapDetails = ({
         <div>
           {minimumReceived ? (
             <>
-              {formatBalance(minimumReceived.toString())}{' '}
+              {humanizeAmount(minimumReceived.toString())}{' '}
               {formValues.asset2.asset_code || 'XLM'}
             </>
           ) : (
