@@ -1,4 +1,5 @@
 enum RouteName {
+  PWA = '/',
   Home = '/home',
   Login = '/login',
   Register = '/confirm-login',

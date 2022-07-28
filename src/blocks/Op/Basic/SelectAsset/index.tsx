@@ -78,11 +78,11 @@ const SelectAsset = ({
         <Trigger onClick={onOpen}>
           {currentAsset ? (
             <div className="flex items-center">
-              <Image
-                fallBack={questionLogo}
+              <img
                 alt={handleAssetAlt(currentAsset)}
                 src={handleAssetImage(currentAsset, assetImages)}
               />
+
               <span className="ml-1">
                 {currentAsset.asset_code || 'XLM'}
               </span>

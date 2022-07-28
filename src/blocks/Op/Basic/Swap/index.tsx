@@ -1,10 +1,12 @@
+import { useRouter } from 'next/router';
 import { Horizon, ServerApi } from 'stellar-sdk';
 import React, { useState, useEffect } from 'react';
 import { useForm, Controller, useWatch } from 'react-hook-form';
-import { useRouter } from 'next/router';
 
+import config from 'config';
 import BN from 'helpers/BN';
 import Swap from 'svgs/Swap';
+import RouteName from 'staticRes/routes';
 import Loading from 'components/Loading';
 import getMaxBalance from 'utils/maxBalance';
 import Button from 'components/common/Button';
@@ -12,26 +14,24 @@ import defaultAssets from 'staticRes/defaultAssets';
 import SwapDetail from 'blocks/Op/Basic/Swap/Detail';
 import Input from 'components/common/Input/InputHook';
 import useActiveAccount from 'hooks/useActiveAccount';
+import SelectAsset from 'blocks/Op/Basic/SelectAsset';
 import combineAssets from 'utils/swap/addDefaultAssets';
+import Layout from 'components/common/Layouts/BaseLayout';
 import controlNumberInput from 'utils/controlNumberInput';
 import isInsufficientAsset from 'utils/isInsufficientAsset';
 import ButtonContainer from 'components/common/ButtonContainer';
-import RouteName from 'staticRes/routes';
-import config from 'config';
-import Layout from 'components/common/Layouts/BaseLayout';
-import SelectAsset from 'blocks/Op/Basic/SelectAsset';
-import validateForm from './validateForm';
 
+import humanizeAmount from 'helpers/humanizeNumber';
 import * as S from './styles';
+import validateForm from './validateForm';
 
 export type FormValues = {
   path: any[];
-  minimumReceived: number;
   to: string;
   from: string;
+  minimumReceived: number;
   asset1: Horizon.BalanceLine;
   asset2: Horizon.BalanceLine;
-  lastField: string;
 };
 
 declare global {
@@ -104,6 +104,7 @@ const BasicSwap = () => {
       ...calculatedResult.path,
       values.asset2,
     ];
+
     setPath(calculatePath);
 
     if (values.lastField === 'from') {
@@ -151,6 +152,7 @@ const BasicSwap = () => {
     setValue('from', maxValue, {
       shouldValidate: true,
     });
+
     setValue('to', '0');
   };
 
@@ -160,6 +162,7 @@ const BasicSwap = () => {
     setValue('asset1', asset2, {
       shouldValidate: true,
     });
+
     setValue('asset2', asset1, {
       shouldValidate: true,
     });
@@ -172,20 +175,33 @@ const BasicSwap = () => {
     setShowSwapInfo(false);
 
     const values = {
-      ...v,
-      path,
+      path: JSON.stringify(path),
+      to: v.to,
+      from: v.from,
       minimumReceived,
+      asset1Code: v.asset1.asset_code,
+      asset1Type: v.asset1.asset_type,
+      asset1Issuer: v.asset1.asset_issuer,
+      asset2Code: v.asset2.asset_code,
+      asset2Type: v.asset2.asset_type,
+      asset2Issuer: v.asset2.asset_issuer,
     };
 
-    //   navigate(RouteName.BasicSwapConfirm, {
-    //     state: {
-    //       values,
-    //     },
-    //   });
-
-    router.push(RouteName.BasicSwapConfirm);
+    router.push({
+      pathname: RouteName.BasicSwapConfirm,
+      query: values,
+    });
 
     reset();
+  };
+
+  const v = getValues();
+
+  const setMaxBalance = () => {
+    setValue('from', getMaxBalance(v.asset1, account));
+    setValue('asset1', v.asset1, {
+      shouldValidate: true,
+    });
   };
 
   return (
@@ -194,9 +210,12 @@ const BasicSwap = () => {
         <Layout>
           <div className="flex justify-between">
             <div className="text-primary-dark">You Pay</div>
-            <div className="flex">
+            <div className="flex" onClick={setMaxBalance}>
               <div className="text-primary-dark">Max:</div>
-              <div className="ml-[5px]">120,8 XLM</div>
+              <div className="ml-[5px]">
+                {humanizeAmount(getMaxBalance(v.asset1, account))}{' '}
+                {v.asset1.asset_code || 'XLM'}
+              </div>
             </div>
           </div>
 
