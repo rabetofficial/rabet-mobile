@@ -1,9 +1,9 @@
 import React, { CSSProperties, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { useSpring, animated } from 'react-spring';
 
 import { NavItemContent, NavItemMenu } from 'models';
 import RouteName from 'staticRes/routes';
-import SpringLoad from 'components/common/SpringLoad';
 
 import * as S from './styels';
 
@@ -13,13 +13,17 @@ type AppProps = {
   style?: CSSProperties;
 };
 
-const BottomBar = ({ menus, contents, style }: AppProps) => {
+const BottomBar = ({
+  menus,
+  contents,
+  style,
+}: AppProps) => {
   const router = useRouter();
   const [activeMenu, setActiveMenu] = useState(1);
-  const [anim, setAnim] = useState(true);
 
   const menuWidth = 100 / menus.length;
   const borderMove = 100 * (activeMenu - 1);
+  const [springLoad, setSpringLoad] = useState(true);
 
   const onChangeMenu = (id: number) => {
     setActiveMenu(id);
@@ -29,7 +33,7 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
       query: { menu: id },
     });
 
-    setAnim(true);
+    setSpringLoad(true);
   };
 
   useEffect(() => {
@@ -41,9 +45,15 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
     }
 
     setTimeout(() => {
-      setAnim(false);
+      setSpringLoad(false);
     }, 1000);
   }, [router]);
+
+  const springs = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    reset: true,
+  });
 
   return (
     <>
@@ -51,13 +61,9 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
         if (content.id === activeMenu) {
           return (
             <div key={content.id}>
-              {anim ? (
-                <SpringLoad key={content.id}>
-                  {content.component}
-                </SpringLoad>
-              ) : (
-                <div key={content.id}>{content.component}</div>
-              )}
+              <animated.div style={springLoad ? springs : {}}>
+                {content.component}
+              </animated.div>
             </div>
           );
         }
