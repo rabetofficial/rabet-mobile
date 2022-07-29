@@ -34,6 +34,7 @@
         }
     ],
     "background": "#ffffff",
+    "background_color": "#ffffff",
     "theme_color": "#000000",
     "scope": "/",
     "start_url": "/home",
