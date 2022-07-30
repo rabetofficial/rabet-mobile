@@ -1,5 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
+import AddToHome from 'blocks/AddToHome/indes';
 
 export async function getServerSideProps() {
   return {
@@ -12,6 +13,6 @@ export async function getServerSideProps() {
   };
 }
 
-const MainComponent: NextPage = () => <div>ADD TO HOME SCREEN</div>;
+const MainComponent: NextPage = () => <AddToHome />;
 
 export default MainComponent;
