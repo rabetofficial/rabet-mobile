@@ -1,5 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
+
 import AddToHome from 'blocks/AddToHome/indes';
 
 export async function getServerSideProps() {

@@ -18,10 +18,12 @@ const NotFound = () => {
     <>
       <S.TextContainer>
         <S.HeadText>404</S.HeadText>
+
         <S.MainText>
           The page you&apos;re looking for isn&apos;t found
         </S.MainText>
       </S.TextContainer>
+
       <ButtonContainer fixedBottom mb={39}>
         <Button
           size="medium"
