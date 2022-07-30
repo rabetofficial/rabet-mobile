@@ -32,7 +32,6 @@ export default function Document() {
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="theme-color" content="#000000" />
-
         <meta name="twitter:card" content="Rabet" />
         <meta name="twitter:url" content="https://rabet.io" />
         <meta name="twitter:title" content="Rabet" />
@@ -50,44 +49,43 @@ export default function Document() {
         <meta property="og:site_name" content="Rabet" />
         <meta property="og:url" content="https://rabet.io" />
 
-        {/*
         <link
           rel="apple-touch-icon"
-          href="/icons/touch-icon-iphone.png"
+          href="/public/images/logo/iOS/icon-32.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="152x152"
-          href="/icons/touch-icon-ipad.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/icons/touch-icon-iphone-retina.png"
+          href="/public/images/logo/iOS/icon-152.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="167x167"
-          href="/icons/touch-icon-ipad-retina.png"
+          href="/public/images/logo/iOS/icon-167.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/public/images/logo/iOS/icon-180.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="/icons/favicon-32x32.png"
+          href="/public/images/favicon.ico"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="/icons/favicon-16x16.png"
+          href="/public/images/favicon.ico"
         />
         <link
           rel="mask-icon"
           href="/icons/safari-pinned-tab.svg"
           color="#5bbad5"
         />
-        <meta
+        {/* <meta
           name="twitter:image"
           content="https://yourdomain.com/icons/android-chrome-192x192.png"
         />
@@ -129,8 +127,7 @@ export default function Document() {
           rel="apple-touch-startup-image"
           href="/images/apple_splash_640.png"
           sizes="640x1136"
-        />
-*/}
+        /> */}
       </Head>
 
       <body>
