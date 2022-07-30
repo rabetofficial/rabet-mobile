@@ -6,7 +6,7 @@ export const Devider = styled.div`
 `;
 
 export const LinkContainer = styled.div`
-  margin: 20px 0 26px;
+  margin: 24px 0 26px;
 `;
 
 export const Box = styled.div`
@@ -21,7 +21,7 @@ export const Head = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 40px;
-  margin-bottom: 38px;
+  margin-bottom: 34px;
 `;
 
 export const Asset = styled.div`
@@ -36,7 +36,7 @@ export const Asset = styled.div`
 `;
 
 export const NameValue = styled.div`
-  margin: 10px 0 -4.5px 0;
+  margin: 6px 0 -4.5px 0;
   font-size: 14px;
   font-weight: 500;
   font-stretch: normal;
