@@ -24,6 +24,7 @@ const AddToHome = () => {
   const handleClick = () => {
     router.push(RouteName.Home);
   };
+
   const List: ListProps[] = [
     {
       id: '1',
