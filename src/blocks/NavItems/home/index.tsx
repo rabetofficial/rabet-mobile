@@ -38,8 +38,6 @@ const Home = ({ loading }: HomeProps) => {
     return <LoadingOne />;
   }
 
-  const scrollMaxHeight = document.documentElement.clientHeight - 351;
-
   return (
     <>
       <Layout>
@@ -79,11 +77,7 @@ const Home = ({ loading }: HomeProps) => {
 
       <S.Devider />
 
-      <Layout>
-        <ScrollBar isVertical maxHeight={scrollMaxHeight}>
-          <AssetList assets={assets} />
-        </ScrollBar>
-      </Layout>
+      <AssetList assets={assets} />
     </>
   );
 };

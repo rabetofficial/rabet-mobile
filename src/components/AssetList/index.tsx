@@ -3,6 +3,7 @@ import { Horizon } from 'stellar-sdk';
 import { useRouter } from 'next/router';
 
 import handleAssetsKeys from 'utils/handleAssetKeys';
+import ScrollBar from 'components/common/ScrollBar';
 import RouteName from 'staticRes/routes';
 import Asset from './Asset';
 
@@ -27,23 +28,27 @@ const AssetList = ({ assets }: AppProps) => {
     });
   };
 
+  const scrollMaxHeight = document.documentElement.clientHeight - 351;
+
   return (
-    <>
-      {assets.map((asset, index) => (
-        <div
-          key={`assetList${handleAssetsKeys(asset)}`}
-          onClick={() => {
-            onClick(asset);
-          }}
-        >
-          <Asset asset={asset} />
+    <ScrollBar isHidden maxHeight={scrollMaxHeight}>
+      <div className="content">
+        {assets.map((asset, index) => (
+          <div
+            key={`assetList${handleAssetsKeys(asset)}`}
+            onClick={() => {
+              onClick(asset);
+            }}
+          >
+            <Asset asset={asset} />
 
-          {assets.length !== index + 1 && <Hr />}
-        </div>
-      ))}
+            {assets.length !== index + 1 && <Hr />}
+          </div>
+        ))}
 
-      <AssetButton length={assets.length} />
-    </>
+        <AssetButton length={assets.length} />
+      </div>
+    </ScrollBar>
   );
 };
 

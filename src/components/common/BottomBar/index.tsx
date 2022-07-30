@@ -13,11 +13,7 @@ type AppProps = {
   style?: CSSProperties;
 };
 
-const BottomBar = ({
-  menus,
-  contents,
-  style,
-}: AppProps) => {
+const BottomBar = ({ menus, contents, style }: AppProps) => {
   const router = useRouter();
   const [activeMenu, setActiveMenu] = useState(1);
 
