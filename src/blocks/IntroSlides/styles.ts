@@ -32,7 +32,6 @@ export const ImgContainer = styled.div<ImgProps>`
   justify-content: center;
   align-items: center;
   margin-right: ${({ slideId }) => (slideId === 2 ? '35px' : '0')};
-  margin-right: ${({ slideId }) => (slideId === 4 ? '-4px' : '0')};
   margin-left: ${({ slideId }) => (slideId === 3 ? '44px' : '0')};
   @media (max-height: 640px) {
     margin: -30px 0 -30px;

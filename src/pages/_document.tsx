@@ -51,34 +51,34 @@ export default function Document() {
 
         <link
           rel="apple-touch-icon"
-          href="public/images/logo/iOS/icon-32.png"
+          href="/images/logo/iOS/icon-32.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="152x152"
-          href="public/images/logo/iOS/icon-152.png"
+          href="/images/logo/iOS/icon-152.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="167x167"
-          href="public/images/logo/iOS/icon-167.png"
+          href="/images/logo/iOS/icon-167.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="public/images/logo/iOS/icon-180.png"
+          href="/images/logo/iOS/icon-180.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="public/images/favicon.ico"
+          href="/images/favicon.ico"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="public/images/favicon.ico"
+          href="/images/favicon.ico"
         />
         <link
           rel="mask-icon"
