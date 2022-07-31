@@ -96,7 +96,6 @@ const Input = (props: AppProps) => {
         />
 
         <InputBtn
-          isError={isError}
           variant={variant}
           setMax={setMax}
           toggleVisible={toggleVisible}

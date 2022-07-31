@@ -4,21 +4,14 @@ import React, {
   useRef,
   CSSProperties,
   ChangeEvent,
-  ReactNode,
 } from 'react';
+import classNames from 'classnames';
 
 import isEmpty from 'helpers/isEmpty';
 import { InputVariant, InputSize } from 'models';
 import InputBtn from 'components/common/Input/InputBtn';
 
-import classNames from 'classnames';
 import * as S from './styles';
-
-type Error = {
-  type: string;
-  message: string;
-  ref: ReactNode;
-};
 
 type AppProps = {
   type: string;
@@ -101,7 +94,6 @@ const Input = (props: AppProps) => {
         />
 
         <InputBtn
-          isError={!isEmpty(errorMsg)}
           variant={variant}
           setMax={setMax}
           toggleVisible={toggleVisible}

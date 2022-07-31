@@ -5,13 +5,11 @@ import { InputVariant } from 'models';
 import InvisibleEye from 'svgs/InvisibleEye';
 import VisibleEye from 'svgs/VisibleEye';
 import AngleDoubleUp from 'svgs/AngleDoubleUp';
-import ExclamationCircle from 'svgs/ExclamationCircle';
 
 import * as S from './styles';
 
 type AppProps = {
   variant?: InputVariant;
-  isError: boolean;
   visibleType: string;
   toggleVisible: () => void;
   setMax?: () => void;
@@ -19,7 +17,6 @@ type AppProps = {
 
 const InputBtn = ({
   variant,
-  isError,
   visibleType,
   toggleVisible,
   setMax,
@@ -48,14 +45,6 @@ const InputBtn = ({
             </S.MaxIcon>
           </Tooltips>
         </S.Max>
-      );
-    }
-
-    if (isError) {
-      return (
-        <S.Icon type="button">
-          <ExclamationCircle />
-        </S.Icon>
       );
     }
 
