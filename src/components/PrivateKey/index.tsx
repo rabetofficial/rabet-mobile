@@ -50,6 +50,7 @@ const PrivateKey = ({ onSubmit }: PrivateKeyType) => {
                     placeholder="S..."
                     input={input}
                     meta={meta}
+                    enterKeyHint="go"
                   />
                 </div>
               )}

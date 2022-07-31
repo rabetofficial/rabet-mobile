@@ -104,6 +104,7 @@ const ConfirmLogin = () => {
                   input={input}
                   meta={meta}
                   className="!mt-6"
+                  enterKeyHint="go"
                 />
               )}
             </Field>

@@ -67,6 +67,7 @@ const CreateWallet = ({ children, onSubmit }: CreateWalletType) => {
                       placeholder="John"
                       input={input}
                       meta={meta}
+                      enterKeyHint="go"
                     />
                   </div>
                 )}

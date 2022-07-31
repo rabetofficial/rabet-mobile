@@ -256,6 +256,7 @@ const BasicSend = () => {
                     styleType="light"
                     input={input}
                     meta={meta}
+                    enterKeyHint="go"
                   />
                 </>
               )}

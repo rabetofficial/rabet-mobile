@@ -67,6 +67,7 @@ const Login = () => {
                   input={input}
                   meta={meta}
                   autoFocus
+                  enterKeyHint="go"
                 />
               )}
             </Field>
