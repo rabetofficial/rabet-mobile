@@ -1,27 +1,5 @@
 import styled from 'styled-components';
 
-export const InputSearch = styled.input`
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid
-    ${({ theme }) => theme.colors.primary.lighter};
-  box-sizing: border-box;
-  height: 50px;
-  font-size: 14px;
-
-  &:focus {
-    outline: none;
-    border: none;
-    border-bottom: 1px solid
-      ${({ theme }) => theme.colors.primary.lighter};
-  }
-
-  &::placeholder {
-    font-size: 14px;
-    color: #afafaf;
-  }
-`;
-
 export const ListItem = styled.div`
   display: flex;
   align-items: center;

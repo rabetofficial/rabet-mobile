@@ -25,16 +25,7 @@ const SearchAsset = ({
   onChange,
   valueName,
 }: AppProps) => {
-  const [searchString, setSearchString] = useState('');
   const assetImages = useTypedSelector((store) => store.assetImages);
-
-  const handleChange = (e) => {
-    setSearchString(e.target.value);
-  };
-
-  const filteredCurrencies = assets.filter((asset) =>
-    new RegExp(searchString, 'i').test(asset.asset_code),
-  );
 
   const handleClick = (asset: Horizon.BalanceLine) => {
     onChange(asset);
@@ -62,15 +53,8 @@ const SearchAsset = ({
 
   return (
     <>
-      <S.InputSearch
-        type="text"
-        value={searchString}
-        onChange={(e) => handleChange(e)}
-        placeholder="&#xe915;  Search assets"
-      />
-
-      <ScrollBar isHidden maxHeight={400}>
-        {filteredCurrencies.map((asset) => (
+      <ScrollBar isHidden maxHeight={470}>
+        {assets.map((asset) => (
           <S.ListItem
             key={`${valueName}-${handleAssetsKeys(asset)}`}
             onClick={() => {
@@ -96,7 +80,7 @@ const SearchAsset = ({
           </S.ListItem>
         ))}
 
-        {!filteredCurrencies.length ? (
+        {!assets.length ? (
           <div className="flex items-center justify-center h-[44vh] text-primary-darker">
             Asset not found
           </div>

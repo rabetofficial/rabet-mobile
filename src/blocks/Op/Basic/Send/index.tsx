@@ -20,7 +20,7 @@ import ButtonContainer from 'components/common/ButtonContainer';
 import useTypedSelector from 'hooks/useTypedSelector';
 import SelectAsset from '../SelectAsset';
 import AssetTrigger from './AssetTrigger';
-import { ModalInput, PopoverContainer } from './styles';
+import { PopoverContainer } from './styles';
 import DestinationSuggest from './DestinationSuggestion';
 
 type FormValues = {
@@ -193,30 +193,34 @@ const BasicSend = () => {
               )}
             </Field>
 
-            <label className="label-primary block mt-6">Amount</label>
-            <ModalInput>
+            <div>
               <Field name="amount">
                 {({ input, meta }) => (
-                  <Input
-                    type="number"
-                    placeholder="0.0"
-                    size="medium"
-                    input={input}
-                    meta={meta}
-                    variant="max"
-                    styleType="light"
-                    setMax={form.mutators.setMax}
-                    onKeyPress={controlNumberInput}
-                    className="w-full"
-                  />
+                  <>
+                    <label className="label-primary block mt-6">
+                      Amount
+                    </label>
+                    <Input
+                      type="number"
+                      placeholder="0.0"
+                      size="medium"
+                      input={input}
+                      meta={meta}
+                      variant="max"
+                      styleType="light"
+                      setMax={form.mutators.setMax}
+                      onKeyPress={controlNumberInput}
+                      className="w-full"
+                    />
+                  </>
                 )}
               </Field>
-            </ModalInput>
+            </div>
 
             <Field name="destination">
               {({ input, meta }) => (
                 <PopoverContainer className="relative" id="full">
-                  <label className="label-primary block mt-4">
+                  <label className="label-primary block mt-6">
                     Destination
                   </label>
                   <Input
