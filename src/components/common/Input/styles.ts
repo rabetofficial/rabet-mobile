@@ -9,7 +9,7 @@ export const Group = styled.div.attrs(
     ${({ styleType, theme }) =>
       styleType === 'dark'
         ? theme.colors.primary.light
-      : theme.colors.primary.lighter};
+        : theme.colors.primary.lighter};
   display: flex;
   overflow: hidden;
   margin-top: ${({ noMT }) => (noMT ? '0px' : '8px')};

@@ -33,6 +33,10 @@ const Contact = () => {
     });
   };
 
+  const handleDelete = (contact: ContactType) => {
+    deleteContactAction(contact);
+  };
+
   return (
     <div>
       <div className="content">
@@ -96,7 +100,7 @@ const Contact = () => {
                   </span>
                   <span
                     onClick={() => {
-                      deleteContactAction(contact);
+                      handleDelete(contact);
                     }}
                     style={{ cursor: 'pointer' }}
                   >
