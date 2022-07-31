@@ -1,9 +1,10 @@
+import styled from 'styled-components';
 import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import styled from 'styled-components';
 
-import Tooltips from 'components/common/Tooltips';
 import Copy from 'svgs/Copy';
+import Tooltips from 'components/common/Tooltips';
+import copyToClipboard from 'helpers/copyToClipboard';
 
 const StyledButton = styled.button`
   text-align: center;
@@ -39,7 +40,7 @@ const CopyText = ({ text, custom, fullIcon }: AppProps) => {
     setTooltipText('Copied!');
     setVisible(true);
 
-    navigator.clipboard.writeText(text);
+    copyToClipboard(text);
   };
 
   const renderCopyTrigger = () => {

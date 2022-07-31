@@ -21,11 +21,12 @@ const Loading = ({
 }: AppProps) => (
   <S.Container className={className}>
     <S.Loading
-      src={loading}
+      src={loading.src}
       alt="loading"
       width={size}
       height={size}
     />
+
     {title && (
       <S.Title
         className={titleStyle}
