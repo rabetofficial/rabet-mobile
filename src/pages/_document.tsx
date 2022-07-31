@@ -49,6 +49,11 @@ export default function Document() {
         <meta property="og:site_name" content="Rabet" />
         <meta property="og:url" content="https://rabet.io" />
 
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        />
+
         <link
           rel="apple-touch-icon"
           href="/images/logo/iOS/icon-32.png"
