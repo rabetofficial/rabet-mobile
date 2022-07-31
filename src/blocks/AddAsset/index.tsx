@@ -80,10 +80,6 @@ const AddAsset = ({ children }: AddAssetType) => {
     }
   };
 
-  const handleCancel = () => {
-    router.push(RouteName.Home);
-  };
-
   const tabs: Tab[] = [
     {
       id: '1',
@@ -102,7 +98,6 @@ const AddAsset = ({ children }: AddAssetType) => {
         <CustomAsset
           key="customAsset"
           onSubmit={handleCustomAssetSubmitBtn}
-          onCancel={handleCancel}
         />
       ),
     },

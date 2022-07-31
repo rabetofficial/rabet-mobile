@@ -7,7 +7,6 @@ export const Tabs = styled.ul`
   display: flex;
   border-bottom: 1px solid
     ${({ theme }) => theme.colors.primary.lighter};
-  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.07);
   position: relative;
 `;
 

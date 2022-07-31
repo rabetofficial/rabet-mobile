@@ -9,7 +9,6 @@ import AssetList from 'components/AssetList';
 import formatBalance from 'utils/formatBalance';
 import CopyText from 'components/common/CopyText';
 import useTotalBalance from 'hooks/useTotalBalance';
-import ScrollBar from 'components/common/ScrollBar';
 import ExpandHorizontal from 'svgs/ExpandHorizontal';
 import useActiveAccount from 'hooks/useActiveAccount';
 import useTypedSelector from 'hooks/useTypedSelector';
@@ -60,9 +59,9 @@ const Home = ({ loading }: HomeProps) => {
           </div>
 
           <Link href={RouteName.WalletOption}>
-            <a>
+            <S.ExpandLink>
               <ExpandHorizontal />
-            </a>
+            </S.ExpandLink>
           </Link>
         </S.Head>
         <S.Asset>

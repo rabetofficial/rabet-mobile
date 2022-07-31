@@ -8,6 +8,14 @@ export const Devider = styled.div`
 export const LinkContainer = styled.div`
   margin: 24px 0 26px;
 `;
+export const ExpandLink = styled.a`
+  width: 50px;
+  margin-right: -20px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const Box = styled.div`
   padding-left: 16px;
