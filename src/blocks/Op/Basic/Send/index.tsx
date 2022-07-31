@@ -20,7 +20,7 @@ import ButtonContainer from 'components/common/ButtonContainer';
 import useTypedSelector from 'hooks/useTypedSelector';
 import SelectAsset from '../SelectAsset';
 import AssetTrigger from './AssetTrigger';
-import { PopoverContainer } from './styles';
+import PopoverContainer from './styles';
 import DestinationSuggest from './DestinationSuggestion';
 
 type FormValues = {
