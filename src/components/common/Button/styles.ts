@@ -86,6 +86,7 @@ export const Button = styled.button`
     color: white;
     background-color: ${({ theme }) => theme.colors.error.main};
     border: 2px solid ${({ theme }) => theme.colors.error.main};
+    border-radius: 2px;
     path {
       fill: white;
     }
