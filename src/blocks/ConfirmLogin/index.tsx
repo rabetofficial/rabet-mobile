@@ -110,7 +110,7 @@ const ConfirmLogin = () => {
 
             {submitError && <Error>{submitError}</Error>}
 
-            <ButtonContainer fixedBottom>
+            <ButtonContainer fixedBottom fixedUntil={500}>
               <Button
                 type="submit"
                 variant="primary"

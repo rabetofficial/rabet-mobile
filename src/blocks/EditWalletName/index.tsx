@@ -64,7 +64,7 @@ const EditName = () => {
 
             {submitError && <Error>{submitError}</Error>}
 
-            <ButtonContainer fixedBottom mb={39}>
+            <ButtonContainer fixedBottom mb={39} fixedUntil={270}>
               <Button
                 type="submit"
                 variant="primary"

@@ -180,7 +180,7 @@ const ContactAction = () => {
 
                 {submitError && <Error>{submitError}</Error>}
 
-                <ButtonContainer mb={39} fixedBottom>
+                <ButtonContainer mb={39} fixedBottom fixedUntil={470}>
                   <Button
                     type="submit"
                     variant="primary"

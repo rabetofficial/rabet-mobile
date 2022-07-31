@@ -209,16 +209,18 @@ const AssetInfo = ({
           ''
         )}
       </S.Page>
-      <ButtonContainer fixedBottom mb={39}>
-        <Button
-          type="button"
-          variant="danger-fill"
-          size="medium"
-          content="Delete"
-          disabled={isDeletable}
-          onClick={handleDelete}
-        />
-      </ButtonContainer>
+      <S.Container>
+        <ButtonContainer fixedBottom mb={39} fixedUntil={610}>
+          <Button
+            type="button"
+            variant="danger-fill"
+            size="medium"
+            content="Delete"
+            disabled={isDeletable}
+            onClick={handleDelete}
+          />
+        </ButtonContainer>
+      </S.Container>
     </>
   );
 };

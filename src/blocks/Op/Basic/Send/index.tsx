@@ -263,7 +263,7 @@ const BasicSend = () => {
 
             {submitError && <Error>{submitError}</Error>}
 
-            <ButtonContainer fixedBottom mb={39}>
+            <ButtonContainer fixedBottom mb={39} fixedUntil={570}>
               <Button
                 type="submit"
                 variant="primary"
