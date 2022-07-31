@@ -39,11 +39,9 @@ const InputBtn = ({
     if (variant === 'max') {
       return (
         <S.Max type="button">
-          <Tooltips text="Send entire" placement="top">
-            <S.MaxIcon onClick={setMax}>
-              <AngleDoubleUp />
-            </S.MaxIcon>
-          </Tooltips>
+          <S.MaxIcon onClick={setMax}>
+            <AngleDoubleUp />
+          </S.MaxIcon>
         </S.Max>
       );
     }
