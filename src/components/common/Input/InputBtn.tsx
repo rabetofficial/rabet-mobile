@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Tooltips from 'components/common/Tooltips';
 import { InputVariant } from 'models';
 import InvisibleEye from 'svgs/InvisibleEye';
 import VisibleEye from 'svgs/VisibleEye';
