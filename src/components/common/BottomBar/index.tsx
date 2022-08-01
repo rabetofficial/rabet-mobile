@@ -1,6 +1,5 @@
 import React, { CSSProperties, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useSpring, animated } from 'react-spring';
 
 import { NavItemContent, NavItemMenu } from 'models';
 import RouteName from 'staticRes/routes';
@@ -19,7 +18,6 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
 
   const menuWidth = 100 / menus.length;
   const borderMove = 100 * (activeMenu - 1);
-  const [springLoad, setSpringLoad] = useState(true);
 
   const onChangeMenu = (id: number) => {
     setActiveMenu(id);
@@ -28,8 +26,6 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
       pathname: RouteName.Home,
       query: { menu: id },
     });
-
-    setSpringLoad(true);
   };
 
   useEffect(() => {
@@ -39,27 +35,15 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
     } else {
       setActiveMenu(1);
     }
-
-    setTimeout(() => {
-      setSpringLoad(false);
-    }, 1000);
   }, [router]);
-
-  const springs = useSpring({
-    to: { opacity: 1 },
-    from: { opacity: 0 },
-    reset: true,
-  });
 
   return (
     <>
       {contents.map((content) => {
         if (content.id === activeMenu) {
           return (
-            <div key={content.id}>
-              <animated.div style={springLoad ? springs : {}}>
-                {content.component}
-              </animated.div>
+            <div key={content.id} className="fade-in">
+              {content.component}
             </div>
           );
         }
