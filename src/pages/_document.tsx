@@ -56,22 +56,22 @@ export default function Document() {
 
         <link
           rel="apple-touch-icon"
-          href="/images/logo/iOS/icon-32.png"
+          href="/images/logo/iOS/32x32.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="152x152"
-          href="/images/logo/iOS/icon-152.png"
+          href="/images/logo/iOS/152x152.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="167x167"
-          href="/images/logo/iOS/icon-167.png"
+          href="/images/logo/iOS/167x167.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/images/logo/iOS/icon-180.png"
+          href="/images/logo/iOS/180x180.png"
         />
         <link
           rel="icon"
@@ -90,7 +90,7 @@ export default function Document() {
           href="/icons/safari-pinned-tab.svg"
           color="#5bbad5"
         />
-        {/* <meta
+        <meta
           name="twitter:image"
           content="https://yourdomain.com/icons/android-chrome-192x192.png"
         />
@@ -100,39 +100,39 @@ export default function Document() {
         />
         <link
           rel="apple-touch-startup-image"
-          href="/images/apple_splash_2048.png"
+          href="/images/logo/splash/2048x2732.png"
           sizes="2048x2732"
         />
         <link
           rel="apple-touch-startup-image"
-          href="/images/apple_splash_1668.png"
+          href="/images/logo/splash/1668x2224.png"
           sizes="1668x2224"
         />
         <link
           rel="apple-touch-startup-image"
-          href="/images/apple_splash_1536.png"
+          href="/images/logo/splash/1536x2048.png"
           sizes="1536x2048"
         />
         <link
           rel="apple-touch-startup-image"
-          href="/images/apple_splash_1125.png"
-          sizes="1125x2436"
-        />
-        <link
-          rel="apple-touch-startup-image"
-          href="/images/apple_splash_1242.png"
+          href="/images/logo/splash/1242x2208.png"
           sizes="1242x2208"
         />
         <link
           rel="apple-touch-startup-image"
-          href="/images/apple_splash_750.png"
+          href="/images/logo/splash/1125x2436.png"
+          sizes="1125x2436"
+        />
+        <link
+          rel="apple-touch-startup-image"
+          href="/images/logo/splash/750x1334.png"
           sizes="750x1334"
         />
         <link
           rel="apple-touch-startup-image"
-          href="/images/apple_splash_640.png"
+          href="/images/logo/splash/640x1136.png"
           sizes="640x1136"
-        /> */}
+        />
       </Head>
 
       <body>
