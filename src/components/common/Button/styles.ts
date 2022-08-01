@@ -27,6 +27,7 @@ export const Button = styled.button`
   font-style: normal;
   line-height: 0.8px;
   letter-spacing: 0.2px;
+  font-weight: 500;
 
   span[class^='icon'] {
     margin-right: 10px;
@@ -36,7 +37,6 @@ export const Button = styled.button`
     width: 100%;
     height: 56px;
     font-size: 16px;
-    /* font-weight: 500; */
     border: none;
     border-radius: 2px;
   }
@@ -45,7 +45,6 @@ export const Button = styled.button`
     width: 100%;
     height: 48px;
     font-size: 16px;
-    /* font-weight: 500; */
     padding-right: 26px;
     padding-left: 26px;
     border-radius: 2px;
@@ -55,7 +54,6 @@ export const Button = styled.button`
     width: 100%;
     height: 40px;
     font-size: 16px;
-    /* font-weight: 500; */
     padding-right: 20px;
     padding-left: 20px;
     border-radius: 2px;
