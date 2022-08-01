@@ -35,6 +35,7 @@ const Contact = () => {
 
   const handleDelete = (contact: ContactType) => {
     deleteContactAction(contact);
+    router.push(RouteName.ContactsSetting);
   };
 
   return (
@@ -102,7 +103,6 @@ const Contact = () => {
                     onClick={() => {
                       handleDelete(contact);
                     }}
-                    style={{ cursor: 'pointer' }}
                   >
                     <Multiply />
                   </span>
