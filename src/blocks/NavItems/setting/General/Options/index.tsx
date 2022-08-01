@@ -20,6 +20,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 12px;
+  margin-left: auto;
 
   svg {
     width: 10px;
@@ -31,13 +32,20 @@ const Container = styled.div`
   }
 `;
 
+const Items = styled.div`
+  .item:not(:last-child) {
+    border-bottom: 1px solid
+      ${({ theme }) => theme.colors.primary.lighter};
+  }
+`;
+
 const Options = ({ items, onChange, defaultValue }: AppProps) => {
   const [open, setOpen] = useState(false);
   const onClose = () => setOpen(false);
   const onOpen = () => setOpen(true);
 
   const height =
-    items.length > 0 ? (items.length + 1) * 44 + 22 : 100;
+    items.length > 0 ? (items.length + 1) * 54 + 22 : 100;
 
   const onChangeOption = (value: ElementOption) => {
     onChange(value);
@@ -45,25 +53,27 @@ const Options = ({ items, onChange, defaultValue }: AppProps) => {
   };
 
   return (
-    <div>
+    <>
       <Container onClick={onOpen}>
         {defaultValue && defaultValue.label}
         <AngleDownBold />
       </Container>
       <BottomSheet isOpen={open} setOpen={setOpen} height={height}>
         <Layout>
-          {items.map((item) => (
-            <div
-              key={item.value}
-              className="py-[10px]"
-              onClick={() => onChangeOption(item)}
-            >
-              {item.label}
-            </div>
-          ))}
+          <Items>
+            {items.map((item) => (
+              <div
+                key={item.value}
+                className="item py-[15px]"
+                onClick={() => onChangeOption(item)}
+              >
+                {item.label}
+              </div>
+            ))}
+          </Items>
         </Layout>
       </BottomSheet>
-    </div>
+    </>
   );
 };
 
