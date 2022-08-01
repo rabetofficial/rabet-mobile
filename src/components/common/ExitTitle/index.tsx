@@ -36,9 +36,9 @@ const ExtTitle = ({
     >
       {backIcon ? (
         <>
-          <div className="mr-auto" onClick={handleClose}>
+          <S.IconContainer className="mr-auto" onClick={handleClose}>
             <ArrowBack />
-          </div>
+          </S.IconContainer>
           <S.Title className="mr-auto ml-[-10px]">{title}</S.Title>
         </>
       ) : (

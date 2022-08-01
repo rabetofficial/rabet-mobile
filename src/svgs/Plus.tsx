@@ -14,5 +14,5 @@ function Icon({ width, height }: IconProps) {
   );
 }
 
-Icon.defaultProps = { width: '16', height: '16' };
+Icon.defaultProps = { width: '16px', height: '16px' };
 export default Icon;

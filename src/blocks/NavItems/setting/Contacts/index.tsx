@@ -46,11 +46,11 @@ const Contact = () => {
           variant="outlined"
           size="medium"
           content="Add Contact"
-          startIcon={<Plus />}
+          startIcon={<Plus width="14px" height="14px" />}
           onClick={handleOpenAddContact}
           style={{
             borderRadius: '4px',
-            marginTop: '13px',
+            marginTop: '26px',
           }}
         />
 
@@ -84,7 +84,7 @@ const Contact = () => {
                 </div>
 
                 {contact.memo && (
-                  <div>
+                  <div className="ml-4">
                     <S.Title>Memo</S.Title>
                     <S.Code>{maxText(contact.memo, 8) || '-'}</S.Code>
                   </div>
