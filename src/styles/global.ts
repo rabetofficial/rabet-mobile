@@ -10,9 +10,12 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     overflow-x: hidden;
   }
-
+  
   * {
     -webkit-tap-highlight-color:transparent;
+  }
+
+  div, p, span {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
