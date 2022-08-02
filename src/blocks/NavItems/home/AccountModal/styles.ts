@@ -57,7 +57,7 @@ export const InputSearch = styled.input`
 `;
 
 export const Group = styled.div`
-  padding: 10px 0 100px 0;
+  padding: 10px 0 30px 0;
   background-color: ${({ theme }) => theme.colors.primary.lighter};
 `;
 

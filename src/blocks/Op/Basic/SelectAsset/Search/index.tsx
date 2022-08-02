@@ -55,39 +55,35 @@ const SearchAsset = ({
 
   return (
     <>
-      <ScrollBar isHidden maxHeight={maxHeight - 45}>
-        {assets.map((asset) => (
-          <S.ListItem
-            key={`${valueName}-${handleAssetsKeys(asset)}`}
-            onClick={() => {
-              handleClick(asset);
-            }}
-          >
-            <S.Asset>
-              <Image
-                fallBack={questionLogo}
-                alt={handleAssetAlt(asset)}
-                src={handleAssetImage(asset, assetImages)}
-              />
+      {assets.map((asset) => (
+        <S.ListItem
+          key={`${valueName}-${handleAssetsKeys(asset)}`}
+          onClick={() => {
+            handleClick(asset);
+          }}
+        >
+          <S.Asset>
+            <Image
+              fallBack={questionLogo}
+              alt={handleAssetAlt(asset)}
+              src={handleAssetImage(asset, assetImages)}
+            />
 
-              <div>
-                <S.AssetName>{asset.asset_code || 'XLM'}</S.AssetName>
+            <div>
+              <S.AssetName>{asset.asset_code || 'XLM'}</S.AssetName>
 
-                <S.AssetInfo>{handleShowDomain(asset)}</S.AssetInfo>
-              </div>
-            </S.Asset>
-            <S.AssetPrice>
-              {formatBalance(asset.balance)}
-            </S.AssetPrice>
-          </S.ListItem>
-        ))}
+              <S.AssetInfo>{handleShowDomain(asset)}</S.AssetInfo>
+            </div>
+          </S.Asset>
+          <S.AssetPrice>{formatBalance(asset.balance)}</S.AssetPrice>
+        </S.ListItem>
+      ))}
 
-        {!assets.length ? (
-          <div className="flex items-center justify-center h-[44vh] text-primary-darker">
-            Asset not found
-          </div>
-        ) : null}
-      </ScrollBar>
+      {!assets.length ? (
+        <div className="flex items-center justify-center h-[44vh] text-primary-darker">
+          Asset not found
+        </div>
+      ) : null}
     </>
   );
 };

@@ -2,6 +2,27 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Sheet from 'react-modal-sheet';
 
+const BoxList = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  padding-top: 0px;
+  overflow: auto;
+`;
+
+const Box = styled.div`
+  background-color: #eee;
+  border-radius: 12px;
+  min-height: 200px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 24px;
+`;
+
 const CustomSheet = styled(Sheet)`
   .react-modal-sheet-backdrop {
     background-color: rgba(0, 0, 0, 0.24) !important;
@@ -19,35 +40,19 @@ const CustomSheet = styled(Sheet)`
   }
 `;
 
-type AppProps = {
-  children: React.ReactNode;
-  isOpen: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  height: number;
-  isDark?: boolean;
-};
+const Scrollable = () => {
+  const [isOpen, setOpen] = React.useState(false);
 
-const BoxList = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-`;
-
-const Scrollable = ({
-  children,
-  isOpen,
-  height,
-  setOpen,
-  isDark,
-}: AppProps) => {
+  const open = () => setOpen(true);
   const close = () => setOpen(false);
 
   return (
     <>
+      <button onClick={open}>Scrollable Bottom Sheet</button>
+
       <CustomSheet
-        initialSnap={0}
-        snapPoints={[height, 0]}
+        rootId="root"
+        snapPoints={[400, 0]}
         isOpen={isOpen}
         onClose={close}
       >
@@ -55,7 +60,13 @@ const Scrollable = ({
           <Sheet.Header />
 
           <Sheet.Content>
-            <BoxList>{children}</BoxList>
+            <BoxList>
+              {Array.from({ length: 2 })
+                .fill(1)
+                .map((_, i) => (
+                  <Box key={i}>{i}</Box>
+                ))}
+            </BoxList>
           </Sheet.Content>
         </Sheet.Container>
 
@@ -63,10 +74,6 @@ const Scrollable = ({
       </CustomSheet>
     </>
   );
-};
-
-Scrollable.defaultProps = {
-  isDark: false,
 };
 
 export default Scrollable;
