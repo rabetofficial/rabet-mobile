@@ -8,6 +8,7 @@ export const Devider = styled.div`
 export const LinkContainer = styled.div`
   margin: 24px 0 26px;
 `;
+
 export const ExpandLink = styled.a`
   width: 50px;
   margin-right: -20px;
@@ -17,19 +18,13 @@ export const ExpandLink = styled.a`
   justify-content: center;
 `;
 
-export const Box = styled.div`
-  padding-left: 16px;
-  padding-right: 16px;
-  background-color: ${({ theme }) => theme.colors.primary.lightest};
-  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.07);
-`;
-
 export const Head = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 40px;
   margin-bottom: 34px;
+  margin-top: 10px;
 `;
 
 export const Asset = styled.div`
@@ -52,19 +47,6 @@ export const NameValue = styled.div`
   line-height: 1.43;
   letter-spacing: normal;
   text-align: center;
-`;
-
-export const EditName = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-export const DropDown = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: start;
 `;
 
 export const Account = styled.div`
