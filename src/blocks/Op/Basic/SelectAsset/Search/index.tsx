@@ -17,6 +17,7 @@ type AppProps = {
   close: () => void;
   onChange: (value: Horizon.BalanceLine) => void;
   valueName?: string;
+  maxHeight: number;
 };
 
 const SearchAsset = ({
@@ -24,6 +25,7 @@ const SearchAsset = ({
   close,
   onChange,
   valueName,
+  maxHeight,
 }: AppProps) => {
   const assetImages = useTypedSelector((store) => store.assetImages);
 
@@ -53,7 +55,7 @@ const SearchAsset = ({
 
   return (
     <>
-      <ScrollBar isHidden maxHeight={470}>
+      <ScrollBar isHidden maxHeight={maxHeight - 45}>
         {assets.map((asset) => (
           <S.ListItem
             key={`${valueName}-${handleAssetsKeys(asset)}`}

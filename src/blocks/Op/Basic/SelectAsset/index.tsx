@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Horizon } from 'stellar-sdk';
 
-import questionLogo from 'public/images/question-circle.png';
 import AngleDownBold from 'svgs/AngleDownBold';
 import BottomSheet from 'components/common/BottomSheet';
 import Layout from 'components/common/Layouts/BaseLayout';
 import useTypedSelector from 'hooks/useTypedSelector';
 import handleAssetAlt from 'utils/handleAssetAlt';
 import handleAssetImage from 'utils/handleAssetImage';
-import Image from 'components/common/Image';
 import Search from './Search';
 
 const Trigger = styled.div`
@@ -70,6 +68,8 @@ const SelectAsset = ({
       setValue(valueName, newAsset);
     }
   };
+  const assetsHeight = assets.length * 65;
+  const modalHeight = assetsHeight > 600 ? 600 : assetsHeight + 70;
   return (
     <>
       {customTrigger ? (
@@ -94,13 +94,18 @@ const SelectAsset = ({
         </Trigger>
       )}
 
-      <BottomSheet isOpen={open} setOpen={setOpen} height={505}>
+      <BottomSheet
+        isOpen={open}
+        setOpen={setOpen}
+        height={modalHeight}
+      >
         <Layout>
           <Search
             assets={assets}
             close={onClose}
             valueName={valueName}
             onChange={handleAssetChange}
+            maxHeight={modalHeight}
           />
         </Layout>
       </BottomSheet>
