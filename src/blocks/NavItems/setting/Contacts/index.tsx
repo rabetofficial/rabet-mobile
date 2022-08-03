@@ -1,5 +1,5 @@
-import React from 'react';
 import { useRouter } from 'next/router';
+import React, { useCallback, useState } from 'react';
 
 import Plus from 'svgs/Plus';
 import EditPen from 'svgs/EditPen';
@@ -20,6 +20,9 @@ const Contact = () => {
   const router = useRouter();
   const contacts = useTypedSelector((store) => store.contacts);
 
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => updateState({} as any), []);
+
   const handleOpenAddContact = () => {
     router.push(RouteName.ContactActionSetting);
   };
@@ -35,7 +38,8 @@ const Contact = () => {
 
   const handleDelete = (contact: ContactType) => {
     deleteContactAction(contact);
-    router.push(RouteName.ContactsSetting);
+
+    forceUpdate();
   };
 
   return (
