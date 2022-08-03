@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Horizon } from 'stellar-sdk';
 
 import BN from 'helpers/BN';
@@ -12,9 +12,11 @@ import CopyText from 'components/common/CopyText';
 import accountLink from 'utils/horizon/accountLink';
 import addAssetAction from 'actions/operations/addAsset';
 import ButtonContainer from 'components/common/ButtonContainer';
+import DeleteModal from 'components/DeleteModal';
+import BottomSheet from 'components/common/BottomSheet';
+import useAssetInfo from './useAssetInfo';
 
 import * as S from './styles';
-import useAssetInfo from './useAssetInfo';
 
 type AssetType = {
   isNative?: boolean;
@@ -32,6 +34,9 @@ const AssetInfo = ({
   onBeforeDelete,
 }: AssetType) => {
   const { loading, error, assetData } = useAssetInfo(asset);
+  const [open, setOpen] = useState(false);
+
+  const onOpen = () => setOpen(true);
 
   const handleDelete = () => {
     if (
@@ -45,6 +50,8 @@ const AssetInfo = ({
           onDelete(result);
         },
       );
+
+      setOpen(false);
     }
   };
 
@@ -217,9 +224,18 @@ const AssetInfo = ({
             size="medium"
             content="Delete"
             disabled={isDeletable}
-            onClick={handleDelete}
+            onClick={onOpen}
           />
         </ButtonContainer>
+
+        <BottomSheet isOpen={open} setOpen={setOpen} height={250}>
+          <DeleteModal
+            onConfirm={handleDelete}
+            variant="medium"
+            title="Delete Asset"
+            message="Please note that by clicking on the Delete, your Asset is deleted."
+          />
+        </BottomSheet>
       </S.Container>
     </>
   );

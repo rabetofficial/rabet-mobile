@@ -11,7 +11,7 @@ import RouteName from 'staticRes/routes';
 import { useRouter } from 'next/router';
 import removeAccountAction from 'actions/accounts/remove';
 import useActiveAccount from 'hooks/useActiveAccount';
-import DeleteWallet from './DeleteWallet';
+import DeleteModal from 'components/DeleteModal';
 
 const menus = [
   {
@@ -78,9 +78,15 @@ const WalletOption = () => {
       </Layout>
 
       <BottomSheet isOpen={open} setOpen={setOpen} height={400}>
-        <DeleteWallet
+        <DeleteModal
           onClose={onDeleteClose}
           onConfirm={onDeleteConfirm}
+          variant="large"
+          title="Delete Wallet"
+          message="Please note that by clicking on the Delete button all the
+          information for this account will be deleted from the extension.
+          So please make sure you have a backup of the private key for
+          this account."
         />
       </BottomSheet>
     </>

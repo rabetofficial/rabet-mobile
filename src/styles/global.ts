@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color:transparent;
   }
 
-  div, p, span {
+  h1, h2, h3, h4, h5, h6, div, p, span {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
