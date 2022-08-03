@@ -40,7 +40,7 @@ const AssetList = ({ assets }: AppProps) => {
               onClick(asset);
             }}
           >
-            <Asset asset={asset} />
+            <Asset asset={asset} index={index} />
 
             {assets.length !== index + 1 && <Hr />}
           </div>

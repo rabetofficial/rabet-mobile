@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 15px 0 13px;
+  padding: 18px 0 16px;
 `;
 
-export const Circle = styled.div``;
 interface ImageProps {
   isDark: boolean;
   theme: any;
 }
+
 export const Image = styled.img<ImageProps>`
   display: flex;
   align-items: center;
