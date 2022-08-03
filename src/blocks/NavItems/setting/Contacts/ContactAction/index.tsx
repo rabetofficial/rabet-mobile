@@ -185,7 +185,7 @@ const ContactAction = () => {
                     type="submit"
                     variant="primary"
                     size="medium"
-                    content="Add"
+                    content={isEdit ? 'Edit' : 'Add'}
                     disabled={pristine || submitting || invalid}
                   />
                 </ButtonContainer>
