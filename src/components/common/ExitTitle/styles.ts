@@ -11,7 +11,11 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.primary.lightest};
 `;
 
-export const Title = styled.div`
+interface TitleProps {
+  isBack: boolean;
+}
+
+export const Title = styled.div<TitleProps>`
   font-size: 16px;
   font-weight: 500;
   font-stretch: normal;
@@ -19,7 +23,7 @@ export const Title = styled.div`
   line-height: 1.5;
   letter-spacing: normal;
   text-align: center;
-  margin-left: -25px;
+  margin-left: ${({ isBack }) => (isBack ? '-35px' : '0')};
 `;
 
 export const IconContainer = styled.div`

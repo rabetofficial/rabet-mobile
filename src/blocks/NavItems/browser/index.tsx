@@ -241,7 +241,7 @@ const Browser = () => {
               autoComplete="off"
               name="search"
               type="text"
-              enterKeyHint="go"
+              enterKeyHint="search"
               placeholder="Search or enter website url"
             />
           </S.Label>

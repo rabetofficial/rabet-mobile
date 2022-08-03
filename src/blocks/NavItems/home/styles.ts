@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const Devider = styled.div`
   background-color: ${({ theme }) => theme.colors.primary.lighter};
-  height: 16px;
+  height: 1px;
+  display: block;
 `;
 
 export const LinkContainer = styled.div`
-  margin: 24px 0 26px;
+  margin: 24px 0 32px;
 `;
 
 export const ExpandLink = styled.a`

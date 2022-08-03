@@ -15,9 +15,10 @@ import * as S from './styles';
 
 type AssetType = {
   asset: Horizon.BalanceLine;
+  index: number;
 };
 
-const Asset = ({ asset }: AssetType) => {
+const Asset = ({ asset, index }: AssetType) => {
   const [assetImages, currencies, options] = useTypedSelector(
     (store) => [
       store.assetImages,
@@ -52,7 +53,11 @@ const Asset = ({ asset }: AssetType) => {
   }
 
   return (
-    <S.Container className="flex items-center">
+    <S.Container
+      className={`${
+        index === 0 ? '!pt-[25px]' : ''
+      } flex items-center`}
+    >
       <S.Image
         isDark={asset.asset_type === 'native'}
         src={handleAssetImage(asset, assetImages)}

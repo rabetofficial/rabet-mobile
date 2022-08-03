@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Box = styled.div`
   padding: 20px 11px 17px;
+  word-break: break-all;
 `;
 
 export const CardTitle = styled.div`
