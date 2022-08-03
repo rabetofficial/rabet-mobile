@@ -2,6 +2,14 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Sheet from 'react-modal-sheet';
 
+type AppProps = {
+  children: React.ReactNode;
+  isOpen: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  height: number;
+  isDark?: boolean;
+};
+
 const CustomSheet = styled(Sheet)`
   .react-modal-sheet-backdrop {
     background-color: rgba(0, 0, 0, 0.24) !important;
@@ -18,14 +26,6 @@ const CustomSheet = styled(Sheet)`
     width: 40px !important;
   }
 `;
-
-type AppProps = {
-  children: React.ReactNode;
-  isOpen: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  height: number;
-  isDark?: boolean;
-};
 
 const BoxList = styled.div`
   height: 100%;
@@ -52,7 +52,7 @@ const Scrollable = ({
         onClose={close}
       >
         <Sheet.Container>
-          <Sheet.Header />
+          {isDark ? <div className="h-[40px]" /> : <Sheet.Header />}
 
           <Sheet.Content>
             <BoxList>{children}</BoxList>
