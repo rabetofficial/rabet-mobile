@@ -8,12 +8,12 @@ import Button from 'components/common/Button';
 import useTypedSelector from 'hooks/useTypedSelector';
 import changeOptionsAction from 'actions/options/change';
 import * as currenciesModule from 'staticRes/currencies';
-import TooltipLabel from 'components/common/TooltipLabel';
 import ToggleSwitch from 'components/common/ToggleSwitch';
 import ButtonContainer from 'components/common/ButtonContainer';
+import Options from './Options';
+import Subject from './Subject';
 
 import * as S from './styles';
-import Options from './Options';
 
 const explorerOptions = [
   { value: 'steexp', label: 'Steexp' },
@@ -102,9 +102,9 @@ const SettingGeneral = () => {
   return (
     <>
       <S.Item className="mt-4">
-        <TooltipLabel
-          text="Explorer"
-          tooltipText="You will be referred to this Explorer to see the details of your transactions."
+        <Subject
+          title="Explorer"
+          info="You will be referred to this Explorer to see the details of your transactions."
         />
         <Options
           items={explorerOptions}
@@ -114,9 +114,9 @@ const SettingGeneral = () => {
       </S.Item>
 
       <S.Item>
-        <TooltipLabel
-          text="Currency"
-          tooltipText="Rabet supports popular global currencies, and you can change your wallet currency here."
+        <Subject
+          title="Currency"
+          info="Rabet supports popular global currencies, and you can change your wallet currency here."
         />
         <Options
           items={currenciesList}
@@ -126,11 +126,10 @@ const SettingGeneral = () => {
       </S.Item>
 
       <S.Item>
-        <TooltipLabel
-          text="Privacy mode"
-          tooltipText="Websites must request access to view your account information."
+        <Subject
+          title="Privacy mode"
+          info="Websites must request access to view your account information."
         />
-
         <ToggleSwitch
           checked={checked}
           handleChange={handleChecked}
