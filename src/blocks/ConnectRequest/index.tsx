@@ -61,7 +61,7 @@ const ConnectRequest = ({
           would like to connect to your account
         </S.Title>
 
-        <ButtonContainer mt={60}>
+        <ButtonContainer mt={40}>
           <Button
             type="submit"
             variant="primary"
@@ -70,7 +70,7 @@ const ConnectRequest = ({
             onClick={onConfirm}
           />
         </ButtonContainer>
-        <ButtonContainer mt={18}>
+        <ButtonContainer fixedBottom mb={25}>
           <Button
             variant="default"
             size="medium"

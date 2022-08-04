@@ -234,7 +234,7 @@ const Browser = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} maximum-scale={1}>
+      <form onSubmit={handleSubmit}>
         <S.InputBox>
           <S.Label>
             <S.InputSearch
