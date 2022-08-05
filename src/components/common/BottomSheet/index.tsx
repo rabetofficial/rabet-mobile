@@ -34,7 +34,7 @@ const BoxList = styled.div`
   overflow: auto;
 `;
 
-const Scrollable = ({
+const Bottomsheet = ({
   children,
   isOpen,
   height,
@@ -65,8 +65,8 @@ const Scrollable = ({
   );
 };
 
-Scrollable.defaultProps = {
+Bottomsheet.defaultProps = {
   isDark: false,
 };
 
-export default Scrollable;
+export default Bottomsheet;

@@ -2,6 +2,7 @@ import { StrKey } from 'stellar-sdk';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Field, Form } from 'react-final-form';
+import styled from 'styled-components';
 
 import BN from 'helpers/BN';
 import getAccount from 'api/getAccount';
@@ -20,8 +21,16 @@ import ButtonContainer from 'components/common/ButtonContainer';
 import useTypedSelector from 'hooks/useTypedSelector';
 import SelectAsset from '../SelectAsset';
 import AssetTrigger from './AssetTrigger';
-import PopoverContainer from './styles';
 import DestinationSuggest from './DestinationSuggestion';
+
+const InputMock = styled.div`
+  border-radius: 2px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.colors.primary.main};
+  border: 1px solid ${({ theme }) => theme.colors.primary.lighter};
+`;
 
 type FormValues = {
   memo: string;
@@ -34,6 +43,9 @@ const BasicSend = () => {
   const account = useActiveAccount();
   const [isAccountNew, setIsAccountNew] = useState(false);
   const assetImages = useTypedSelector((store) => store.assetImages);
+  const [openDestination, setOpenDestination] = useState(false);
+
+  const onOpenDestination = () => setOpenDestination(true);
 
   const assets = account.assets || [];
 
@@ -219,27 +231,38 @@ const BasicSend = () => {
 
             <Field name="destination">
               {({ input, meta }) => (
-                <PopoverContainer className="relative" id="full">
+                <>
                   <label className="label-primary block mt-6">
                     Destination
                   </label>
-                  <Input
-                    type="text"
-                    placeholder="G..."
-                    size="medium"
-                    styleType="light"
+
+                  {/* <Input */}
+                  {/*  type="text" */}
+                  {/*  placeholder="G..." */}
+                  {/*  size="medium" */}
+                  {/*  styleType="light" */}
+                  {/*  input={input} */}
+                  {/*  meta={meta} */}
+                  {/*  disabled */}
+                  {/* /> */}
+
+                  <InputMock
+                    className="mt-2 px-4"
+                    onClick={onOpenDestination}
+                  >
+                    G...
+                  </InputMock>
+
+                  <DestinationSuggest
                     input={input}
                     meta={meta}
+                    handleChange={(pk, memo) => {
+                      form.mutators.changeDestination(pk, memo);
+                    }}
+                    setOpen={setOpenDestination}
+                    open={openDestination}
                   />
-
-                  {(meta.active || meta.touched) && (
-                    <DestinationSuggest
-                      handleChange={(pk, memo) => {
-                        form.mutators.changeDestination(pk, memo);
-                      }}
-                    />
-                  )}
-                </PopoverContainer>
+                </>
               )}
             </Field>
 

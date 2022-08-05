@@ -1,37 +1,36 @@
-import styled from 'styled-components';
 import React, { useState } from 'react';
 
 import { Tab } from 'models';
-import Tabs from 'components/common/Tabs';
-import Popover from 'components/common/Popover';
 import useTypedSelector from 'hooks/useTypedSelector';
-
+import BottomSheet from 'components/common/BottomSheet';
+import Layout from 'components/common/Layouts/BaseLayout';
+import Accordion from 'components/common/Accordion';
 import AccountList from './AccountList';
 
-const Container = styled.div`
-  width: 100%;
-  border-radius: 2px;
-  box-shadow: 0 2px 10px 0 rgba(134, 146, 164, 0.08);
-  border: solid 1px ${({ theme }) => theme.colors.primary.lighter};
-`;
+import * as S from './styles';
 
 type DestinationProps = {
   handleChange: (publicKey: string, memo: string) => void;
+  open: any;
+  setOpen: any;
+  input: any;
+  meta: any;
 };
 
-const DestinationSuggest = ({ handleChange }: DestinationProps) => {
+const DestinationSuggest = ({
+  handleChange,
+  open,
+  setOpen,
+  input,
+  meta,
+}: DestinationProps) => {
   const [accounts, contacts] = useTypedSelector((store) => [
     store.accounts,
     store.contacts,
   ]);
-  const [showPopover, setShowPopover] = useState(true);
-
-  const onHidePopover = () => setShowPopover(false);
-  const parent = document.querySelector('#full');
+  const [expanded, setExpanded] = useState<false | number>(0);
 
   const onChange = (publicKey: string, memo: string) => {
-    setShowPopover(false);
-
     handleChange(publicKey, memo);
   };
 
@@ -61,23 +60,42 @@ const DestinationSuggest = ({ handleChange }: DestinationProps) => {
     },
   ];
 
+  const isError = !meta.valid;
+
   return (
-    <Popover
-      placement="bottom-end"
-      visible={showPopover}
-      hideFunc={onHidePopover}
-      parent={parent}
-      arrow={false}
-    >
-      <Container>
-        <Tabs
-          data={tabs}
-          isEqualWidth
-          titleClass="!text-sm"
-          contentClass="!pt-[11px]"
-        />
-      </Container>
-    </Popover>
+    <BottomSheet isOpen={open} setOpen={setOpen} height={550}>
+      <Layout className="mt-4">
+        <div className="flex flex-col">
+          <label className="font-medium">Destination</label>
+          <S.Textarea
+            className="mt-[6px]"
+            placeholder="Enter destination address"
+            {...input}
+          />
+          {isError && (
+            <div className="error">
+              {meta.error || meta.submitError}
+            </div>
+          )}
+        </div>
+      </Layout>
+
+      <hr className="mt-[31px] border-primary-lighter" />
+
+      {tabs.map((tab, index) => (
+        <div key={tab.id}>
+          <Accordion
+            index={index}
+            expanded={expanded}
+            setExpanded={setExpanded}
+            data={tab}
+          />
+          {tabs.length - 1 !== index && (
+            <hr className="border-primary-lighter" />
+          )}
+        </div>
+      ))}
+    </BottomSheet>
   );
 };
 

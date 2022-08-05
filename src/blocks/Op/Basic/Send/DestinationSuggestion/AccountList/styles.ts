@@ -8,7 +8,7 @@ export const List = styled.ul`
 
   > li {
     cursor: pointer;
-    padding: 10px 14px;
+    padding: 16px;
 
     &:hover {
       background-color: ${({ theme }) =>
