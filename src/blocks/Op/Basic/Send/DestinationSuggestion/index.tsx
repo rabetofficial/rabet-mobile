@@ -5,14 +5,15 @@ import useTypedSelector from 'hooks/useTypedSelector';
 import BottomSheet from 'components/common/BottomSheet';
 import Layout from 'components/common/Layouts/BaseLayout';
 import Accordion from 'components/common/Accordion';
+import AngleRight from 'svgs/AngleRight';
 import AccountList from './AccountList';
 
 import * as S from './styles';
 
 type DestinationProps = {
   handleChange: (publicKey: string, memo: string) => void;
-  open: any;
-  setOpen: any;
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   input: any;
   meta: any;
 };
@@ -28,7 +29,7 @@ const DestinationSuggest = ({
     store.accounts,
     store.contacts,
   ]);
-  const [expanded, setExpanded] = useState<false | number>(0);
+  const [expanded, setExpanded] = useState<boolean | number>(1);
 
   const onChange = (publicKey: string, memo: string) => {
     handleChange(publicKey, memo);
@@ -61,6 +62,10 @@ const DestinationSuggest = ({
   ];
 
   const isError = !meta.valid;
+
+  const onSubmit = () => {
+    setOpen(false);
+  };
 
   return (
     <BottomSheet isOpen={open} setOpen={setOpen} height={550}>
@@ -95,6 +100,13 @@ const DestinationSuggest = ({
           )}
         </div>
       ))}
+
+      <S.Submit>
+        <span className="flex items-center" onClick={onSubmit}>
+          Done
+          <AngleRight />
+        </span>
+      </S.Submit>
     </BottomSheet>
   );
 };

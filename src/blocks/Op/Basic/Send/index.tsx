@@ -17,6 +17,7 @@ import controlNumberInput from 'utils/controlNumberInput';
 import Layout from 'components/common/Layouts/BaseLayout';
 import isInsufficientAsset from 'utils/isInsufficientAsset';
 import ButtonContainer from 'components/common/ButtonContainer';
+import shorter from 'utils/shorter';
 
 import useTypedSelector from 'hooks/useTypedSelector';
 import SelectAsset from '../SelectAsset';
@@ -183,6 +184,7 @@ const BasicSend = () => {
           submitting,
           submitError,
           handleSubmit,
+          values,
         }) => (
           <form onSubmit={handleSubmit}>
             <label className="label-primary block mt-6 mb-2">
@@ -236,21 +238,17 @@ const BasicSend = () => {
                     Destination
                   </label>
 
-                  {/* <Input */}
-                  {/*  type="text" */}
-                  {/*  placeholder="G..." */}
-                  {/*  size="medium" */}
-                  {/*  styleType="light" */}
-                  {/*  input={input} */}
-                  {/*  meta={meta} */}
-                  {/*  disabled */}
-                  {/* /> */}
-
                   <InputMock
                     className="mt-2 px-4"
                     onClick={onOpenDestination}
                   >
-                    G...
+                    {values.destination ? (
+                      <div className="text-primary-darkest">
+                        {shorter(values?.destination, 15)}
+                      </div>
+                    ) : (
+                      'G...'
+                    )}
                   </InputMock>
 
                   <DestinationSuggest
@@ -308,7 +306,3 @@ const BasicSend = () => {
 };
 
 export default BasicSend;
-
-// onSubmit={(e) => {
-//   handleSubmit(e).then(form.reset);
-// }}
