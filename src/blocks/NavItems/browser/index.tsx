@@ -8,19 +8,22 @@ import {
 } from 'stellar-sdk';
 import React, { useEffect, useRef, useState } from 'react';
 
+import Search from 'svgs/Search';
 import World from 'svgs/LargeWorld';
-import Layout from 'components/common/Layouts/BaseLayout';
+import Searching from 'svgs/RollingCircle';
 
 import NoData from 'components/common/NoData';
+import ConnectRequest from 'blocks/ConnectRequest';
+import useActiveAccount from 'hooks/useActiveAccount';
 import BottomSheet from 'components/common/BottomSheet';
 import installRabet from 'actions/interactions/install';
-import ConnectRequest from 'blocks/ConnectRequest';
+import Layout from 'components/common/Layouts/BaseLayout';
 import ApproveTransaction from 'blocks/ApproveTransaction';
-import useActiveAccount from 'hooks/useActiveAccount';
 import addConnectedWebsite from 'actions/accounts/addConnectedWebsite';
 
-import useTypedSelector from 'hooks/useTypedSelector';
 import signEnvelope from 'helpers/signEnvelope';
+import useTypedSelector from 'hooks/useTypedSelector';
+
 import * as S from './styles';
 
 export type ApproveTransactionState = {
@@ -236,18 +239,25 @@ const Browser = () => {
     <>
       <form onSubmit={handleSubmit}>
         <S.InputBox>
-          <S.Label>
-            <S.InputSearch
-              autoComplete="off"
-              name="search"
-              type="text"
-              enterKeyHint="search"
-              placeholder="Search or enter website url"
-            />
+          <S.Label searching={loaded} className="mr-2">
+            {!loaded ? (
+              <Searching />
+            ) : (
+              <span className="mr-[3px]">
+                <Search />
+              </span>
+            )}
           </S.Label>
+          <S.InputSearch
+            autoComplete="off"
+            name="search"
+            type="text"
+            enterKeyHint="search"
+            placeholder="Search or enter website url"
+          />
         </S.InputBox>
       </form>
-
+      <S.Hr />
       <Layout>
         <S.Text>
           {result === 'empty' ? (
