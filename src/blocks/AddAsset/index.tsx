@@ -24,12 +24,10 @@ const AddAsset = ({ children }: AddAssetType) => {
 
     router.push(RouteName.LoadingNetwork);
 
-    const limit = values.limit ? values.limit.trim() : '';
-
     const [isSuccessful, message] = await addAssetAction(
       values.code.trim(),
       values.issuer.trim(),
-      limit,
+      values.limit,
     );
 
     await timeout(100);

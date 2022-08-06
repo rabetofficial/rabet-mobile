@@ -10,7 +10,7 @@ type AddConnectedWebsitesArgs = {
 export default async ({
   host,
   publicKey,
-}: AddConnectedWebsitesArgs): Promise<void> => {
+}: AddConnectedWebsitesArgs): Promise<boolean> => {
   const { connectedWebsites } = store.getState().user;
   const pair = `${host}/${publicKey}`;
 
@@ -21,4 +21,6 @@ export default async ({
 
     await set('connectedWebsites', newWebsites);
   }
+
+  return true;
 };
