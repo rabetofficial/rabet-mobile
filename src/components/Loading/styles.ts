@@ -8,7 +8,7 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const Loading = styled.img`
+export const Loading = styled(Image)`
   display: flex;
   margin: 0px auto;
   justify-content: center;

@@ -22,10 +22,18 @@ const BasicConfirmSwap = () => {
   const accountAssets = account.assets || [];
 
   const val = router.query;
+
   const values = {
     ...val,
-    path: JSON.parse(val.path),
   };
+
+  if (val.path) {
+    try {
+      values.path = JSON.parse(val.path);
+    } catch (e) {
+      values.path = [];
+    }
+  }
 
   let asset1 = accountAssets.find((x) => x.asset_type === 'native');
 
@@ -91,7 +99,7 @@ const BasicConfirmSwap = () => {
         <Card type="secondary" className="px-[10px] py-[10px]">
           <S.Label>You pay</S.Label>
           <S.Value>
-            {humanizeAmount(values.from)}
+            {humanizeAmount(values.from || '0')}
 
             <S.Image
               src={handleAssetImage(asset1, assetImages)}
@@ -103,7 +111,7 @@ const BasicConfirmSwap = () => {
 
           <S.Label className="mt-[25px]">You Receive</S.Label>
           <S.Value>
-            {humanizeAmount(values.to)}
+            {humanizeAmount(values.to || '0')}
 
             <S.Image
               src={handleAssetImage(asset2, assetImages)}
@@ -122,7 +130,7 @@ const BasicConfirmSwap = () => {
               asset2,
             }}
             path={values.path}
-            minimumReceived={values.minimumReceived}
+            minimumReceived={values.minimumReceived || '0'}
           />
         </Card>
       </ConfirmLayout>

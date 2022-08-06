@@ -33,6 +33,8 @@ const DestinationSuggest = ({
 
   const onChange = (publicKey: string, memo: string) => {
     handleChange(publicKey, memo);
+
+    setOpen(false);
   };
 
   const tabs: Tab[] = [

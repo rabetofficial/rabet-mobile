@@ -25,14 +25,42 @@ const BasicConfirmSend = () => {
   );
 
   const values = {
-    memo: router.query?.memo || '',
-    amount: router.query?.amount || '',
-    destination: router.query?.destination || '',
-    isAccountNew: router.query?.isAccountNew === 'true',
-    assetCode: router.query?.assetCode || '',
-    assetType: router.query?.assetType || '',
-    assetIssuer: router.query?.assetIssuer || '',
+    memo: '',
+    amount: '1',
+    destination: 'abcd',
+    isAccountNew: false,
+    assetCode: 'XLM',
+    assetType: 'native',
+    assetIssuer: '',
   };
+
+  if (router.query.memo) {
+    values.memo = router.query.memo;
+  }
+
+  if (router.query.amount) {
+    values.amount = router.query.amount;
+  }
+
+  if (router.query.destination) {
+    values.destination = router.query.destination;
+  }
+
+  if (router.query.isAccountNew) {
+    values.isAccountNew = router.query.isAccountNew === 'true';
+  }
+
+  if (router.query.assetCode) {
+    values.assetCode = router.query.assetCode;
+  }
+
+  if (router.query.assetType) {
+    values.assetType = router.query.assetType;
+  }
+
+  if (router.query.assetIssuer) {
+    values.assetIssuer = router.query.assetIssuer;
+  }
 
   const accountAssets = currentAccount.assets || [];
 

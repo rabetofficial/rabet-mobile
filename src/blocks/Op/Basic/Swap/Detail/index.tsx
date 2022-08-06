@@ -62,7 +62,7 @@ const SwapDetails = ({
   const priceImpact = new BN(1)
     .minus(
       new BN(minimumReceived).div(
-        new BN(marketPrice).times(formValues.from),
+        new BN(marketPrice).times(formValues.from || '0'),
       ),
     )
     .times(100);
@@ -92,6 +92,7 @@ const SwapDetails = ({
           {path.map((p, index) => (
             <div key={assetCode(p)} className="flex items-center">
               {assetCode(p)}
+
               {index !== path.length - 1 && (
                 <div className="mx-[5px]">
                   <AngleRight />
