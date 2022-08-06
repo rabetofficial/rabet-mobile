@@ -34,14 +34,14 @@ const Settings = () => {
         router.push(RouteName.ChangePasswordSetting);
       },
     },
-    {
-      id: '3',
-      title: 'Backup',
-      description: 'Get a backup of all your imported wallets',
-      onClick: () => {
-        router.push(RouteName.BackupSetting);
-      },
-    },
+    // {
+    //   id: '3',
+    //   title: 'Backup',
+    //   description: 'Get a backup of all your imported wallets',
+    //   onClick: () => {
+    //     router.push(RouteName.BackupSetting);
+    //   },
+    // },
     {
       id: '4',
       title: 'Contacts',
