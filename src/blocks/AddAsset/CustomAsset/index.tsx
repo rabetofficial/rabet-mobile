@@ -29,8 +29,8 @@ const CustomAsset = ({ onSubmit }: CustomAssetTypes) => {
 
     const values = {
       code: v.code ? v.code.trim() : '',
-      issuer: v.issuer ? v.code.trim() : '',
-      limit: v.limit ? v.limit.trim() : '',
+      issuer: v.issuer ? v.issuer.trim() : '',
+      limit: v.limit,
     };
 
     if (!values.code) {

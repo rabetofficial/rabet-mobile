@@ -56,7 +56,7 @@ const SearchAsset = ({ onSubmit }: AppProps) => {
   const validateForm = async (values: FormValues) => {
     let isDomain = false;
 
-    const val = values.asset.trim();
+    const val = values.asset ? values.asset.trim() : '';
 
     if (isValidDomain(val)) {
       isDomain = true;

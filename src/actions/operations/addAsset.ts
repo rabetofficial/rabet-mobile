@@ -33,7 +33,7 @@ export default async (
     })
       .addOperation(
         Operation.changeTrust({
-          limit,
+          limit: limit || '999999',
           asset: new Asset(code, issuer),
         }),
       )
