@@ -1,45 +1,43 @@
 /* eslint-disable @typescript-eslint/indent */
 import styled from 'styled-components';
-import Search from 'svgs/Search';
-import svgToMarkupString from 'helpers/svgToMarkupString';
 
 export const InputBox = styled.div`
-  padding: 8px 16px;
-  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.07);
-  background-color: ${({ theme }) => theme.colors.primary.lightest};
+  height: 40px;
+  display: flex;
+  padding: 8px 10px;
+  margin: 8px 16px;
+  border-radius: 4px;
+  align-content: center;
+  box-sizing: border-box;
+  justify-content: center;
+  border: 1px solid transparent;
+  color: ${({ theme }) => theme.colors.primary.dark};
+  background-color: ${({ theme }) => theme.colors.primary.lighter};
 `;
 
-export const Label = styled.label`
-  position: relative;
-  display: flex;
+interface LabelProps {
+  searching: boolean;
+}
 
-  &:before {
-    content: '';
-    position: absolute;
-    left: 10px;
-    top: 12px;
-    bottom: 0;
-    width: 15px;
-    height: 15px;
-    background: ${({ color }) =>
-      `url(${svgToMarkupString(Search, {
-        color,
-      })}) no-repeat center`};
-  }
+export const Label = styled.label<LabelProps>`
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const InputSearch = styled.input`
   width: 100%;
+  display: flex;
   font-size: 14px;
   line-height: 1.43;
   font-style: normal;
-  border-radius: 4px;
-  padding: 10px 32px;
   font-weight: normal;
+  align-items: center;
   font-stretch: normal;
   letter-spacing: normal;
-  box-sizing: border-box;
-  border: 1px solid transparent;
+  justify-content: center;
+
   color: ${({ theme }) => theme.colors.primary.dark};
   background-color: ${({ theme }) => theme.colors.primary.lighter};
 
@@ -88,4 +86,8 @@ export const FrameParent = styled.div`
   height: 82vh;
   width: 105%;
   margin: -110px -16px 0;
+`;
+
+export const Hr = styled.hr`
+  color: ${({ theme }) => theme.colors.primary.lighter};
 `;

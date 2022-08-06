@@ -6,7 +6,7 @@ import * as S from './styles';
 
 type AppProps = {
   title?: string;
-  size: number;
+  size: number | string;
   titleStyle?: string;
   className?: string;
   titleNoMargin?: boolean;

@@ -62,7 +62,6 @@ export const Title = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin-top: 23px;
 `;
 
@@ -73,6 +72,5 @@ export const Msg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-size: 16px;
 `;
