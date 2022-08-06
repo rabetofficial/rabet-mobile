@@ -22,7 +22,7 @@ const AddToHome = () => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(RouteName.Home);
+    // router.push(RouteName.Home);
   };
 
   const List: ListProps[] = [
