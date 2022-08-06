@@ -240,7 +240,7 @@ const Browser = () => {
       <form onSubmit={handleSubmit}>
         <S.InputBox>
           <S.Label searching={loaded} className="mr-2">
-            {!loaded ? (
+            {!loaded && result === 'valid' ? (
               <Searching />
             ) : (
               <span className="mr-[3px]">
