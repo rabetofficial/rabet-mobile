@@ -60,6 +60,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                   <ExtTitle
                     title={page.title}
                     borderless={page.borderless}
+                    routerPath={page.routerPath}
                   />
                 )}
                 <SpringLoad>

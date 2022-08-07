@@ -1,17 +1,19 @@
+import { Page } from 'models';
 import RouteName from './routes';
-
-type Page = {
-  route: string;
-  title: string;
-  borderless?: boolean;
-};
 
 const pages: Page[] = [
   { route: RouteName.Send, title: 'Send' },
   { route: RouteName.AboutSetting, title: 'About' },
   { route: RouteName.BackupSetting, title: 'Backup' },
   { route: RouteName.Receive, title: 'Receive' },
-  { route: RouteName.ContactsSetting, title: 'Contacts' },
+  {
+    route: RouteName.ContactsSetting,
+    title: 'Contacts',
+    routerPath: {
+      pathname: RouteName.Home,
+      query: { menu: 4 },
+    },
+  },
   { route: RouteName.AddAsset, title: 'Add Asset' },
   { route: RouteName.EditName, title: 'Edit name' },
   { route: RouteName.GeneralSetting, title: 'General settings' },

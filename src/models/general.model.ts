@@ -68,4 +68,5 @@ export type Page = {
   route: string;
   title: string;
   borderless?: boolean;
+  routerPath?: any;
 };

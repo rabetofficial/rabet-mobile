@@ -8,14 +8,14 @@ import * as S from './styles';
 type AppProps = {
   title?: string;
   className?: string;
-  onClose?: () => void | undefined;
+  routerPath?: any;
   backIcon?: boolean;
   borderless?: boolean;
 };
 
 const ExtTitle = ({
   title,
-  onClose,
+  routerPath,
   backIcon,
   className,
   borderless,
@@ -23,8 +23,8 @@ const ExtTitle = ({
   const router = useRouter();
 
   const handleClose = () => {
-    if (onClose) {
-      return onClose();
+    if (routerPath) {
+      return router.push(routerPath);
     }
 
     return router.back();
@@ -53,7 +53,7 @@ const ExtTitle = ({
 ExtTitle.defaultProps = {
   title: '',
   className: '',
-  onClose: undefined,
+  routerPath: undefined,
   backIcon: true,
   borderless: false,
 };
