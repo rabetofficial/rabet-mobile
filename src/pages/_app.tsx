@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     routerPath={page.routerPath}
                   />
                 )}
-                <SpringLoad>
+                <SpringLoad key={router.pathname}>
                   <Component {...pageProps} />
                 </SpringLoad>
               </>

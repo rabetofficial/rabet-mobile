@@ -1,13 +1,32 @@
 import React from 'react';
-import { useSpring, animated } from 'react-spring';
 
-const SpringLoad = ({ children }: { children: React.ReactNode }) => {
-  const springs = useSpring({
-    to: { opacity: 1 },
-    from: { opacity: 0 },
-    reset: true,
-  });
-  return <animated.div style={springs}>{children}</animated.div>;
+const { motion } = require('framer-motion');
+
+type AppProps = {
+  children: React.ReactNode;
+  key?: string;
+};
+
+const SpringLoad = ({ children, key }: AppProps) => (
+  <motion.div
+    key={key}
+    initial="initial"
+    animate="animate"
+    variants={{
+      initial: {
+        opacity: 0,
+      },
+      animate: {
+        opacity: 1,
+      },
+    }}
+  >
+    {children}
+  </motion.div>
+);
+
+SpringLoad.defaultProps = {
+  key: '',
 };
 
 export default SpringLoad;

@@ -2,7 +2,6 @@ import React, { CSSProperties, useState } from 'react';
 import classNames from 'classnames';
 
 import { Tab } from 'models';
-import SpringLoad from 'components/common/SpringLoad';
 
 import * as S from './styles';
 
@@ -29,7 +28,9 @@ const Tabs = ({
   const listContent = data.map(
     (item: Tab) =>
       visibleTab === item.id && (
-        <div key={item.id}>{item.content}</div>
+        <div key={item.id} className="fade-in">
+          {item.content}
+        </div>
       ),
   );
 
@@ -68,7 +69,7 @@ const Tabs = ({
       </S.Tabs>
 
       <S.TabContent className={contentClass} style={contentStyle}>
-        <SpringLoad>{listContent}</SpringLoad>
+        {listContent}
       </S.TabContent>
     </>
   );
