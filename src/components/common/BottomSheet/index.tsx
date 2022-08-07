@@ -2,14 +2,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Sheet from 'react-modal-sheet';
 
-type AppProps = {
-  children: React.ReactNode;
-  isOpen: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  height: number;
-  isDark?: boolean;
-};
-
 const CustomSheet = styled(Sheet)`
   .react-modal-sheet-backdrop {
     background-color: rgba(0, 0, 0, 0.24) !important;
@@ -22,7 +14,8 @@ const CustomSheet = styled(Sheet)`
 
   .react-modal-sheet-drag-indicator {
     height: 6px !important;
-    background-color: #f3f3f3 !important;
+    background-color: ${({ theme }) =>
+    theme.colors.primary.lighter} !important;
     width: 40px !important;
   }
 `;
@@ -34,7 +27,22 @@ const BoxList = styled.div`
   overflow: auto;
 `;
 
-const Bottomsheet = ({
+const DarkHeader = styled.div`
+  .react-modal-sheet-drag-indicator {
+    background-color: ${({ theme }) =>
+    theme.colors.primary.dark} !important;
+  }
+`;
+
+type AppProps = {
+  children: React.ReactNode;
+  isOpen: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  height: number;
+  isDark?: boolean;
+};
+
+const BottomSheet = ({
   children,
   isOpen,
   height,
@@ -52,8 +60,13 @@ const Bottomsheet = ({
         onClose={close}
       >
         <Sheet.Container>
-          {isDark ? <div className="h-[40px]" /> : <Sheet.Header />}
-
+          {isDark ? (
+            <DarkHeader>
+              <Sheet.Header />
+            </DarkHeader>
+          ) : (
+            <Sheet.Header />
+          )}
           <Sheet.Content>
             <BoxList>{children}</BoxList>
           </Sheet.Content>
@@ -65,8 +78,8 @@ const Bottomsheet = ({
   );
 };
 
-Bottomsheet.defaultProps = {
+BottomSheet.defaultProps = {
   isDark: false,
 };
 
-export default Bottomsheet;
+export default BottomSheet;
