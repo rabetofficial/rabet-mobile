@@ -10,6 +10,7 @@ type AppProps = {
   maxWidth?: number;
   maxHeight?: number;
   disableOverflow?: boolean;
+  style?: React.CSSProperties;
 };
 
 const ScrollBar = ({
@@ -20,12 +21,14 @@ const ScrollBar = ({
   maxWidth,
   maxHeight,
   disableOverflow,
+  style,
 }: AppProps) => {
   if (isVertical) {
     return (
       <S.VerticalScroll
         maxHeight={maxHeight}
         disableOverflow={disableOverflow}
+        style={style}
       >
         {children}
       </S.VerticalScroll>
@@ -37,6 +40,7 @@ const ScrollBar = ({
       <S.HorizontalScroll
         maxWidth={maxWidth}
         disableOverflow={disableOverflow}
+        style={style}
       >
         {children}
       </S.HorizontalScroll>
@@ -49,13 +53,14 @@ const ScrollBar = ({
         maxHeight={maxHeight}
         maxWidth={maxWidth}
         disableOverflow={disableOverflow}
+        style={style}
       >
         {children}
       </S.HiddenScroll>
     );
   }
 
-  return <div>children</div>;
+  return <div style={style}>children</div>;
 };
 
 ScrollBar.defaultProps = {
@@ -65,6 +70,7 @@ ScrollBar.defaultProps = {
   maxWidth: 0,
   maxHeight: 0,
   disableOverflow: false,
+  style: {},
 };
 
 export default ScrollBar;

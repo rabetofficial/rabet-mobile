@@ -17,18 +17,15 @@ import controlNumberInput from 'utils/controlNumberInput';
 import Layout from 'components/common/Layouts/BaseLayout';
 import isInsufficientAsset from 'utils/isInsufficientAsset';
 import ButtonContainer from 'components/common/ButtonContainer';
-import shorter from 'utils/shorter';
-
 import useTypedSelector from 'hooks/useTypedSelector';
+import ScrollBar from 'components/common/ScrollBar';
+
 import SelectAsset from '../SelectAsset';
 import AssetTrigger from './AssetTrigger';
 import DestinationSuggest from './DestinationSuggestion';
 
 const InputMock = styled.div`
   border-radius: 2px;
-  height: 48px;
-  display: flex;
-  align-items: center;
   color: ${({ theme }) => theme.colors.primary.main};
   border: 1px solid ${({ theme }) => theme.colors.primary.lighter};
 `;
@@ -243,13 +240,31 @@ const BasicSend = () => {
                     onClick={onOpenDestination}
                   >
                     {values.destination ? (
-                      <div className="text-primary-darkest">
-                        {shorter(values?.destination, 15)}
-                      </div>
+                      <ScrollBar
+                        isHorizontal
+                        style={{
+                          maxWidth: 'calc(100vw - 64px)',
+                          height: '48px',
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <div className="text-primary-darkest">
+                          {values?.destination}
+                        </div>
+                      </ScrollBar>
                     ) : (
-                      'G...'
+                      <div className="h-[48px] flex items-center">
+                        G...
+                      </div>
                     )}
                   </InputMock>
+
+                  {!meta.valid && (
+                    <div className="error pt-1">
+                      {meta.error || meta.submitError}
+                    </div>
+                  )}
 
                   <DestinationSuggest
                     input={input}
