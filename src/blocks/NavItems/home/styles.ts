@@ -12,7 +12,7 @@ export const LinkContainer = styled.div`
 
 export const ExpandLink = styled.a`
   width: 50px;
-  margin-right: -20px;
+  margin-right: -16px;
   height: 50px;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@ export const Head = styled.div`
   justify-content: space-between;
   height: 40px;
   margin-bottom: 34px;
-  margin-top: 10px;
+  margin-top: 5px;
 `;
 
 export const Asset = styled.div`
