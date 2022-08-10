@@ -1,10 +1,5 @@
 import React from 'react';
 
-import { useRouter } from 'next/router';
-import RouteName from 'staticRes/routes';
-import Button from 'components/common/Button';
-import ButtonContainer from 'components/common/ButtonContainer';
-
 import Upload from 'svgs/Upload';
 import AddPlus from 'svgs/AddPlus';
 import logo from 'public/images/rectangle-logo.png';
@@ -19,12 +14,6 @@ type ListProps = {
 };
 
 const AddToHome = () => {
-  const router = useRouter();
-
-  const handleClick = () => {
-    // router.push(RouteName.Home);
-  };
-
   const List: ListProps[] = [
     {
       id: '1',
@@ -76,16 +65,6 @@ const AddToHome = () => {
           </S.Item>
         </S.List>
       ))}
-
-      <ButtonContainer fixedBottom mb={39}>
-        <Button
-          type="button"
-          variant="primary"
-          size="medium"
-          content="Got it"
-          onClick={handleClick}
-        />
-      </ButtonContainer>
     </div>
   );
 };
