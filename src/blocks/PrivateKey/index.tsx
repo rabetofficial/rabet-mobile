@@ -4,7 +4,6 @@ import { Form, Field } from 'react-final-form';
 
 import Card from 'components/common/Card';
 import Input from 'components/common/Input';
-import Error from 'components/common/Error';
 import Button from 'components/common/Button';
 import CopyKey from 'components/common/CopyKey';
 import useActiveAccount from 'hooks/useActiveAccount';
@@ -37,76 +36,68 @@ const PrivateKey = () => {
 
     if (result) {
       setShow(true);
+    } else {
+      return { key: 'Incorrect password.' };
     }
+    return {};
   };
-
   return (
     <Layout className="mt-6">
-      <>
-        {show ? (
-          <>
-            <Msg>
-              <span>Do not lose it!</span> It cannot be recovered if
-              you lose it. <br />
-              <span>Do not share it!</span> Your funds will be stolen
-              if you use this file on a phishing site.
-            </Msg>
-            <div className="label-primary mb-[6px] mt-[32px] font-medium">
-              Private Key
-            </div>
+      {show ? (
+        <>
+          <Msg>
+            <span>Do not lose it!</span> It cannot be recovered if you
+            lose it. <br />
+            <span>Do not share it!</span> Your funds will be stolen if
+            you use this file on a phishing site.
+          </Msg>
+          <div className="label-primary mb-[6px] mt-[32px] font-medium">
+            Private Key
+          </div>
 
-            <Card type="primary" className="shadow-transparent">
-              <CopyKey keyValue={account.privateKey} />
-            </Card>
-          </>
-        ) : (
-          <Form
-            onSubmit={onSubmit}
-            render={({
-              pristine,
-              submitting,
-              submitError,
-              handleSubmit,
-            }) => (
-              <form
-                className="form"
-                onSubmit={handleSubmit}
-                autoComplete="off"
-              >
-                <Field name="key">
-                  {({ input, meta }) => (
-                    <>
-                      <label className="label-primary">
-                        Password
-                      </label>
-                      <Input
-                        type="password"
-                        size="medium"
-                        variant="password"
-                        placeholder="Enter your password"
-                        input={input}
-                        meta={meta}
-                      />
-                    </>
-                  )}
-                </Field>
+          <Card type="primary" className="shadow-transparent">
+            <CopyKey keyValue={account.privateKey} />
+          </Card>
+        </>
+      ) : (
+        <Form
+          onSubmit={onSubmit}
+          render={({ pristine, submitting, handleSubmit }) => (
+            <form
+              className="form"
+              onSubmit={handleSubmit}
+              autoComplete="off"
+            >
+              <Field name="key">
+                {({ input, meta }) => (
+                  <div>
+                    <label className="label-primary">Password</label>
+                    <Input
+                      type="password"
+                      size="medium"
+                      variant="password"
+                      placeholder="Enter your password"
+                      input={input}
+                      meta={meta}
+                      autoFocus
+                    />
+                  </div>
+                )}
+              </Field>
 
-                {submitError && <Error>{submitError}</Error>}
-
-                <ButtonContainer fixedBottom mb={39} fixedUntil={270}>
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="medium"
-                    content="Show"
-                    disabled={pristine || submitting}
-                  />
-                </ButtonContainer>
-              </form>
-            )}
-          />
-        )}
-      </>
+              <ButtonContainer fixedBottom mb={39} fixedUntil={270}>
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="medium"
+                  content="Show"
+                  disabled={pristine || submitting}
+                />
+              </ButtonContainer>
+            </form>
+          )}
+        />
+      )}
     </Layout>
   );
 };
