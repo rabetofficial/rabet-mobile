@@ -15,6 +15,9 @@ const nextConfig = withPWA({
   images: {
     domains: ['stellarforge.org'],
   },
+  devIndicators: {
+    buildActivity: false,
+  },
   pwa: {
     dest: 'public',
     swSrc: 'src/service-worker.js',
