@@ -46,15 +46,31 @@ const BasicConfirmSwap = () => {
     );
   }
 
-  let asset2 = accountAssets.find((x) => x.asset_type === 'native');
+  let asset2;
 
-  if (values.asset2Type !== 'native') {
-    asset2 = accountAssets.find(
+  if (values.asset2Type === 'native') {
+    asset2 = accountAssets.find((x) => x.asset_type === 'native');
+  } else {
+    const asset2found = accountAssets.find(
       (x) =>
         x.asset_type === values.asset2Type &&
         x.asset_code === values.asset2Code &&
         x.asset_issuer === values.asset2Issuer,
     );
+
+    if (asset2found) {
+      asset2 = asset2found;
+    } else {
+      asset2 = {
+        asset_code: values.asset2Code,
+        asset_issuer: values.asset2Issuer,
+        asset_type: values.asset2Type,
+        balance: '',
+        selling_liabilities: '0',
+        buying_liabilities: '0',
+        limit: '9999999',
+      };
+    }
   }
 
   const handleClick = async () => {

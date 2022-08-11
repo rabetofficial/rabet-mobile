@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
+import isInPWA from 'helpers/isInPWA';
 import RouteName from 'staticRes/routes';
+import LoadingOne from 'pages/loading-one';
 import loadUser from 'actions/user/loadUser';
 import useTypedSelector from 'hooks/useTypedSelector';
-import LoadingOne from 'pages/loading-one';
-import isInPWA from 'helpers/isInPWA';
-import lockAction from 'actions/accounts/lock';
+
+// import lockAction from 'actions/accounts/lock';
 
 type RoutesManagerType = {
   children: JSX.Element;
@@ -39,39 +40,39 @@ const RoutesManager = ({
     });
   }, []);
 
-  useEffect(() => {
-    const visibilityHandler = (e) => {
-      lockAction();
-
-      router.push(RouteName.Login);
-    };
-
-    document.addEventListener('visibilitychange', visibilityHandler);
-
-    return () => {
-      document.removeEventListener(
-        'visibilitychange',
-        visibilityHandler,
-      );
-    };
-  }, []);
+  // useEffect(() => {
+  //   const visibilityHandler = (e) => {
+  //     lockAction();
+  //
+  //     router.push(RouteName.Login);
+  //   };
+  //
+  //   document.addEventListener('visibilitychange', visibilityHandler);
+  //
+  //   return () => {
+  //     document.removeEventListener(
+  //       'visibilitychange',
+  //       visibilityHandler,
+  //     );
+  //   };
+  // }, []);
 
   useEffect(() => {
     if (!isLoaded) {
       return;
     }
 
-    const isUsingPWA = isInPWA();
-
-    if (!isUsingPWA) {
-      if (pageProps.before_pwa) {
-        setPass(true);
-        return;
-      }
-
-      router.push('/');
-      return;
-    }
+    // const isUsingPWA = isInPWA();
+    //
+    // if (!isUsingPWA) {
+    //   if (pageProps.before_pwa) {
+    //     setPass(true);
+    //     return;
+    //   }
+    //
+    //   router.push('/');
+    //   return;
+    // }
 
     let passCount = 0;
 
