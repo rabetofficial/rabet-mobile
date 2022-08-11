@@ -15,7 +15,7 @@ const CustomSheet = styled(Sheet)`
   .react-modal-sheet-drag-indicator {
     height: 6px !important;
     background-color: ${({ theme }) =>
-    theme.colors.primary.lighter} !important;
+      theme.colors.primary.lighter} !important;
     width: 40px !important;
   }
 `;
@@ -28,9 +28,10 @@ const BoxList = styled.div`
 `;
 
 const DarkHeader = styled.div`
+  background-color: ${({ theme }) => theme.colors.primary.darkest};
   .react-modal-sheet-drag-indicator {
     background-color: ${({ theme }) =>
-    theme.colors.primary.dark} !important;
+      theme.colors.primary.dark} !important;
   }
 `;
 

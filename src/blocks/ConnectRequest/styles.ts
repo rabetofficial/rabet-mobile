@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 20px 16px 10px;
+`;
+
 export const HeadTitle = styled.h6`
   font-size: 18px;
   font-weight: bold;
@@ -7,7 +15,6 @@ export const HeadTitle = styled.h6`
   font-style: normal;
   line-height: 1.56;
   letter-spacing: normal;
-  margin: 40px 0 -10px;
   text-align: center;
 `;
 
@@ -15,7 +22,7 @@ export const Steps = styled.ul`
   overflow: hidden;
   text-align: center;
   position: relative;
-  margin: 0 -78px 0;
+  margin: 0 -70px 0;
 `;
 
 export const List = styled.li`
@@ -25,7 +32,7 @@ export const List = styled.li`
   list-style-type: none;
   width: 50%;
   float: left;
-  margin-top: 30px;
+  margin-top: 20px;
 
   &:after {
     content: '';
@@ -45,7 +52,7 @@ export const List = styled.li`
 
 export const IconContainer = styled.span`
   position: absolute;
-  top: 50%;
+  top: 44%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 36px;
@@ -87,6 +94,7 @@ export const StepLabel = styled.p`
 
 export const Title = styled.h1`
   margin-top: 48px;
+  padding: 0 20px;
   text-align: center;
   font-size: 20px;
   font-weight: 500;

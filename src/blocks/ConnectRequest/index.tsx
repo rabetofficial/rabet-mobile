@@ -6,6 +6,7 @@ import Button from 'components/common/Button';
 import { IAccount } from 'reducers/accounts2';
 import CheckMarkCircle from 'svgs/CheckMarkCircle';
 import ButtonContainer from 'components/common/ButtonContainer';
+import ScrollBar from 'components/common/ScrollBar';
 
 import * as S from './styles';
 
@@ -25,9 +26,11 @@ const ConnectRequest = ({
   const host = origin || 'https://unknown.com';
   const { hostname } = new URL(host);
 
+  const scrollMaxWidth = document.documentElement.clientWidth - 16;
+
   return (
-    <>
-      <div className="content">
+    <S.Container>
+      <ScrollBar isHidden isHorizontal maxWidth={scrollMaxWidth}>
         <S.HeadTitle>Connect Request</S.HeadTitle>
         <S.Steps>
           <S.List>
@@ -60,26 +63,25 @@ const ConnectRequest = ({
           </a>{' '}
           would like to connect to your account
         </S.Title>
-
-        <ButtonContainer mt={40}>
-          <Button
-            type="submit"
-            variant="primary"
-            size="medium"
-            content="Connect"
-            onClick={onConfirm}
-          />
-        </ButtonContainer>
-        <ButtonContainer fixedBottom mb={25}>
-          <Button
-            variant="default"
-            size="medium"
-            content="Cancel"
-            onClick={onCancel}
-          />
-        </ButtonContainer>
-      </div>
-    </>
+      </ScrollBar>
+      <ButtonContainer fixedBottom mb={105}>
+        <Button
+          type="submit"
+          variant="primary"
+          size="medium"
+          content="Connect"
+          onClick={onConfirm}
+        />
+      </ButtonContainer>
+      <ButtonContainer fixedBottom mb={25}>
+        <Button
+          variant="default"
+          size="medium"
+          content="Cancel"
+          onClick={onCancel}
+        />
+      </ButtonContainer>
+    </S.Container>
   );
 };
 
