@@ -29,7 +29,7 @@ const DestinationSuggest = ({
     store.accounts,
     store.contacts,
   ]);
-  const [expanded, setExpanded] = useState<boolean | number>(1);
+  const [expanded, setExpanded] = useState<boolean | number>(0);
 
   const onChange = (publicKey: string, memo: string) => {
     handleChange(publicKey, memo);

@@ -2,6 +2,7 @@ import { Horizon } from 'stellar-sdk';
 
 import { AssetImage } from 'reducers/assetImages';
 import xlmLogo from 'public/images/xlm-logo.svg';
+import defaultAssets from 'staticRes/defaultAssets';
 import questionLogo from 'public/images/question-circle.png';
 
 const handleAssetImage = (
@@ -30,12 +31,18 @@ const handleAssetImage = (
       assetImage.asset_issuer === asset.asset_issuer,
   );
 
-  if (!assetImageFound) {
-    return questionLogo.src;
+  if (assetImageFound && assetImageFound.logo) {
+    return assetImageFound.logo;
   }
 
-  if (assetImageFound.logo) {
-    return assetImageFound.logo;
+  const defaultAssetFound = defaultAssets.find(
+    (ast) =>
+      ast.asset_code === asset.asset_code &&
+      ast.asset_issuer === asset.asset_issuer,
+  );
+
+  if (defaultAssetFound) {
+    return defaultAssetFound.logo;
   }
 
   return questionLogo.src;
