@@ -40,6 +40,7 @@ const RoutesManager = ({
     });
   }, []);
 
+  // // Show login when app closes and opens again.
   // useEffect(() => {
   //   const visibilityHandler = (e) => {
   //     lockAction();
@@ -62,18 +63,20 @@ const RoutesManager = ({
       return;
     }
 
-    // const isUsingPWA = isInPWA();
-    //
-    // if (!isUsingPWA) {
-    //   if (pageProps.before_pwa) {
-    //     setPass(true);
-    //     return;
-    //   }
-    //
-    //   router.push('/');
-    //   return;
-    // }
+    // force install app page
+    const isUsingPWA = isInPWA();
 
+    if (!isUsingPWA) {
+      if (pageProps.before_pwa) {
+        setPass(true);
+        return;
+      }
+
+      router.push('/');
+      return;
+    }
+
+    // Protect routes
     let passCount = 0;
 
     if (pageProps.registered === 0) {
