@@ -31,7 +31,7 @@ const handleAssetImage = (
       assetImage.asset_issuer === asset.asset_issuer,
   );
 
-  if (assetImageFound) {
+  if (assetImageFound && assetImageFound.logo) {
     return assetImageFound.logo;
   }
 
