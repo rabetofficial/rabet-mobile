@@ -16,13 +16,15 @@ const Trigger = styled.div`
   justify-content: space-between;
   border: 1px solid ${({ theme }) => theme.colors.primary.lighter};
   border-radius: 22px;
-  min-width: 110px;
+  min-width: 130px;
   height: 44px;
   padding: 6px 10px 6px 6px;
 
   img {
+    height: 32px !important;
     width: 32px;
     height: auto;
+    border-radius: 50%;
   }
 `;
 
