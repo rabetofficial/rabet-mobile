@@ -64,17 +64,17 @@ const RoutesManager = ({
     }
 
     // force install app page
-    // const isUsingPWA = isInPWA();
-    //
-    // if (!isUsingPWA) {
-    //   if (pageProps.before_pwa) {
-    //     setPass(true);
-    //     return;
-    //   }
-    //
-    //   router.push('/');
-    //   return;
-    // }
+    const isUsingPWA = isInPWA();
+
+    if (!isUsingPWA) {
+      if (pageProps.before_pwa) {
+        setPass(true);
+        return;
+      }
+
+      router.push('/');
+      return;
+    }
 
     // Protect routes
     let passCount = 0;
