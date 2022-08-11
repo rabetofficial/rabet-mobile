@@ -25,11 +25,13 @@ const InputBtn = ({
       return (
         <S.Icon type="button" onClick={toggleVisible}>
           {visibleType !== 'text' ? (
-            <div style={{ marginRight: '-2px' }}>
+            <div style={{ marginRight: '-4px', marginLeft: '5px' }}>
               <InvisibleEye />
             </div>
           ) : (
-            <VisibleEye />
+            <div style={{ marginRight: '-2px', marginLeft: '4px' }}>
+              <VisibleEye />
+            </div>
           )}
         </S.Icon>
       );

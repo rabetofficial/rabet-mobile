@@ -66,7 +66,6 @@ const Login = () => {
                   variant="password"
                   input={input}
                   meta={meta}
-                  autoFocus
                   enterKeyHint="go"
                 />
               )}
