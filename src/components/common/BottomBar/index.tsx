@@ -1,5 +1,6 @@
 import React, { CSSProperties, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import getOS from 'helpers/getOs';
 
 import { NavItemContent, NavItemMenu } from 'models';
 import RouteName from 'staticRes/routes';
@@ -42,7 +43,10 @@ const BottomBar = ({ menus, contents, style }: AppProps) => {
       {contents.map((content) => {
         if (content.id === activeMenu) {
           return (
-            <div key={content.id} className="fade-in">
+            <div
+              key={content.id}
+              className={getOS() !== 'ios' ? 'fade-in' : ''}
+            >
               {content.component}
             </div>
           );

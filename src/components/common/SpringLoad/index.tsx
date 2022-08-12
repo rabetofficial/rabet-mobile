@@ -1,4 +1,5 @@
 import React from 'react';
+import getOS from 'helpers/getOs';
 
 const { motion } = require('framer-motion');
 
@@ -8,21 +9,27 @@ type AppProps = {
 };
 
 const SpringLoad = ({ children, key }: AppProps) => (
-  <motion.div
-    key={key}
-    initial="initial"
-    animate="animate"
-    variants={{
-      initial: {
-        opacity: 0,
-      },
-      animate: {
-        opacity: 1,
-      },
-    }}
-  >
-    {children}
-  </motion.div>
+  <>
+    {getOS() !== 'ios' ? (
+      <motion.div
+        key={key}
+        initial="initial"
+        animate="animate"
+        variants={{
+          initial: {
+            opacity: 0,
+          },
+          animate: {
+            opacity: 1,
+          },
+        }}
+      >
+        {children}
+      </motion.div>
+    ) : (
+      children
+    )}
+  </>
 );
 
 SpringLoad.defaultProps = {
