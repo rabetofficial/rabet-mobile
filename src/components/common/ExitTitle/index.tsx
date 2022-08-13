@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import ArrowBack from 'svgs/LeftArrowBack';
@@ -29,6 +29,10 @@ const ExtTitle = ({
 
     return router.back();
   };
+
+  useEffect(() => {
+    localStorage.removeItem('home');
+  }, []);
 
   return (
     <S.Container

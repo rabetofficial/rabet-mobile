@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
 
 import Home from 'blocks/NavItems/home';
 import HomeIcon from 'svgs/BottomBar/Home';
@@ -14,6 +13,7 @@ import SettingIcon from 'svgs/BottomBar/SettingGear';
 import { NavItemContent, NavItemMenu } from 'models';
 import BrowserIcon from 'svgs/BottomBar/TravelCompass';
 import LastTransactionIcon from 'svgs/BottomBar/ThunderLightning';
+import isEmpty from 'helpers/isEmpty';
 
 export const getServerSideProps = () => ({
   props: {
@@ -29,9 +29,9 @@ const HomePage: NextPage = () => {
 
   const dispatch = useAppDispatch();
   const isLoading = useLoadHome(dispatch, forceUpdate);
-  const router = useRouter();
 
-  const firstLoading = isLoading && router.asPath === '/home';
+  const firstLoading =
+    isLoading && !isEmpty(localStorage.getItem('home'));
 
   const menus: NavItemMenu[] = [
     { id: 1, name: 'home', icon: <HomeIcon /> },
@@ -46,6 +46,7 @@ const HomePage: NextPage = () => {
     { id: 3, component: <Browser /> },
     { id: 4, component: <Setting /> },
   ];
+
   return (
     <BottomBar
       menus={menus}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 
 import Logo from 'components/Logo';
@@ -32,6 +32,10 @@ const Login = () => {
 
     return router.push(RouteName.Home);
   };
+
+  useEffect(() => {
+    localStorage.setItem('home', 'visited');
+  }, []);
 
   return (
     <Layout>
