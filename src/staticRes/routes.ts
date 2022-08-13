@@ -1,5 +1,7 @@
 enum RouteName {
   PWA = '/',
+  ChooseBrowser = '/choose-browser',
+
   Home = '/home',
   Login = '/login',
   Register = '/confirm-login',

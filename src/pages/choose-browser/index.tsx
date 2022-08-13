@@ -3,10 +3,11 @@ import ChooseBrowser from 'blocks/chooseBrowser';
 export async function getServerSideProps() {
   return {
     props: {
-      logged: 0,
-      registered: 0,
-      account: 0,
+      logged: 1,
+      registered: 1,
+      account: 1,
       before_pwa: true,
+      wrong_browser: true,
     },
   };
 }

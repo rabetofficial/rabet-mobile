@@ -6,6 +6,8 @@ import RouteName from 'staticRes/routes';
 import LoadingOne from 'pages/loading-one';
 import loadUser from 'actions/user/loadUser';
 import useTypedSelector from 'hooks/useTypedSelector';
+import detectOS from 'utils/detectOS';
+import detectBrowser from 'utils/detectBrowser';
 
 // import lockAction from 'actions/accounts/lock';
 
@@ -16,6 +18,7 @@ type RoutesManagerType = {
     registered: 0 | 1 | 2;
     account: 0 | 1 | 2;
     before_pwa?: boolean;
+    wrong_browser?: boolean;
   };
 };
 
@@ -60,6 +63,29 @@ const RoutesManager = ({
 
   useEffect(() => {
     if (!isLoaded) {
+      return;
+    }
+
+    const os = detectOS();
+    const browser = detectBrowser();
+
+    const browserSupport = false;
+
+    if (os === 'ios' && browser === 'safari') {
+      browserSupport = true;
+    } else if (browser === 'chrome') {
+      browserSupport = true;
+    }
+
+    if (!browserSupport && pageProps.wrong_browser) {
+      setPass(true);
+
+      return;
+    }
+
+    if (!browserSupport) {
+      router.push(RouteName.ChooseBrowser);
+
       return;
     }
 
