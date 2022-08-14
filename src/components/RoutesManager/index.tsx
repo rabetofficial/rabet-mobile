@@ -8,6 +8,7 @@ import loadUser from 'actions/user/loadUser';
 import useTypedSelector from 'hooks/useTypedSelector';
 import detectOS from 'utils/detectOS';
 import detectBrowser from 'utils/detectBrowser';
+import detectMobile from 'utils/detectMobile';
 
 // import lockAction from 'actions/accounts/lock';
 
@@ -68,6 +69,7 @@ const RoutesManager = ({
 
     const os = detectOS();
     const browser = detectBrowser();
+    const isMobile = detectMobile();
 
     const browserSupport = false;
 
@@ -75,6 +77,10 @@ const RoutesManager = ({
       browserSupport = true;
     } else if (browser === 'chrome') {
       browserSupport = true;
+    }
+
+    if (!isMobile) {
+      browserSupport = false;
     }
 
     if (!browserSupport && pageProps.wrong_browser) {
