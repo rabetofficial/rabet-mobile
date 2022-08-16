@@ -15,14 +15,16 @@ export default function Document() {
       <Head>
         <title>Rabet</title>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#000000" />
         <meta name="application-name" content="Rabet" />
+        {/* ios */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="default"
+          name="viewport"
+          content="viewport-fit=cover, width=device-width, initial-scale=1.0, maximum-scale=1.0, initial-scale=1, minimum-scale=1, user-scalable=no"
         />
         <meta name="apple-mobile-web-app-title" content="Rabet" />
+        <meta name="theme-color" content="#ffffff" />
+
         <meta
           name="description"
           content="Rabet, an open-source wallet for Stellar"
@@ -48,11 +50,6 @@ export default function Document() {
         />
         <meta property="og:site_name" content="Rabet" />
         <meta property="og:url" content="https://rabet.io" />
-
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
 
         <link
           rel="apple-touch-icon"
