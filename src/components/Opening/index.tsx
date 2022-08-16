@@ -2,7 +2,7 @@ import React from 'react';
 import logo from 'public/images/logo.svg';
 
 const Opening = () => (
-  <div className="flex justify-center items-center w-screen h-screen">
+  <div className="flex justify-center items-center h-full">
     <img
       src={logo.src}
       alt="logo"

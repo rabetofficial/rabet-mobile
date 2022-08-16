@@ -45,7 +45,7 @@ interface PaginationProps {
 }
 
 export const PageinationParent = styled.div`
-  bottom: 64px;
+  bottom: 100px;
   position: absolute;
   li {
     width: 9px;

@@ -28,7 +28,7 @@ const Container = styled.div<AssetsProps>`
   width: ${({ length }) => (length < 4 ? 'calc(100% - 32px)' : '')};
 
   @media (max-height: 675px) {
-    bottom: ${({ length }) => (length < 4 ? '100px' : '0')};
+    bottom: ${({ length }) => (length < 4 ? '80px' : '0')};
   }
 `;
 type AssetsButtonType = { length: number };
