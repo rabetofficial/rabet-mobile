@@ -28,7 +28,7 @@ const IntroSlides = () => {
     dots: true,
     infinite: false,
     arrows: false,
-    speed: 800,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     swipeToSlide: true,

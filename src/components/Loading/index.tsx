@@ -1,6 +1,6 @@
 import React from 'react';
 
-import loading from 'public/images/loading.svg';
+import loading from 'public/images/spinner.gif';
 
 import * as S from './styles';
 
