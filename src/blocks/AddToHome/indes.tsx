@@ -1,8 +1,12 @@
 import React from 'react';
 
+import { Usage } from 'models';
+
+import Phone from 'svgs/Phone';
 import Upload from 'svgs/Upload';
 import AddPlus from 'svgs/AddPlus';
 import logo from 'public/images/rectangle-logo.png';
+import Expand from 'svgs/ExpandHorizontal';
 
 import * as S from './styles';
 
@@ -12,23 +16,33 @@ type ListProps = {
   icon: React.ReactNode;
   description: React.ReactNode;
 };
-
-const AddToHome = () => {
+type AddToHomeProps = {
+  usage: Usage;
+};
+const AddToHome = ({ usage }: AddToHomeProps) => {
   const List: ListProps[] = [
     {
       id: '1',
       margin: 'ml-[29px]',
-      icon: <Upload />,
+      icon:
+        usage === 'ios' ? (
+          <Upload />
+        ) : (
+          <S.Rotate>
+            <Expand />
+          </S.Rotate>
+        ),
       description: (
         <span>
-          Click the <b>“Share”</b> button in the bottom bar.
+          Click the <b>“{usage === 'ios' ? 'Share' : 'More'}”</b>
+          button in the bottom bar.
         </span>
       ),
     },
     {
       id: '2',
       margin: 'ml-[27px]',
-      icon: <AddPlus />,
+      icon: usage === 'ios' ? <AddPlus /> : <Phone />,
       description: (
         <span>
           In the menu that opens at the bottom, select the

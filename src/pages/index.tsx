@@ -14,6 +14,6 @@ export async function getServerSideProps() {
   };
 }
 
-const MainComponent: NextPage = () => <AddToHome />;
+const MainComponent: NextPage = () => <AddToHome usage="android" />;
 
 export default MainComponent;

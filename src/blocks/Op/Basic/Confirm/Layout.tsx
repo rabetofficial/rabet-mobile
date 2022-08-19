@@ -1,7 +1,6 @@
 import React from 'react';
 // import { useNavigate } from 'react-router-dom';
 
-import { Usage } from 'models';
 import maxText from 'utils/maxText';
 import RouteName from 'staticRes/routes';
 import Button from 'components/common/Button';
@@ -22,20 +21,7 @@ const BasicConfirmLayout = ({
   className,
   handleClick,
 }: AppProps) => {
-  // const navigate = useNavigate();
   const { name, publicKey } = useActiveAccount();
-
-  const handleCancel = () => {
-    // if (usage === 'desktop') {
-    //   closeModalAction();
-    // } else {
-    //   navigate(RouteName.Home, {
-    //     state: {
-    //       alreadyLoaded: true,
-    //     },
-    //   });
-    // }
-  };
 
   return (
     <div className={className}>

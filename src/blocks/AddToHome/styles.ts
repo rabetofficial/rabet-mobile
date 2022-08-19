@@ -57,3 +57,7 @@ export const Add = styled.span`
   letter-spacing: normal;
   color: #0275ff;
 `;
+
+export const Rotate = styled.div`
+  transform: rotate(90deg);
+`;

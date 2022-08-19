@@ -51,7 +51,7 @@ export type Tab = {
   content: ReactNode;
 };
 
-export type Usage = 'desktop' | 'extension';
+export type Usage = 'ios' | 'android';
 
 export type NavItemMenu = {
   id: number;
