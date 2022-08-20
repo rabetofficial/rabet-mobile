@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 13px 0px;
+  height: 56px;
   border-bottom: 1px solid
     ${({ theme }) => theme.colors.primary.lighter};
   background-color: ${({ theme }) => theme.colors.primary.lightest};
@@ -23,12 +23,14 @@ export const Title = styled.div<TitleProps>`
   line-height: 1.5;
   letter-spacing: normal;
   text-align: center;
-  margin-left: ${({ isBack }) => (isBack ? '-35px' : '0')};
+  margin-left: ${({ isBack }) => (isBack ? '-50px' : '0')};
 `;
 
 export const IconContainer = styled.div`
-  width: 35px;
-  height: auto;
+  width: 60px;
+  height: 50px;
+  margin-left: -10px;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
