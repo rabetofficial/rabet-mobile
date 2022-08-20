@@ -1,6 +1,7 @@
 import React from 'react';
 import type { NextPage } from 'next';
 
+import detectOS from 'utils/detectOS';
 import AddToHome from 'blocks/AddToHome/indes';
 
 export async function getServerSideProps() {
@@ -14,6 +15,10 @@ export async function getServerSideProps() {
   };
 }
 
-const MainComponent: NextPage = () => <AddToHome usage="android" />;
+const MainComponent: NextPage = () => {
+  const os = detectOS();
+
+  return <AddToHome usage={os} />;
+};
 
 export default MainComponent;

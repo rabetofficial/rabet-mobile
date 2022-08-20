@@ -16,9 +16,11 @@ type ListProps = {
   icon: React.ReactNode;
   description: React.ReactNode;
 };
+
 type AddToHomeProps = {
   usage: Usage;
 };
+
 const AddToHome = ({ usage }: AddToHomeProps) => {
   const List: ListProps[] = [
     {
