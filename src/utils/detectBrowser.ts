@@ -2,7 +2,11 @@ const browserDetect = (): string => {
   const { userAgent } = navigator;
   let browserName;
 
-  if (userAgent.match(/chrome|chromium|crios/i)) {
+  if (userAgent.match(/brave/i)) {
+    browserName = 'brave';
+  } else if (userAgent.match(/duckduckgo/i)) {
+    browserName = 'duckduckgo';
+  } else if (userAgent.match(/chrome|chromium|crios/i)) {
     browserName = 'chrome';
   } else if (userAgent.match(/firefox|fxios/i)) {
     browserName = 'firefox';
