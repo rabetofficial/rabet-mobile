@@ -11,18 +11,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import Search from 'svgs/Search';
 import World from 'svgs/LargeWorld';
 import Searching from 'svgs/RollingCircle';
-
 import NoData from 'components/common/NoData';
+import signEnvelope from 'helpers/signEnvelope';
 import ConnectRequest from 'blocks/ConnectRequest';
+import useTypedSelector from 'hooks/useTypedSelector';
 import useActiveAccount from 'hooks/useActiveAccount';
 import BottomSheet from 'components/common/BottomSheet';
 import installRabet from 'actions/interactions/install';
 import Layout from 'components/common/Layouts/BaseLayout';
 import ApproveTransaction from 'blocks/ApproveTransaction';
 import addConnectedWebsite from 'actions/accounts/addConnectedWebsite';
-
-import signEnvelope from 'helpers/signEnvelope';
-import useTypedSelector from 'hooks/useTypedSelector';
 
 import * as S from './styles';
 
@@ -132,7 +130,7 @@ const Browser = () => {
       {
         type: 'RABET/SIGN/RESPONSE',
         message: {
-          sign: signed,
+          xdr: signed,
         },
       },
       event.origin,
