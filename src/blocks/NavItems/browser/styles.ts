@@ -71,7 +71,6 @@ export const Text = styled.div`
 export const IframeContainer = styled.iframe`
   width: 101%;
   height: 82vh;
-  margin: 0 16px;
 `;
 
 export const Loading = styled.div`
@@ -84,8 +83,7 @@ export const Loading = styled.div`
 export const FrameParent = styled.div`
   overflow: hidden;
   height: 82vh;
-  width: 105%;
-  margin: -110px -16px 0;
+  margin: -115px 0 0;
 `;
 
 export const Hr = styled.hr`

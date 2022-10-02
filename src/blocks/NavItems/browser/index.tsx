@@ -271,37 +271,37 @@ const Browser = () => {
             ''
           )}
         </S.Text>
-
-        <div>
-          {result === 'invalid' ? (
-            <S.Text>
-              <NoData msg="Invalid URL" />
-            </S.Text>
-          ) : (
-            ''
-          )}
-
-          {result === 'valid' ? (
-            <S.FrameParent>
-              <S.IframeContainer
-                height={document.documentElement.clientHeight - 131}
-                ref={iframe}
-                title={url}
-                src={url}
-                onLoad={handleLoad}
-                style={{
-                  display: loaded ? 'block' : 'none',
-                }}
-                frameborder="0"
-              >
-                {!loaded ? <S.Loading>Loading</S.Loading> : ''}
-              </S.IframeContainer>
-            </S.FrameParent>
-          ) : (
-            ''
-          )}
-        </div>
       </Layout>
+
+      <div>
+        {result === 'invalid' ? (
+          <S.Text>
+            <NoData msg="Invalid URL" />
+          </S.Text>
+        ) : (
+          ''
+        )}
+
+        {result === 'valid' ? (
+          <S.FrameParent>
+            <S.IframeContainer
+              height={document.documentElement.clientHeight - 131}
+              ref={iframe}
+              title={url}
+              src={url}
+              onLoad={handleLoad}
+              style={{
+                display: loaded ? 'block' : 'none',
+              }}
+              frameborder="0"
+            >
+              {!loaded ? <S.Loading>Loading</S.Loading> : ''}
+            </S.IframeContainer>
+          </S.FrameParent>
+        ) : (
+          ''
+        )}
+      </div>
 
       <BottomSheet
         isOpen={openConnect}
