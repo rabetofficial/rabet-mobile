@@ -63,49 +63,51 @@ const RoutesManager = ({
   // }, []);
 
   useEffect(() => {
-    if (!isLoaded) {
-      return;
-    }
-
-    const os = detectOS();
-    const browser = detectBrowser();
-    const isMobile = detectMobile();
-
-    const browserSupport = false;
-
-    if (os === 'ios' && browser === 'safari') {
-      browserSupport = true;
-    } else if (browser === 'chrome') {
-      browserSupport = true;
-    }
-
-    if (!isMobile) {
-      browserSupport = false;
-    }
-
-    if (!browserSupport && pageProps.wrong_browser) {
-      setPass(true);
-
-      return;
-    }
-
-    if (!browserSupport) {
-      router.push(RouteName.ChooseBrowser);
-
-      return;
-    }
-
-    // force install app page
-    const isUsingPWA = isInPWA();
-
-    if (!isUsingPWA) {
-      if (pageProps.before_pwa) {
-        setPass(true);
+    if (!process.env.NEXT_PUBLIC_DEVELOPMENT) {
+      if (!isLoaded) {
         return;
       }
 
-      router.push('/');
-      return;
+      const os = detectOS();
+      const browser = detectBrowser();
+      const isMobile = detectMobile();
+
+      let browserSupport = false;
+
+      if (os === 'ios' && browser === 'safari') {
+        browserSupport = true;
+      } else if (browser === 'chrome') {
+        browserSupport = true;
+      }
+
+      if (!isMobile) {
+        browserSupport = false;
+      }
+
+      if (!browserSupport && pageProps.wrong_browser) {
+        setPass(true);
+
+        return;
+      }
+
+      if (!browserSupport) {
+        router.push(RouteName.ChooseBrowser);
+
+        return;
+      }
+
+      // force install app page
+      const isUsingPWA = isInPWA();
+
+      if (!isUsingPWA) {
+        if (pageProps.before_pwa) {
+          setPass(true);
+          return;
+        }
+
+        router.push('/');
+        return;
+      }
     }
 
     // Protect routes

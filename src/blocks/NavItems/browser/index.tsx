@@ -38,11 +38,11 @@ const Browser = () => {
   ]);
 
   const [at, setAT] = useState<ApproveTransactionState>({});
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
   const [result, setResult] = useState<'valid' | 'invalid' | 'empty'>(
-    'empty',
+    'valid',
   );
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState('https://dapps.rabet.io');
   const iframe = useRef();
   const [openConnect, setOpenConnect] = useState(false);
   const [openApprove, setOpenApprove] = useState(false);
@@ -252,6 +252,7 @@ const Browser = () => {
             type="text"
             enterKeyHint="search"
             placeholder="Search or enter website url"
+            defaultValue={url}
           />
         </S.InputBox>
       </form>
