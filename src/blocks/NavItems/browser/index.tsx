@@ -58,7 +58,10 @@ const Browser = () => {
       iframe.current.contentWindow.postMessage(installRabet, url);
     }, 150);
   };
-
+  const handleChange = (e: any) => {
+    setValue(e.target.value);
+    console.log(e.target);
+  };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     e.target.search.blur();
@@ -262,7 +265,7 @@ const Browser = () => {
             {!loaded && result === 'valid' ? (
               <Searching />
             ) : (
-              <span className="mr-[3px]">
+              <span className="mr-[3px] mt-[-2px]">
                 <Search />
               </span>
             )}
@@ -270,13 +273,11 @@ const Browser = () => {
           <S.InputSearch
             autoComplete="off"
             name="search"
-            type="text"
+            type="search"
             enterKeyHint="search"
             placeholder="Search or enter website url"
             value={value}
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
+            onChange={handleChange}
           />
         </S.InputBox>
       </form>
