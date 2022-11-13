@@ -47,8 +47,9 @@ const Browser = () => {
   const [openConnect, setOpenConnect] = useState(false);
   const [openApprove, setOpenApprove] = useState(false);
   const [event, setEvent] = useState(null);
+  const [value, setValue] = useState('https://dapps.rabet.io');
 
-  const handleLoad = () => {
+  const handleLoad = (e) => {
     setLoaded(true);
 
     iframe.current.contentWindow.postMessage(installRabet, url);
@@ -154,6 +155,26 @@ const Browser = () => {
   };
 
   const handler = (e) => {
+    if (
+      e?.data?.type === 'redirect' &&
+      e?.origin === 'https://dapps.rabet.io'
+    ) {
+      const { href } = e?.data;
+
+      setUrl(href);
+      setValue(href);
+      setLoaded(false);
+      setResult('valid');
+
+      window.postMessage(installRabet, '*');
+
+      setTimeout(() => {
+        window.postMessage(installRabet, '*');
+      }, 400);
+
+      return;
+    }
+
     if (e?.data?.type === 'RABET/CONNECT') {
       setEvent(e);
 
@@ -252,7 +273,10 @@ const Browser = () => {
             type="text"
             enterKeyHint="search"
             placeholder="Search or enter website url"
-            defaultValue={url}
+            value={value}
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
           />
         </S.InputBox>
       </form>
