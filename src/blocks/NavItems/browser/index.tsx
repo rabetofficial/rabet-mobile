@@ -265,7 +265,7 @@ const Browser = () => {
             {!loaded && result === 'valid' ? (
               <Searching />
             ) : (
-              <span className="mr-[3px]">
+              <span className="mr-[3px] mt-[-2px]">
                 <Search />
               </span>
             )}
@@ -273,7 +273,7 @@ const Browser = () => {
           <S.InputSearch
             autoComplete="off"
             name="search"
-            type="text"
+            type="search"
             enterKeyHint="search"
             placeholder="Search or enter website url"
             value={value}

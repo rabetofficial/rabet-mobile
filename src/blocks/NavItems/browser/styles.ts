@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/indent */
 import styled from 'styled-components';
+import Close from 'svgs/MultiplyInCircle';
+
+import svgToMarkupString from 'helpers/svgToMarkupString';
 
 export const InputBox = styled.div`
   height: 40px;
   display: flex;
   padding: 8px 10px;
-  margin: 8px 16px;
+  margin: 8px 16px 7px;
   border-radius: 4px;
   align-content: center;
   box-sizing: border-box;
@@ -40,11 +43,20 @@ export const InputSearch = styled.input`
 
   color: ${({ theme }) => theme.colors.primary.dark};
   background-color: ${({ theme }) => theme.colors.primary.lighter};
-
   &:focus,
   &:focus-within {
     outline: none;
     background-color: ${({ theme }) => theme.colors.primary.lighter};
+  }
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+
+    height: 16px;
+    width: 16px;
+    background: ${({ color }) =>
+      `url(${svgToMarkupString(Close, {
+        color,
+      })}) no-repeat center`};
   }
 `;
 
