@@ -58,7 +58,10 @@ const Browser = () => {
       iframe.current.contentWindow.postMessage(installRabet, url);
     }, 150);
   };
-
+  const handleChange = (e: any) => {
+    setValue(e.target.value);
+    console.log(e.target);
+  };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     e.target.search.blur();
@@ -274,9 +277,7 @@ const Browser = () => {
             enterKeyHint="search"
             placeholder="Search or enter website url"
             value={value}
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
+            onChange={handleChange}
           />
         </S.InputBox>
       </form>
