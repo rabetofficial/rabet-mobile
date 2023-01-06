@@ -74,12 +74,14 @@ const AddToHome = ({ usage }: AddToHomeProps) => {
       <S.Hr />
 
       {List.map((listPg) => (
-        <S.List listId={listPg.id}>
-          <span>{listPg.icon}</span>
-          <S.Item className={listPg.margin}>
-            {listPg.id}- {listPg.description}
-          </S.Item>
-        </S.List>
+        <div key={listPg.id}>
+          <S.List listId={listPg.id}>
+            <span>{listPg.icon}</span>
+            <S.Item className={listPg.margin}>
+              {listPg.id}- {listPg.description}
+            </S.Item>
+          </S.List>
+        </div>
       ))}
     </div>
   );

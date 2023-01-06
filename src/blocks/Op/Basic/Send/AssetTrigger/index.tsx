@@ -1,11 +1,9 @@
 import React from 'react';
-import Image from 'next/image';
 import { Horizon } from 'stellar-sdk';
 import styled from 'styled-components';
 
 import AngleDownBold from 'svgs/AngleDownBold';
 import humanizeNumber from 'helpers/humanizeNumber';
-import questionLogo from 'public/images/question-circle.png';
 import { AssetImage } from 'reducers/assetImages';
 import handleAssetImage from 'utils/handleAssetImage';
 import handleAssetAlt from 'utils/handleAssetAlt';

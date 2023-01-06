@@ -2,10 +2,9 @@ import React from 'react';
 
 import NoteCard from 'components/NoteCard';
 import ExclamationTriangle from 'svgs/ExclamationTriangle';
-import styled from 'styled-components';
 
 export type ErrorProps = {
-  message: string;
+  message: string | string[] | any;
   onClick: () => void;
 };
 
