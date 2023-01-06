@@ -81,7 +81,6 @@ export const get = <T>(key: string, password?: string): Promise<T> =>
 
               return resolve(jsonData);
             }
-          } else {
           }
         } else {
           resolve(null);
