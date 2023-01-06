@@ -1,10 +1,9 @@
 import { Horizon } from 'stellar-sdk';
-import React, { useState } from 'react';
+import React from 'react';
 
 import Image from 'components/common/Image';
 import formatBalance from 'utils/formatBalance';
 import handleAssetAlt from 'utils/handleAssetAlt';
-import ScrollBar from 'components/common/ScrollBar';
 import handleAssetsKeys from 'utils/handleAssetKeys';
 import handleAssetImage from 'utils/handleAssetImage';
 import useTypedSelector from 'hooks/useTypedSelector';
@@ -17,7 +16,6 @@ type AppProps = {
   close: () => void;
   onChange: (value: Horizon.BalanceLine) => void;
   valueName?: string;
-  maxHeight: number;
 };
 
 const SearchAsset = ({
@@ -25,7 +23,6 @@ const SearchAsset = ({
   close,
   onChange,
   valueName,
-  maxHeight,
 }: AppProps) => {
   const assetImages = useTypedSelector((store) => store.assetImages);
 

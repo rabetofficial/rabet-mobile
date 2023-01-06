@@ -24,6 +24,7 @@ const ApproveTransaction = ({
   onConfirm,
   data,
 }: ApproveType) => {
+  const [isLoaded, setIsLoaded] = useState(true);
   const account = useActiveAccount();
 
   const operations = data.transaction?.operations;
@@ -34,8 +35,6 @@ const ApproveTransaction = ({
   const isMainNetwork =
     data.network?.includes('main') ||
     data.network === Networks.PUBLIC;
-
-  let isLoaded = true;
 
   return (
     <>
@@ -55,7 +54,7 @@ const ApproveTransaction = ({
                 src={`https://logo.clearbit.com/${data.origin || ''}`}
                 alt={data.origin || ' '}
                 onError={() => {
-                  isLoaded = false;
+                  setIsLoaded(false);
                 }}
               />
             )}

@@ -2,7 +2,6 @@ import React from 'react';
 // import { useNavigate } from 'react-router-dom';
 
 import maxText from 'utils/maxText';
-import RouteName from 'staticRes/routes';
 import Button from 'components/common/Button';
 import CopyText from 'components/common/CopyText';
 import useActiveAccount from 'hooks/useActiveAccount';
