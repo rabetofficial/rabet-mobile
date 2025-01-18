@@ -1,8 +1,6 @@
-version: '3'
 services:
   rabet-mobile:
     build: .
     pull_policy: never
     restart: unless-stopped
-    ports:
-      - '3001:3000'
+    network_mode: host
